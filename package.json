@@ -11,6 +11,7 @@
   "workspaces": [
     "apps/app.tiwoin.com",
     "apps/console.tiwoin.com",
-    "apps/api.tiwoin.com"
+    "apps/api.tiwoin.com",
+    "packages/ui"
   ]
 }
