@@ -1,0 +1,76 @@
+:host {
+    display: inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: var( --slui-action-button-padding);
+    height: var(--slui-action-button-height);
+    border-radius: 18px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.16s;
+}
+:host.icon-only {
+    padding: unset;
+    width: var(--slui-action-button-height);
+}
+
+.text-node {
+    font-size: var(--slui-action-font-size);
+    line-height: var(--slui-action-line-height);
+    font-weight: var(--slui-action-font-weight);
+}
+.icon-node {
+    height: var(--slui-action-button-icon-size);
+    width: var(--slui-action-button-icon-size);
+    display: flex;
+    align-items: center;
+}
+
+// standard
+:host.standard {
+    color: var(--slui-action-button-standard-text-color);
+    background-color: var(--slui-action-button-standard-color);
+    border: 1px solid var(--slui-action-button-standard-border-color);
+}
+:host.standard:hover {
+    color: var(--slui-action-button-standard-text-color-hover);
+    background-color: var(--slui-action-button-standard-color-hover);
+    border-color: var(--slui-action-button-standard-border-color-hover);
+}
+:host.standard:active {
+    color: var(--slui-action-button-standard-text-color-active);
+    background-color: var(--slui-action-button-standard-color-active);
+    border-color: var(--slui-action-button-standard-border-color-active);
+}
+
+:host.standard.silent {
+    color: var(--slui-action-button-standard-text-color);
+    background-color: unset;
+    border: unset;
+}
+:host.standard.silent:hover {
+    color: var(--slui-action-button-standard-text-color-hover);
+    background-color: var(--slui-action-button-silent-color-hover);
+}
+
+// emphasis
+:host.emphasis {
+    color: var(--slui-action-button-emphasis-text-color);
+    background-color: var(--slui-action-button-emphasis-color);
+}
+:host.emphasis:hover {
+    background-color: var(--slui-action-button-emphasis-color-hover);
+}
+:host.emphasis:active {
+    background-color: var(--slui-action-button-emphasis-color-active);
+}
+:host.emphasis.silent {
+    color: var(--slui-action-button-emphasis-color);
+    border: unset;
+    background-color: unset;
+}
+:host.emphasis.silent:hover {
+    color: var(--slui-action-button-emphasis-color-active);
+    background-color: var(--slui-action-button-silent-color-hover);
+}

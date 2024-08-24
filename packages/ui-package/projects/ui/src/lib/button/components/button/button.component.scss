@@ -1,0 +1,102 @@
+:host {
+    display: inline-flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: center;
+    padding: var(--slui-button-padding);
+    height: var(--slui-button-height);
+    border-radius: 18px;
+    transition: all 0.3s;
+}
+
+.text-node {
+    font-family: var(--sonaleela-font-display);
+    font-size: var(--slui-button-font-size);
+    line-height: var(--slui-button-line-height);
+    font-weight: var(--slui-button-font-weight);
+}
+.icon-node {
+    display: flex;
+    height: var(--slui-button-icon-size);
+    width: var(--slui-button-icon-size);
+}
+
+// CTA varient
+:host.cta {
+    color: var(--slui-button-cta-text-color);
+    background-color: var(--slui-button-cta-color);
+}
+:host.cta:hover {
+    background-color: var(--slui-button-cta-color-hover);
+}
+:host.cta:active {
+    background-color: var(--slui-button-cta-color-active);
+}
+
+// Primary varient
+:host.primary {
+    color: var(--slui-button-primary-text-color);
+    background-color: var(--slui-button-primary-color);
+}
+:host.primary:hover {
+    background-color: var(--slui-button-primary-color-hover);
+}
+:host.primary:active {
+    background-color: var(--slui-button-primary-color-active);
+}
+
+// negative varient
+:host.negative {
+    color: var(--slui-button-negative-text-color);
+    background-color: var(--slui-button-negative-color);
+}
+:host.negative:hover {
+    background-color: var(--slui-button-negative-color-hover);
+}
+:host.negative:active {
+    background-color: var(--slui-button-negative-color-active);
+}
+
+// secondary varient
+:host.secondary {
+    color: var(--slui-button-secondary-text-color);
+    background-color: var(--slui-button-secondary-color);
+}
+:host.secondary:hover {
+    background-color: var(--slui-button-secondary-color-hover);
+}
+:host.secondary:active {
+    background-color: var(--slui-button-secondary-color-active);
+}
+
+// Silent varient
+:host.silent {
+    background-color: unset;
+}
+:host.cta.silent {
+    color: var(--slui-button-cta-color);
+}
+:host.cta.silent:hover {
+    color: var(--slui-button-cta-color-hover);
+    background-color: var(--slui-button-secondary-color);
+}
+:host.primary.silent {
+    color: var(--slui-button-primary-color);
+}
+:host.primary.silent:hover {
+    background-color: var(--slui-button-secondary-color);
+}
+:host.negative.silent {
+    color: var(--slui-button-negative-color);
+}
+:host.negative.silent:hover {
+    color: var(--slui-button-negative-color-hover);
+    background-color: var(--slui-button-secondary-color);
+}
+
+// disabled button
+:host.disabled, :host.disabled:hover, :host.disabled:active {
+    cursor: not-allowed;
+    color: var(--slui-button-disabled-color);
+    background-color: var(--slui-button-secondary-color);
+}

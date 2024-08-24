@@ -1,0 +1,35 @@
+:host {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    width: 100%;
+
+    .input-container {
+        display: flex;
+        position: relative;
+        width: 100%;
+        margin: var(--sonaleela-space-stack-25);
+
+        .required-marker {
+            content: '';
+            display: block;
+            height: 11px;
+            width: 11px;
+            position: absolute;
+            background-color: var(--sonaleela-color-gray-500);
+            bottom: -4px;
+            left: -5px;
+            border-radius: 6px;
+            border: 2px solid var(--sonaleela-color-gray-50);
+        }
+    }
+
+    .subscript-container {
+        display: flex;
+        width: 100%;
+
+        & > * {
+            width: 100%;
+        }
+    }
+}

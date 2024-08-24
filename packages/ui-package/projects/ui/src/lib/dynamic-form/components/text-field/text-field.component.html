@@ -1,0 +1,7 @@
+<label class="block font-body text-75 text-gray-800 mb-2"
+       [for]="data?.id">{{data?.label}}</label>
+<input [id]="data?.id"
+       type="text"
+       [placeholder]="data?.placeholder || ''"
+       [formControl]="control"
+       class="w-full font-body text-100 text-gray-900 h-9 rounded border border-gray-300 px-3">

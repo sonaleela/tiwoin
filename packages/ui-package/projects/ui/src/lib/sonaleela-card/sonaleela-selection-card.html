@@ -1,0 +1,5 @@
+<div [ngClass]="{'selection-card': true, 'checked': selected}">
+    <ng-content select="[selection-icon]"></ng-content>
+    <ng-content select="[selection-title]"></ng-content>
+</div>
+<ng-content select="[selection-control]"></ng-content>

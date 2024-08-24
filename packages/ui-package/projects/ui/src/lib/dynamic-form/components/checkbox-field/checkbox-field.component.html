@@ -1,0 +1,11 @@
+<label class="block font-body text-75 text-gray-800 mb-2">{{data?.label}}</label>
+<div class="flex flex-col gap-2">
+    <label *ngFor="let control of controlsArray.controls; index as i"
+           class="flex flex-row items-center gap-4">
+        <input type="checkbox"
+               class="font-body text-100 text-gray-900 h-9 rounded border border-gray-300 px-3"
+               [formControl]="control"
+               [value]="data?.controls[i].label">
+        <span class="font-body text-100 text-gray-900">{{data?.controls[i].label}}</span>
+    </label>
+</div>

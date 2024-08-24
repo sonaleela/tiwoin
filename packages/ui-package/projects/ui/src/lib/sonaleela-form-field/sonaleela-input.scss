@@ -1,0 +1,31 @@
+:host.sonaleela-input {
+    width: 100%;
+    border: none;
+    height: 32px;
+    color: var(--sonaleela-color-gray-800);
+    font-size: var(--sonaleela-font-size-body-xs);
+    line-height: var(--sonaleela-line-height-body-xs);
+    padding: 6px var(--sonaleela-space-75) 4px var(--sonaleela-space-75);
+    border-radius: var(--sonaleela-space-25) var(--sonaleela-space-25) 0 0;
+    background-color: var(--sonaleela-color-gray-transparent-100);
+    border-bottom: 1px solid var(--sonaleela-color-gray-transparent-500);
+    transition: all 0.1s ease-out;
+
+    &:hover {
+        transition: all 0.1s ease-out;
+        border-bottom: 2px solid var(--sonaleela-color-gray-transparent-700);
+    }
+    &:focus {
+        outline: unset;
+        border-bottom-color: var(--sonaleela-color-blue-500);
+    }
+
+    &::placeholder {
+        color: var(--sonaleela-color-gray-600);
+        font-style: italic;
+    }
+    &:hover::placeholder {
+        color: var(--sonaleela-color-gray-900);
+        font-style: italic;
+    }
+}

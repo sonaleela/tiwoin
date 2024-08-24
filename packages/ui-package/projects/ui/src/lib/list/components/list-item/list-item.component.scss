@@ -1,0 +1,50 @@
+:host {
+    width: 100%;
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    background-color: #eeeeee;
+    padding: 8px 24px;
+}
+
+.list-icon {
+    flex: none;
+}
+
+.list-content {
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column nowrap;
+    gap: 4px;
+}
+
+.list-meta {
+    flex: none;
+}
+
+// One line list
+.one-line.list-icon {
+    align-self: center;
+    height: var(--slui-list-icon-size);
+    width: var(--slui-list-icon-size);
+    margin-right: 20px;
+    color: #4b4b4b;
+}
+
+.two-line.list-icon {
+    align-self: flex-start;
+    height: var(--slui-list-icon-size);
+    width: var(--slui-list-icon-size);
+    margin-right: 20px;
+    margin-top: 12px;
+    color: #4b4b4b;
+}
+
+.three-line.list-icon {
+    align-self: flex-start;
+    height: var(--slui-list-icon-size);
+    width: var(--slui-list-icon-size);
+    margin-right: 20px;
+    margin-top: 12px;
+    color: #4b4b4b;
+}

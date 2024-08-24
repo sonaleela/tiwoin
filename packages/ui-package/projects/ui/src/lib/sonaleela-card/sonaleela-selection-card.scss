@@ -1,0 +1,29 @@
+lib-sonaleela-selection-card {
+    display: inline-block;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.selection-card {
+    display: flex;
+    flex-flow: column;
+    gap: 20px;
+    background-color: var(--sonaleela-color-gray-100);
+    border: 2px solid var(--sonaleela-color-gray-300);
+    border-radius: 8px;
+
+    &:hover {
+        background-color: var(--sonaleela-color-gray-75);
+        border: 2px solid var(--sonaleela-color-gray-500);
+    }
+
+    &.checked {
+        background-color: var(--sonaleela-color-gray-100);
+        border: 2px solid var(--sonaleela-color-blue-500);
+    }
+
+    &.checked .selection-icon {
+        color: var(--sonaleela-color-blue-500);
+    }
+}

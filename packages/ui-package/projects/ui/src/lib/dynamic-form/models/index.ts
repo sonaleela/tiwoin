@@ -1,0 +1,16 @@
+export enum FormFieldTypeEnum {
+    'TEXT' = 'TEXT',
+    'TEXTAREA' = 'TEXTAREA',
+    'NUMBER' = 'NUMBER',
+    'FILE' = 'FILE',
+    'DATE' = 'DATE',
+    'TIME' = 'TIME',
+    'EMAIL' = 'EMAIL',
+    'URL' = 'URL',
+    'DATETIME' = 'DATETIME',
+    'PHONE' = 'PHONE',
+    'CHECKBOX' = 'CHECKBOX',
+    'DROPDOWN' = 'DROPDOWN',
+    'RADIO' = 'RADIO',
+    'TOGGLE' = 'TOGGLE',
+}

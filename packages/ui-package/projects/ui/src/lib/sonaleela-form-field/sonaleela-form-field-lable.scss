@@ -1,0 +1,12 @@
+:host.sonaleela-label {
+    width: 100%;
+    color: var(--sonaleela-color-gray-700);
+    margin: var(--sonaleela-space-stack-25);
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 500;
+}
+
+.focused > :host.sonaleela-label {
+    color: var(--sonaleela-color-blue-500);
+}

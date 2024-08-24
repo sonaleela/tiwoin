@@ -1,0 +1,7 @@
+<label class="block font-body text-75 text-gray-800 mb-2"
+       [for]="data?.id">Hello {{data?.label}}</label>
+<textarea [id]="data?.id"
+          [placeholder]="data?.placeholder || ''"
+          [formControl]="control"
+          [cols]="2"
+          class="w-full font-body text-100 text-gray-900 rounded border border-gray-300 px-3 py-2"></textarea>

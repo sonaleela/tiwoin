@@ -1,0 +1,16 @@
+<div *ngIf="icon"
+     [ngClass]="{
+    'one-line': isOneLine,
+    'two-line': isTwoLine,
+    'three-line': isThreeLine,
+    'list-icon': true}">
+  <ng-content select="slui-icon"></ng-content>
+</div>
+<div class="list-content">
+  <ng-content select="[sluiLineTitle]"></ng-content>
+  <ng-content select="[sluiLineText]"></ng-content>
+  <ng-content select="[sluiLineCaption]"></ng-content>
+</div>
+<div [ngClass]="{'one-line': isOneLine, 'list-meta': true}">
+  <ng-content select="slui-list-meta"></ng-content>
+</div>

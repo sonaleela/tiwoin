@@ -1,0 +1,19 @@
+<section class="bg-gray-50 rounded-3xl p-8 w-[720px] mx-auto mt-6">
+    <h1 class="mb-5 font-body font-bold text-100 text-center">Dynamic form</h1>
+    <form class="flex flex-col gap-4"
+          [formGroup]="form"
+          (ngSubmit)="submit()"
+          novalidate>
+        <div formArrayName="fields"
+             class="flex flex-col gap-4">
+            <ng-template *ngFor="let field of getFields?.controls; let i = index"
+                         sonaleelaDynamicFormControl
+                         [formControlName]="i"></ng-template>
+        </div>
+        <div>
+            <button type="submit"
+                    slui-button
+                    appearance="cta">Submit</button>
+        </div>
+    </form>
+</section>

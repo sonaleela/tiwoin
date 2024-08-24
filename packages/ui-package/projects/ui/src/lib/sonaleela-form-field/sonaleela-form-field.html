@@ -1,0 +1,19 @@
+<ng-content select="label, [lib-sonaleela-form-label]"></ng-content>
+<div class="input-container">
+    <ng-content select="input, [lib-sonaleela-input-control]"></ng-content>
+    <!-- <div *ngIf="formControl?.required"
+         class="required-marker">
+    </div> -->
+    <ng-content></ng-content>
+</div>
+<div class="subscript-container"
+     [ngSwitch]="getDisplayedMessages()">
+    <div class="error-container"
+         *ngSwitchCase="'error'">
+        <ng-content select="[lib-sonaleela-form-error]"></ng-content>
+    </div>
+    <div class="hint-container"
+         *ngSwitchCase="'hint'">
+        <ng-content select="[lib-sonaleela-form-hint]"></ng-content>
+    </div>
+</div>

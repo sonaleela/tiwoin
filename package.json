@@ -12,6 +12,6 @@
     "apps/app.tiwoin.com",
     "apps/console.tiwoin.com",
     "apps/api.tiwoin.com",
-    "packages/ui"
+    "packages/ui-package"
   ]
 }

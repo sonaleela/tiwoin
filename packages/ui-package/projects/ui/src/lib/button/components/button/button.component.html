@@ -1,0 +1,9 @@
+  <span [buttonIcon]="textNode">
+    <ng-content #node
+                select="slui-icon"></ng-content>
+  </span>
+
+  <span #textNode
+        class="text-node">
+    <ng-content></ng-content>
+  </span>
