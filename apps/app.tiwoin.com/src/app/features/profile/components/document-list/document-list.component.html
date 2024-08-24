@@ -1,0 +1,39 @@
+<h2 *ngIf="requestList?.length"
+    class="font-body font-bold text-75 text-gray-700 mt-4">Upload requests</h2>
+<div *ngFor="let request of requestList"
+     class="flex px-6 border border-dashed border-gray-500 rounded-2xl"
+     (click)="requestUpload.emit(request)">
+    <div class="flex-none self-center pr-6 py-5">
+        <slui-icon class="h-6 w-6 text-gray-700"
+                   [iconName]="'file-text'"></slui-icon>
+    </div>
+    <div class="flex-1 flex flex-col justify-center pl-6 py-5 border-l border-dashed border-gray-500">
+        <h2 class="font-body text-100 text-gray-700">{{request?.name}}</h2>
+        <!-- <p class="font-body text-75 text-gray-700">Requested by your organization</p> -->
+    </div>
+</div>
+
+<h2 *ngIf="list?.length"
+    class="font-body font-bold text-75 text-gray-700 mt-4">Documents</h2>
+<div *ngFor="let document of list"
+     class="flex gap-4 px-6 py-5 bg-white rounded-2xl">
+    <div class="flex-none self-center">
+        <slui-icon class="h-6 w-6 text-primary-400"
+                   [iconName]="'file-text'"></slui-icon>
+    </div>
+    <div class="flex-1 flex flex-col">
+        <h2 class="font-body font-bold text-100 text-gray-800">{{document?.name}}</h2>
+        <div class="flex items-center gap-3">
+            <p class="font-body text-75 text-gray-700">{{document?.size / 1024 | number: '1.0-2'}}Kb</p>
+            <p class="font-body text-100 text-gray-700">•</p>
+            <p class="font-body text-75 text-gray-700">{{document?.type}}</p>
+        </div>
+    </div>
+    <div class="flex-none self-center">
+        <button slui-action-button
+                silent>
+            <slui-icon class="h-6 w-6 text-gray-800"
+                       [iconName]="'dots'"></slui-icon>
+        </button>
+    </div>
+</div>

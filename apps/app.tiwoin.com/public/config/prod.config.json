@@ -1,0 +1,27 @@
+{
+    "name": "devel",
+    "sonaleela": {
+        "basePath": "https://api.tiwoin.com"
+    },
+    "aws": {
+        "cognito": {
+            "region": "us-east-1",
+            "userPoolId": "ap-south-1_jAol54Ivm",
+            "userPoolClientId": "7iic04ec0aqaqcq3fc895pvc1t"
+        }
+    },
+    "theme": {
+        "themeStorageKey": "appliedTheme",
+        "themeList": [
+            {
+                "name": "Light",
+                "className": "sonaleela-theme--light",
+                "isDefault": true
+            },
+            {
+                "name": "Dark",
+                "className": "sonaleela-theme--dark"
+            }
+        ]
+    }
+}

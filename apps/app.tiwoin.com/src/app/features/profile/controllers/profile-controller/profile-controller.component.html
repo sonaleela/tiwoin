@@ -1,0 +1,36 @@
+<header class="flex-none flex items-center bg-gray-50 h-14 px-5">
+    <button class="flex-none"
+            slui-action-button
+            silent
+            (click)="back()">
+        <slui-icon [iconName]="'arrow-left'"></slui-icon>
+    </button>
+    <h1
+        class="flex-auto whitespace-nowrap text-ellipsis overflow-hidden font-body font-bold text-100 text-gray-900 text-center pr-9">
+        Profile
+    </h1>
+</header>
+<tiwoin-profile *ngIf="!(isForm$ | async) && !(isContactForm$ | async) && !(isProfilePhotoForm$ | async)"
+                [profile]="employee$ | async"
+                [isPending]="isPending$ | async"
+                [error]="error$ | async"
+                (toggleForm)="toggleForm($event)"
+                (togglePhotoForm)="togglePhotoForm($event)"
+                (toggleContactForm)="toggleContactForm($event)"></tiwoin-profile>
+<tiwoin-profile-form *ngIf="(isForm$ | async)"
+                     [isPending]="isUpdatePending$ | async"
+                     [error]="updateProfileError$ | async"
+                     [profile]="employee$ | async"
+                     (submitForm)="submitForm($event)"
+                     (toggleForm)="toggleForm($event)"></tiwoin-profile-form>
+<tiwoin-contact-form *ngIf="(isContactForm$ | async)"
+                     [isPending]="isUpdatePending$ | async"
+                     [error]="updateProfileError$ | async"
+                     [profile]="employee$ | async"
+                     (submitForm)="submitForm($event)"
+                     (toggleForm)="toggleContactForm($event)"></tiwoin-contact-form>
+<tiwoin-profile-photo-form *ngIf="(isProfilePhotoForm$ | async)"
+                           [isPending]="isProfilePhotoPending$ | async"
+                           [error]="profilePhotoError$ | async"
+                           (upload)="uploadProfilePhoto($event)"
+                           (toggleForm)="togglePhotoForm($event)"></tiwoin-profile-photo-form>

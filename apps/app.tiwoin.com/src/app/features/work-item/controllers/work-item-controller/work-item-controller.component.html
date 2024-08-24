@@ -1,0 +1,17 @@
+<header class="flex-none flex items-center bg-gray-100 h-14 px-5">
+    <button class="flex-none"
+            slui-action-button
+            silent
+            (click)="back()">
+        <slui-icon [iconName]="'arrow-left'"></slui-icon>
+    </button>
+    <h1
+        class="flex-auto whitespace-nowrap text-ellipsis overflow-hidden font-body font-bold text-100 text-gray-900 text-center pr-9">
+        {{(workItem$ | async)?.name}}
+    </h1>
+</header>
+
+<tiwoin-work-item-form class="flex-none"
+                       [workItem]="workItem$ | async"
+                       [isPending]="isPending$ | async"
+                       (submitForm)="submit($event)"></tiwoin-work-item-form>

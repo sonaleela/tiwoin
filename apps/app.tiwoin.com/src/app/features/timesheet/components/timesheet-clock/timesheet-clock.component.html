@@ -1,0 +1,31 @@
+<!-- loading -->
+<div class="flex-1"
+     *isSpinner="isPending || isClockEntryPending"></div>
+<section class="flex-auto flex flex-col justify-center gap-4 px-9 py-7">
+    <h1 *ngIf="!entryTypes?.length && !isPending"
+        class="font-body text-100 text-center text-gray-800">You have ended your shift!</h1>
+
+    <div *ngIf="!isPending && !isClockEntryPending"
+         class="flex flex-col items-center gap-4">
+        <tiwoin-slide-drop *ngFor="let entry of entryTypes"
+                           class="w-full"
+                           [entry]="entry"
+                           (dropped)="timeEntry.emit(entry)">
+        </tiwoin-slide-drop>
+    </div>
+</section>
+<section *ngIf="!isPending"
+         class="flex-auto flex flex-col gap-4 px-4 py-8 bg-white rounded-t-2xl">
+    <p *ngIf="!clockEntry?.entries?.length"
+       class="self-center mx-auto font-body text-75 text-gray-700">Shift is not started yet!</p>
+    <ng-container *ngIf="clockEntry?.entries?.length">
+        <div *ngFor="let entry of clockEntry?.entries"
+             class="flex items-center rounded-2xl px-4 py-4 bg-gray-75 gap-4">
+            <div class="flex-1 flex flex-col">
+                <p class="font-body font-bold text-100 text-gray-800">{{entry.name}}</p>
+                <p class="font-body text-75 text-gray-700">{{entry.type}}</p>
+            </div>
+            <p class="flex-none font-body font-bold text-75 text-gray-800">{{entry?.time | date: 'shortTime'}}</p>
+        </div>
+    </ng-container>
+</section>

@@ -1,0 +1,29 @@
+{
+    "name": "devel",
+    "sonaleela": {
+        "basePath": "http://localhost:3000"
+    },
+    "aws": {
+        "cognito": {
+            "region": "ap-south-1",
+            "userPoolId": "ap-south-1_Cz2v1MZFO",
+            "userPoolClientId": "71an7rn1b888hag0cgrjr61oha",
+            "identityPoolRegion": "ap-south-1",
+            "identityPoolId": "ap-south-1:83cc5978-7608-4f6b-a60f-fa69a8bd6edc"
+        }
+    },
+    "theme": {
+        "themeStorageKey": "appliedTheme",
+        "themeList": [
+            {
+                "name": "Light",
+                "className": "sonaleela-theme--light",
+                "isDefault": true
+            },
+            {
+                "name": "Dark",
+                "className": "sonaleela-theme--dark"
+            }
+        ]
+    }
+}

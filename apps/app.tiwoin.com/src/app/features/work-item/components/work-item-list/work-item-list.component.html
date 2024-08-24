@@ -1,0 +1,27 @@
+<header class="flex items-center justify-between px-6 py-6">
+    <h2 class="font-body font-bold text-75 text-gray-800">Work items list</h2>
+    <button type="button"
+            class="mr-[-16px]"
+            slui-action-button
+            emphasis
+            silent
+            routerLink="/work-item">Submitted work items</button>
+</header>
+
+<section class="flex flex-col gap-4 px-6">
+    <a *ngFor="let workItem of list"
+       class="flex gap-4 px-6 py-5 bg-white rounded-2xl"
+       [routerLink]="['/work-item', workItem?.id]">
+        <div class="flex-none self-center">
+            <slui-icon class="h-6 w-6 text-primary-400"
+                       [iconName]="'forms'"></slui-icon>
+        </div>
+        <div class="flex-1 flex flex-col">
+            <h2 class="font-body font-bold text-100 text-gray-800">{{workItem.name}}</h2>
+            <div class="flex items-center gap-3">
+                <p class="font-body text-75 text-gray-700">{{workItem?.description}}</p>
+                <!-- <p class="font-body text-100 text-gray-700">•</p> -->
+            </div>
+        </div>
+    </a>
+</section>

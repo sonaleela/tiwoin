@@ -1,0 +1,64 @@
+<table class="w-full table-fixed rounded-xl overflow-hidden"
+       cdk-table
+       multiTemplateDataRows
+       [dataSource]="list">
+    <ng-container cdkColumnDef="date">
+        <td class="font-body text-center text-100 text-gray-900 py-4"
+            cdk-cell
+            *cdkCellDef="let element">
+            <p class="font-body font-bold text-100 text-gray-900">{{element?.date | date:'dd'}}</p>
+            <p class="font-body text-50 text-gray-700">{{element?.date | date:'yyyy'}}</p>
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="time">
+        <td class="font-body text-center text-100 text-gray-900 py-4"
+            cdk-cell
+            *cdkCellDef="let element">
+            <div class="flex items-center justify-center">
+                <p class="font-body text-75 text-gray-800 whitespace-nowrap">
+                    {{element?.entries[0].time | date:'hh:mm a'}}</p>
+                <p class="font-body text-100 text-gray-800"> &nbsp;-&nbsp; </p>
+                <p class="font-body text-75 text-gray-800 whitespace-nowrap">
+                    {{element?.entries[element?.entries.length - 1].time | date:'hh:mm a'}}</p>
+            </div>
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="totalTime">
+        <td class="font-body text-center text-100 text-gray-900 py-4"
+            cdk-cell
+            *cdkCellDef="let element">
+            <p class="font-body font-bold text-100 text-gray-800">{{element?.totalTime}} Hr</p>
+        </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="expandedDetail">
+        <td class="font-body text-left text-100 text-gray-900 bg-gray-75 p-0"
+            cdk-cell
+            *cdkCellDef="let element"
+            [attr.colspan]="displayedColumns.length">
+            <div class="flex px-4 overflow-hidden"
+                 [@detailExpand]="element === expandElement ? 'expanded' : 'collapsed'">
+                <table class="w-full my-4">
+                    <tr>
+                        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3">Entry</th>
+                        <th class="font-body font-bold text-center text-75 text-gray-800 px-2 py-3">Type</th>
+                        <th class="font-body font-bold text-right text-75 text-gray-800 px-2 py-3">Time</th>
+                    </tr>
+                    <tr *ngFor="let entry of element?.entries">
+                        <td class="font-body text-left text-75 text-gray-900 p-2">{{entry?.name}}</td>
+                        <td class="font-body text-center text-75 text-gray-900 p-2">{{entry?.type}}</td>
+                        <td class="font-body text-right text-75 text-gray-900 p-2">{{entry?.time | date:'hh:mm a'}}</td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </ng-container>
+
+    <tr class="border-t first:border-none border-gray-300"
+        cdk-row
+        *cdkRowDef="let row; columns: displayedColumns;"
+        (click)="expandElement = expandElement === row ? null : row;"></tr>
+    <tr class="h-0 p-0 overflow-hidden"
+        cdk-row
+        *cdkRowDef="let element; columns: ['expandedDetail'];"></tr>
+</table>

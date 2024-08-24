@@ -1,0 +1,20 @@
+<header class="flex-none flex items-center bg-gray-50 h-14 px-5">
+    <button class="flex-none"
+            slui-action-button
+            silent
+            (click)="back()">
+        <slui-icon [iconName]="'arrow-left'"></slui-icon>
+    </button>
+    <h1
+        class="flex-auto whitespace-nowrap text-ellipsis overflow-hidden font-body font-bold text-100 text-gray-900 text-center pr-9">
+        {{(selectFormData$ | async)?.name}}
+    </h1>
+</header>
+<header class="flex-none flex flex-col gap-3 px-6 pt-4 pb-4 bg-gray-50 rounded-b-3xl">
+    <p class="font-body text-75 text-gray-800">
+        Submitted at: {{(selectFormData$ | async)?.createdAt | date:'short'}}
+    </p>
+</header>
+
+<tiwoin-form-view class="flex-1"
+                  [data]="selectFormData$ | async"></tiwoin-form-view>

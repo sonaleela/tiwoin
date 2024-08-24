@@ -1,0 +1,64 @@
+<header class="flex-none flex items-center bg-primary-400 h-14 gap-4 px-5">
+    <button class="flex-none"
+            slui-action-button
+            silent
+            (click)="toggleSidenav()">
+        <slui-icon [iconName]="'menu'"></slui-icon>
+    </button>
+
+    <div class="flex-1 flex items-center justify-center overflow-hidden gap-2 h-full"
+         [cdkMenuTriggerFor]="menu"
+         #menuTrigger="cdkMenuTriggerFor">
+        <div class="flex items-baseline text-center text-ellipsis overflow-hidden gap-2">
+            <h1 class="whitespace-nowrap font-body text-75 text-gray-800">
+                {{organizationName$ | async}}
+            </h1>
+            <p class="font-body font-bold text-100 text-gray-700">/</p>
+            <h1 class="whitespace-nowrap text-ellipsis overflow-hidden font-body font-bold text-75 text-gray-900"
+                [ngClass]="{'tracking-wider': !(activeSite$ | async)?.name}">
+                {{(activeSite$ | async)?.name || '•••'}}
+            </h1>
+        </div>
+        <div class="basis-4 flex items-center">
+            <slui-icon class="text-gray-800 h-4 w-4"
+                       [iconName]="'expand_more'"></slui-icon>
+        </div>
+    </div>
+
+    <a class="flex-none"
+       slui-action-button
+       silent
+       [routerLink]="['/timesheet/clock']">
+        <slui-icon [iconName]="'clock-plus'"></slui-icon>
+    </a>
+</header>
+<mat-drawer-container class="flex-1">
+    <mat-drawer [opened]="sidenavState$ | async"
+                mode="over"
+                class="bg-gray-100 w-full">
+        <tiwoin-sidenav></tiwoin-sidenav>
+    </mat-drawer>
+    <mat-drawer-content class="bg-gray-50">
+        <ng-content></ng-content>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<ng-template #menu>
+    <section class="fixed left-0 right-0 top-14"
+             cdkMenu>
+        <!-- UI to create ^ on site selection menu -->
+        <div class="mx-6 mt-3 backdrop-blur-md relative bg-gray-75 rounded-2xl shadow border border-gray-300
+            before:absolute before:w-0 before:h-0
+            before:border-8 before:border-transparent before:border-t-0 before:border-b-gray-300
+            before:contents-[''] before:block
+            before:top-[-9px] before:left-[50%]
+            after:absolute after:w-0 after:h-0
+            after:border-[8px] after:border-transparent after:border-t-0 after:border-b-gray-75
+            after:contents-[''] after:block
+            after:top-[-7px] after:left-[50%]">
+            <tiwoin-site-list [list]="(siteList$ | async)"
+                              [activeSite]="(activeSite$ | async)"
+                              (selectedSite)="selectedSite($event); menuTrigger.close();"></tiwoin-site-list>
+        </div>
+    </section>
+</ng-template>

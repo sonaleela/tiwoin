@@ -1,0 +1,34 @@
+<div id="dragBoundary"
+     class="relative flex items-center justify-between bg-gray-50 border border-gray-300 rounded-full mx-auto p-1 min-w-[66px]"
+     [ngClass]="{'animate-expand-and-collapse': !source.length}">
+     <div cdkDropList
+          #todoList="cdkDropList"
+          [cdkDropListData]="source"
+          [cdkDropListConnectedTo]="[doneList]"
+          (cdkDropListDropped)="drop($event)"
+          [cdkDropListDisabled]="isDisabled">
+          <div *ngFor="let item of source"
+               cdkDrag
+               cdkDragBoundary="#dragBoundary"
+               cdkDragLockAxis="x"
+               class="h-14 w-14 rounded-full [&.cdk-drag-animating]:transition-all [&.cdk-drag-animating]:duration-300"
+               [ngClass]="{
+                    'bg-green-400': entry?.type === 'In',
+                    'bg-red-400': entry?.type === 'Out',
+                    'bg-orange-400': entry?.type === 'Break',
+               }">
+               <div class="h-14 w-14 rounded-full bg-gray-100"
+                    *cdkDragPlaceholder></div>
+          </div>
+     </div>
+     <p class="font-body text-75 text-gray-700"
+        *ngIf="source.length">{{entry?.name}}</p>
+     <div cdkDropList
+          #doneList="cdkDropList"
+          [cdkDropListData]="target"
+          [cdkDropListConnectedTo]="[todoList]"
+          (cdkDropListDropped)="drop($event)"
+          class="flex-none h-14 w-14 rounded-full bg-gray-75 outline outline-1 outline-offset-2 outline-gray-200 border border-gray-300 border-dashed">
+
+     </div>
+</div>

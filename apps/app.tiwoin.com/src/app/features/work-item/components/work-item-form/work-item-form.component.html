@@ -1,0 +1,22 @@
+<section class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl">
+    <form [formGroup]="form"
+          (ngSubmit)="submit()"
+          novalidate>
+        <div class="mb-5">
+            <label for="quantity"
+                   class="block font-body text-75 text-gray-800 mb-1">Work-item quantity</label>
+            <input id="name"
+                   type="number"
+                   class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                   placeholder="Enter work-item quantity"
+                   formControlName="quantity">
+            <p class="font-body text-75 text-red-400"
+               *ngIf="form.get('quantity')?.hasError('required') && form.get('quantity')?.touched">Quantity is required
+            </p>
+        </div>
+        <button slui-button
+                appearance="cta"
+                *isLoading="isPending"
+                type="submit">Add work item</button>
+    </form>
+</section>

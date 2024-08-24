@@ -22,7 +22,33 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@environment": [
+        "./src/environments/environment"
+      ],
+      "@store": [
+        "./src/app/store"
+      ],
+      "@services": [
+        "./src/app/services"
+      ],
+      "@models": [
+        "./src/app/models"
+      ],
+      "@config": [
+        "./src/app/config"
+      ],
+      "@core": [
+        "./src/app/core"
+      ],
+      "@shared": [
+        "./src/app/shared"
+      ],
+      "@sonaleela/ui": [
+        "../../packages/ui-package/dist/ui"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

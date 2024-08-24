@@ -1,0 +1,59 @@
+<nav class="flex flex-col h-full">
+    <ul class="pt-4">
+        <li class="flex">
+            <a class="flex-1 font-body text-100 text-gray-800 px-8 py-4"
+               routerLink="/profile"
+               (click)="toggleSidenav()">Profile</a>
+        </li>
+        <li class="flex">
+            <a class="flex-1 font-body text-100 text-gray-800 px-8 py-4"
+               routerLink="/profile/document"
+               (click)="toggleSidenav()">Documents</a>
+        </li>
+    </ul>
+    <div class="border-b border-gray-300 ml-8 my-4"></div>
+    <ul>
+        <li class="flex">
+            <a class="flex-1 font-body text-100 text-gray-800 px-8 py-4"
+               routerLink="/work-item"
+               (click)="toggleSidenav()">Work-items</a>
+        </li>
+        <li class="flex">
+            <a class="flex-1 font-body text-100 text-gray-800 px-8 py-4"
+               routerLink="/form"
+               (click)="toggleSidenav()">Forms</a>
+        </li>
+        <li class="flex">
+            <a class="flex-1 font-body text-100 text-gray-800 px-8 py-4"
+               routerLink="/timesheet"
+               (click)="toggleSidenav()">Timesheet</a>
+        </li>
+        <li class="flex">
+            <a class="flex-1 font-body text-100 text-gray-800 px-8 py-4"
+               routerLink="/payslip"
+               (click)="toggleSidenav()">Payslips</a>
+        </li>
+    </ul>
+    <div class="border-b border-gray-300 ml-8 my-4"></div>
+    <ul>
+        <li class="flex">
+            <a class="flex-1 font-body text-100 text-gray-800 px-8 py-4"
+               routerLink="/site"
+               (click)="toggleSidenav()">Site</a>
+        </li>
+        <li class="flex">
+            <a class="flex-1 font-body text-100 text-gray-800 px-8 py-4"
+               routerLink="/setting"
+               (click)="toggleSidenav()">Settings</a>
+        </li>
+    </ul>
+    <div class="flex-auto"></div>
+    <ul>
+        <li class="flex">
+            <a class="flex-1 font-body text-100 text-red-400 px-8 py-4"
+               routerLink="/signout">Sign-out</a>
+            <a class="flex-1 text-right font-body text-100 text-blue-400 px-8 py-4"
+               routerLink="/organization/list">Switch organization</a>
+        </li>
+    </ul>
+</nav>

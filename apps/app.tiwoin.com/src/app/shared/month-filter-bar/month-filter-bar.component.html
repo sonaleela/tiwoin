@@ -1,0 +1,16 @@
+<button slui-action-button
+        silent
+        [disabled]="!date"
+        (click)="next()">
+    <slui-icon [iconName]="'tabler-icon-chevron-left'"></slui-icon>
+</button>
+<button class="relative"
+        slui-action-button
+        silent>
+    {{(date || today) | date:'MMMM, yyyy'}}
+</button>
+<button slui-action-button
+        silent
+        (click)="previous()">
+    <slui-icon [iconName]="'tabler-icon-chevron-right'"></slui-icon>
+</button>

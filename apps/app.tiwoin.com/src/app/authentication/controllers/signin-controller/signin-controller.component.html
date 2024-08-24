@@ -1,0 +1,11 @@
+<tiwoin-signin-form *ngIf="!(isOTPForm$ | async)"
+                    [error]="signinError$ | async"
+                    [isPending]="isSigninPending$ | async"
+                    (submitForm)="submit($event)"></tiwoin-signin-form>
+<tiwoin-otp-form *ngIf="isOTPForm$ | async"
+                 [timer]="countdown$ | async"
+                 [error]="otpError$ | async"
+                 [isPending]="isOTPPending$ | async"
+                 [phoneNumber]="phoneNumber$ | async"
+                 (submitForm)="submitOTP($event)"
+                 (editPhoneNumber)="editPhoneNumber($event)"></tiwoin-otp-form>

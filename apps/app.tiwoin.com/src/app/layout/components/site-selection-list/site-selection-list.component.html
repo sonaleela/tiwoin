@@ -1,0 +1,28 @@
+<div class="flex-1"
+     *isSpinner="isPending"></div>
+
+<section class="flex flex-col">
+    <label *ngFor="let site of list"
+           class="flex gap-4 px-6 py-5 rounded-2xl"
+           [ngClass]="{'bg-gray-200': site === activeSite}">
+        <input [formControl]="siteControl"
+               type="radio"
+               [value]="site"
+               class="hidden">
+        <div class="flex-none self-center">
+            <slui-icon class="h-6 w-6 text-gray-900"
+                       [iconName]="'forms'"></slui-icon>
+        </div>
+        <div class="flex-1 flex flex-col">
+            <h2 class="font-body font-bold text-100 text-gray-800">{{site.name}}</h2>
+            <p class="font-body text-75 text-gray-700">{{site?.address?.line1}}</p>
+            <p class="font-body text-75 text-gray-700">{{site?.address?.line2}}</p>
+            <div class="flex items-center gap-3">
+                <p class="font-body text-75 text-gray-700">{{site?.address?.city}}</p>
+                <p class="font-body text-100 text-gray-700">•</p>
+                <p class="font-body text-75 text-gray-700">{{site?.address?.postalCode}}</p>
+            </div>
+            <p class="font-body text-75 text-gray-700">{{site?.address?.country}}</p>
+        </div>
+    </label>
+</section>

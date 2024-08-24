@@ -1,0 +1,56 @@
+<button class="absolute top-4 right-4"
+        slui-action-button
+        silent
+        (click)="close.emit(true)">
+    <slui-icon [iconName]="'x'"></slui-icon>
+</button>
+<div *ngIf="!file"
+     class="flex-1 flex flex-col"
+     (click)="inputFile.click()">
+    <slui-icon class="self-center text-gray-700 h-44 w-44"
+               [iconName]="'cloud-upload'"></slui-icon>
+    <h1 class="self-center font-body text-400 text-gray-800">Upload file</h1>
+    <h1 class="self-center font-body text-75 text-gray-700">Click to select a file to upload</h1>
+    <div class="flex-1"></div>
+</div>
+<div *ngIf="file"
+     class="flex-1 flex flex-col">
+    <div class="flex-none flex gap-2 bg-white rounded-2xl px-5 py-6 mx-6">
+        <div class="flex-none flex items-center justify-center">
+            <slui-icon class="h-6 w-6 text-gray-800"
+                       [iconName]="'cloud-upload'"></slui-icon>
+        </div>
+        <div class="flex-1">
+            <h2 class="font-body font-bold text-100 text-gray-800">{{file.name}}</h2>
+            <div class="flex items-center gap-3">
+                <p class="font-body text-75 text-gray-700">{{file.size / 1000}}Mb</p>
+                <p class="font-body text-100 text-gray-700">•</p>
+                <p class="font-body text-75 text-gray-700">{{file.type}}</p>
+            </div>
+        </div>
+        <div class="flex-none flex items-center justify-center">
+            <button slui-action-button
+                    silent
+                    (click)="file = undefined;">
+                <slui-icon class="h-4 w-4 text-red-500"
+                           [iconName]="'tabler-icon-trash'"></slui-icon>
+            </button>
+        </div>
+    </div>
+    <div class="flex-1"></div>
+</div>
+<footer class="mx-6 flex flex-col gap-2">
+    <p *ngIf="error"
+       class="font-body text-75 text-red-400 mb-4">{{error}}</p>
+    <button slui-button
+            appearance="cta"
+            [disabled]="!file"
+            *isLoading="isPending"
+            (click)="uploadFile()">Upload</button>
+</footer>
+
+<!-- Hidden input -->
+<input #inputFile
+       class="hidden"
+       type=file
+       (change)="fileChange($event)">

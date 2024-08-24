@@ -1,0 +1,6 @@
+<tiwoin-timesheet-clock [entryTypes]="entryTypes$ | async"
+                        [clockEntry]="clockEntry$|async"
+                        [isPending]="isFetchClockEntryPending$ | async"
+                        [error]="fetchClockEntryError$ | async"
+                        [isClockEntryPending]="(isClockEntryPending$ | async)"
+                        (timeEntry)="timeEntry($event)"></tiwoin-timesheet-clock>

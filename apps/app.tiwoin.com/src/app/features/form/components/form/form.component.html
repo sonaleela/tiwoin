@@ -1,0 +1,19 @@
+<section class="bg-gray-50 rounded-3xl p-8 w-full mx-auto">
+    <form class="flex flex-col gap-4"
+          [formGroup]="form"
+          (ngSubmit)="submit()"
+          novalidate>
+        <div formArrayName="fields"
+             class="flex flex-col gap-4">
+            <ng-template *ngFor="let field of fields?.controls; let i = index"
+                         sluiDynamicFormControl
+                         [formControlName]="i"></ng-template>
+        </div>
+        <div>
+            <button type="submit"
+                    slui-button
+                    appearance="cta"
+                    *isLoading="isPending">Submit</button>
+        </div>
+    </form>
+</section>

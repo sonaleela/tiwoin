@@ -1,0 +1,9 @@
+<div class="h-2 bg-gray-300 rounded-full flex overflow-hidden">
+    <div *ngFor="let item of timeline"
+         [ngStyle]="{'width': item?.length+'%'}"
+         [ngClass]="{ 'bg-gray-300': item?.type === 'OUT', 'bg-green-400': item?.type !== 'OUT'}"></div>
+</div>
+<div class="flex items-center justify-between">
+    <p class="font-body text-50 text-gray-700">12 AM</p>
+    <p class="font-body text-50 text-gray-700">12 PM</p>
+</div>
