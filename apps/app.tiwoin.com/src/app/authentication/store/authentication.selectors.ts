@@ -7,7 +7,7 @@ export const selectIsSigninPending = createSelector(selectAuthenticatoinState, (
 export const selectSigninError = createSelector(selectAuthenticatoinState, (state) => state.signinError);
 export const selectIsOTPPending = createSelector(selectAuthenticatoinState, state => state.isOTPPending);
 export const selectOTPError = createSelector(selectAuthenticatoinState, state => state.OTPError);
-export const selectIsOTPForm = createSelector(selectAuthenticatoinState, state => state.isOTPForm);
+export const selectIsOTPForm = createSelector(selectAuthenticatoinState, state => state.signinResponse?.nextStep.signInStep === 'CONFIRM_SIGN_IN_WITH_CUSTOM_CHALLENGE');
 export const selectPhoneNumber = createSelector(selectAuthenticatoinState, state => state.phoneNumber);
 
 export const selectIsSignupPending = createSelector(selectAuthenticatoinState, (state) => state.isSignupPending);

@@ -1,11 +1,12 @@
 import { createAction, props } from "@ngrx/store";
+import { SignInOutput } from "aws-amplify/auth";
 import { ProfileModel, SignupPayloadModel } from "@models";
 
 export const ResetAuthInfo = createAction('[Authentication] Reset Auth Info');
 
 export const SigninBegin = createAction('[Authentication] Signin Begin', props<{ username: string; }>());
 export const SigninFail = createAction('[Authentication] Signin Fail', props<{ message: string }>());
-export const SigninSuccess = createAction('[Authentication] Signin Success');
+export const SigninSuccess = createAction('[Authentication] Signin Success', props<{ response: SignInOutput }>());
 
 export const SubmitOTPBegin = createAction('[Authentication] Submit OTP Begin', props<{ otp: string }>());
 export const SubmitOTPFail = createAction('[Authentication] Submit OTP Fail', props<{ message: string, back?: boolean }>());

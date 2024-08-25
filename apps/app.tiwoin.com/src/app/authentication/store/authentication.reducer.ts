@@ -1,4 +1,5 @@
 import { createReducer, on } from "@ngrx/store";
+import { SignInOutput } from "aws-amplify/auth";
 
 import * as fromActions from "./authentication.actions";
 import * as fromRootStroe from "@store";
@@ -9,11 +10,10 @@ export interface State {
     phoneNumber: string;
     isSigninPending: boolean;
     signinError: string;
+    signinResponse: SignInOutput | null;
 
     isOTPPending: boolean;
     OTPError: string;
-
-    isOTPForm: boolean;
 
     isSignupPending: boolean;
     signupError: string;
@@ -23,11 +23,10 @@ const initialState: State = {
     phoneNumber: '',
     isSigninPending: false,
     signinError: '',
+    signinResponse: null,
 
     isOTPPending: false,
     OTPError: '',
-
-    isOTPForm: false,
 
     isSignupPending: false,
     signupError: '',
@@ -38,7 +37,7 @@ export const reducer = createReducer(
     on(fromActions.ResetAuthInfo, _ => ({ ...initialState })),
     on(fromActions.SigninBegin, (state, props) => ({ ...state, isSigninPending: true, signinError: '', OTPError: '', phoneNumber: props?.username })),
     on(fromActions.SigninFail, (state, props) => ({ ...state, isSigninPending: false, signinError: props.message })),
-    on(fromActions.SigninSuccess, state => ({ ...state, isSigninPending: false, signinError: '', isOTPForm: true })),
+    on(fromActions.SigninSuccess, (state, props) => ({ ...state, isSigninPending: false, signinError: '', signinResponse: props.response })),
 
     on(fromActions.SubmitOTPBegin, state => ({ ...state, isOTPPending: true, OTPError: '' })),
     on(fromActions.SubmitOTPFail, (state, props) => ({

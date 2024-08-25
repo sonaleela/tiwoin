@@ -32,7 +32,7 @@ export class AuthenticationService {
     }
 
     signin(payload: { username: string; }): Observable<SignInOutput> {
-        return from(signIn({ username: payload.username }));
+        return from(signIn({ username: payload.username, options: { authFlowType: 'CUSTOM_WITHOUT_SRP' } }));
     }
 
     submitOTP(otp: string = ''): Observable<SignInOutput> {

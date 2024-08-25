@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { concatLatestFrom } from "@ngrx/operators";
 import { routerNavigatedAction } from '@ngrx/router-store';
@@ -11,6 +11,9 @@ import { emptyFilterObject } from "@shared";
 
 @Injectable()
 export class RouterEffects {
+    private actions$: Actions = inject(Actions);
+    private store: Store = inject(Store);
+
     /**
      * Dispatch `fetch employees list` action for `/employee` route
      */
@@ -53,6 +56,4 @@ export class RouterEffects {
             if (url === '/site') return this.store.dispatch(fromEntity.FetchSiteListBegin());
         }),
     ), { dispatch: false });
-
-    constructor(private actions$: Actions, private store: Store) { }
 }

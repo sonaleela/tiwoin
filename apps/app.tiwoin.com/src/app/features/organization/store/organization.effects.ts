@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { catchError, exhaustMap, mergeMap } from 'rxjs/operators';
@@ -9,6 +9,10 @@ import * as fromRootStore from "@store";
 
 @Injectable()
 export class OrganizationEffects {
+    private actions$: Actions = inject(Actions);
+    private organizationService: OrganizationService = inject(OrganizationService);
+    private store: Store = inject(Store);
+
     /**
      * Update organization user invitation either by accepting or rejecting
      */
@@ -25,10 +29,4 @@ export class OrganizationEffects {
             return caught;
         })
     ));
-
-    constructor(
-        private actions$: Actions,
-        private organizationService: OrganizationService,
-        private store: Store,
-    ) { }
 }

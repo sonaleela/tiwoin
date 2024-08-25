@@ -1,1 +1,83 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/cdk/overlay-prebuilt.css';
+@import '../../../packages/ui-package/dist/ui/styles.css';
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+:root {
+    --sonaleela-font-body: 'Ubuntu', sans-serif;
+    --sonaleela-font-display: 'Ubuntu', sans-serif;
+
+    --sonaleela-font-size-50: 11px;
+    --sonaleela-font-size-75: 12px;
+    --sonaleela-font-size-100: 14px;
+    --sonaleela-font-size-200: 16px;
+    --sonaleela-font-size-300: 18px;
+    --sonaleela-font-size-400: 20px;
+    --sonaleela-font-size-500: 22px;
+    --sonaleela-font-size-600: 25px;
+    --sonaleela-font-size-1000: 40px;
+
+    /* // --sonaleela-primary-400: #fcf951; */
+    --sonaleela-primary-400: #bba5ea;
+    --sonaleela-secondary-400: #bba5ea;
+    --sonaleela-gray-50: #ffffff;
+    --sonaleela-gray-75: #fafafa;
+    --sonaleela-gray-100: #f5f5f5;
+    --sonaleela-gray-200: #eaeaea;
+    --sonaleela-gray-300: #e1e1e1;
+    --sonaleela-gray-400: #cacaca;
+    --sonaleela-gray-500: #b3b3b3;
+    --sonaleela-gray-600: #8e8e8e;
+    --sonaleela-gray-700: #6e6e6e;
+    --sonaleela-gray-800: #4b4b4b;
+    --sonaleela-gray-900: #2c2c2c;
+    --sonaleela-blue-400: #2680eb;
+    --sonaleela-blue-500: #1473e6;
+    --sonaleela-blue-600: #0d66d0;
+    --sonaleela-blue-700: #095aba;
+    --sonaleela-red-400: #e34850;
+    --sonaleela-red-500: #d7373f;
+    --sonaleela-red-600: #c9252d;
+    --sonaleela-red-700: #bb121a;
+    --sonaleela-orange-400: #e68619;
+    --sonaleela-orange-500: #da7b11;
+    --sonaleela-orange-600: #cb6f10;
+    --sonaleela-orange-700: #bd640d;
+    --sonaleela-green-400: #2d9d78;
+    --sonaleela-green-500: #268e6c;
+    --sonaleela-green-600: #12805c;
+    --sonaleela-green-700: #107154;
+}
+
+
+@keyframes expand-and-collapse {
+    100% {
+        transform: scale(1);
+        width: 56px;
+        animation-timing-function: ease-in;
+    }
+}
+
+@keyframes slide-down {
+    from {
+        transform: translateY(-100%);
+        animation-timing-function: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Hide input type number's inputs arrow */
+@layer base {
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+}

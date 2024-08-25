@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { concatLatestFrom } from "@ngrx/operators";
 import { catchError, exhaustMap, filter, map, mergeMap, tap } from 'rxjs/operators';
@@ -14,6 +14,12 @@ import { Dialog } from '@angular/cdk/dialog';
 
 @Injectable()
 export class WorkItemEffects {
+    private actions$: Actions = inject(Actions);
+    private workItemService: WorkItemService = inject(WorkItemService);
+    private store: Store = inject(Store);
+    private router: Router = inject(Router);
+    private dialog: Dialog = inject(Dialog);
+
     /**
      * Add work item
      */
@@ -64,12 +70,4 @@ export class WorkItemEffects {
         ofType(fromActions.WorkItemSubmissionSuccess),
         tap(_ => this.router.navigate(['/work-item'])),
     ), { dispatch: false });
-
-    constructor(
-        private actions$: Actions,
-        private workItemService: WorkItemService,
-        private store: Store,
-        private router: Router,
-        private dialog: Dialog,
-    ) { }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { concatLatestFrom } from "@ngrx/operators";
@@ -15,6 +15,13 @@ import { AuthenticationService, ConfigService, ThemeManagerService } from "@serv
 
 @Injectable()
 export class AppConfigEffects {
+    private actions$: Actions = inject(Actions);
+    private store: Store = inject(Store);
+    private router: Router = inject(Router);
+    private configService: ConfigService = inject(ConfigService);
+    private themeManager: ThemeManagerService = inject(ThemeManagerService);
+    private authenticationService: AuthenticationService = inject(AuthenticationService);
+
     /**
      * Initalize angular application
      * Dispatch this action in `APP_INITIALIZER` provider
@@ -205,13 +212,4 @@ export class AppConfigEffects {
             return this.router.navigate([payload.redirect]);
         }),
     ), { dispatch: false });
-
-    constructor(
-        private actions$: Actions,
-        private store: Store,
-        private router: Router,
-        private configService: ConfigService,
-        private themeManager: ThemeManagerService,
-        private authenticationService: AuthenticationService,
-    ) { }
 }

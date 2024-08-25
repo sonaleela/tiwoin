@@ -1,0 +1,61 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root {
+    /* // ------------- button ----------------------------------- */
+    --slui-button-height: 36px;
+    --slui-button-padding: 0 20px 0 20px;
+    --slui-button-icon-size: 16px;
+    --slui-button-font-size: 14px;
+    --slui-button-line-height: 20px;
+    --slui-button-font-weight: 700;
+    --slui-button-disabled-color: rgba(0, 0, 0, 0.3);
+    --slui-button-cta-text-color: #ffffff;
+    --slui-button-cta-color: #1473e6;
+    --slui-button-cta-color-hover: #0d66d0;
+    --slui-button-cta-color-active: #095aba;
+    --slui-button-primary-text-color: #ffffff;
+    --slui-button-primary-color: #4b4b4b;
+    --slui-button-primary-color-hover: #2c2c2c;
+    --slui-button-primary-color-active: #2c2c2c;
+    --slui-button-secondary-text-color: #4b4b4b;
+    --slui-button-secondary-color: rgba(0, 0, 0, 0.08);
+    --slui-button-secondary-color-hover: rgba(0, 0, 0, 0.12);
+    --slui-button-secondary-color-active: rgba(0, 0, 0, 0.12);
+    --slui-button-negative-text-color: #ffffff;
+    --slui-button-negative-color: #d7373f;
+    --slui-button-negative-color-hover: #c9252d;
+    --slui-button-negative-color-active: #bb121a;
+    /* // ------------- button ----------------------------------- */
+    /* // ------------- Action button ---------------------------= */
+    --slui-action-button-height: 36px;
+    --slui-action-button-padding: 0 18px 0 18px;
+    --slui-action-button-icon-size: 16px;
+    --slui-action-font-size: 12px;
+    --slui-action-line-height: 18px;
+    --slui-action-font-weight: 400;
+    --slui-action-button-disabled-color: rgba(0, 0, 0, 0.3);
+
+    --slui-action-button-silent-color-hover: rgba(0, 0, 0, 0.08);
+    --slui-action-button-standard-text-color: #4b4b4b;
+    --slui-action-button-standard-color: unset;
+    --slui-action-button-standard-border-color: #e1e1e1;
+    --slui-action-button-standard-text-color-hover: #2c2c2c;
+    --slui-action-button-standard-color-hover: rgba(0, 0, 0, 0.08);
+    --slui-action-button-standard-border-color-hover: #cacaca;
+    --slui-action-button-standard-text-color-active: #4b4b4b;
+    --slui-action-button-standard-color-active: rgba(0, 0, 0, 0.12);
+    --slui-action-button-standard-border-color-active: #e1e1e1;
+
+    --slui-action-button-emphasis-text-color: #ffffff;
+    --slui-action-button-emphasis-color: #1473e6;
+    --slui-action-button-emphasis-color-hover: #0d66d0;
+    --slui-action-button-emphasis-color-active: #095aba;
+    /* // ------------- Action button ---------------------------= */
+    /* // ------------- Button loader ---------------------------= */
+    --slui-button-loader-color: #1473e6;
+    --slui-button-loader-secondary-color: rgba(255, 255, 255, 0.3);
+    /* // ------------- Button loader ---------------------------= */
+    /* // ------------- List ---------------------------= */
+    --slui-list-icon-size: 18px;
+    /* // ------------- List ---------------------------= */
+}

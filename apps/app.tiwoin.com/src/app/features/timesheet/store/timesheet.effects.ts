@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { concatLatestFrom } from "@ngrx/operators";
 import { catchError, exhaustMap, filter, map, mergeMap } from "rxjs/operators";
@@ -14,6 +14,11 @@ import { of } from "rxjs";
 
 @Injectable()
 export class TimesheetEffects {
+    private actions$: Actions = inject(Actions);
+    private store: Store = inject(Store);
+    private timesheetService: TimesheetService = inject(TimesheetService);
+    private dialog: Dialog = inject(Dialog);
+
     /**
      * Create Clock entry
      */
@@ -106,11 +111,4 @@ export class TimesheetEffects {
             return caught;
         })
     ));
-
-    constructor(
-        private actions$: Actions,
-        private store: Store,
-        private timesheetService: TimesheetService,
-        private dialog: Dialog,
-    ) { }
 }

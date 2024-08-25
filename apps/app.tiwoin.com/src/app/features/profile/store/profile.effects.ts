@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { concatLatestFrom } from "@ngrx/operators";
 import { catchError, exhaustMap, map, mergeMap } from 'rxjs/operators';
@@ -16,6 +16,12 @@ import * as fromSelectors from "./profile.selectors";
 
 @Injectable()
 export class ProfileEffects {
+    private actions$: Actions = inject(Actions);
+    private storageService: StorageService = inject(StorageService);
+    private store: Store = inject(Store);
+    private employeeService: EmployeeService = inject(EmployeeService);
+    private dialog: Dialog = inject(Dialog);
+
     documentPayload: any;
     profilePhotoName: string = '';
 
@@ -115,12 +121,4 @@ export class ProfileEffects {
             return caught;
         }),
     ));
-
-    constructor(
-        private actions$: Actions,
-        private storageService: StorageService,
-        private store: Store,
-        private employeeService: EmployeeService,
-        private dialog: Dialog,
-    ) { }
 }

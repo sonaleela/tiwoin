@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { concatLatestFrom } from "@ngrx/operators";
 import { Store } from '@ngrx/store';
@@ -13,6 +13,15 @@ import * as fromAppConfigActions from "../app-config/app-config.actions";
 
 @Injectable()
 export class AppStateEffects {
+    private actions$: Actions = inject(Actions);
+    private store: Store = inject(Store);
+    private location: Location = inject(Location);
+    private employeeService: EmployeeService = inject(EmployeeService);
+    private addressService: AddressService = inject(AddressService);
+    private userService: UserService = inject(UserService);
+    private webApiService: WebApiService = inject(WebApiService);
+
+
     back$ = createEffect(() => this.actions$.pipe(
         ofType(fromActions.Back),
         tap(_ => this.location.back()),
@@ -107,14 +116,4 @@ export class AppStateEffects {
         exhaustMap(_ => this.webApiService.checkInternetStatus()),
         map(isOffline => fromActions.InternetStatusOffline({ isOffline })),
     ));
-
-    constructor(
-        private actions$: Actions,
-        private store: Store,
-        private location: Location,
-        private employeeService: EmployeeService,
-        private addressService: AddressService,
-        private userService: UserService,
-        private webApiService: WebApiService,
-    ) { }
 }

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { concatLatestFrom } from "@ngrx/operators";
 import { catchError, exhaustMap, filter, map, mergeMap, tap } from 'rxjs/operators';
@@ -14,6 +14,12 @@ import { Dialog } from '@angular/cdk/dialog';
 
 @Injectable()
 export class FormEffects {
+    private actions$: Actions = inject(Actions);
+    private formService: FormService = inject(FormService);
+    private store: Store = inject(Store);
+    private router: Router = inject(Router);
+    private dialog: Dialog = inject(Dialog);
+
     /**
      * Add form
      */
@@ -64,13 +70,4 @@ export class FormEffects {
         ofType(fromActions.FormSubmissionSuccess),
         tap(_ => this.router.navigate(['/form'])),
     ), { dispatch: false });
-
-    constructor(
-        private actions$: Actions,
-        private formService: FormService,
-        private store: Store,
-        private router: Router,
-        private dialog: Dialog,
-        private storageService: StorageService,
-    ) { }
 }

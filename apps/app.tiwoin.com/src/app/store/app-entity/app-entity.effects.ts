@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { concatLatestFrom } from "@ngrx/operators";
 import { catchError, exhaustMap, map } from 'rxjs/operators';
@@ -23,6 +23,18 @@ import {
 
 @Injectable()
 export class AppEntityEffects {
+    private store: Store = inject(Store);
+    private router: Router = inject(Router);
+    private actions$: Actions = inject(Actions);
+    private siteService: SiteService = inject(SiteService);
+    private formService: FormService = inject(FormService);
+    private payrollService: PayrollService = inject(PayrollService);
+    private workItemService: WorkItemService = inject(WorkItemService);
+    private employeeService: EmployeeService = inject(EmployeeService);
+    private timesheetService: TimesheetService = inject(TimesheetService);
+    private organizationService: OrganizationService = inject(OrganizationService);
+    private organizationUserService: OrganizationUserService = inject(OrganizationUserService);
+
     /**
      * Fetch payroll
      */
@@ -315,18 +327,4 @@ export class AppEntityEffects {
             return caught;
         }),
     ));
-
-    constructor(
-        private store: Store,
-        private router: Router,
-        private actions$: Actions,
-        private siteService: SiteService,
-        private formService: FormService,
-        private payrollService: PayrollService,
-        private workItemService: WorkItemService,
-        private employeeService: EmployeeService,
-        private timesheetService: TimesheetService,
-        private organizationService: OrganizationService,
-        private organizationUserService: OrganizationUserService,
-    ) { }
 }

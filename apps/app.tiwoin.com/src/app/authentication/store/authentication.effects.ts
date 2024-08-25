@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { inject, Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Store } from "@ngrx/store";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
@@ -11,6 +11,12 @@ import { EMPTY } from "rxjs";
 
 @Injectable()
 export class AuthenticationEffects {
+    private actions$: Actions = inject(Actions);
+    private router: Router = inject(Router)
+    private store: Store = inject(Store)
+    private authenticationService: AuthenticationService = inject(AuthenticationService)
+    private userService: UserService = inject(UserService)
+    private webApiService: WebApiService = inject(WebApiService)
     phoneNumber: string = '';
 
     /**
@@ -19,8 +25,9 @@ export class AuthenticationEffects {
     signinBegin$ = createEffect(() => this.actions$.pipe(
         ofType(fromActions.SigninBegin),
         exhaustMap((payload) => this.authenticationService.signin(payload)),
-        map(_ => fromActions.SigninSuccess()),
+        map(response => fromActions.SigninSuccess({ response })),
         catchError((error, caught) => {
+            console.log(error);
             if (error.code === 'UserLambdaValidationException') {
                 this.store.dispatch(fromActions.SigninFail({ message: 'This phone number does not exists as a username. Please check if number is correct' }));
             } else {
@@ -50,7 +57,8 @@ export class AuthenticationEffects {
         ofType(fromActions.SubmitOTPBegin),
         exhaustMap(payload => this.authenticationService.submitOTP(payload.otp)),
         map((response) => {
-            if (response.nextStep) {
+            console.log(response);
+            if (!response.isSignedIn) {
                 return fromActions.SubmitOTPFail({ message: 'OTP is wrong, try again!' });
             }
             return fromActions.SubmitOTPSuccess();
@@ -158,13 +166,4 @@ export class AuthenticationEffects {
         tap((_) => this.router.navigate(['/signin'])),
         tap(_ => location.reload()),
     ), { dispatch: false });
-
-    constructor(
-        private actions$: Actions,
-        private router: Router,
-        private store: Store,
-        private authenticationService: AuthenticationService,
-        private userService: UserService,
-        private webApiService: WebApiService,
-    ) { }
 }
