@@ -1,0 +1,9 @@
+<sonaleela-organization-list [profile]="profile$ | async"
+                             [ownerOrganizationList]="ownerOrganizationList$ | async"
+                             [acceptedOrganizationList]="acceptedOrganizationList$ | async"
+                             [unacceptedOrganizationList]="unacceptedOrganizationList$ | async"
+                             [isPending]="(isPending$ | async) || (isInitPending$ | async)"
+                             [error]="error$ | async"
+                             (accept)="accept($event)"
+                             (reject)="reject($event)"
+                             (setOrganization)="setOrganization($event)"></sonaleela-organization-list>

@@ -1,0 +1,50 @@
+<main class="flex-1 flex flex-row flex-nowrap h-full">
+    <section class="flex-1 flex flex-col">
+        <div class="flex items-center gap-3 mx-5 mt-4 mb-8">
+            <a *ngIf="organization$ | async"
+               type="button"
+               slui-action-button
+               silent
+               routerLink="/">
+                <slui-icon [iconName]="'tabler-icon-chevron-left'"></slui-icon>
+            </a>
+            <h1 class="font-body font-bold text-200 text-gray-900">Create Organization</h1>
+        </div>
+        <sonaleela-organization-form class="flex-1 overflow-auto"
+                                     #form
+                                     [isPending]="isPending$ | async"
+                                     [error]="error$ | async"
+                                     (submitForm)="submitForm($event)"></sonaleela-organization-form>
+        <footer class="flex-none flex justify-end px-10 py-4 border-t border-gray-300">
+            <button (click)="form.submit()"
+                    *isLoading="isPending$ | async"
+                    slui-button>Next</button>
+        </footer>
+    </section>
+    <section class="flex-1 relative flex flex-col overflow-hidden bg-gray-50 p-16">
+        <h1 class="font-body font-bold text-300 text-gray-900 text-center">Welcome to Tiwoin!</h1>
+        <p class="font-body text-100 text-gray-800 text-center mb-2">Get ready to maximize your productivity,
+            streamline
+            your work, and take control of your time.</p>
+        <p class="font-body text-100 text-gray-800 text-center mb-20">To get started, let's create your first
+            organization in
+            Tiwoin.
+        </p>
+        <h2 class="font-body font-bold text-200 text-gray-800 mb-6">FAQ</h2>
+        <div>
+            <h2 class="font-body font-bold text-100 text-gray-800 mb-2">What is the role of an organization in Tiwoin's
+                onboarding process?</h2>
+            <p class="font-body text-100 text-gray-800 mb-4"> In Tiwoin, an organization refers to the overarching
+                entity
+                that encompasses your business or company.
+                It serves as the foundation for managing and organizing your workforce. Users can be invited to join an
+                organization, and all employees are added at the organization
+                level, enabling centralized administration and coordination.</p>
+            <h2 class="font-body font-bold text-100 text-gray-800 mb-2">What is the concept of a site in Tiwoin?</h2>
+            <p class="font-body text-100 text-gray-800 mb-4">In Tiwoin, a site represents a distinct physical or virtual
+                space within your organization. It serves as
+                a designated area where work activities are performed. While users can be invited to join an
+                organization, employees are added</p>
+        </div>
+    </section>
+</main>

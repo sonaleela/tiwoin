@@ -1,0 +1,21 @@
+<sonaleela-user-list-header class="flex-none h-16 px-4 border-b border-gray-300"></sonaleela-user-list-header>
+<div class="flex-1"
+     *isSpinner="(isPending$ | async)"></div>
+<sonaleela-user-list-card *ngIf="(list$ | async)?.length && !(isPending$ | async)"
+                          class="flex-none m-4 p-8 bg-gray-50 rounded-3xl overflow-hidden"
+                          [userList]="(list$ | async) || []"
+                          [currentUser]="currentUser$ | async"
+                          (delete)="delete($event)"></sonaleela-user-list-card>
+
+<section *ngIf="!(list$ | async)?.length && !(isPending$ | async)"
+         class="container mx-auto flex flex-col items-center justify-center p-10">
+     <img class="max-w-[200px] mb-12"
+          src="/assets/icons/illustrations/empty.svg">
+     <p class="font-body text-100 text-gray-800 mb-2">Oops! It looks like there are no user available to display at the
+          moment. Don't worry, we can quickly fix that.
+     </p>
+     <p class="font-body text-100 text-gray-800 mb-3">Invite a new user to your organization.</p>
+     <button [appearance]="'cta'"
+             slui-button
+             routerLink="/user/invite">Add new site</button>
+</section>

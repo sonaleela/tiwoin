@@ -1,0 +1,120 @@
+<form (ngSubmit)="submit()"
+      [formGroup]="form"
+      novalidate>
+
+    <div class="flex flex-col mb-8">
+        <label class="font-body text-75 text-gray-900 mb-1"
+               for="name">Company name</label>
+        <input id="name"
+               type="text"
+               class="h-14 font-body text-300 text-gray-900 bg-transparent border border-gray-500 rounded-lg px-4"
+               placeholder="eg. ACME Industry PVT. LTD."
+               formControlName="name"
+               required />
+        <p class="font-body text-75 text-red-400"
+           *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">Name is required</p>
+    </div>
+
+    <div class="flex flex-col mb-8">
+        <label class="font-body text-75 text-gray-900 mb-1">Organization's industry type <em>(optional)</em></label>
+        <div class="grid grid-cols-fill-60 gap-4"
+             formArrayName="industry">
+            <label *ngFor="let control of industry.controls; index as i;"
+                   for="industry{{i}}">
+                <lib-sonaleela-selection-card class="rounded-2xl p-4 border border-gray-300 hover:bg-white hover:border-gray-400"
+                                              [ngClass]="{'bg-white': control.value, 'bg-gray-100': !control.value}">
+                    <input class="hidden"
+                           selection-control
+                           type="checkbox"
+                           id="industry{{i}}"
+                           [formControlName]="i"
+                           [value]="industryList[i].name" />
+                    <slui-icon selection-icon
+                               class="text-gray-800 h-6 w-6"
+                               [iconName]="industryList[i].icon"></slui-icon>
+                    <h3 selection-title
+                        class="font-body text-100 text-gray-900"
+                        [ngClass]="{'font-bold': control.value}">{{ industryList[i].name }}</h3>
+                </lib-sonaleela-selection-card>
+            </label>
+        </div>
+    </div>
+
+    <div class="flex flex-col mb-8">
+        <label class="font-body text-75 text-gray-900 mb-1">Number of employees in the organization?
+            <em>(optional)</em></label>
+        <div class="grid grid-cols-fill-60 gap-4">
+            <ng-container *ngFor="let employeeRange of employeeRangeList; index as i">
+                <label *ngIf="employeeRange.range"
+                       for="employee-range-{{i}}">
+                    <lib-sonaleela-selection-card class="rounded-2xl p-4 border border-gray-300 hover:bg-white hover:border-gray-400"
+                                                  [ngClass]="{'bg-white': form.get('employeeRange')?.value === employeeRange, 'bg-gray-100': form.get('employeeRange')?.value !== employeeRange}">
+                        <input class="hidden"
+                               selection-control
+                               id="employee-range-{{i}}"
+                               type="radio"
+                               formControlName="employeeRange"
+                               [value]="employeeRange" />
+                        <h3 selection-title
+                            class="font-body text-100 text-gray-900"
+                            [ngClass]="{'font-bold':form.get('employeeRange')?.value === employeeRange}">
+                            {{employeeRange.range }}</h3>
+                    </lib-sonaleela-selection-card>
+                </label>
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="flex flex-col mb-8">
+        <label class="font-body text-75 text-gray-900 mb-1">Email addresses <em>(optional)</em></label>
+        <div class="flex flex-col flex-wrap gap-4"
+             formArrayName="email">
+            <div *ngFor="let control of email.controls; let i = index"
+                 class="flex flex-row flex-nowrap gap-2">
+                <input class="h-9 font-body text-100 text-gray-900 bg-transparent border border-gray-500 rounded px-4"
+                       placeholder="eg. john@example.com"
+                       [formControlName]="i" />
+                <button type="button"
+                        (click)="addEmail()"
+                        slui-action-button
+                        silent>
+                    <slui-icon iconName="tabler-icon-plus"></slui-icon>
+                </button>
+                <button type="button"
+                        *ngIf="email.length > 1"
+                        (click)="removeEmail(i)"
+                        slui-action-button
+                        silent>
+                    <slui-icon class="text-red-500"
+                               iconName="tabler-icon-trash"></slui-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-col mb-5">
+        <label class="font-body text-75 text-gray-900 mb-1">Phone numbers <em>(optional)</em></label>
+        <div class="flex flex-col flex-wrap gap-4"
+             formArrayName="phone">
+            <div *ngFor="let control of phone.controls; let i = index"
+                 class="flex flex-row flex-nowrap gap-2">
+                <input class="h-9 font-body text-100 text-gray-900 bg-transparent border border-gray-500 rounded px-4"
+                       placeholder="eg. 9929575729"
+                       [formControlName]="i" />
+                <button type="button"
+                        (click)="addPhone()"
+                        slui-action-button
+                        silent>
+                    <slui-icon iconName="tabler-icon-plus"></slui-icon>
+                </button>
+                <button type="button"
+                        *ngIf="phone.length > 1"
+                        (click)="removePhone(i)"
+                        slui-action-button
+                        silent>
+                    <slui-icon class="text-red-500"
+                               iconName="tabler-icon-trash"></slui-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+</form>

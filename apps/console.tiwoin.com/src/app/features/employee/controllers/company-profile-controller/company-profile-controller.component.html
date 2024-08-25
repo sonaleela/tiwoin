@@ -1,0 +1,6 @@
+<sonaleela-company-profile *ngIf="!(isPending$ | async)"
+                           [isPending]="isEditPending$ | async"
+                           [error]="editError$ | async"
+                           [employee]="employee$ | async"
+                           (editEmployee)="editEmployee($event)"></sonaleela-company-profile>
+<div *isSpinner="(isPending$ | async)"></div>

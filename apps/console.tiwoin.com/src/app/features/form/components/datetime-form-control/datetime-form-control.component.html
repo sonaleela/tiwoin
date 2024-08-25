@@ -1,0 +1,112 @@
+<form [formGroup]="form">
+    <h2 class="font-display font-bold text-100 text-gray-900 mb-4">Date time field</h2>
+    <div class="mb-3">
+        <label for="label"
+               class="font-body text-75 text-gray-800 mb-1">Field label <em>(required)</em></label>
+        <input id="label"
+               type="text"
+               class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 px-3 mb-1 hover:border-gray-600"
+               placeholder="Enter field name"
+               formControlName="label">
+        <p *ngIf="form.get('label')?.hasError('required') && form.get('label')?.touched"
+           class="font-body text-75 text-red-400">Field label is required</p>
+    </div>
+    <div class="mb-5"
+         formGroupName="description">
+        <label for="caption"
+               class="font-body text-75 text-gray-800 mb-1">Field description</label>
+        <textarea id="caption"
+                  type="text"
+                  class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded px-3 py-2 mb-1 hover:border-gray-600"
+                  placeholder="Enter field name"
+                  formControlName="text"></textarea>
+    </div>
+
+    <cdk-accordion class="flex flex-col gap-4 mb-4">
+        <cdk-accordion-item class="bg-gray-75 rounded-2xl -mx-4 px-4 flex-1 overflow-hidden"
+                            #accordion1="cdkAccordionItem">
+            <div class="py-4 flex items-center justify-between"
+                 (click)="accordion1.toggle()">
+                <h3 class="font-display font-bold text-75 text-gray-700">Advance options</h3>
+                <slui-icon class="text-gray-800 h-4 w-4"
+                           [iconName]="accordion1.expanded ? 'tabler-icon-minus' : 'tabler-icon-plus'"></slui-icon>
+            </div>
+
+            <div class="transition-all h-auto"
+                 [style.maxHeight]="accordion1.expanded ? '600px' : '0'">
+                <div class="mb-4">
+                    <label for="value"
+                           class="font-body text-75 text-gray-800 mb-1">Default/Prefill value</label>
+                    <input id="value"
+                           type="datetime"
+                           class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 px-3 mb-1 hover:border-gray-600"
+                           placeholder="Enter field name"
+                           formControlName="value">
+                </div>
+                <div class="mb-4">
+                    <label for="value"
+                           class="font-body text-75 text-gray-800 mb-1">Placeholder</label>
+                    <input id="value"
+                           type="text"
+                           class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 px-3 mb-1 hover:border-gray-600"
+                           placeholder="Enter field name"
+                           formControlName="placeholder">
+                </div>
+            </div>
+        </cdk-accordion-item>
+
+        <cdk-accordion-item class="bg-gray-75 rounded-2xl -mx-4 px-4 flex-1 overflow-hidden"
+                            #accordion2="cdkAccordionItem">
+            <div class="py-4 flex items-center justify-between"
+                 (click)="accordion2.toggle()">
+                <h3 class="font-display font-bold text-75 text-gray-700">Validators and checks</h3>
+                <slui-icon class="text-gray-800 h-4 w-4"
+                           [iconName]="accordion2.expanded ? 'tabler-icon-minus' : 'tabler-icon-plus'"></slui-icon>
+            </div>
+
+            <div class="transition-all h-auto"
+                 [style.maxHeight]="accordion2.expanded ? '500px' : '0'"
+                 formGroupName="validators">
+                <div class="mb-4 flex flex-row items-center gap-5"
+                     formGroupName="required">
+                    <label for="isRequired"
+                           class="h-9 flex items-center font-body text-75 text-gray-800">Is required?</label>
+                    <input id="isRequired"
+                           type="checkbox"
+                           formControlName="isRequired">
+                </div>
+                <div class="mb-4"
+                     formGroupName="max">
+                    <label for="caption"
+                           class="font-body text-75 text-gray-800 mb-1">Maximum date</label>
+                    <input type="number"
+                           type="number"
+                           class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 px-3 mb-1 hover:border-gray-600"
+                           placeholder="Enter length"
+                           formControlName="max">
+                </div>
+                <div class="mb-4"
+                     formGroupName="min">
+                    <label for="caption"
+                           class="font-body text-75 text-gray-800 mb-1">Minimum date</label>
+                    <input type="number"
+                           type="number"
+                           class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 px-3 mb-1 hover:border-gray-600"
+                           placeholder="Enter length"
+                           formControlName="min">
+                </div>
+            </div>
+        </cdk-accordion-item>
+    </cdk-accordion>
+
+    <div class="flex items-center gap-3">
+        <button type="button"
+                slui-button
+                (click)="saveField()">Save</button>
+        <button type="button"
+                slui-button
+                appearance="negative"
+                silent
+                (click)="remove.emit(true)">Remove</button>
+    </div>
+</form>

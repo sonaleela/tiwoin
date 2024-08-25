@@ -1,0 +1,32 @@
+<ul class="sticky top-8 py-3">
+    <li class="hover:bg-gray-200">
+        <a class="block font-body text-75 text-gray-800 px-6 py-3"
+           [routerLink]="['/employee', employee?.id, 'personal']"
+           routerLinkActive="font-bold text-gray-900">Personal Profile</a>
+    </li>
+    <li class="hover:bg-gray-200">
+        <a class="block font-body text-75 text-gray-800 px-6 py-3"
+           [routerLink]="['/employee', employee?.id, 'company']"
+           routerLinkActive="font-bold text-gray-900">Company Profile</a>
+    </li>
+    <li class="hover:bg-gray-200">
+        <a class="block font-body text-75 text-gray-800 px-6 py-3"
+           [routerLink]="['/employee', employee?.id, 'time-and-leave']"
+           routerLinkActive="font-bold text-gray-900">Leave & Timesheet</a>
+    </li>
+    <li class="hover:bg-gray-200">
+        <a class="block font-body text-75 text-gray-800 px-6 py-3"
+           [routerLink]="['/employee', employee?.id, 'documents']"
+           routerLinkActive="font-bold text-gray-900">Documents</a>
+    </li>
+    <li class="hover:bg-gray-200">
+        <a class="block font-body text-75 text-gray-800 px-6 py-3"
+           [routerLink]="['/employee', employee?.id, 'income']"
+           routerLinkActive="font-bold text-gray-900">Income</a>
+    </li>
+    <li class="hover:bg-gray-200">
+        <a class="block font-body text-75 text-gray-800 px-6 py-3"
+           [routerLink]="['/employee', employee?.id, 'advance-payment']"
+           routerLinkActive="font-bold text-gray-900">Advance payment</a>
+    </li>
+</ul>

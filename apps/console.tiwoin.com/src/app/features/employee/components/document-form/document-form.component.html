@@ -1,0 +1,40 @@
+<form [formGroup]="form"
+      (ngSubmit)="submit()"
+      novalidate>
+    <section class="bg-gray-50 p-8 rounded-3xl mb-4">
+        <div class="flex flex-col mb-5 gap-1">
+            <label class="font-body text-75 text-gray-800"
+                   for="name">Name</label>
+            <input class="h-9 font-body text-100 text-gray-900 bg-transparent border border-gray-300 rounded px-3"
+                   id="name"
+                   type="text"
+                   placeholder="eg. Aadhaar card"
+                   formControlName="name"
+                   required />
+            <p class="font-body text-75 text-red-400"
+               *ngIf="form.get('name')?.touched && form.get('name')?.hasError('required')">Name is required</p>
+        </div>
+        <div class="flex flex-col mb-5 gap-1">
+            <label class="font-body text-75 text-gray-800"
+                   for="file">File</label>
+            <input class="h-9 font-body text-100 text-gray-900 bg-transparent border border-gray-300 rounded px-3"
+                   id="file"
+                   type="file"
+                   placeholder="File"
+                   formControlName="files"
+                   required />
+            <p class="font-body text-75 text-red-400"
+               *ngIf="form.get('files')?.touched && form.get('files')?.hasError('required')">File is required</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <button type="submit"
+                    slui-button
+                    appearance="cta">Add document</button>
+            <button type="button"
+                    (click)="cancel.emit(true)"
+                    slui-button
+                    appearance="primary"
+                    silent>Cancel</button>
+        </div>
+    </section>
+</form>

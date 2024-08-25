@@ -1,0 +1,21 @@
+<sonaleela-site-list-header class="flex-none h-16 px-4 border-b border-gray-300"></sonaleela-site-list-header>
+<div class="flex-1"
+     *isSpinner="(isPending$ | async)"></div>
+<sonaleela-site-list-card *ngIf="(list$ | async)?.length && !(isPending$ | async)"
+                          class="flex-none m-4 p-8 bg-gray-50 rounded-3xl overflow-hidden"
+                          [siteList]="(list$ | async) || []"
+                          [isPending]="isPending$ |async"
+                          [error]="error$ | async"
+                          (delete)="delete($event)"></sonaleela-site-list-card>
+<section *ngIf="!(list$ | async)?.length && !(isPending$ | async)"
+         class="container mx-auto flex flex-col items-center justify-center p-10">
+     <img class="max-w-[200px] mb-12"
+          src="/assets/icons/illustrations/empty.svg">
+     <p class="font-body text-100 text-gray-800 mb-2">Oops! It looks like there are no sites available to display at the
+          moment. Don't worry, we can quickly fix that.
+     </p>
+     <p class="font-body text-100 text-gray-800 mb-3">Add a new site to begin managing your work activities.</p>
+     <button [appearance]="'cta'"
+             slui-button
+             routerLink="/site/add">Add new site</button>
+</section>

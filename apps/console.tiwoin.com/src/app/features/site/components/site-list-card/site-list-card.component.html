@@ -1,0 +1,45 @@
+<table class="w-full"
+       cdk-table
+       [dataSource]="siteList">
+    <ng-container cdkColumnDef="name">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Name</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <a [routerLink]="['/site', element?.id]">
+                {{element?.name}}
+            </a>
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="actions">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3 w-24"
+            cdk-header-cell
+            *cdkHeaderCellDef></th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <button type="button"
+                    slui-action-button
+                    [routerLink]="['/site', element?.id]"
+                    silent>
+                <slui-icon iconName="tabler-icon-edit"></slui-icon>
+            </button>
+            <button type="button"
+                    slui-action-button
+                    silent
+                    (click)="delete.emit(element?.id)">
+                <slui-icon class="text-red-400"
+                           [iconName]="'tabler-icon-trash'"></slui-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr class="border-b border-gray-300"
+        cdk-header-row
+        *cdkHeaderRowDef="displayedColumns"></tr>
+    <tr class="border-b last:border-0 border-gray-300"
+        cdk-row
+        *cdkRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -1,0 +1,51 @@
+<section class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl">
+       <form [formGroup]="form"
+             (ngSubmit)="submit()"
+             novalidate>
+              <div class="mb-3">
+                     <label for="phoneNumber"
+                            class="block font-body text-75 text-gray-800 mb-1">Phone number</label>
+                     <div class="relative">
+                            <p [cdkMenuTriggerFor]="menu"
+                               class="absolute w-9 left-3 top-2 pr-2 text-center font-body text-gray-700 text-100 leading-[20px] border-r border-gray-500">
+                                   {{form.get('countryCode')?.value}}
+                            </p>
+                            <input id="username"
+                                   type="text"
+                                   placeholder="xxxxxxxxxx"
+                                   formControlName="phoneNumber"
+                                   required
+                                   class="block w-full font-body text-100 bg-transparent border border-solid border-gray-400 rounded h-9 pl-14 pr-3 hover:border-gray-600" />
+                     </div>
+              </div>
+              <div class="mb-3">
+                     <label for="role"
+                            class="block font-body text-75 text-gray-800 mb-1">Role</label>
+                     <input id="role"
+                            type="text"
+                            class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                            placeholder="Enter role"
+                            formControlName="role">
+              </div>
+              <p *ngIf="error"
+                 class="font-body text-100 text-red-400 mb-2">{{error}}</p>
+              <button type="submit"
+                      *isLoading="isPending"
+                      slui-button
+                      appearance="cta">Invite now</button>
+       </form>
+</section>
+
+<ng-template #menu>
+       <div class="inline-flex flex-col min-w-[180px] max-w-[280px] bg-white py-2"
+            cdkMenu>
+              <button class="cursor-pointer px-4 py-3 flex items-center hover:bg-gray-75"
+                      cdkMenuItem
+                      (click)="form.get('countryCode')?.setValue('+91')">
+                     <span class="font-body text-100 text-gray-900">India +91</span></button>
+              <button class="cursor-pointer px-4 py-3 flex items-center hover:bg-gray-75"
+                      cdkMenuItem
+                      (click)="form.get('countryCode')?.setValue('+1')">
+                     <span class="font-body text-100 text-gray-900">Unite states +1</span></button>
+       </div>
+</ng-template>

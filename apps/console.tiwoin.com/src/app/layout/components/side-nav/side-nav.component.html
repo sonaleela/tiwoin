@@ -1,0 +1,139 @@
+<nav class="flex-none flex items-center justify-between border-b border-gray-300 h-16 pl-6 pr-2 gap-1 overflow-hidden">
+    <p class="font-body font-bold text-200 text-gray-900 whitespace-nowrap text-ellipsis overflow-hidden">
+        {{(organization$ | async)?.name}}
+    </p>
+    <div class="flex">
+        <button class="flex-none"
+                slui-action-button
+                silent
+                [routerLink]="['/organization-list']">
+            <slui-icon class="h-6 w-6 text-gray-800"
+                       iconName="status-change"></slui-icon>
+        </button>
+        <button class="flex-none"
+                slui-action-button
+                silent
+                (click)="toggleSidenav()">
+            <slui-icon class="h-6 w-6 text-gray-800"
+                       iconName="tabler-icon-x"></slui-icon>
+        </button>
+    </div>
+</nav>
+<nav class="flex-1">
+    <ul class="border-b border-gray-300 pb-3">
+        <li class="flex flex-row items-center hover:bg-gray-100">
+            <a class="flex-1 font-body text-100 text-gray-900 px-6 py-3"
+               routerLink="/">Dashboard</a>
+        </li>
+        <li class="flex flex-row items-center hover:bg-gray-100">
+            <a class="flex-1 font-body text-100 text-gray-900 px-6 py-3"
+               routerLink="/data/work-item"
+               routerLinkActive="font-bold">Work items</a>
+        </li>
+        <li class="flex flex-row items-center hover:bg-gray-100">
+            <a class="flex-1 font-body text-100 text-gray-900 px-6 py-3"
+               routerLink="/data/form"
+               routerLinkActive="font-bold">Forms</a>
+        </li>
+        <li class="flex flex-row items-center hover:bg-gray-100">
+            <a class="flex-1 font-body text-100 text-gray-900 px-6 py-3"
+               routerLink="/data/timesheet"
+               routerLinkActive="font-bold">Timesheet</a>
+        </li>
+        <li class="flex flex-row items-center hover:bg-gray-100">
+            <a class="flex-1 font-body text-100 text-gray-900 px-6 py-3"
+               routerLink="/data/payroll"
+               routerLinkActive="font-bold">Payroll</a>
+        </li>
+    </ul>
+    <ul class="border-b border-gray-300 pb-3">
+        <li class="px-5 pt-4 pb-2">
+            <h2 class="font-body font-bold text-50 text-gray-800">Configuration</h2>
+        </li>
+        <li class="flex flex-row items-center hover:bg-gray-100">
+            <a class="flex-1 flex items-center gap-4 font-body text-100 text-gray-900 pl-6 py-3"
+               routerLink="/employee"
+               routerLinkActive="font-bold">
+                <slui-icon class="h-4 w-4"
+                           [iconName]="'users-group'"></slui-icon>
+                <span>Employee</span>
+            </a>
+            <a class="flex-none px-6 py-3 font-body text-100 text-gray-900 hover:bg-gray-200"
+               routerLink="/employee/add">+ add</a>
+        </li>
+        <li class="flex flex-row items-center hover:bg-gray-100">
+            <a class="flex-1 flex items-center gap-4 font-body text-100 text-gray-900 pl-6 py-3"
+               routerLink="/payroll"
+               routerLinkActive="font-bold">
+                <slui-icon class="h-4 w-4"
+                           [iconName]="'report-money'"></slui-icon>
+                <span>Payroll</span>
+            </a>
+            <a class="flex-none px-6 py-3 font-body text-100 text-gray-900 hover:bg-gray-200"
+               routerLink="/payroll/add">+ add</a>
+        </li>
+        <li class="flex flex-row items-center hover:bg-gray-100">
+            <a class="flex-1 flex items-center gap-4 font-body text-100 text-gray-900 pl-6 py-3"
+               routerLink="/timesheet"
+               routerLinkActive="font-bold">
+                <slui-icon class="h-4 w-4"
+                           [iconName]="'clock-pin'"></slui-icon>
+                <span>Time Entries</span>
+            </a>
+            <a class="flex-none px-6 py-3 font-body text-100 text-gray-900 hover:bg-gray-200"
+               routerLink="/timesheet/add">+ add</a>
+        </li>
+        <li class="flex flex-row items-center hover:bg-gray-100">
+            <a class="flex-1 flex items-center gap-4 font-body text-100 text-gray-900 pl-6 py-3"
+               routerLink="/work-item"
+               routerLinkActive="font-bold">
+                <slui-icon class="h-4 w-4"
+                           [iconName]="'clipboard-text'"></slui-icon>
+                <span>Work Items</span>
+            </a>
+            <a class="flex-none px-6 py-3 font-body text-100 text-gray-900 hover:bg-gray-200"
+               routerLink="/work-item/add">+ add</a>
+        </li>
+        <li class="flex flex-row items-center hover:bg-gray-100">
+            <a class="flex-1 flex items-center gap-4 font-body text-100 text-gray-900 pl-6 py-3"
+               routerLink="/form"
+               routerLinkActive="font-bold">
+                <slui-icon class="h-4 w-4"
+                           [iconName]="'checkup-list'"></slui-icon>
+                <span>Reports - Forms</span>
+            </a>
+            <a class="flex-none px-6 py-3 font-body text-100 text-gray-900 hover:bg-gray-200"
+               routerLink="/form/add">+ add</a>
+        </li>
+    </ul>
+    <ul class="pb-3">
+        <li class="px-5 pt-4 pb-2">
+            <h2 class="font-body font-bold text-50 text-gray-800">Settings</h2>
+        </li>
+        <li class="flex flex-row items-center hover:bg-gray-100">
+            <a class="flex-1 font-body text-100 text-gray-900 px-6 py-3"
+               routerLink="/user"
+               routerLinkActive="font-bold">User Management</a>
+            <a class="flex-none px-6 py-3 font-body text-100 text-gray-900 hover:bg-gray-200"
+               routerLink="/user/invite">+ add</a>
+        </li>
+        <li class="flex flex-row items-center hover:bg-gray-100">
+            <a class="flex-1 font-body text-100 text-gray-900 px-6 py-3"
+               routerLink="/site"
+               routerLinkActive="font-bold">Site Management</a>
+            <a class="flex-none px-6 py-3 font-body text-100 text-gray-900 hover:bg-gray-200"
+               routerLink="/site/add">+ add</a>
+        </li>
+    </ul>
+</nav>
+<nav class="flex-none flex items-center h-14 border-t border-gray-300">
+    <a class="flex-1 flex items-center h-full px-6 font-body font-bold text-100 text-gray-800 border-r border-gray-300 hover:bg-gray-100"
+       routerLink="/profile">
+        {{(profile$ | async)?.firstName}} {{(profile$ | async)?.lastName}}
+    </a>
+    <a class="flex-none flex items-center justify-center w-14 h-full hover:bg-gray-100"
+       routerLink="/signout">
+        <slui-icon class="h-6 w-6 text-gray-800"
+                   iconName="tabler-icon-logout"></slui-icon>
+    </a>
+</nav>

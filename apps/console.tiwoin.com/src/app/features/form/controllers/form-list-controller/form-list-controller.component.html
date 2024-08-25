@@ -1,0 +1,21 @@
+<sonaleela-form-list-header class="h-16 px-4 border-b border-gray-300"></sonaleela-form-list-header>
+<div class="flex-1"
+     *isSpinner="(isPending$ | async)"></div>
+<sonaleela-form-list-table *ngIf="(list$ | async)?.length && !(isPending$ | async)"
+                           class="m-4 p-8 bg-gray-50 rounded-3xl overflow-hidden"
+                           [list]="(list$ | async) || []"
+                           [error]="error$ | async"
+                           [isPending]="isPending$ | async"
+                           (delete)="delete($event)"></sonaleela-form-list-table>
+<section *ngIf="!(list$ | async)?.length && !(isPending$ | async)"
+         class="container mx-auto flex flex-col items-center justify-center p-10">
+    <img class="max-w-[200px] mb-12"
+         src="/assets/icons/illustrations/empty.svg">
+    <p class="font-body text-100 text-gray-800 mb-2">Oh no! It seems there are no forms available to display at the
+        moment. But fret not, we can fix that in a jiffy!</p>
+    <p class="font-body text-100 text-gray-800 mb-3">To capture important information and streamline your daily
+        processes, let's create a new form.</p>
+    <button [appearance]="'cta'"
+            slui-button
+            routerLink="/form/add">Add new form</button>
+</section>

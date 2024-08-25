@@ -1,0 +1,71 @@
+<table class="w-full"
+       cdk-table
+       [dataSource]="userList">
+    <ng-container cdkColumnDef="name">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Name</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">{{element?.user?.firstName}} {{element?.user?.lastName}}</td>
+    </ng-container>
+    <ng-container cdkColumnDef="role">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Role</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3 lowercase"
+            cdk-cell
+            *cdkCellDef="let element">{{element?.role}}</td>
+    </ng-container>
+    <ng-container cdkColumnDef="phoneNumber">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Phone number</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">{{element?.phoneNumber}}</td>
+    </ng-container>
+    <ng-container cdkColumnDef="status">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Status</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">{{element?.isAccepted ? 'Accepted' : 'Pending'}}</td>
+    </ng-container>
+    <ng-container cdkColumnDef="actions">
+        <th class="px-2 py-3 w-24"
+            cdk-header-cell
+            *cdkHeaderCellDef></th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <ng-container *ngIf="currentUser?.id === element?.userId">
+                <!-- TOTO: add a button here or in organization list page to leave the organization -->
+                <p class="font-body text-gray-800 text-100">Self</p>
+            </ng-container>
+            <ng-container *ngIf="currentUser?.id !== element?.userId">
+                <button type="button"
+                        [routerLink]="['/user/invite', element?.id]"
+                        slui-action-button
+                        silent>
+                    <slui-icon [iconName]="'tabler-icon-edit'"></slui-icon>
+                </button>
+                <button type="button"
+                        slui-action-button
+                        silent
+                        (click)="delete.emit(element.id)">
+                    <slui-icon class="text-red-400"
+                               [iconName]="'tabler-icon-trash'"></slui-icon>
+                </button>
+            </ng-container>
+        </td>
+    </ng-container>
+
+    <tr class="border-b border-gray-300"
+        cdk-header-row
+        *cdkHeaderRowDef="displayedColumns"></tr>
+    <tr class="border-b last:border-0 border-gray-300"
+        cdk-row
+        *cdkRowDef="let row; columns: displayedColumns;"></tr>
+</table>

@@ -1,0 +1,67 @@
+<table class="w-full"
+       cdk-table
+       [dataSource]="timesheetList">
+    <ng-container cdkColumnDef="name">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Name</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <a [routerLink]="['/timesheet', element?.id]">
+                {{element?.name}}
+            </a>
+        </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="type">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Type</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <div class="flex items-center gap-2">
+                <span *ngIf="element.type === 'In'"
+                      class="h-2 w-2 bg-green-500 rounded-full"></span>
+                <span *ngIf="element.type === 'Out'"
+                      class="h-2 w-2 bg-red-500 rounded-full"></span>
+                <span *ngIf="element.type === 'Break'"
+                      class="h-2 w-2 bg-orange-500 rounded-full"></span>
+                <p class="font-body font-medium text-75 text-gray-800">{{element?.type}}</p>
+            </div>
+        </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="actions">
+        <th class="px-2 py-3 w-24"
+            cdk-header-cell
+            *cdkHeaderCellDef></th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <a *ngIf="!element?.isDefault"
+               type="button"
+               [routerLink]="['/timesheet', element?.id]"
+               slui-action-button
+               silent>
+                <slui-icon [iconName]="'tabler-icon-edit'"></slui-icon>
+            </a>
+            <button *ngIf="!element?.isDefault"
+                    type="button"
+                    slui-action-button
+                    silent
+                    (click)="delete.emit(element?.id)">
+                <slui-icon class="text-red-400"
+                           [iconName]="'tabler-icon-trash'"></slui-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr class="border-b border-gray-300"
+        cdk-header-row
+        *cdkHeaderRowDef="displayedColumns"></tr>
+    <tr class="border-b last:border-0 border-gray-300 h-16"
+        cdk-row
+        *cdkRowDef="let row; columns: displayedColumns;"></tr>
+</table>

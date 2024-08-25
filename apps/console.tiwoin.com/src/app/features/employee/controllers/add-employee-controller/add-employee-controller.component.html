@@ -1,0 +1,26 @@
+<header class="flex items-center h-16 border-b border-gray-300 gap-3 px-4">
+    <a type="button"
+       slui-action-button
+       silent
+       routerLink="/employee">
+        <slui-icon [iconName]="'tabler-icon-chevron-left'"></slui-icon>
+    </a>
+    <h1 class="flex font-display font-bold text-200 text-gray-900">Add Employee</h1>
+</header>
+<main class="flex-1 overflow-x-auto flex flex-row items-start gap-5 p-4">
+    <sonaleela-add-employee-form #employeeForm
+                                 class="container mx-auto"
+                                 [isPending]="isPending$ | async"
+                                 [error]="error$ | async"
+                                 (submitForm)="submitAddEmployeeForm($event)">
+    </sonaleela-add-employee-form>
+</main>
+<footer class="flex items-center justify-end h-14 border-t border-gray-300 px-8 broder">
+    <p class="font-body text-75 text-red-400 mr-4"
+       *ngIf="error$ | async">{{error$ | async}}</p>
+    <button type="submit"
+            slui-button
+            *isLoading="isPending$ | async"
+            (click)="employeeForm.submit()"
+            appearance="cta">Add employee</button>
+</footer>

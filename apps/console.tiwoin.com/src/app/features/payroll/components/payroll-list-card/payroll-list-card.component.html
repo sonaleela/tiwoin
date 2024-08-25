@@ -1,0 +1,92 @@
+<table class="w-full"
+       cdk-table
+       [dataSource]="payrollList">
+    <ng-container cdkColumnDef="name">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Name</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3 align-top"
+            cdk-cell
+            *cdkCellDef="let element">
+            <a [routerLink]="['/payroll', element?.id]">
+                {{element?.name}}
+            </a>
+        </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="description">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Description</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3 align-top"
+            cdk-cell
+            *cdkCellDef="let element">
+            <a [routerLink]="['/payroll', element?.id]">
+                {{element?.description}}
+            </a>
+        </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="baseDayType">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Base day</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3 align-top"
+            cdk-cell
+            *cdkCellDef="let element">
+            {{element?.baseDayType | titlecase}}
+        </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="earnings">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>earnings</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3 align-top"
+            cdk-cell
+            *cdkCellDef="let element">
+            <p *ngFor="let earning of element?.earning">{{earning?.name}}</p>
+        </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="deductions">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Deductions</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3 align-top"
+            cdk-cell
+            *cdkCellDef="let element">
+            <p *ngFor="let deduction of element?.deduction">{{deduction?.name}}</p>
+        </td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="actions">
+        <th class="px-2 py-3 w-24"
+            cdk-header-cell
+            *cdkHeaderCellDef></th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3 align-top"
+            cdk-cell
+            *cdkCellDef="let element">
+            <a type="button"
+               [routerLink]="['/payroll', element?.id]"
+               slui-action-button
+               silent>
+                <slui-icon [iconName]="'tabler-icon-edit'"></slui-icon>
+            </a>
+            <button type="button"
+                    slui-action-button
+                    silent
+                    (click)="delete.emit(element?.id)">
+                <slui-icon class="text-red-400"
+                           [iconName]="'tabler-icon-trash'"></slui-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr class="border-b border-gray-300"
+        cdk-header-row
+        *cdkHeaderRowDef="displayedColumns"></tr>
+    <tr class="border-b last:border-0 border-gray-300"
+        cdk-row
+        *cdkRowDef="let row; columns: displayedColumns;"></tr>
+</table>

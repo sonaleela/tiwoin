@@ -1,0 +1,35 @@
+<section *ngIf="!(isForm$ | async)"
+         class="flex gap-2 mb-5 justify-end px-2">
+     <button slui-action-button
+             emphasis
+             (click)="toggleForm()">
+          <slui-icon [iconName]="'tabler-icon-plus'"></slui-icon>Add advance payment</button>
+</section>
+
+<!-- Form -->
+<sonaleela-add-advance-payment-form *ngIf="(isForm$ | async)"
+                                    class="mb-5"
+                                    [isPending]="isAddAdvancePaymentPending$ | async"
+                                    [error]="addAdvancePaymentError$ | async"
+                                    (submitForm)="submit($event)"
+                                    (cancel)="toggleForm(false)"></sonaleela-add-advance-payment-form>
+
+<!-- table -->
+<sonaleela-advance-payment-section *ngIf="(list$ | async)?.length && !(isPending$ | async)"
+                                   class="flex flex-col gap-5 h-max p-8 bg-gray-50 rounded-3xl m-4 overflow-hidden"
+                                   [list]="(list$ | async) || []"
+                                   [longDateFormat]="(longDateFormat$ | async) || ''"
+                                   [error]="error$ | async"></sonaleela-advance-payment-section>
+
+<!-- empty state -->
+<section *ngIf="!(list$ | async)?.length && !(isPending$ | async)"
+         class="flex flex-col gap-5 h-max bg-gray-50 rounded-3xl mx-auto items-center justify-center p-10">
+     <img class="max-w-[200px] mb-12"
+          src="/assets/icons/illustrations/empty.svg">
+     <p class="font-body text-100 text-gray-800 mb-2">
+          Looks like there are no advance payment available to display at the moment</p>
+</section>
+
+<!-- loading -->
+<div class="flex-1"
+     *isSpinner="(isPending$ | async)"></div>

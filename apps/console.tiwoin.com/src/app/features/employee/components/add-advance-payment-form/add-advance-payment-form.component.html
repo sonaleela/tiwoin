@@ -1,0 +1,41 @@
+<section class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl">
+       <form [formGroup]="form"
+             (ngSubmit)="submit()"
+             novalidate>
+              <div class="mb-3">
+                     <label for="amount"
+                            class="block font-body text-75 text-gray-800 mb-1">Amount</label>
+                     <input id="amount"
+                            type="number"
+                            class="border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                            placeholder="Enter amount"
+                            formControlName="amount">
+                     <p class="font-body text-75 text-red-400"
+                        *ngIf="form.get('amount')?.hasError('required') && form.get('amount')?.touched">Amount is
+                            required</p>
+              </div>
+              <div class="mb-3">
+                     <label for="note"
+                            class="block font-body text-75 text-gray-800 mb-1">Note <em>(optional)</em></label>
+                     <textarea id="note"
+                               type="text"
+                               rows="2"
+                               class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 py-1.5"
+                               placeholder="Enter note text"
+                               formControlName="note"></textarea>
+              </div>
+              <p class="font-body text-75 text-red-400 mb-4"
+                 *ngIf="error">{{error}}</p>
+              <div class="flex gap-2">
+                     <button type="submit"
+                             *isLoading="isPending"
+                             slui-button
+                             appearance="cta">Add work-item</button>
+                     <button type="button"
+                             (click)="cancel.emit(true)"
+                             slui-button
+                             appearance="primary"
+                             silent>Cancel</button>
+              </div>
+       </form>
+</section>

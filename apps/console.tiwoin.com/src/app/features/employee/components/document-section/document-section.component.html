@@ -1,0 +1,47 @@
+<section *ngIf="list?.length"
+         class="flex gap-2 mb-5 justify-end px-2">
+    <button slui-action-button
+            (click)="add.emit(true)">
+        <slui-icon [iconName]="'tabler-icon-plus'"></slui-icon>Add</button>
+    <button slui-action-button
+            emphasis
+            (click)="request.emit(true)">
+        <slui-icon [iconName]="'tabler-icon-plus'"></slui-icon>Request a document</button>
+</section>
+
+<section *ngIf="!list?.length"
+         class="flex flex-col items-center justify-center gap-2 px-8 py-12 border border-gray-500 border-dashed rounded-3xl mb-4 text-center">
+    <slui-icon class="h-6 w-6 text-gray-800 mb-2"
+               [iconName]="'tabler-icon-plus'"></slui-icon>
+    <p class="font-body font-bold text-100 text-gray-800 mb-6">No document requestd.</p>
+    <div class="flex items-center justify-center gap-2">
+        <!-- <button slui-button
+                appearance="secondary"
+                (click)="add.emit(true)">
+            <slui-icon [iconName]="'tabler-icon-plus'"></slui-icon>Add</button> -->
+        <button slui-button
+                appearance="cta"
+                (click)="request.emit(true)">
+            <slui-icon [iconName]="'tabler-icon-plus'"></slui-icon>Request a document</button>
+    </div>
+</section>
+<section *ngFor="let document of list"
+         class="flex bg-gray-50 p-8 rounded-3xl mb-4">
+    <div class="flex-1 flex flex-col">
+        <div class="mb-4">
+            <p class="font-body text-75 text-gray-800">Name</p>
+            <p class="font-body text-100 text-gray-900">{{document?.name}}</p>
+        </div>
+        <div class="mb-4">
+            <p class="font-body text-75 text-gray-800">Updated on</p>
+            <p class="font-body text-100 text-gray-900">{{document?.updatedAt}}</p>
+        </div>
+    </div>
+    <a *ngIf="document?.fileName"
+       [href]="'https://tiwoin-user-uploads.s3.ap-south-1.amazonaws.com/' + document?.fileName"
+       class="flex-none flex flex-col items-center justify-center gap-1 mr-10">
+        <slui-icon class="h-14 w-14 text-gray-800"
+                   [iconName]="'download'"></slui-icon>
+        <p class="font-body text-75 text-gray-900">Download</p>
+    </a>
+</section>

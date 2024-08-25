@@ -1,0 +1,22 @@
+<sonaleela-work-item-list-header class="h-16 px-4 border-b border-gray-300"></sonaleela-work-item-list-header>
+<div class="flex-1"
+     *isSpinner="(isPending$ | async)"></div>
+<sonaleela-work-item-card-list *ngIf="(list$ | async)?.length && !(isPending$ | async)"
+                               class="m-4 p-8 bg-gray-50 rounded-3xl overflow-hidden"
+                               [error]="error$ | async"
+                               [isPending]="isPending$ | async"
+                               [workItems]="(list$ | async) || []"
+                               [longDateFormat]="(longDateFormat$ | async) || ''"
+                               (delete)="delete($event)"></sonaleela-work-item-card-list>
+<section *ngIf="!(list$ | async)?.length && !(isPending$ | async)"
+         class="container mx-auto flex flex-col items-center justify-center p-10">
+     <img class="max-w-[200px] mb-12"
+          src="/assets/icons/illustrations/empty.svg">
+     <p class="font-body text-100 text-gray-800 mb-2">Looks like there are no work items available to display at the
+          moment. But don't worry, we've got you covered!</p>
+     <p class="font-body text-100 text-gray-800 mb-3">To start tracking and managing your work efficiently, let's add a
+          new work item.</p>
+     <button [appearance]="'cta'"
+             slui-button
+             routerLink="/work-item/add">Add work item</button>
+</section>

@@ -1,0 +1,25 @@
+<sonaleela-payroll-component-list-header
+                                         class="h-16 px-4 border-b border-gray-300"></sonaleela-payroll-component-list-header>
+<div class="flex-1"
+     *isSpinner="(isPending$ | async)"></div>
+<sonaleela-payroll-component-list *ngIf="(list$ | async)?.length && !(isPending$ | async)"
+                                  class="m-4 p-8 bg-gray-50 rounded-3xl overflow-hidden"
+                                  [isPending]="isPending$ | async"
+                                  [error]="error$ | async"
+                                  [payrollList]="(list$ | async) || []"
+                                  (delete)="delete($event)"></sonaleela-payroll-component-list>
+<section *ngIf="!(list$ | async)?.length && !(isPending$ | async)"
+         class="container mx-auto flex flex-col items-center justify-center p-10">
+    <img class="max-w-[200px] mb-12"
+         src="/assets/icons/illustrations/empty.svg">
+    <p class="font-body text-100 text-gray-800 mb-2">Oops! It looks like there are no payroll components available to
+        display
+        at the
+        moment. Don't worry, we can quickly fix that.
+    </p>
+    <p class="font-body text-100 text-gray-800 mb-3">Let's add a new payroll components to manage your employee payroll
+        efficiently. </p>
+    <button [appearance]="'cta'"
+            slui-button
+            routerLink="/payroll/add">Add payroll component</button>
+</section>

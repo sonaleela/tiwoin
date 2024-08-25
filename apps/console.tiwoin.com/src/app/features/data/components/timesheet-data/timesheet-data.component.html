@@ -1,0 +1,118 @@
+<table class="w-full"
+       cdk-table
+       [dataSource]="attendanceData"
+       multiTemplateDataRows
+       matSort
+       (matSortChange)="sortDataBy($event)">
+    <ng-container cdkColumnDef="expand">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3 whitespace-nowrap w-0"
+            cdk-header-cell
+            *cdkHeaderCellDef>&nbsp;</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <div class="flex items-center justify-center pr-6">
+                <slui-icon *ngIf="element !== expandElement"
+                           class="h-4 w-4 text-gray-800"
+                           [iconName]="'chevron-down'"></slui-icon>
+                <slui-icon *ngIf="element === expandElement"
+                           class="h-4 w-4 text-gray-800"
+                           [iconName]="'chevron-up'"></slui-icon>
+            </div>
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="employee">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef
+            mat-sort-header="submittedBy">Name</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            {{element?.employee?.name?.first}} {{element?.employee?.name?.middle}} {{element?.employee?.name?.last}}
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="timeline">
+        <th class="font-body font-bold text-center text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Timeline</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <sonaleela-timesheet-timeline [entries]="element?.entries"></sonaleela-timesheet-timeline>
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="totalTime">
+        <th class="font-body font-bold text-right text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Total time(Hours)</th>
+        <td class="font-body text-right text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            {{element?.totalTime}}
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="edit">
+        <th class="font-body font-bold text-right text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef></th>
+        <td class="font-body text-right text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <a type="button"
+               slui-action-button
+               silent
+               queryParamsHandling="preserve"
+               [routerLink]="['.', {outlets: {aside: ['edit', element.id]}}]"
+               (click)="$event.stopPropagation();">
+                <slui-icon [iconName]="'tabler-icon-edit'"></slui-icon>
+            </a>
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="expandedDetail">
+        <td class="font-body text-left text-100 text-gray-900 bg-gray-75 p-0"
+            cdk-cell
+            *cdkCellDef="let element"
+            [attr.colspan]="displayedColumns.length">
+            <div class="flex overflow-hidden"
+                 [@detailExpand]="element === expandElement ? 'expanded' : 'collapsed'">
+                <table class="w-full">
+                    <tr>
+                        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3">Entry</th>
+                        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3">Type</th>
+                        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3">Time</th>
+                        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3">Site</th>
+                        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3 whitespace-nowrap w-0">
+                            Geo-location</th>
+                    </tr>
+                    <tr *ngFor="let entry of element?.entries">
+                        <td class="font-body text-left text-75 text-gray-900 p-2">{{entry?.name}}</td>
+                        <td class="font-body text-left text-75 text-gray-900 p-2">{{entry?.type}}</td>
+                        <td class="font-body text-left text-75 text-gray-900 p-2">{{entry?.time | date:timeFormat}}</td>
+                        <td class="font-body text-left text-75 text-gray-900 p-2">{{entry?.site || '-'}}</td>
+                        <td class="font-body text-center text-75 text-gray-900 p-2"
+                            (click)="selectGeoLocationData.emit(entry.geoLocation)">
+                            <button slui-action-button
+                                    silent>
+                                <slui-icon [iconName]="'map-pin'"></slui-icon>
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </td>
+    </ng-container>
+
+    <tr class="border-b border-gray-300"
+        cdk-header-row
+        *cdkHeaderRowDef="displayedColumns"></tr>
+
+    <tr class="h-14 hover:bg-gray-75 cursor-pointer"
+        [ngClass]="{'bg-gray-75': expandElement === row}"
+        cdk-row
+        *cdkRowDef="let row; columns: displayedColumns"
+        (click)="expandElement = expandElement === row ? null : row;"></tr>
+    <tr class="border-b last:border-0 border-gray-300 h-0 p-0 overflow-hidden"
+        cdk-row
+        *cdkRowDef="let element; columns: ['expandedDetail'];"></tr>
+</table>

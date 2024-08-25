@@ -1,0 +1,76 @@
+<h2 class="font-body font-bold text-100 text-gray-900 mb-2">Add/Edit form control</h2>
+<p class="font-body text-75 text-gray-800 mb-5">To add a control, click on the listed control type below. </p>
+<div class="flex flex-col gap-3">
+    <div (click)="selectControl.emit(fieldTypes.TEXT)"
+         class="flex-0 flex flex-row items-center gap-5 px-6 py-4 bg-gray-75 rounded-2xl">
+        <slui-icon class="w-6 h-6 text-gray-900"
+                   [iconName]="getControlIconName(fieldTypes.TEXT)"></slui-icon>
+        <p class="font-body text-100 text-gray-900">Text</p>
+    </div>
+    <div (click)="selectControl.emit(fieldTypes.TEXTAREA)"
+         class="flex-0 flex flex-row items-center gap-5 px-6 py-4 bg-gray-75 rounded-2xl">
+        <slui-icon class="w-6 h-6 text-gray-900"
+                   [iconName]="getControlIconName(fieldTypes.TEXTAREA)"></slui-icon>
+        <p class="font-body text-100 text-gray-900">Textarea</p>
+    </div>
+    <div (click)="selectControl.emit(fieldTypes.EMAIL)"
+         class="flex-0 flex flex-row items-center gap-5 px-6 py-4 bg-gray-75 rounded-2xl">
+        <slui-icon class="w-6 h-6 text-gray-900"
+                   [iconName]="getControlIconName(fieldTypes.EMAIL)"></slui-icon>
+        <p class="font-body text-100 text-gray-900">Email</p>
+    </div>
+    <div (click)="selectControl.emit(fieldTypes.DATE)"
+         class="flex-0 flex flex-row items-center gap-5 px-6 py-4 bg-gray-75 rounded-2xl">
+        <slui-icon class="w-6 h-6 text-gray-900"
+                   [iconName]="getControlIconName(fieldTypes.DATE)"></slui-icon>
+        <p class="font-body text-100 text-gray-900">Date</p>
+    </div>
+    <div (click)="selectControl.emit(fieldTypes.DATETIME)"
+         class="flex-0 flex flex-row items-center gap-5 px-6 py-4 bg-gray-75 rounded-2xl">
+        <slui-icon class="w-6 h-6 text-gray-900"
+                   [iconName]="getControlIconName(fieldTypes.DATETIME)"></slui-icon>
+        <p class="font-body text-100 text-gray-900">Date time</p>
+    </div>
+    <div (click)="selectControl.emit(fieldTypes.TIME)"
+         class="flex-0 flex flex-row items-center gap-5 px-6 py-4 bg-gray-75 rounded-2xl">
+        <slui-icon class="w-6 h-6 text-gray-900"
+                   [iconName]="getControlIconName(fieldTypes.TIME)"></slui-icon>
+        <p class="font-body text-100 text-gray-900">Time</p>
+    </div>
+    <div (click)="selectControl.emit(fieldTypes.CHECKBOX)"
+         class="flex-0 flex flex-row items-center gap-5 px-6 py-4 bg-gray-75 rounded-2xl">
+        <slui-icon class="w-6 h-6 text-gray-900"
+                   [iconName]="getControlIconName(fieldTypes.CHECKBOX)"></slui-icon>
+        <p class="font-body text-100 text-gray-900">Checkbox</p>
+    </div>
+    <div (click)="selectControl.emit(fieldTypes.RADIO)"
+         class="flex-0 flex flex-row items-center gap-5 px-6 py-4 bg-gray-75 rounded-2xl">
+        <slui-icon class="w-6 h-6 text-gray-900"
+                   [iconName]="getControlIconName(fieldTypes.RADIO)"></slui-icon>
+        <p class="font-body text-100 text-gray-900">Radio</p>
+    </div>
+    <div (click)="selectControl.emit(fieldTypes.FILE)"
+         class="flex-0 flex flex-row items-center gap-5 px-6 py-4 bg-gray-75 rounded-2xl">
+        <slui-icon class="w-6 h-6 text-gray-900"
+                   [iconName]="getControlIconName(fieldTypes.FILE)"></slui-icon>
+        <p class="font-body text-100 text-gray-900">File</p>
+    </div>
+    <div (click)="selectControl.emit(fieldTypes.NUMBER)"
+         class="flex-0 flex flex-row items-center gap-5 px-6 py-4 bg-gray-75 rounded-2xl">
+        <slui-icon class="w-6 h-6 text-gray-900"
+                   [iconName]="getControlIconName(fieldTypes.NUMBER)"></slui-icon>
+        <p class="font-body text-100 text-gray-900">Numbers</p>
+    </div>
+    <div (click)="selectControl.emit(fieldTypes.DROPDOWN)"
+         class="flex-0 flex flex-row items-center gap-5 px-6 py-4 bg-gray-75 rounded-2xl">
+        <slui-icon class="w-6 h-6 text-gray-900"
+                   [iconName]="getControlIconName(fieldTypes.DROPDOWN)"></slui-icon>
+        <p class="font-body text-100 text-gray-900">Dropdown</p>
+    </div>
+    <div (click)="selectControl.emit(fieldTypes.TOGGLE)"
+         class="flex-0 flex flex-row items-center gap-5 px-6 py-4 bg-gray-75 rounded-2xl">
+        <slui-icon class="w-6 h-6 text-gray-900"
+                   [iconName]="getControlIconName(fieldTypes.TOGGLE)"></slui-icon>
+        <p class="font-body text-100 text-gray-900">Toggle</p>
+    </div>
+</div>

@@ -1,0 +1,133 @@
+<table class="w-full"
+       cdk-table
+       [dataSource]="formList"
+       matSort
+       (matSortChange)="sortDataBy($event)">
+    <ng-container cdkColumnDef="expand">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3 whitespace-nowrap w-0"
+            cdk-header-cell
+            *cdkHeaderCellDef>&nbsp;</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element"
+            queryParamsHandling="preserve"
+            [routerLink]="['.', {outlets: {aside: ['view', element.id]}}]">
+            <div class="flex items-center justify-center pr-6">
+                <slui-icon *ngIf="element !== activeForm"
+                           class="h-4 w-4"
+                           [iconName]="'tabler-icon-chevron-right'"></slui-icon>
+                <slui-icon *ngIf="element === activeForm"
+                           class="h-4 w-4"
+                           [iconName]="'tabler-icon-chevron-left'"></slui-icon>
+            </div>
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="name">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef
+            mat-sort-header="name">Form</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element"
+            queryParamsHandling="preserve"
+            [routerLink]="['.', {outlets: {aside: ['view', element.id]}}]">
+            {{element?.name}}</td>
+    </ng-container>
+    <ng-container cdkColumnDef="site">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Site</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element"
+            queryParamsHandling="preserve"
+            [routerLink]="['.', {outlets: {aside: ['view', element.id]}}]">
+            {{element?.site ?? '-'}}</td>
+    </ng-container>
+    <ng-container cdkColumnDef="submittedBy">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef
+            mat-sort-header="submittedBy">Submitted by</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element"
+            queryParamsHandling="preserve"
+            [routerLink]="['.', {outlets: {aside: ['view', element.id]}}]">
+            {{element?.employee?.name?.first}} {{element?.employee?.name?.middle}} {{element?.employee?.name?.last}}
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="approval">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef
+            mat-sort-header="approval">Approval</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element"
+            queryParamsHandling="preserve"
+            [routerLink]="['.', {outlets: {aside: ['view', element.id]}}]">
+            <p *ngIf="element?.form?.isApprovalRequired === true">
+                <span *ngIf="element?.approvedBy"
+                      class="text-green-500">approved</span>
+                <span *ngIf="!element?.approvedBy"
+                      class="text-orange-500">pending</span>
+            </p>
+            <p *ngIf="!element?.form?.isApprovalRequired"
+               class="text-gray-700">
+                -
+            </p>
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="submittedAt">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef
+            mat-sort-header="createdAt">Submitted at</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element"
+            queryParamsHandling="preserve"
+            [routerLink]="['.', {outlets: {aside: ['view', element.id]}}]">
+            {{element?.createdAt | date:longDateFormat}}</td>
+    </ng-container>
+    <ng-container cdkColumnDef="geoLocation">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3 whitespace-nowrap w-0"
+            cdk-header-cell
+            *cdkHeaderCellDef>Geo-location</th>
+        <td class="font-body text-100 text-gray-900 px-2 py-3 text-center"
+            cdk-cell
+            *cdkCellDef="let element"
+            (click)="selectGeoLocationData.emit(element.geoLocation)">
+            <button slui-action-button
+                    silent>
+                <slui-icon [iconName]="'map-pin'"></slui-icon>
+            </button>
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="edit">
+        <th class="font-body font-bold text-right text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef></th>
+        <td class="font-body text-right text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <a type="button"
+               slui-action-button
+               silent
+               queryParamsHandling="preserve"
+               [routerLink]="['.', {outlets: {aside: ['edit', element.id]}}]"
+               (click)="$event.stopPropagation();">
+                <slui-icon [iconName]="'tabler-icon-edit'"></slui-icon>
+            </a>
+        </td>
+    </ng-container>
+    <tr class="border-b border-gray-300"
+        cdk-header-row
+        *cdkHeaderRowDef="displayedColumns"></tr>
+    <tr class="hover:bg-gray-75 border-b last:border-0 border-gray-300 cursor-pointer"
+        [ngClass]="{'bg-gray-75': activeForm === row}"
+        cdk-row
+        *cdkRowDef="let row; columns: displayedColumns;"></tr>
+</table>

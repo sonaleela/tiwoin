@@ -1,0 +1,49 @@
+<div class="flex flex-col gap-5 bg-gray-50 max-w-[720px] mx-auto p-8 rounded-3xl">
+    <div class="flex items-center justify-between">
+        <h2 class="font-body font-bold text-200 text-gray-800">Two-Factor Authentication</h2>
+        <button type="button"
+                slui-action-button>
+            off
+        </button>
+    </div>
+
+    <div class="flex flex-col gap-5">
+        <div class="flex justify-between gap-2">
+            <div class="h-12 w-12">
+                <slui-icon class="h-12 w-12"
+                           iconName="lock"></slui-icon>
+            </div>
+            <div class="flex flex-col">
+                <h3 class="font-body text-100 text-gray-800">Send code via SMS</h3>
+                <p class="font-body text-75 text-gray-700">You receive a 6 digit pin via SMS to you’re registered phone
+                    number +91
+                    9929575729 for every login.</p>
+            </div>
+            <div class="flex-1"></div>
+            <button type="button"
+                    slui-action-button>
+                Enable
+            </button>
+        </div>
+        <div class="flex justify-between gap-2">
+            <div class="h-12 w-12">
+                <slui-icon class="h-12 w-12"
+                           iconName="mobile"></slui-icon>
+            </div>
+            <div class="flex flex-col">
+                <h3 class="font-body text-100 text-gray-800">Send code via Authentication App</h3>
+                <p class="font-body text-75 text-gray-700">You can use apps like Google Authenticator, Microsoft
+                    Authenticator, or Authy
+                    on your mobile phone to
+                    scan the QR code to generate 6 digit pin for every login.</p>
+            </div>
+            <div class="flex-1"></div>
+            <div class="list-meta">
+                <button type="button"
+                        slui-action-button>
+                    Enable
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

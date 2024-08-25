@@ -1,0 +1,62 @@
+<section class="h-fit p-10 rounded-sm">
+    <img class="h-8 w-auto"
+         alt="sonaleela logo"
+         src="assets/img/logo_name.svg" />
+    <p class="font-body text-gray-800 text-75 italic mb-8">Empowering Businesses with Comprehensive Workforce Solutions
+    </p>
+    <h1 class="font-display font-bold text-200 text-gray-900 mb-2">Signin</h1>
+    <p class="font-body text-100 text-gray-900 mb-8">We will send you an one time password(OTP)</p>
+    <form [formGroup]="form"
+          (ngSubmit)="submit()"
+          novalidate
+          class="mb-12">
+        <div class="mb-4">
+            <label class="font-body text-75 text-gray-800 mb-1"
+                   for="username">Phone number</label>
+            <div class="relative">
+                <p [cdkMenuTriggerFor]="menu"
+                   class="absolute w-9 left-3 top-2 pr-2 text-center font-body text-gray-700 text-100 leading-[20px] border-r border-gray-500">
+                    {{form.get('countryCode')?.value}}
+                </p>
+                <input id="username"
+                       type="number"
+                       placeholder="xxxxxxxxxx"
+                       formControlName="username"
+                       required
+                       autofocus
+                       class="block w-full font-body text-100 bg-transparent border border-solid border-gray-400 rounded h-9 pl-14 pr-3 hover:border-gray-600" />
+            </div>
+            <p *ngIf="form.get('username')?.hasError('required') && form.get('username')?.touched"
+               class="font-body text-75 text-red-400">phone number is required</p>
+        </div>
+        <p *ngIf="error"
+           class="font-body text-75 text-red-400 mb-4">{{error}}</p>
+        <div class="flex justify-between">
+            <button type="submit"
+                    *isLoading="isPending"
+                    slui-button
+                    [appearance]="'cta'">
+                Get OTP
+            </button>
+        </div>
+    </form>
+
+    <p class="font-body text-75 text-gray-900 mb-1">Not a member?
+        <a class="font-body text-blue-400 hover:underline"
+           routerLink="/signup">Create a new account</a>
+    </p>
+</section>
+
+<ng-template #menu>
+    <div class="inline-flex flex-col min-w-[180px] max-w-[280px] bg-white py-2"
+         cdkMenu>
+        <button class="cursor-pointer px-4 py-3 flex items-center hover:bg-gray-75"
+                cdkMenuItem
+                (click)="form.get('countryCode')?.setValue('+91')">
+            <span class="font-body text-100 text-gray-900">India +91</span></button>
+        <button class="cursor-pointer px-4 py-3 flex items-center hover:bg-gray-75"
+                cdkMenuItem
+                (click)="form.get('countryCode')?.setValue('+1')">
+            <span class="font-body text-100 text-gray-900">Unite states +1</span></button>
+    </div>
+</ng-template>

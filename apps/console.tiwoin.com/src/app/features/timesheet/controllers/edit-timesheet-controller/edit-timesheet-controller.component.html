@@ -1,0 +1,16 @@
+<header class="flex items-center h-16 border-b border-gray-300 gap-3 px-4">
+    <a type="button"
+       slui-action-button
+       silent
+       routerLink="/timesheet">
+        <slui-icon [iconName]="'tabler-icon-chevron-left'"></slui-icon>
+    </a>
+    <h1 class="flex font-display font-bold text-200 text-gray-900">Edit time entry</h1>
+</header>
+
+<main class="flex-1 container mx-auto overflow-x-auto p-4">
+    <sonaleela-edit-timesheet-form [isPending]="isEditPending$ | async"
+                                   [error]="editError$ | async"
+                                   [timesheet]="timesheet$ | async"
+                                   (submitForm)="submitForm($event)"></sonaleela-edit-timesheet-form>
+</main>

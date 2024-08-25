@@ -1,0 +1,8 @@
+<sonaleela-time-leave *ngIf="!(isPending$ | async)"
+                      class="flex-1"
+                      [isPending]="isEditPending$ | async"
+                      [error]="editError$ | async"
+                      [employee]="employee$ | async"
+                      (editEmployee)="editEmployee($event)"></sonaleela-time-leave>
+<div class="flex-1"
+     *isSpinner="(isPending$ | async)"></div>

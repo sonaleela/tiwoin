@@ -1,0 +1,149 @@
+<section *ngIf="!isPositionForm"
+         class="relative bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4">
+    <button class="absolute right-8 top-8"
+            slui-action-button
+            (click)="editPositionInfo()">Edit</button>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">Position</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.position || '-'}}</p>
+    </div>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">Department</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.department || '-'}}</p>
+    </div>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">Date of joining</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.joiningDate || '-'}}</p>
+    </div>
+</section>
+<form *ngIf="isPositionForm"
+      class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4"
+      [formGroup]="positionForm"
+      (ngSubmit)="submitPosition()"
+      novalidate>
+    <div class="flex flex-col gap-1 mb-4">
+        <label for="position"
+               class="font-body text-75 text-gray-800">Position</label>
+        <input id="position"
+               type="text"
+               class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+               placeholder="eg. Sales Manager, Worker"
+               formControlName="position" />
+    </div>
+    <div class="flex flex-col gap-1 mb-4">
+        <label for="joiningDate"
+               class="font-body text-75 text-gray-800">Date of joining</label>
+        <input id="joiningDate"
+               type="date"
+               class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+               formControlName="joiningDate" />
+    </div>
+    <div class="flex flex-col gap-1 mb-4">
+        <label for="department"
+               class="font-body text-75 text-gray-800">Department</label>
+        <input id="department"
+               type="text"
+               placeholder="eg. Sales, Marketing, Production"
+               class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+               formControlName="department" />
+    </div>
+    <div class="flex flex-row gap-2">
+        <button type="submit"
+                slui-button
+                *isLoading="isPending"
+                appearance="cta">Save changes</button>
+        <button type="button"
+                slui-button
+                (click)="isPositionForm = !isPositionForm"
+                appearance="primary"
+                silent>Cancel</button>
+    </div>
+</form>
+
+
+<section *ngIf="!isPFForm"
+         class="relative bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4">
+    <button class="absolute right-8 top-8"
+            slui-action-button
+            (click)="editPFInfo()">Edit</button>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">PF number</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.PFNumber || '-'}}</p>
+    </div>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">ESI number</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.ESINumber || '-'}}</p>
+    </div>
+</section>
+<form *ngIf="isPFForm"
+      class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4"
+      [formGroup]="PFForm"
+      (ngSubmit)="submitPF()"
+      novalidate>
+    <div class="flex flex-col gap-1 mb-4">
+        <label for="PFNumber"
+               class="font-body text-75 text-gray-800">PF number</label>
+        <input id="PFNumber"
+               type="text"
+               placeholder="xx xxx xx"
+               class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+               formControlName="PFNumber" />
+    </div>
+    <div class="flex flex-col gap-1 mb-4">
+        <label for="ESINumber"
+               class="font-body text-75 text-gray-800">ESI number</label>
+        <input id="ESINumber"
+               type="text"
+               placeholder="xx xxx xx"
+               class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+               formControlName="ESINumber" />
+    </div>
+    <div class="flex flex-row gap-2">
+        <button type="submit"
+                slui-button
+                *isLoading="isPending"
+                appearance="cta">Save changes</button>
+        <button type="button"
+                slui-button
+                (click)="isPFForm = !isPFForm"
+                appearance="primary"
+                silent>Cancel</button>
+    </div>
+</form>
+
+<section *ngIf="!isNoticeForm"
+         class="relative bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4">
+    <button class="absolute right-8 top-8"
+            slui-action-button
+            (click)="editNoticeInfo()">Edit</button>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">Notice period</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.noticePeriod || '-'}}</p>
+    </div>
+</section>
+<form *ngIf="isNoticeForm"
+      class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4"
+      [formGroup]="noticeForm"
+      (ngSubmit)="submitNotice()"
+      novalidate>
+    <div class="flex flex-col gap-1 mb-4">
+        <label for="noticePeriod"
+               class="font-body text-75 text-gray-800">Notice period</label>
+        <input id="noticePeriod"
+               type="number"
+               placeholder="eg. 7, 15, 30"
+               class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+               formControlName="noticePeriod" />
+    </div>
+    <div class="flex flex-row gap-2">
+        <button type="submit"
+                slui-button
+                *isLoading="isPending"
+                appearance="cta">Save changes</button>
+        <button type="button"
+                slui-button
+                (click)="isNoticeForm = !isNoticeForm"
+                appearance="primary"
+                silent>Cancel</button>
+    </div>
+</form>

@@ -1,0 +1,21 @@
+<!-- <sonaleela-company-nav class="flex-none w-14 h-full bg-primary-400"></sonaleela-company-nav> -->
+<sonaleela-side-nav *ngIf="(sidenavState$ | async) === 'FULL'"></sonaleela-side-nav>
+<sonaleela-side-nav-mini *ngIf="(sidenavState$ | async) === 'MINI'"
+                         class="cursor-pointer hover:bg-gray-200"
+                         (click)="toggleSidenav()"></sonaleela-side-nav-mini>
+<div class="flex-auto overflow-y-auto bg-gray-100">
+    <ng-content></ng-content>
+</div>
+
+
+<!-- <mat-drawer-container class="h-full">
+    <mat-drawer [opened]="sidenavState$ | async"
+                mode="side">
+        <sonaleela-side-nav></sonaleela-side-nav>
+    </mat-drawer>
+    <mat-drawer-content class="flex flex-row h-full">
+        <div class="flex-auto overflow-y-auto bg-gray-100 h-full">
+            <ng-content></ng-content>
+        </div>
+    </mat-drawer-content>
+</mat-drawer-container> -->

@@ -1,0 +1,21 @@
+<sonaleela-employee-list-header class="h-16 px-4 border-b border-gray-300"></sonaleela-employee-list-header>
+<div class="flex-1"
+     *isSpinner="(isPending$ | async)"></div>
+<sonaleela-employee-list *ngIf="(list$ | async)?.length && !(isPending$ | async)"
+                         class="m-4 p-8 bg-gray-50 rounded-3xl overflow-hidden"
+                         [employeeList]="(list$ | async) || []"
+                         [isPending]="isPending$ | async"
+                         [error]="error$ | async"
+                         (delete)="delete($event)"></sonaleela-employee-list>
+<section *ngIf="!(list$ | async)?.length && !(isPending$ | async)"
+         class="container mx-auto flex flex-col items-center justify-center p-10">
+    <img class="max-w-[200px] mb-12"
+         src="/assets/icons/illustrations/empty.svg">
+    <p class="font-body text-100 text-gray-800 mb-2">Uh-oh! It appears that there are no employees listed at the moment.
+        But don't worry, we can fix that in no time.
+    </p>
+    <p class="font-body text-100 text-gray-800 mb-3">To start managing your workforce, let's add a new employee.</p>
+    <button [appearance]="'cta'"
+            slui-button
+            routerLink="/employee/add">Add new employee</button>
+</section>

@@ -1,0 +1,55 @@
+<header class="flex px-6 items-center gap-4">
+    <button slui-action-button
+            (click)="close.emit(true)">
+        <slui-icon [iconName]="'tabler-icon-x'"></slui-icon>
+    </button>
+    <div class="flex-1 flex flex-col">
+        <p class="font-body font-bold text-200 text-gray-900">Update work-item</p>
+    </div>
+</header>
+<form [formGroup]="form"
+      (ngSubmit)="submit()"
+      novalidate
+      class="flex-1 px-6">
+    <div class="mb-5 w-full">
+        <sonaleela-select-employee formControlName="employee"></sonaleela-select-employee>
+        <p class="font-body text-75 text-red-400"
+           *ngIf="form.get('employee')?.hasError('required') && form.get('employee')?.touched">
+            Employee is required
+        </p>
+    </div>
+    <div class="mb-5">
+        <label for="quantity"
+               class="block font-body text-75 text-gray-800 mb-1">Work-item quantity</label>
+        <div class="relative">
+            <input id="name"
+                   type="number"
+                   class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                   placeholder="Enter work-item quantity"
+                   formControlName="quantity">
+            <button *ngIf="form.get('quantity')?.dirty"
+                    type="button"
+                    class="absolute right-0 top-0 h-8 text-red-500"
+                    slui-action-button
+                    silent
+                    (click)="reset()">Reset</button>
+        </div>
+        <p class="font-body text-75 text-red-400"
+           *ngIf="form.get('quantity')?.hasError('required') && form.get('quantity')?.touched">Quantity is required
+        </p>
+    </div>
+
+    <div class="flex items-center gap-2">
+        <button type="button"
+                *isLoading="isPending"
+                slui-button
+                type="submit"
+                appearance="cta">Update timesheet</button>
+        <button type="submit"
+                slui-button
+                appearance="primary"
+                type="button"
+                silent
+                (click)="close.emit(true)">Cancel</button>
+    </div>
+</form>

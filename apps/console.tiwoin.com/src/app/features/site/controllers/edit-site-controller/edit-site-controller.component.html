@@ -1,0 +1,31 @@
+<header class="flex items-center h-16 border-b border-gray-300 gap-3 px-4">
+    <a type="button"
+       slui-action-button
+       silent
+       routerLink="/site">
+        <slui-icon [iconName]="'tabler-icon-chevron-left'"></slui-icon>
+    </a>
+    <h1 class="flex font-display font-bold text-200 text-gray-900">Edit site</h1>
+</header>
+<main class="flex-1 overflow-x-auto flex flex-row items-start gap-5 p-4">
+    <sonaleela-add-site-form class="flex-1"
+                             #form
+                             [site]="site$ | async"
+                             [state]="state$ | async"
+                             [country]="country$ | async"
+                             [cityList]="cityList$ | async"
+                             (addresssChange)="addresssChange($event)"
+                             (pinChange)="pinChange($event)"
+                             (submitForm)="submitForm($event)"></sonaleela-add-site-form>
+    <sonaleela-geo-fence class="flex-1 pb-4"
+                         [drawingObject]="(site$ | async)?.geoFence"
+                         (drawing)="drawing($event)"></sonaleela-geo-fence>
+</main>
+<footer class="flex items-center justify-end h-14 border-t border-gray-300 px-8 broder">
+    <button type="button"
+            [disabled]="isSitePending$ | async"
+            *isLoading="isEditSitePending$ | async"
+            slui-button
+            appearance="cta"
+            (click)="form.submit()">Update address</button>
+</footer>

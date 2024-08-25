@@ -1,0 +1,9 @@
+<sonaleela-employee-header class="flex-none border-b border-gray-300 p-4 h-16"
+                           [employee]="employee$ | async"></sonaleela-employee-header>
+<div class="flex-auto flex">
+    <sonaleela-side-nav class="flex-none w-side-nav-secondary border-r border-gray-300"
+                        [employee]="employee$ | async"></sonaleela-side-nav>
+    <div class="flex-auto p-6">
+        <router-outlet></router-outlet>
+    </div>
+</div>

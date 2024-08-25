@@ -1,0 +1,62 @@
+<sonaleela-work-item-data-header class="col-span-2 px-4 border-b border-gray-300"></sonaleela-work-item-data-header>
+
+<main class="overflow-auto">
+     <!-- list -->
+     <div class="flex flex-col gap-5 h-max m-4 p-8 bg-gray-50 rounded-3xl">
+          <!-- filter -->
+          <sonaleela-filter [filterObject]="filterObject$ | async"
+                            (filter)="filterEvent($event)"
+                            (clear)="clearFilter($event)"></sonaleela-filter>
+
+          <!-- table -->
+          <sonaleela-work-item-data *ngIf="(list$ | async)?.length && !(isPending$ | async)"
+                                    class="max-w-full overflow-x-auto"
+                                    [workItemList]="(list$ | async) || []"
+                                    [isPending]="isPending$ | async"
+                                    [error]="error$ | async"
+                                    [longDateFormat]="(longDateFormat$ | async) || ''"
+                                    (selectGeoLocationData)="selectGeoLocationData($event)"
+                                    (sortBy)="sortBy($event)"></sonaleela-work-item-data>
+
+          <!-- pagination -->
+          <mat-paginator *ngIf="(list$ | async)?.length && !(isPending$ | async)"
+                         [length]="(total$ | async)"
+                         [pageSize]="10"
+                         [pageIndex]="(filterObject$ | async)?.page || 0"
+                         [hidePageSize]="true"
+                         (page)="changePage($event)"></mat-paginator>
+
+          <!-- empty state -->
+          <section *ngIf="!(list$ | async)?.length && !(isPending$ | async)"
+                   class="container mx-auto flex flex-col items-center justify-center p-10">
+               <img class="max-w-[200px] mb-12"
+                    src="/assets/icons/illustrations/empty.svg">
+               <p class="font-body text-100 text-gray-800 mb-2">
+                    Looks like there are no work item data available to display at the moment</p>
+          </section>
+
+          <!-- loading -->
+          <div class="flex-1"
+               *isSpinner="(isPending$ | async)"></div>
+     </div>
+</main>
+
+<!-- Side data panel -->
+<section class="flex-none bg-gray-75 border-l border-gray-300 transition-all">
+     <router-outlet name="aside"
+                    (activate)="activateRoute($event)"
+                    (deactivate)="deactivateRoute($event)"></router-outlet>
+</section>
+<!-- Side data panel -->
+<section *ngIf="geoLocation"
+         class="flex flex-col bg-gray-50 border-l border-gray-300">
+     <header class="flex px-6 py-3">
+          <button slui-action-button
+                  (click)="clearData()">
+               <slui-icon [iconName]="'tabler-icon-x'"></slui-icon>
+          </button>
+     </header>
+     <div class="h-full w-full"
+          sonaleelaGeoLocation
+          [geolocation]="geoLocation"></div>
+</section>

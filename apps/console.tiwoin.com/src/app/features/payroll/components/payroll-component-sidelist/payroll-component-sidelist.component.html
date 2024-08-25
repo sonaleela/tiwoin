@@ -1,0 +1,106 @@
+<section class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4">
+    <header class="flex flex-row items-center justify-between mb-4">
+        <h2 class="font-body font-bold text-100 text-gray-900">Payroll components</h2>
+        <div class="flex-1"></div>
+        <button class="mr-2"
+                type="button"
+                slui-action-button
+                emphasis
+                silent
+                routerLink="/payroll/components">
+            Manage components
+        </button>
+        <button type="button"
+                slui-action-button
+                emphasis
+                (click)="toggleForm.emit(true)">
+            <slui-icon iconName="tabler-icon-plus"></slui-icon>
+            Add component
+        </button>
+    </header>
+    <div class="flex flex-row flex-wrap items-center justify-start gap-2 mb-4">
+        <button type="button"
+                class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-gray-800 hover:bg-gray-100"
+                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue?.['type'] === 'EARNING'}"
+                (click)="filterComponent({type: 'EARNING'})">
+            Earnings
+        </button>
+        <button type="button"
+                class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-gray-800 hover:bg-gray-100"
+                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue?.['type'] === 'DEDUCTION'}"
+                (click)="filterComponent({type: 'DEDUCTION'})">
+            Deduction
+        </button>
+        <button type="button"
+                class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-gray-800 hover:bg-gray-100"
+                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue?.['calculationtype'] === 'FIXED'}"
+                (click)="filterComponent({calculationtype: 'FIXED'})">
+            Fixed
+        </button>
+        <button type="button"
+                class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-gray-800 hover:bg-gray-100"
+                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue?.['calculationtype'] === 'PERCENTAGE'}"
+                (click)="filterComponent({calculationtype: 'PERCENTAGE'})">
+            Percentage
+        </button>
+        <button type="button"
+                class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-gray-800 hover:bg-gray-100"
+                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue?.['calculationtype'] === 'VARIABLE'}"
+                (click)="filterComponent({calculationtype: 'VARIABLE'})">
+            Variable
+        </button>
+        <button type="button"
+                class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-gray-800 hover:bg-gray-100"
+                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue?.['isTaxable']}"
+                (click)="filterComponent({isTaxable: true})">
+            Taxable
+        </button>
+        <button type="button"
+                class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-red-500 hover:bg-gray-100"
+                (click)="filterComponent({})">
+            Clear All
+        </button>
+    </div>
+    <p class="font-body text-gray-700 text-75 mb-6">Note: Payroll components are uneditable for accurate and secure
+        payroll processing.</p>
+
+    <div class="flex flex-col gap-4">
+        <div *ngFor="let payrollComponent of payrollComponentList"
+             (click)="selectComponent(payrollComponent?.id)"
+             class="flex flex-row gap-6 items-center rounded-2xl px-6 py-3 cursor-pointer bg-gray-75 hover:bg-gray-100"
+             [ngClass]="{'!bg-gray-100': isComponentSelected(payrollComponent?.id)}">
+            <div *ngIf="payrollComponent?.type === 'EARNING'"
+                 class="h-8 w-8 text-green-400">
+                <slui-icon iconName="tabler-icon-circle-plus"></slui-icon>
+            </div>
+            <div *ngIf="payrollComponent?.type === 'DEDUCTION'"
+                 class="h-8 w-8 text-red-400">
+                <slui-icon iconName="tabler-icon-circle-minus"></slui-icon>
+            </div>
+            <div class="flex-1 flex flex-col">
+                <h3 class="font-body font-bold text-100 text-gray-800">{{payrollComponent?.name}}</h3>
+                <p *ngIf="payrollComponent?.description"
+                   class="font-body text-100 text-gray-800">{{payrollComponent?.description}}</p>
+                <div class="flex items-center">
+                    <span
+                          class="font-body text-75 text-gray-700 after:content-['•'] after:mx-3 last:after:content-[''] last:after:mx-0">{{payrollComponent?.calculationtype}}</span>
+                    <span
+                          class="font-body text-75 text-gray-700 after:content-['•'] after:mx-3 last:after:content-[''] last:after:mx-0">{{payrollComponent?.percentage
+                        ||
+                        payrollComponent?.fixedAmount}}</span>
+                    <span
+                          class="font-body text-75 text-gray-700 after:content-['•'] after:mx-3 last:after:content-[''] last:after:mx-0">{{payrollComponent?.isTaxable
+                        &&
+                        payrollComponent?.type === 'EARNING'
+                        ? 'taxable'
+                        : 'non-taxable'}}</span>
+                </div>
+            </div>
+            <button type="button"
+                    slui-action-button
+                    silent>
+                <slui-icon [iconName]="'tabler-icon-trash'"></slui-icon>
+            </button>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,33 @@
+<header class="flex items-center h-16 border-b border-gray-300 gap-3 px-4">
+    <a type="button"
+       slui-action-button
+       silent
+       routerLink="/payroll">
+        <slui-icon [iconName]="'tabler-icon-chevron-left'"></slui-icon>
+    </a>
+    <h1 class="flex font-display font-bold text-200 text-gray-900">Edit payroll</h1>
+</header>
+
+<main class="flex-1 overflow-x-auto flex flex-row items-start gap-5 p-4">
+    <section class="flex-1">
+        <sonaleela-edit-payroll-form #editForm
+                                     [payroll]="payroll$ | async"
+                                     [selectedComponent]="selectedPayrollComponent$ | async"
+                                     (unSelectComponentId)="unSelectComponentId($event)"
+                                     (submitForm)="submitForm($event)"></sonaleela-edit-payroll-form>
+    </section>
+    <section class="flex-1">
+        <sonaleela-payroll-components-sidelist-controller
+                                                          *ngIf="!(isForm$ | async)"></sonaleela-payroll-components-sidelist-controller>
+        <sonaleela-add-payroll-component-controller
+                                                    *ngIf="(isForm$ | async)"></sonaleela-add-payroll-component-controller>
+    </section>
+</main>
+
+<footer class="flex items-center justify-end h-14 border-t border-gray-300 px-8 broder">
+    <button type="submit"
+            *isLoading="isEditPayrollPending$ | async"
+            slui-button
+            appearance="cta"
+            (click)="editForm.submit()">Save payroll</button>
+</footer>

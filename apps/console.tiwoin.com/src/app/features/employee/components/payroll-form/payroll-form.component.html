@@ -1,0 +1,103 @@
+<section *ngIf="!isForm"
+         class="px-8 py-12 border border-gray-500 border-dashed rounded-3xl mb-4 text-center">
+    <slui-icon class="h-6 w-6 text-gray-800 mb-2"
+               [iconName]="'tabler-icon-plus'"></slui-icon>
+    <p class="font-body font-bold text-100 text-gray-900 mb-6">No payroll setup yet!</p>
+    <button slui-button
+            appearance="cta"
+            (click)="isForm = !isForm">Setup payroll</button>
+</section>
+<section *ngIf="isForm"
+         class="bg-gray-50 p-8 rounded-3xl mb-4">
+    <h2 class="font-body font-bold text-100 text-gray-900 mb-3">Add payroll</h2>
+    <form [formGroup]="form"
+          (ngSubmit)="submit()"
+          novalidate>
+        <div class="flex flex-col gap-1 mb-6">
+            <label for="fname"
+                   class="font-body text-75 text-gray-800">Select payroll</label>
+            <select id="fname"
+                    class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                    placeholder="Select payroll"
+                    formControlName="payrollId">
+                <option *ngFor="let payroll of payrollList"
+                        [value]="payroll?.id">{{payroll?.name}}</option>
+            </select>
+        </div>
+        <h2 class="font-body font-bold text-75 text-green-500 mb-2">Earning</h2>
+        <table class="w-full mb-5">
+            <tr *ngFor="let component of selectedPayroll?.earning"
+                class="font-body text-100 text-gray-800">
+                <td class="py-2 px-1">
+                    <p class="font-bold">{{component?.name}}</p>
+                    <p class="text-75 text-gray-700">{{component?.calculationtype}}</p>
+                </td>
+                <td *ngIf="component?.calculationtype === 'FIXED'"
+                    class=" py-2 px-1text-right">
+                    {{component?.fixedAmount}}
+                </td>
+                <td *ngIf="component?.calculationtype === 'PERCENTAGE'"
+                    class="py-2 px-1 text-right">
+                    {{component?.percentage}}
+                </td>
+                <td *ngIf="component?.calculationtype === 'VARIABLE'"
+                    class="py-2 px-1 text-right">
+                    <input type="number"
+                           class="border border-gray-300 rounded text-right">
+                </td>
+                <td *ngIf="component?.calculationtype === 'PRE-PAYROLL-PROCESSING'"
+                    class="py-2 px-1 text-right">
+                    <input type="number"
+                           class="border border-gray-300 rounded text-right">
+                </td>
+                <td *ngIf="component?.calculationtype === 'USER-BASED'"
+                    class="py-2 px-1 text-right">
+                    <input type="number"
+                           class="border border-gray-300 rounded text-right">
+                </td>
+            </tr>
+        </table>
+        <h2 class="font-body font-bold text-75 text-red-400 mb-2">Deduction</h2>
+        <table class="w-full mb-5">
+            <tr *ngFor="let component of selectedPayroll?.deduction"
+                class="font-body text-100 text-gray-800">
+                <td class="py-2 px-1">
+                    <p class="font-bold">{{component?.name}}</p>
+                    <p class="text-75 text-gray-700">{{component?.calculationtype}}</p>
+                </td>
+                <td *ngIf="component?.calculationtype === 'FIXED'"
+                    class="py-2 px-1 text-right">
+                    {{component?.fixedAmount}}
+                </td>
+                <td *ngIf="component?.calculationtype === 'PERCENTAGE'"
+                    class="py-2 px-1 text-right">
+                    {{component?.percentage}}
+                </td>
+                <td *ngIf="component?.calculationtype === 'VARIABLE'"
+                    class="py-2 px-1 text-right">
+                    <input type="number"
+                           class="border border-gray-300 rounded text-right">
+                </td>
+                <td *ngIf="component?.calculationtype === 'PRE-PAYROLL-PROCESSING'"
+                    class="py-2 px-1 text-right">
+                    <input type="number"
+                           class="border border-gray-300 rounded text-right">
+                </td>
+                <td *ngIf="component?.calculationtype === 'USER-BASED'"
+                    class="py-2 px-1 text-right">
+                    <input type="number"
+                           class="border border-gray-300 rounded text-right">
+                </td>
+            </tr>
+        </table>
+        <div class="flex gap-2">
+            <button type="submit"
+                    slui-button
+                    appearance="cta">Add payroll</button>
+            <button type="button"
+                    slui-button
+                    silent
+                    (click)="isForm = !isForm">Cancel</button>
+        </div>
+    </form>
+</section>

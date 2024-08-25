@@ -1,0 +1,4 @@
+<sonaleela-income-section *ngIf="(employee$ | async)?.payroll"
+                          [employee]="employee$ | async"></sonaleela-income-section>
+<sonaleela-payroll-form *ngIf="!(employee$ | async)?.payroll"
+                        [payrollList]="payrollList$ | async"></sonaleela-payroll-form>

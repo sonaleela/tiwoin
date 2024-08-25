@@ -1,0 +1,8 @@
+<section class="relative h-full bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4">
+    <div class="h-full w-full"
+         sonaleelaGeoFence
+         [geolocation]="geolocation"
+         [zoomLevel]="zoomLevel"
+         [drawingObject]="drawingObject"
+         (drawing)="drawingEvent($event)"></div>
+</section>

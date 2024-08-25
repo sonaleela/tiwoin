@@ -1,0 +1,116 @@
+<table class="w-full"
+       cdk-table
+       [dataSource]="employeeList">
+    <ng-container cdkColumnDef="avatar">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3 w-14"
+            cdk-header-cell
+            *cdkHeaderCellDef></th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <img *ngIf="element?.avatar?.url"
+                 class="h-10 w-auto"
+                 [src]="element?.avatar?.url ? 'https://tiwoin-user-uploads.s3.ap-south-1.amazonaws.com/' + element?.avatar?.url : '/assets/img/profile.png'"
+                 alt="employee avatar">
+            <img *ngIf="!element?.avatar?.url"
+                 class="h-10 w-auto rounded-md"
+                 [src]="'/assets/img/profile.png'"
+                 alt="employee avatar">
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="name">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Name</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <a [routerLink]="['/employee', element?.id]">
+                {{element?.name?.first}} {{element?.name?.middle}} {{element?.name?.last}}
+            </a>
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="phoneNumber">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Phone number</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            {{element?.phoneNumber}}
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="position">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Position</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">{{element?.position}}</td>
+    </ng-container>
+    <ng-container cdkColumnDef="department">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Department</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">{{element?.department}}</td>
+    </ng-container>
+    <ng-container cdkColumnDef="contact">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Contact</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <p *ngFor="let emailObj of element?.emails">{{emailObj?.email}}</p>
+            <p *ngFor="let phoneObj of element?.phones">{{phoneObj?.phone}}</p>
+        </td>
+    </ng-container>
+    <ng-container cdkColumnDef="status">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Status</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">{{element?.workStatus}}</td>
+    </ng-container>
+    <ng-container cdkColumnDef="site">
+        <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
+            cdk-header-cell
+            *cdkHeaderCellDef>Site</th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">{{element?.workLocation}}</td>
+    </ng-container>
+
+    <ng-container cdkColumnDef="actions">
+        <th class="px-2 py-3 w-24"
+            cdk-header-cell
+            *cdkHeaderCellDef></th>
+        <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
+            cdk-cell
+            *cdkCellDef="let element">
+            <a type="button"
+               [routerLink]="['/employee', element?.id]"
+               slui-action-button
+               silent>
+                <slui-icon [iconName]="'tabler-icon-edit'"></slui-icon>
+            </a>
+            <button type="button"
+                    slui-action-button
+                    silent
+                    (click)="delete.emit(element?.id)">
+                <slui-icon class="text-red-400"
+                           [iconName]="'tabler-icon-trash'"></slui-icon>
+            </button>
+        </td>
+    </ng-container>
+
+    <tr class="border-b border-gray-300"
+        cdk-header-row
+        *cdkHeaderRowDef="displayedColumns"></tr>
+    <tr class="border-b last:border-0 border-gray-300"
+        cdk-row
+        *cdkRowDef="let row; columns: displayedColumns;"></tr>
+</table>

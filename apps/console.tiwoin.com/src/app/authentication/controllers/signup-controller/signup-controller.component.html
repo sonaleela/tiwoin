@@ -1,0 +1,123 @@
+<main class="flex h-full">
+    <section class="flex-1 flex items-center justify-center bg-gray-50">
+        <sonaleela-signup-form class="w-full max-w-120"
+                               *ngIf="!(isOTPForm$ | async)"
+                               [isPending]="isSignupPending$ | async"
+                               [error]="(signupError$ | async) || (OTPError$ | async)"
+                               (submitForm)="submitSignupForm($event)">
+        </sonaleela-signup-form>
+        <sonaleela-otp-form class="w-full max-w-120"
+                            *ngIf="isOTPForm$ | async"
+                            [timer]="countdown$ | async"
+                            [isPending]="isOTPPending$ | async"
+                            [error]="OTPError$ | async"
+                            [phoneNumber]="phoneNumber$ | async"
+                            (editPhoneNumber)="editPhoneNumber($event)"
+                            (submitForm)="submitOTPform($event)"></sonaleela-otp-form>
+    </section>
+
+    <section class="flex-1 relative flex flex-col items-center justify-center overflow-hidden px-32 py-10 bg-gray-75">
+        <swiper-container init="false"
+                          class="overflow-hidden w-full"
+                          [sonaleelaSwiperOption]="swiperOptions">
+            <swiper-slide class="px-12 pt-12 pb-64">
+                <h2 class="mb-12 font-body text-400 font-bold text-gray-900 text-center">Enhance Accountability with
+                    Precise Time
+                    Tracking
+                </h2>
+                <ul>
+                    <li class="mb-8">
+                        <p class="font-body font-medium text-200 text-gray-900">Effortlessly track and record employee
+                            time with
+                            Tiwoin's intuitive time-tracking system.</p>
+                    </li>
+                    <li class="mb-8">
+                        <p class="font-body font-medium text-200 text-gray-900">Streamline your payroll process with
+                            Tiwoin's
+                            automated time-sheet generation.</p>
+                    </li>
+                    <li>
+                        <p class="font-body font-medium text-200 text-gray-900">Ensure accurate time entry with Tiwoin's
+                            geo-fencing
+                            feature, keeping your team accountable wherever they are.</p>
+                    </li>
+                </ul>
+                <img class="absolute bottom-0 right-0 h-64"
+                     src="/assets/icons/illustrations/time.svg">
+            </swiper-slide>
+            <swiper-slide class="px-12 pt-12 pb-64">
+                <h2 class="mb-12 font-body text-400 font-bold text-gray-900 text-center">Efficiency Redefined: Custom
+                    Forms, Work
+                    Items, and Geo-Fencing for Seamless Workflow Management with Tiwoin
+                </h2>
+                <ul>
+                    <li class="mb-8">
+                        <p class="font-body font-medium text-200 text-gray-900">Tiwoin offers customizable forms to
+                            effortlessly capture daily activity reports, ensuring comprehensive
+                            documentation of your work.</p>
+                    </li>
+                    <li class="mb-8">
+                        <p class="font-body font-medium text-200 text-gray-900">Track the quantity of work done with
+                            Tiwoin's work item feature, allowing you to measure and analyze
+                            your productivity accurately.</p>
+                    </li>
+                    <li>
+                        <p class="font-body font-medium text-200 text-gray-900">Experience the power of geo-fencing in
+                            every aspect of your work with Tiwoin, providing location-based
+                            context to your tasks and projects.</p>
+                    </li>
+                </ul>
+                <img class="absolute bottom-0 right-0 h-64"
+                     src="/assets/icons/illustrations/form.svg">
+            </swiper-slide>
+            <swiper-slide class="px-12 pt-12 pb-64">
+                <h2 class="mb-12 font-body text-400 font-bold text-gray-900 text-center">Simplify Payslips, Advance
+                    Payouts, and More
+                    with Tiwoin</h2>
+                <ul>
+                    <li class="mb-8">
+                        <p class="font-body font-medium text-200 text-gray-900">Manage various income structures
+                            effortlessly with Tiwoin's custom payroll pipelines, designed to cater
+                            to employees on payroll, contract, or daily wages.</p>
+                    </li>
+                    <li class="mb-8">
+                        <p class="font-body font-medium text-200 text-gray-900">Simplify payslip distribution with
+                            Tiwoin's automatic sharing feature, ensuring timely and transparent
+                            communication with your employees.</p>
+                    </li>
+                    <li>
+                        <p class="font-body font-medium text-200 text-gray-900">Keep track of advance payouts, overtime,
+                            and bonuses seamlessly with Tiwoin's comprehensive recording
+                            system, enabling accurate and efficient income management.</p>
+                    </li>
+                </ul>
+                <img class="absolute bottom-0 right-0 h-64"
+                     src="/assets/icons/illustrations/payroll.svg">
+            </swiper-slide>
+            <swiper-slide class="px-12 pt-12 pb-64">
+                <h2 class="mb-12 font-body text-400 font-bold text-gray-900 text-center">What More Does Tiwoin Offer?
+                </h2>
+                <ul>
+                    <li class="mb-8">
+                        <p class="font-body font-medium text-200 text-gray-900">Efficiently handle employee management
+                            tasks, including leave management and work-hour tracking, with
+                            Tiwoin's integrated employee management system.</p>
+                    </li>
+                    <li class="mb-8">
+                        <p class="font-body font-medium text-200 text-gray-900">Streamline document sharing with
+                            employees without ever leaving Tiwoin, ensuring seamless communication
+                            and collaboration within a single platform.</p>
+                    </li>
+                    <li>
+                        <p class="font-body font-medium text-200 text-gray-900">Experience hassle-free onboarding for
+                            employees, making Tiwoin the perfect choice for your organization
+                            and earning the love of your HR team.</p>
+                    </li>
+                </ul>
+                <img class="absolute bottom-0 right-0 h-64"
+                     src="/assets/icons/illustrations/profile.svg">
+            </swiper-slide>
+        </swiper-container>
+        <div class="swiper-pagination bottom-6"></div>
+    </section>
+</main>

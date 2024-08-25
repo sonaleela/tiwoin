@@ -1,0 +1,52 @@
+<section class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl">
+       <form [formGroup]="form"
+             (ngSubmit)="submit()"
+             novalidate>
+              <div class="mb-3">
+                     <label for="name"
+                            class="block font-body text-75 text-gray-800 mb-1">Time entry name</label>
+                     <input id="name"
+                            type="text"
+                            class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                            placeholder="eg. Office timeout"
+                            formControlName="name">
+                     <p class="font-body text-75 text-red-400"
+                        *ngIf="form.controls.name.hasError('required') && form.controls.name.touched">Name is required
+                     </p>
+              </div>
+              <div class="mb-3">
+                     <label for="description"
+                            class="block font-body text-75 text-gray-800 mb-1">Description <em>(optional)</em></label>
+                     <textarea id="description"
+                               type="text"
+                               cols="2"
+                               class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 pt-1 h-8"
+                               placeholder="Enter description"
+                               formControlName="description"></textarea>
+              </div>
+              <div class="mb-3">
+                     <label for="type"
+                            class="block font-body text-75 text-gray-800 mb-1">Entry type</label>
+                     <input id="type"
+                            type="text"
+                            class="border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8 disabled:cursor-not-allowed"
+                            placeholder="Enter description"
+                            formControlName="type">
+              </div>
+              <div class="mb-5">
+                     <p class="font-body text-75 text-gray-800 mb-2">Entry type status</p>
+                     <label class="flex items-center gap-4">
+                            <input id="isActive"
+                                   type="checkbox"
+                                   placeholder="Enter description"
+                                   formControlName="isActive">
+                            <p class="font-body text-100 text-gray-800">Is active?</p>
+                     </label>
+
+              </div>
+              <button type="submit"
+                      *isLoading="isPending"
+                      slui-button
+                      appearance="cta">Add timesheet entry</button>
+       </form>
+</section>

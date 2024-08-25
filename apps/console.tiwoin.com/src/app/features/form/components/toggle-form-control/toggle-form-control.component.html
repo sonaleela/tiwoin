@@ -1,0 +1,67 @@
+<form [formGroup]="form">
+       <h2 class="font-display font-bold text-100 text-gray-900 mb-4">Toggle field</h2>
+       <div class="mb-3">
+              <label for="label"
+                     class="font-body text-75 text-gray-800 mb-1">Field label <em>(required)</em></label>
+              <input id="label"
+                     type="text"
+                     class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 px-3 mb-1 hover:border-gray-600"
+                     placeholder="Enter field name"
+                     formControlName="label">
+              <p *ngIf="form.get('label')?.hasError('required') && form.get('label')?.touched"
+                 class="font-body text-75 text-red-400">Field label is required</p>
+       </div>
+       <div class="mb-5"
+            formGroupName="description">
+              <label for="caption"
+                     class="font-body text-75 text-gray-800 mb-1">Field description</label>
+              <textarea id="caption"
+                        type="text"
+                        class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded px-3 py-2 mb-1 hover:border-gray-600"
+                        placeholder="Enter field name"
+                        formControlName="text"></textarea>
+       </div>
+
+       <cdk-accordion class="flex flex-col gap-4 mb-4">
+              <cdk-accordion-item class="bg-gray-75 rounded-2xl -mx-4 px-4 flex-1 overflow-hidden"
+                                  #accordion1="cdkAccordionItem">
+                     <div class="py-4 flex items-center justify-between"
+                          (click)="accordion1.toggle()">
+                            <h3 class="font-display font-bold text-75 text-gray-700">Advance options</h3>
+                            <slui-icon class="text-gray-800 h-4 w-4"
+                                       [iconName]="accordion1.expanded ? 'tabler-icon-minus' : 'tabler-icon-plus'"></slui-icon>
+                     </div>
+
+                     <div class="transition-all h-auto"
+                          [style.maxHeight]="accordion1.expanded ? '600px' : '0'">
+                            <label class="mb-4 flex flex-row items-center gap-5">
+                                   <label for="value"
+                                          class="h-9 flex items-center font-body text-75 text-gray-800">Default/Prefill
+                                          value</label>
+                                   <div class="relative inline-flex items-center cursor-pointer">
+                                          <input id="value"
+                                                 type="checkbox"
+                                                 value=""
+                                                 formControlName="value"
+                                                 class="sr-only peer">
+                                          <div
+                                               class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600">
+                                          </div>
+                                          <span class="sr-only ml-3 text-sm font-medium text-gray-900 dark:text-gray-300">Toggle me</span>
+                                   </div>
+                            </label>
+                     </div>
+              </cdk-accordion-item>
+       </cdk-accordion>
+
+       <div class="flex items-center gap-3">
+              <button type="button"
+                      slui-button
+                      (click)="saveField()">Save</button>
+              <button type="button"
+                      slui-button
+                      appearance="negative"
+                      silent
+                      (click)="remove.emit(true)">Remove</button>
+       </div>
+</form>

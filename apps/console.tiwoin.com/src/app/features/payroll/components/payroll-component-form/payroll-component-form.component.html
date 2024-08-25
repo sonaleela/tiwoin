@@ -1,0 +1,170 @@
+<section class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4">
+       <h2 class="font-body font-bold text-100 text-gray-900 mb-4">Add component</h2>
+
+       <form [formGroup]="form"
+             (ngSubmit)="submit()">
+              <div class="mb-6 flex flex-col gap-1">
+                     <label for="cname"
+                            class="block font-body text-75 text-gray-800">Component name</label>
+                     <input id="cname"
+                            type="text"
+                            class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                            placeholder="eg. Bonus"
+                            formControlName="name">
+                     <p *ngIf="form?.controls?.name?.hasError('required') && form?.controls?.name?.touched"
+                        class="font-body text-75 text-red-500">Component name is required</p>
+              </div>
+              <div class="mb-6">
+                     <label for="cdescription"
+                            class="block font-body text-75 text-gray-800 mb-1">Description</label>
+                     <input id="cdescription"
+                            type="text"
+                            class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                            placeholder="description"
+                            formControlName="description">
+              </div>
+              <label class="block font-body text-75 text-gray-800 mb-1">Type</label>
+              <div class="flex flex-row gap-4 w-full mb-6">
+                     <label class="flex-1 p-5 border border-gray-300 rounded-2xl flex flex-row items-center gap-2">
+                            <input type="radio"
+                                   value="EARNING"
+                                   formControlName="type" />
+                            <span class="font-body text-100 text-gray-800">Earning</span>
+                     </label>
+                     <label class="flex-1 p-5 border border-gray-300 rounded-2xl flex flex-row items-center gap-2">
+                            <input type="radio"
+                                   value="DEDUCTION"
+                                   formControlName="type" />
+                            <span class="font-body text-100 text-gray-800">Deduction</span>
+                     </label>
+              </div>
+              <label class="block font-body text-75 text-gray-800 mb-1">Calculation type</label>
+              <div class="flex flex-col gap-4 w-full mb-6">
+                     <label class="flex-1 flex flex-row items-center gap-2">
+                            <input type="radio"
+                                   value="FIXED"
+                                   formControlName="calculationtype" />
+                            <span class="font-body text-100 text-gray-800">Fixed</span>
+                     </label>
+                     <label class="flex-1 flex flex-row items-center gap-2">
+                            <input type="radio"
+                                   value="PERCENTAGE"
+                                   formControlName="calculationtype" />
+                            <span class="font-body text-100 text-gray-800">Percentage</span>
+                     </label>
+                     <label class="flex-1 flex flex-row items-center gap-2">
+                            <input type="radio"
+                                   value="VARIABLE"
+                                   formControlName="calculationtype" />
+                            <span class="font-body text-100 text-gray-800">Variable</span>
+                     </label>
+                     <label class="flex-1 flex flex-row items-center gap-2">
+                            <input type="radio"
+                                   value="PRE-PAYROLL-PROCESSING"
+                                   formControlName="calculationtype" />
+                            <span class="font-body text-100 text-gray-800">Pre payroll</span>
+                     </label>
+                     <label class="flex-1 flex flex-row items-center gap-2">
+                            <input type="radio"
+                                   value="USER-BASED"
+                                   formControlName="calculationtype" />
+                            <span class="font-body text-100 text-gray-800">User based</span>
+                     </label>
+              </div>
+              <ng-container *ngIf="form?.controls?.calculationtype?.value === 'PERCENTAGE'">
+                     <div class="mb-6 flex flex-col gap-1">
+                            <label for="percentageOf"
+                                   class="block font-body text-75 text-gray-800">Percentage of</label>
+                            <div class="flex flex-row gap-4 w-full">
+                                   <label
+                                          class="flex-1 p-5 border border-gray-300 rounded-2xl flex flex-row items-center gap-2">
+                                          <input type="radio"
+                                                 value="BASIC"
+                                                 formControlName="percentageOf" />
+                                          <span class="font-body text-100 text-gray-800">Basic</span>
+                                   </label>
+                                   <label
+                                          class="flex-1 p-5 border border-gray-300 rounded-2xl flex flex-row items-center gap-2">
+                                          <input type="radio"
+                                                 value="GROSS"
+                                                 formControlName="percentageOf" />
+                                          <span class="font-body text-100 text-gray-800">Gross</span>
+                                   </label>
+                                   <label
+                                          class="flex-1 p-5 border border-gray-300 rounded-2xl flex flex-row items-center gap-2">
+                                          <input type="radio"
+                                                 value="NET"
+                                                 formControlName="percentageOf" />
+                                          <span class="font-body text-100 text-gray-800">Net</span>
+                                   </label>
+                            </div>
+                            <p *ngIf="form?.controls?.percentageOf?.hasError('required') && form?.controls?.percentageOf?.touched"
+                               class="font-body text-75 text-red-500">Percentage of is required</p>
+                     </div>
+                     <div class="mb-6 flex flex-col gap-1">
+                            <label for="percentage"
+                                   class="block font-body text-75 text-gray-800">Percentage</label>
+                            <input id="percentage"
+                                   type="number"
+                                   class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                                   placeholder="percentage"
+                                   formControlName="percentage">
+                            <p *ngIf="form?.controls?.percentage?.hasError('required') && form?.controls?.percentage?.touched"
+                               class="font-body text-75 text-red-500">Percentage is required</p>
+                     </div>
+              </ng-container>
+              <ng-container *ngIf="form?.controls?.calculationtype?.value === 'FIXED'">
+                     <div class="mb-6 flex flex-col gap-1">
+                            <label for="fixedAmount"
+                                   class="block font-body text-75 text-gray-800">Amount</label>
+                            <input id="fixedAmount"
+                                   type="number"
+                                   class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                                   placeholder="Amount"
+                                   formControlName="fixedAmount">
+                            <p *ngIf="form?.controls?.fixedAmount?.hasError('required') && form?.controls?.fixedAmount?.touched"
+                               class="font-body text-75 text-red-500">Amount is required</p>
+                     </div>
+              </ng-container>
+              <ng-container *ngIf="form?.controls?.calculationtype?.value === 'VARIABLE'">
+                     <div class="flex flex-row gap-2">
+                            <div class="mb-6 flex flex-col gap-1">
+                                   <label for="minimumAmount"
+                                          class="block font-body text-75 text-gray-800">Minimum amount</label>
+                                   <input id="minimumAmount"
+                                          type="number"
+                                          class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                                          placeholder="Amount"
+                                          formControlName="minimumAmount">
+                            </div>
+                            <div class="mb-6 flex flex-col gap-1">
+                                   <label for="maximumAmount"
+                                          class="block font-body text-75 text-gray-800">Maximum Amount</label>
+                                   <input id="maximumAmount"
+                                          type="number"
+                                          class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                                          placeholder="Amount"
+                                          formControlName="maximumAmount">
+                            </div>
+                     </div>
+              </ng-container>
+              <div class="mb-5 flex flex-row items-center gap-4">
+                     <label for="isTaxable"
+                            class="font-body text-100 text-gray-800">Is taxable?</label>
+                     <input type="checkbox"
+                            id="isTaxable"
+                            formControlName="isTaxable">
+              </div>
+
+              <div class="flex flex-row gap-4">
+                     <button slui-button
+                             appearence="primary"
+                             type="submit">Add Component</button>
+                     <button slui-button
+                             appearance="negative"
+                             silent
+                             type="button"
+                             (click)="close.emit()">Cancel</button>
+              </div>
+       </form>
+</section>

@@ -1,0 +1,4 @@
+<h2 *ngIf="(getError$ | async) === '404'"
+    style="color: red;">Page was not found</h2>
+
+<sonaleela-layout-matcher [layout]="layout$ | async"></sonaleela-layout-matcher>

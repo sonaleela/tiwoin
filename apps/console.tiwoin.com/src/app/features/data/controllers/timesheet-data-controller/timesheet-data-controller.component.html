@@ -1,0 +1,53 @@
+<sonaleela-timesheet-data-header class="col-span-2 px-4 border-b border-gray-300"></sonaleela-timesheet-data-header>
+
+<main class="overflow-auto">
+     <!-- list -->
+     <div class="flex flex-col gap-5 h-max m-4 p-8 bg-gray-50 rounded-3xl">
+          <!-- date filter -->
+          <sonaleela-timesheet-date-selector [date]="(filterObject$ | async)!.date"
+                                             (dateSelect)="dateSelect($event)"></sonaleela-timesheet-date-selector>
+
+          <!-- table -->
+          <sonaleela-timesheet-data *ngIf="(list$ | async)?.length && !(isPending$ | async)"
+                                    class="max-w-full overflow-x-auto"
+                                    [attendanceData]="(list$ | async) || []"
+                                    [isPending]="isPending$ | async"
+                                    [error]="error$ | async"
+                                    [timeFormat]="(timeFormat$ | async) || ''"
+                                    (selectGeoLocationData)="selectGeoLocationData($event)"
+                                    (sortBy)="sortBy($event)"></sonaleela-timesheet-data>
+
+          <!-- empty state -->
+          <section *ngIf="!(list$ | async)?.length && !(isPending$ | async)"
+                   class="container mx-auto flex flex-col items-center justify-center p-10">
+               <img class="max-w-[200px] mb-12"
+                    src="/assets/icons/illustrations/empty.svg">
+               <p class="font-body text-100 text-gray-800 mb-2">
+                    Looks like there are no timesheet data available to display at the moment</p>
+          </section>
+
+          <!-- loading -->
+          <div class="flex-1"
+               *isSpinner="(isPending$ | async)"></div>
+     </div>
+</main>
+
+<!-- Side data panel -->
+<section class="flex-none bg-gray-75 border-l border-gray-300 transition-all">
+     <router-outlet name="aside"
+                    (activate)="activateRoute($event)"
+                    (deactivate)="deactivateRoute($event)"></router-outlet>
+</section>
+<!-- geo location -->
+<section *ngIf="geoLocation"
+         class="flex-none relative bg-gray-50 border-l border-gray-300">
+     <header class="flex px-6 py-3">
+          <button slui-action-button
+                  (click)="clearData()">
+               <slui-icon [iconName]="'tabler-icon-x'"></slui-icon>
+          </button>
+     </header>
+     <div class="h-full w-full"
+          sonaleelaGeoLocation
+          [geolocation]="geoLocation"></div>
+</section>

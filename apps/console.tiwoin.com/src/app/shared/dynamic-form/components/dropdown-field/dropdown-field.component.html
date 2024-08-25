@@ -1,0 +1,7 @@
+<label class="block font-body text-75 text-gray-800 mb-2"
+       [for]="data?.id">{{data?.label}}</label>
+<select [id]="data?.id"
+        [formControl]="control">
+    <option *ngFor="let control of data?.controls"
+            [value]="control?.value">{{control?.label}}</option>
+</select>

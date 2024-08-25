@@ -1,0 +1,43 @@
+<header class="flex px-6 gap-4">
+    <button slui-action-button
+            (click)="close.emit(true)">
+        <slui-icon [iconName]="'tabler-icon-x'"></slui-icon>
+    </button>
+    <div class="flex-1 flex flex-col">
+        <a [routerLink]="['/form', data?.id]"
+           class="font-body font-bold text-200 text-gray-900">{{data?.workItem?.name}}</a>
+        <a [routerLink]="['/employee', data?.employee?.id]"
+           class="font-body text-100 text-gray-900">
+            {{data?.employee?.name?.first}} {{data?.employee?.name?.middle}} {{data?.employee?.name?.last}}
+        </a>
+    </div>
+</header>
+<div class="flex-1 flex flex-col">
+    <div class="px-6 py-3 even:bg-gray-75 rounded-md">
+        <p class="font-body text-75 text-gray-800">Quantity</p>
+        <p class="font-body text-100 text-gray-900">{{data?.quantity}}</p>
+    </div>
+    <div class="px-6 py-3 even:bg-gray-75 rounded-md">
+        <p class="font-body text-75 text-gray-800">Site</p>
+        <p class="font-body text-100 text-gray-900">{{data?.site || '-'}}</p>
+    </div>
+</div>
+
+<div *ngIf="data?.approvedBy && data?.workItem?.isApprovalRequired"
+     class="flex items-center gap-2 px-6">
+    <span class="font-body text-100 text-gray-700">Approved by:</span>
+    <span class="font-body text-100 text-gray-900">{{data?.approvedBy?.firstName}} {{data?.approvedBy?.lastName}}</span>
+</div>
+<div *ngIf="!data?.approvedBy && data?.workItem?.isApprovalRequired"
+     class="flex items-center gap-2 px-6">
+    <button type="button"
+            *isLoading="isPending"
+            slui-button
+            appearance="cta"
+            (click)="approve.emit(data)">Approve</button>
+    <button type="button"
+            slui-button
+            appearance="primary"
+            silent
+            (click)="close.emit(true)">Cancel</button>
+</div>

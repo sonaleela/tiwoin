@@ -1,0 +1,49 @@
+<label for="selectEmployee"
+       class="block font-body text-75 text-gray-800 mb-1">Select employee</label>
+<div class="relative">
+    <input id="selectEmployee"
+           #input
+           cdkOverlayOrigin
+           #trigger="cdkOverlayOrigin"
+           [formControl]="control"
+           (focus)="isOpened = true"
+           class="w-full border rounded font-body text-100 text-gray-800 px-3 h-8 disabled:bg-gray-200 disabled:border-gray-300 disabled:cursor-not-allowed"
+           placeholder="Type employee name to search">
+    <slui-icon *ngIf="value && !control.disabled"
+               class="cursor-pointer text-gray-800 h-5 w-5 top-1.5 right-2 absolute"
+               [iconName]="'tabler-icon-x'"
+               (click)="selectValue({value: []})"></slui-icon>
+</div>
+
+<ng-template cdkConnectedOverlay
+             [cdkConnectedOverlayOrigin]="trigger"
+             [cdkConnectedOverlayOpen]="isOpened"
+             [cdkConnectedOverlayDisableClose]="false"
+             [cdkConnectedOverlayHasBackdrop]="true"
+             [cdkConnectedOverlayBackdropClass]="'cdk-overlay-transparent-backdrop'"
+             (backdropClick)="isOpened = false">
+    <section class="flex py-2 bg-gray-75 rounded-md border border-gray-500 mt-1"
+             [ngStyle]="{'min-width': input.offsetWidth + 'px'}">
+
+        <div class="flex-1"
+             *isSpinner="(isLoading$ | async)"></div>
+
+        <p *ngIf="!(list$ | async)?.length && !(isLoading$ | async) && input.value.length >= 3"
+           class="font-body text-100 text-gray-800 px-4 py-2">No records found!</p>
+
+        <p *ngIf="input.value.length < 3 && !(isLoading$ | async) && !(list$ | async)?.length"
+           class="font-body text-100 text-gray-800 px-4 py-2">Type to search!</p>
+
+        <ul *ngIf="(list$ | async)?.length && !(isLoading$ | async)"
+            cdkListbox
+            [cdkListboxCompareWith]="compareItems"
+            (cdkListboxValueChange)="selectValue($event)"
+            class="w-full">
+            <li *ngFor="let item of (list$ | async)"
+                [cdkOption]="item"
+                class="font-body text-100 text-gray-800 px-4 py-2 cursor-pointer hover:bg-gray-100">
+                {{item?.name?.first}} {{item?.name?.middle}} {{item?.name?.last}}
+            </li>
+        </ul>
+    </section>
+</ng-template>

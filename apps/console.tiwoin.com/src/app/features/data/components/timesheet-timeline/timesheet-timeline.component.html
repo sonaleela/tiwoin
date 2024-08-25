@@ -1,0 +1,19 @@
+<svg width="100%"
+     height="8">
+      <!-- Horizontal timeline line -->
+      <line x1="4"
+            x2="calc(100% - 4px)"
+            y1="4"
+            y2="4"
+            stroke-linecap="round"
+            class="stroke-[8px] stroke-gray-200" />
+
+      <!-- Draw entries based on provided data -->
+      <rect *ngFor="let entry of entries"
+            [attr.x]="entry.startTimePercent"
+            [attr.width]="entry.durationPercent || 0"
+            y1="4"
+            y2="4"
+            height="8"
+            [ngClass]="{'fill-green-400': entry.type === 'In', 'fill-orange-400': entry.type === 'Break'}"></rect>
+</svg>

@@ -57,7 +57,6 @@ export class AuthenticationEffects {
         ofType(fromActions.SubmitOTPBegin),
         exhaustMap(payload => this.authenticationService.submitOTP(payload.otp)),
         map((response) => {
-            console.log(response);
             if (!response.isSignedIn) {
                 return fromActions.SubmitOTPFail({ message: 'OTP is wrong, try again!' });
             }

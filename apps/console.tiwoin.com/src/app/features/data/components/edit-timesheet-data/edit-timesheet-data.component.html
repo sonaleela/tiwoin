@@ -1,0 +1,103 @@
+<header class="flex px-6 items-center gap-4">
+    <button slui-action-button
+            (click)="close.emit(true)">
+        <slui-icon [iconName]="'tabler-icon-x'"></slui-icon>
+    </button>
+    <div class="flex-1 flex flex-col">
+        <p class="font-body font-bold text-200 text-gray-900">Update timesheet</p>
+    </div>
+</header>
+<form [formGroup]="form"
+      (ngSubmit)="submit()"
+      novalidate
+      class="flex-1 px-6">
+    <div class="mb-5 w-full">
+        <sonaleela-select-employee formControlName="employee"></sonaleela-select-employee>
+        <p class="font-body text-75 text-red-400"
+           *ngIf="form.get('employee')?.hasError('required') && form.get('employee')?.touched">
+            Employee is required
+        </p>
+    </div>
+    <div class="mb-5">
+        <label for="date"
+               class="block font-body text-75 text-gray-800 mb-1">Data</label>
+        <input formControlName="date"
+               type="date"
+               id="date"
+               class="border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8 ng-untouched ng-pristine ng-invalid disabled:bg-gray-200 disabled:border-gray-300 disabled:cursor-not-allowed">
+    </div>
+    <h2 class="font-body font-bold text-gray-800 text-100 mb-4">Enteries</h2>
+    <div formArrayName="entries"
+         class="flex flex-col gap-3 mb-6">
+        <div *ngFor="let entry of entries.controls; let i = index"
+             [formGroupName]="i"
+             class="flex flex-row flex-nowrap items-end gap-2">
+            <div>
+                <label for="time-{{i}}"
+                       class="block font-body text-75 text-gray-800 mb-1">Time</label>
+                <input id="time-{{i}}"
+                       formControlName="time"
+                       placeholder="Time"
+                       type="time"
+                       class="h-9 font-body text-100 text-gray-900 bg-transparent border border-gray-500 rounded px-4">
+            </div>
+            <div>
+                <label for="type-{{i}}"
+                       class="block font-body text-75 text-gray-800 mb-1">Entry type</label>
+                <select *ngIf="i%2 === 1"
+                        id="type-{{i}}"
+                        formControlName="type"
+                        placeholder="Type"
+                        class="w-36 h-9 font-body text-100 text-gray-900 bg-transparent border border-gray-500 rounded px-4 disabled:bg-gray-200 disabled:border-gray-300 disabled:cursor-not-allowed">
+                    <option value="Break">Break</option>
+                    <option value="Out">Out</option>
+                </select>
+                <input *ngIf="i%2 === 0"
+                       id="type-{{i}}"
+                       formControlName="type"
+                       placeholder="Type"
+                       class="w-36 h-9 font-body text-100 text-gray-900 bg-transparent border border-gray-500 rounded px-4 disabled:bg-gray-200 disabled:border-gray-300 disabled:cursor-not-allowed">
+            </div>
+            <button type="button"
+                    *ngIf="i === entries.length - 1"
+                    (click)="addEntry()"
+                    slui-action-button
+                    silent>
+                <slui-icon iconName="tabler-icon-plus"></slui-icon>
+            </button>
+            <button type="button"
+                    *ngIf="i === entries.length - 1 && entries.length !== 1"
+                    (click)="removeEntry()"
+                    slui-action-button
+                    silent>
+                <slui-icon class="text-red-500"
+                           iconName="tabler-icon-trash"></slui-icon>
+            </button>
+        </div>
+        <p class="font-body text-75 text-red-400"
+           *ngIf="form.get('entries')?.hasError('timeError')">
+            Some clock entries are not valid.
+        </p>
+        <p class="font-body text-75 text-red-400"
+           *ngIf="form.get('entries')?.hasError('outEntryMissing')">
+            Out entry missing.
+        </p>
+        <p class="font-body text-75 text-red-400"
+           *ngIf="form.get('entries')?.hasError('misplacedOutEntry')">
+            Only last entry can be an "Out entry".
+        </p>
+    </div>
+    <div class="flex items-center gap-2">
+        <button type="button"
+                *isLoading="isPending"
+                slui-button
+                type="submit"
+                appearance="cta">Update timesheet</button>
+        <button type="submit"
+                slui-button
+                appearance="primary"
+                type="button"
+                silent
+                (click)="close.emit(true)">Cancel</button>
+    </div>
+</form>

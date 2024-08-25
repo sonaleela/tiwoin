@@ -1,0 +1,10 @@
+<sonaleela-layout-sidenav *ngIf="layout === layoutTypes.SIDENAV">
+    <ng-container *ngTemplateOutlet="template"></ng-container>
+</sonaleela-layout-sidenav>
+<sonaleela-layout-empty *ngIf="layout === layoutTypes.EMPTY">
+    <ng-container *ngTemplateOutlet="template"></ng-container>
+</sonaleela-layout-empty>
+
+<ng-template #template>
+    <router-outlet></router-outlet>
+</ng-template>

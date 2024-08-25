@@ -1,0 +1,27 @@
+{
+    "name": "devel",
+    "sonaleela": {
+        "basePath": "http://localhost:3000"
+    },
+    "aws": {
+        "cognito": {
+            "region": "us-east-1",
+            "userPoolId": "ap-south-1_Cz2v1MZFO",
+            "userPoolClientId": "71an7rn1b888hag0cgrjr61oha"
+        }
+    },
+    "theme": {
+        "themeStorageKey": "appliedTheme",
+        "themeList": [
+            {
+                "name": "Light",
+                "className": "sonaleela-theme--light",
+                "isDefault": true
+            },
+            {
+                "name": "Dark",
+                "className": "sonaleela-theme--dark"
+            }
+        ]
+    }
+}

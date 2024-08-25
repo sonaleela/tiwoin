@@ -1,0 +1,28 @@
+<section class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl">
+    <form [formGroup]="form"
+          (ngSubmit)="submit()"
+          novalidate>
+        <div class="mb-3">
+            <label for="phoneNumber"
+                   class="block font-body text-75 text-gray-800 mb-1">Phone number</label>
+            <input id="phoneNumber"
+                   type="text"
+                   class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                   placeholder="Enter phone number"
+                   formControlName="phoneNumber">
+        </div>
+        <div class="mb-3">
+            <label for="role"
+                   class="block font-body text-75 text-gray-800 mb-1">Role</label>
+            <input id="role"
+                   type="text"
+                   class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                   placeholder="Enter role"
+                   formControlName="role">
+        </div>
+        <button type="submit"
+                *isLoading="isPending"
+                slui-button
+                appearance="cta">Invite now</button>
+    </form>
+</section>

@@ -1,0 +1,11 @@
+<section *ngIf="(activeField$ | async)"
+         class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4 transition-all">
+     <ng-template [sonaleelaFormControl]="(activeField$ | async)"
+                  (save)="saveField($event)"
+                  (remove)="removeField($event)"></ng-template>
+</section>
+
+<section *ngIf="!(activeField$ | async)"
+         class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4 transition-all">
+     <sonaleela-control-selection-section (selectControl)="addField($event)"></sonaleela-control-selection-section>
+</section>

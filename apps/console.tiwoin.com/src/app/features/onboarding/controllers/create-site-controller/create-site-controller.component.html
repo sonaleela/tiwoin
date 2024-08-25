@@ -1,0 +1,28 @@
+<main class="flex-1 flex flex-row flex-nowrap h-full">
+    <section class="flex-1 flex flex-col">
+        <h1 class="mx-5 mt-4 mb-8 font-body font-bold text-200 text-gray-900">Create your first site</h1>
+        <sonaleela-site-form class="flex-1 overflow-auto"
+                             #form
+                             [state]="state$ | async"
+                             [country]="country$ | async"
+                             [cityList]="cityList$ | async"
+                             (addresssChange)="addresssChange($event)"
+                             (pinChange)="pinChange($event)"
+                             (submitForm)="submitForm($event)"></sonaleela-site-form>
+        <footer class="flex-none flex justify-end px-10 py-4 border-t border-gray-300">
+            <p>{{error$ | async}}</p>
+            <button (click)="form.submit()"
+                    *isLoading="isPending$ | async"
+                    slui-button>Next</button>
+        </footer>
+    </section>
+    <section class="flex-1 relative flex flex-col overflow-hidden bg-gray-50 p-8 pt-4">
+        <h1 class="font-body font-bold text-200 text-gray-900">Geo-fence</h1>
+        <p class="mb-4 font-body text-100 text-gray-800">Draw a shape over your site</p>
+        <div class="flex-1 w-full broder border-gray-300 rounded-2xl overflow-hidden">
+            <sonaleela-geo-fence [geolocation]="geolocation$ | async"
+                                 [zoomLevel]="zoomLevel"
+                                 (drawing)="drawing($event)"></sonaleela-geo-fence>
+        </div>
+    </section>
+</main>

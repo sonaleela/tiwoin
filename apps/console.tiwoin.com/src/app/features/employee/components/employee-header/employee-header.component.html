@@ -1,0 +1,15 @@
+<a type="button"
+   slui-action-button
+   silent
+   routerLink="/employee">
+    <slui-icon [iconName]="'tabler-icon-chevron-left'"></slui-icon>
+</a>
+<img class="w-auto h-full rounded"
+     [src]="employee?.avatar?.url ? 'https://tiwoin-user-uploads.s3.ap-south-1.amazonaws.com/' + employee?.avatar?.url : '/assets/img/profile.png'"
+     alt="employee image">
+<div class="flex flex-col gap-1">
+    <h1 class="font-body font-bold text-200 text-gray-900">
+        {{employee?.name?.first}} {{employee?.name?.middle}} {{employee?.name?.last}}
+    </h1>
+    <h3 class="font-body text-100 text-gray-800">{{employee?.designation}}</h3>
+</div>

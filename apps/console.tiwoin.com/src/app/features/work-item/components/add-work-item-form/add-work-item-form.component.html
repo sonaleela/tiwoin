@@ -1,0 +1,66 @@
+<section class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl">
+       <form [formGroup]="form"
+             (ngSubmit)="submit()"
+             novalidate>
+              <div class="mb-3">
+                     <label for="name"
+                            class="block font-body text-75 text-gray-800 mb-1">Work-item name</label>
+                     <input id="name"
+                            type="text"
+                            class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                            placeholder="Enter work-item name"
+                            formControlName="name">
+                     <p class="font-body text-75 text-red-400"
+                        *ngIf="form.get('name')?.hasError('required') && form.get('name')?.touched">Name is required</p>
+              </div>
+              <div class="mb-3">
+                     <label for="description"
+                            class="block font-body text-75 text-gray-800 mb-1">Description <em>(optional)</em></label>
+                     <textarea id="description"
+                               type="text"
+                               rows="2"
+                               class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 py-1.5"
+                               placeholder="Enter description"
+                               formControlName="description"></textarea>
+              </div>
+
+              <div formGroupName="workItem"
+                   class="flex flex-row items-start gap-4 mb-3">
+                     <div class="flex-1">
+                            <label for="unitPrice"
+                                   class="block font-body text-75 text-gray-800 mb-1">Unit price</label>
+                            <input id="unitPrice"
+                                   type="number"
+                                   class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                                   placeholder="Enter per unit price"
+                                   formControlName="unitPrice">
+                            <p class="font-body text-75 text-red-400"
+                               *ngIf="form.get('workItem')?.get('unitPrice')?.hasError('required') && form.get('workItem')?.get('unitPrice')?.touched">
+                                   Unit price is required</p>
+                     </div>
+                     <div class="flex-1">
+                            <label for="deductionCost"
+                                   class="block font-body text-75 text-gray-800 mb-1">Damage/General deduction
+                                   <em>(optional)</em></label>
+                            <input id="deductionCost"
+                                   type="number"
+                                   class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                                   placeholder="Enter damage or incident deduction cost"
+                                   formControlName="deductionCost">
+                     </div>
+              </div>
+              <div class="flex mb-5 gap-4">
+                     <label class="font-body text-75 text-gray-800 py-2"
+                            for="isApprovalRequired">Require approval?</label>
+                     <input id="isApprovalRequired"
+                            type="checkbox"
+                            formControlName="isApprovalRequired">
+              </div>
+              <p class="font-body text-75 text-red-400 mb-4"
+                 *ngIf="error">{{error}}</p>
+              <button type="submit"
+                      *isLoading="isPending"
+                      slui-button
+                      appearance="cta">Add work-item</button>
+       </form>
+</section>

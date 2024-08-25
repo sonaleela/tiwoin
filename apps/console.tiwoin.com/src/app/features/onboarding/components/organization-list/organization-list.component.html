@@ -1,0 +1,75 @@
+<header class="flex items-center gap-2 mb-6">
+     <button slui-action-button
+             silent
+             [routerLink]="['/']">
+          <slui-icon [iconName]="'tabler-icon-chevron-left'"></slui-icon>
+     </button>
+     <h1 class="font-body font-bold text-200 text-gray-900">Organization list</h1>
+</header>
+
+<section routerLink="/onboard-organization"
+         class="cursor-pointer flex items-center justify-center gap-2 p-10 rounded-2xl border border-dashed border-gray-300 mb-10">
+     <slui-icon class="h-6 w-6 text-gray-800"
+                [iconName]="'tabler-icon-plus'"></slui-icon>
+     <p class="font-body text-100 text-gray-900">Crete new</p>
+</section>
+
+<div class="flex-1"
+     *isSpinner="isPending"></div>
+<ng-container *ngIf="!isPending">
+     <h2 *ngIf="unacceptedOrganizationList?.length"
+         class="font-body font-bold text-100 text-gray-800 mb-2">Pending invitations</h2>
+     <section *ngFor="let organization of unacceptedOrganizationList"
+              class="flex items-center justify-between p-10 bg-white rounded-2xl border border-gray-300 mb-6">
+          <h2 class="flex-1 font-body font-bold text-100 text-gray-800">{{organization?.organization?.name}}</h2>
+          <p class="flex-auto font-body text-100 text-gray-800 text-center">{{organization?.role}}</p>
+          <div class="flex-1 flex justify-end gap-2">
+               <button slui-action-button
+                       emphasis
+                       (click)="accept.emit(organization)">Accept</button>
+               <button slui-action-button
+                       (click)="reject.emit(organization)">Reject</button>
+          </div>
+     </section>
+
+     <h2 *ngIf="ownerOrganizationList?.length"
+         class="font-body font-bold text-100 text-gray-800 mb-2">Owned organizations</h2>
+     <section *ngFor="let organization of ownerOrganizationList"
+              class="relative flex items-center justify-between p-10 pt-12 bg-white rounded-2xl border border-gray-300 mb-6 cursor-pointer"
+              (click)="setOrganization.emit(organization)">
+          <div *ngIf="organization?.organization?.id === profile?.defaultOrganization"
+               class="flex items-center gap-4 px-5 py-1 absolute right-[-1px] top-3 border border-gray-300 rounded-l-md bg-gray-75">
+               <slui-icon class="h-4 w-4 text-green-400"
+                          [iconName]="'discount-check'"></slui-icon>
+               <p class="font-body font-bold text-50 text-green-400">Selected</p>
+          </div>
+          <h2 class="flex-1 font-body font-bold text-100 text-gray-800">{{organization?.organization?.name}}</h2>
+          <p class="flex-auto font-body text-100 text-gray-800 text-center">{{organization?.role | titlecase}}</p>
+          <p class="flex-1 text-right font-body text-75 text-gray-800">
+               <span>Created on: </span>
+               <span class="font-bold">
+                    {{organization?.createdAt | date:'dd MMM'}}
+               </span>
+          </p>
+     </section>
+     <h2 *ngIf="acceptedOrganizationList?.length"
+         class="font-body font-bold text-100 text-gray-800 mb-2">Members</h2>
+     <section *ngFor="let organization of acceptedOrganizationList"
+              class="relative flex items-center justify-between p-10 pt-12 bg-white rounded-2xl border border-gray-300 mb-6 cursor-pointer"
+              (click)="setOrganization.emit(organization)">
+          <div *ngIf="organization?.organization?.id === profile?.defaultOrganization"
+               class="flex items-center gap-4 px-5 py-1 absolute right-[-1px] top-3 border border-gray-300 rounded-l-md bg-gray-75">
+               <slui-icon class="h-4 w-4 text-green-400"
+                          [iconName]="'discount-check'"></slui-icon>
+               <p class="font-body font-bold text-50 text-green-400">Selected</p>
+          </div>
+          <h2 class="flex-1 font-body font-bold text-100 text-gray-800">{{organization?.organization?.name}}</h2>
+          <p class="flex-auto font-body text-100 text-gray-800 text-center">{{organization?.role}}</p>
+          <p class="flex-1 text-right font-body text-75 text-gray-800">
+               <span>Member since: </span>
+               <span class="font-bold">
+                    {{organization.acceptedAt | date:'dd MMM'}}
+               </span>
+          </p>
+     </section>
+</ng-container>

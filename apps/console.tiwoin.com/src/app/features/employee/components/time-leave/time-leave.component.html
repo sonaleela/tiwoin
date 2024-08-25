@@ -1,0 +1,166 @@
+<section *ngIf="!isTimesheetForm"
+         class="relative bg-gray-50 p-8 rounded-3xl mb-4">
+    <button class="absolute right-8 top-8"
+            slui-action-button
+            (click)="editTimesheetInfo()">Edit</button>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">In time</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.clockTime?.inTime || '-'}}</p>
+    </div>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">Out time</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.clockTime?.outTime || '-'}}</p>
+    </div>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">Break time</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.clockTime?.breakTime || '-'}}</p>
+    </div>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">Work hours - Full day</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.minimumWorkHours?.fullDay || '-'}}</p>
+    </div>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">Minimum work hours - Full day</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.minimumWorkHours?.halfDay || '-'}}</p>
+    </div>
+</section>
+<form *ngIf="isTimesheetForm"
+      class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4"
+      [formGroup]="timesheetForm"
+      (ngSubmit)="submitTimesheet()"
+      novalidate>
+    <ng-container formGroupName="clockTime">
+        <div class="flex items-center gap-2">
+            <div class="flex flex-col gap-1 mb-4">
+                <label for="inTime"
+                       class="font-body text-75 text-gray-800">In time</label>
+                <input id="inTime"
+                       type="time"
+                       class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                       formControlName="inTime" />
+            </div>
+            <div class="flex flex-col gap-1 mb-4">
+                <label for="outTime"
+                       class="font-body text-75 text-gray-800">Out time</label>
+                <input id="outTime"
+                       type="time"
+                       class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                       formControlName="outTime" />
+            </div>
+        </div>
+        <div class="flex flex-col gap-1 mb-4 w-[25%]">
+            <label for="breakTime"
+                   class="font-body text-75 text-gray-800">Break time</label>
+            <div class="relative w-full">
+                <input id="breakTime"
+                       type="text"
+                       class="h-9 w-full px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                       formControlName="breakTime" />
+                <p class="absolute right-0 top-0 px-3 leading-9 font-body font-bold text-100 text-gray-700">minutes</p>
+            </div>
+        </div>
+    </ng-container>
+    <ng-container formGroupName="minimumWorkHours">
+        <div class="flex items-center gap-2">
+            <div class="flex flex-col gap-1 mb-4">
+                <label for="fullDay"
+                       class="font-body text-75 text-gray-800">Full day</label>
+                <div class="relative">
+                    <input id="fullDay"
+                           type="text"
+                           class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                           formControlName="fullDay" />
+                    <p class="absolute right-0 top-0 px-3 leading-9 font-body font-bold text-100 text-gray-700">hours
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-1 mb-4">
+                <label for="halfDay"
+                       class="font-body text-75 text-gray-800">Half time</label>
+                <div class="relative">
+                    <input id="halfDay"
+                           type="text"
+                           class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                           formControlName="halfDay" />
+                    <p class="absolute right-0 top-0 px-3 leading-9 font-body font-bold text-100 text-gray-700">hours
+                    </p>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+    <div class="flex flex-row gap-2">
+        <button type="submit"
+                slui-button
+                *isLoading="isPending"
+                appearance="cta">Save changes</button>
+        <button type="button"
+                slui-button
+                (click)="isTimesheetForm = !isTimesheetForm"
+                appearance="primary"
+                silent>Cancel</button>
+    </div>
+</form>
+
+<section *ngIf="!isLeaveForm"
+         class="relative bg-gray-50 p-8 rounded-3xl mb-4">
+    <button class="absolute right-8 top-8"
+            slui-action-button
+            (click)="editLeaveInfo()">Edit</button>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">Paid leaves</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.leaves?.paidLeaves || '-'}}</p>
+    </div>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">Earned leave</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.leaves?.earnedPaidLeaves || '-'}}</p>
+    </div>
+    <div class="mb-4">
+        <p class="font-body text-75 text-gray-800">Consumed leave</p>
+        <p class="font-body text-100 text-gray-900">{{employee?.leaves?.consumedLeaves || '-'}}</p>
+    </div>
+</section>
+<form *ngIf="isLeaveForm"
+      class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4"
+      [formGroup]="leaveForm"
+      (ngSubmit)="submitLeave()"
+      novalidate>
+    <ng-container formGroupName="leaves">
+        <div class="flex items-center gap-2">
+            <div class="flex flex-col gap-1 mb-4">
+                <label for="paidLeaves"
+                       class="font-body text-75 text-gray-800">Paid leaves</label>
+                <input id="paidLeaves"
+                       type="number"
+                       class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                       formControlName="paidLeaves" />
+            </div>
+            <div class="flex flex-col gap-1 mb-4">
+                <label for="earnedPaidLeaves"
+                       class="font-body text-75 text-gray-800">Earned paid leaves</label>
+                <input id="earnedPaidLeaves"
+                       type="number"
+                       class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                       formControlName="earnedPaidLeaves" />
+            </div>
+        </div>
+        <div class="flex flex-col gap-1 mb-4 w-[25%]">
+            <label for="consumedLeaves"
+                   class="font-body text-75 text-gray-800">Consumed leaves</label>
+            <input id="consumedLeaves"
+                   type="number"
+                   class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                   formControlName="consumedLeaves" />
+        </div>
+    </ng-container>
+    <div class="flex flex-row gap-2">
+        <button type="submit"
+                slui-button
+                *isLoading="isPending"
+                appearance="cta">Save changes</button>
+        <button type="button"
+                slui-button
+                (click)="isLeaveForm = !isLeaveForm"
+                appearance="primary"
+                silent>Cancel</button>
+    </div>
+</form>

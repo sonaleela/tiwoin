@@ -1,0 +1,36 @@
+<form [formGroup]="form"
+      (ngSubmit)="submit()"
+      novalidate>
+
+    <section class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4">
+        <div class="mb-3">
+            <label for="name"
+                   class="block font-body text-75 text-gray-800 mb-1">Form name</label>
+            <input id="name"
+                   type="text"
+                   class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
+                   placeholder="Enter form name"
+                   formControlName="name">
+        </div>
+        <div class="flex mb-5 gap-4">
+            <label class="font-body text-75 text-gray-800 py-2"
+                   for="isApprovalRequired">Require approval?</label>
+            <input id="isApprovalRequired"
+                   type="checkbox"
+                   formControlName="isApprovalRequired">
+        </div>
+    </section>
+
+    <section class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl mb-4">
+        <h2 class="font-body font-bold text-100 text-gray-900 mb-3">Controls</h2>
+        <div class="flex flex-col gap-1">
+            <sonaleela-form-control-preivew class="animate-bounce-in-forward"
+                                            *ngFor="let field of form.get('fields')?.value; index as i"
+                                            [ngStyle]="{'animation-delay': 100 * i +'ms'}"
+                                            [control]="field"
+                                            (edit)="edit.emit(field)"
+                                            (copy)="copy.emit(field)"
+                                            (delete)="delete.emit(field)"></sonaleela-form-control-preivew>
+        </div>
+    </section>
+</form>
