@@ -1,4 +1,4 @@
-import { NgModule, isDevMode } from '@angular/core';
+import { NgModule, isDevMode, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SluiButtonModule, SluiIconModule } from '@sonaleela/ui';
@@ -60,6 +60,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
         appInitializerProvider,
         httpInterceptorProvider,
         provideHttpClient(),
+        provideExperimentalZonelessChangeDetection(),
     ],
     bootstrap: [AppComponent]
 })

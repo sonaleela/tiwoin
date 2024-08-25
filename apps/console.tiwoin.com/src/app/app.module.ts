@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,7 +28,7 @@ import {
 } from './features';
 import { reducers, AppEffects, AppConfigEffects, AppEntityEffects, RouterEffects } from '@store';
 import { httpInterceptorProvider } from '@core';
-import { AppComponent, SampleComponent } from './components';
+import { AppComponent } from './components';
 import { LayoutModule } from './layout';
 
 @NgModule({
@@ -65,12 +65,12 @@ import { LayoutModule } from './layout';
     ],
     declarations: [
         AppComponent,
-        SampleComponent,
     ],
     bootstrap: [AppComponent],
     providers: [
         appInitializerProvider,
         httpInterceptorProvider,
+        provideExperimentalZonelessChangeDetection(),
     ],
 })
 export class AppModule {
