@@ -1,11 +1,12 @@
-<tiwoin-signup-form *ngIf="!(isOTPForm$ | async)"
-                    [isPending]="isSignupPending$ | async"
-                    [error]="(signupError$ | async) || (OTPError$ | async)"
-                    (submitForm)="submitSignupForm($event)"></tiwoin-signup-form>
-<tiwoin-otp-form *ngIf="isOTPForm$ | async"
-                 [timer]="countdown$ | async"
+@if (isOTPForm$ | async) {
+<tiwoin-otp-form [timer]="countdown$ | async"
                  [phoneNumber]="phoneNumber$ | async"
                  [isPending]="isOTPPending$ | async"
                  [error]="OTPError$ | async"
                  (editPhoneNumber)="editPhoneNumber($event)"
                  (submitForm)="submitOTPform($event)"></tiwoin-otp-form>
+} @else {
+<tiwoin-signup-form [isPending]="isSignupPending$ | async"
+                    [error]="(signupError$ | async) || (OTPError$ | async)"
+                    (submitForm)="submitSignupForm($event)"></tiwoin-signup-form>
+}

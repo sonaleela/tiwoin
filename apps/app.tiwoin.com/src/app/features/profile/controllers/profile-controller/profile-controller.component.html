@@ -10,27 +10,32 @@
         Profile
     </h1>
 </header>
-<tiwoin-profile *ngIf="!(isForm$ | async) && !(isContactForm$ | async) && !(isProfilePhotoForm$ | async)"
-                [profile]="employee$ | async"
+
+@if (!(isForm$ | async) && !(isContactForm$ | async) && !(isProfilePhotoForm$ | async)) {
+<tiwoin-profile [profile]="employee$ | async"
                 [isPending]="isPending$ | async"
                 [error]="error$ | async"
                 (toggleForm)="toggleForm($event)"
                 (togglePhotoForm)="togglePhotoForm($event)"
                 (toggleContactForm)="toggleContactForm($event)"></tiwoin-profile>
-<tiwoin-profile-form *ngIf="(isForm$ | async)"
-                     [isPending]="isUpdatePending$ | async"
+}
+@if (isForm$ | async) {
+<tiwoin-profile-form [isPending]="isUpdatePending$ | async"
                      [error]="updateProfileError$ | async"
                      [profile]="employee$ | async"
                      (submitForm)="submitForm($event)"
                      (toggleForm)="toggleForm($event)"></tiwoin-profile-form>
-<tiwoin-contact-form *ngIf="(isContactForm$ | async)"
-                     [isPending]="isUpdatePending$ | async"
+}
+@if (isContactForm$ | async) {
+<tiwoin-contact-form [isPending]="isUpdatePending$ | async"
                      [error]="updateProfileError$ | async"
                      [profile]="employee$ | async"
                      (submitForm)="submitForm($event)"
                      (toggleForm)="toggleContactForm($event)"></tiwoin-contact-form>
-<tiwoin-profile-photo-form *ngIf="(isProfilePhotoForm$ | async)"
-                           [isPending]="isProfilePhotoPending$ | async"
+}
+@if (isProfilePhotoForm$ | async) {
+<tiwoin-profile-photo-form [isPending]="isProfilePhotoPending$ | async"
                            [error]="profilePhotoError$ | async"
                            (upload)="uploadProfilePhoto($event)"
                            (toggleForm)="togglePhotoForm($event)"></tiwoin-profile-photo-form>
+}

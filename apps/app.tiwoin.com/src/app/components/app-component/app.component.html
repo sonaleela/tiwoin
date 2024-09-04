@@ -1,5 +1,6 @@
 <!-- Location off banner -->
-<div *ngIf="isLocationOff$ | async"
+@if (isLocationOff$ | async) {
+<div
      class="absolute top-0 left-0 right-0 bottom-0 bg-[rgb(245_245_245_/_75%)] backdrop-blur-sm z-50 flex flex-col items-center justify-center animate-slide-down">
     <slui-icon class="h-12 w-12 text-orange-600 mb-6 animate-pulse"
                [iconName]="'map-pin-off'"></slui-icon>
@@ -12,8 +13,10 @@
             appearance="cta"
             (click)="allowDeviceLoaction()">Allow access</button>
 </div>
+}
 <!-- No internet banner -->
-<div *ngIf="isOffline$ | async"
+@if (isOffline$ | async) {
+<div
      class="absolute top-0 left-0 right-0 bottom-0 bg-[rgb(245_245_245_/_75%)] backdrop-blur-sm z-50 flex flex-col items-center justify-center animate-slide-down">
     <div class="h-12 w-12 text-red-600 mb-6 animate-pulse">
         <svg xmlns="http://www.w3.org/2000/svg"
@@ -37,6 +40,7 @@
     <p class="font-body text-200 text-gray-800 mb-2">Slow or no internet connection!</p>
     <p class="font-body text-75 text-gray-700">Please check your internet settings.</p>
 </div>
+}
 
 <!-- Main app -->
 <tiwoin-layout-matcher [layout]="layout$ | async"></tiwoin-layout-matcher>

@@ -1,73 +1,78 @@
 <section class="w-full">
-    <img class="h-8 w-auto"
-         alt="sonaleela logo"
-         src="assets/img/logo_name.svg" />
-    <p class="font-body text-gray-800 text-75 italic mb-8">Empowering Businesses with Comprehensive Workforce Solutions
-    </p>
-    <h1 class="font-display font-bold text-200 text-gray-900 mb-2">Signup</h1>
-    <p class="font-body text-100 text-gray-900 mb-12">Already a member? <a
-           class="font-body text-blue-400 hover:underline"
-           routerLink="/signin">Signin</a></p>
-    <form [formGroup]="form"
-          (ngSubmit)="submit()"
-          novalidate
-          class="mb-12">
-        <div class="flex items-start gap-2 mb-4">
-            <div class="flex-1">
-                <label class="font-body text-75 text-gray-800 mb-1"
-                       for="fname">First name</label>
-                <input id="fname"
-                       type="text"
-                       placeholder="John"
-                       formControlName="fname"
-                       class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 px-3 mb-1 hover:border-gray-600" />
-                <p *ngIf="form.get('fname')?.hasError('required') && form.get('fname')?.touched"
-                   class="font-body text-75 text-red-400">First name is required</p>
-            </div>
-            <div class="flex-1">
-                <label class="font-body text-75 text-gray-800 mb-1"
-                       for="lname">Last name</label>
-                <input id="lname"
-                       type="text"
-                       placeholder="Doe"
-                       formControlName="lname"
-                       class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 px-3 mb-1 hover:border-gray-600" />
-                <p *ngIf="form.get('lname')?.hasError('required') && form.get('lname')?.touched"
-                   class="font-body text-75 text-red-400">Last name is required</p>
-            </div>
-        </div>
-        <div class="mb-4">
-            <label class="font-body text-75 text-gray-800 mb-1"
-                   for="phone_number">Phone number</label>
-            <div class="relative">
-                <p
-                   class="absolute left-3 top-2 pr-2 font-body text-gray-700 text-100 leading-[20px] border-r border-gray-500">
-                    +91
-                </p>
-                <input id="phone_number"
-                       type="number"
-                       placeholder="xxxxxxxxxx"
-                       formControlName="phone_number"
-                       required
-                       class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 pl-14 pr-3 hover:border-gray-600" />
-            </div>
-            <p *ngIf="form.get('phone_number')?.hasError('required') && form.get('phone_number')?.touched"
-               class="font-body text-75 text-red-400">Phone number is required</p>
-        </div>
-        <p *ngIf="error"
-           class="font-body text-75 text-red-400 mb-4">{{error}}</p>
-        <div class="flex justify-between mb-4">
-            <button type="submit"
-                    *isLoading="isPending"
-                    slui-button
-                    [appearance]="'cta'">
-                Create account
-            </button>
-        </div>
-    </form>
-    <p class="font-body text-50 text-gray-900 mb-12">By creating account, I agree to <a
-           class="font-body text-blue-400 hover:underline"
-           routerLink="/tos">terms of use</a> and also I have read and
-        acknowledged the <a class="font-body text-blue-400 hover:underline"
-           routerLink="/pp">privacy policy</a>.</p>
+       <img class="h-8 w-auto"
+            alt="sonaleela logo"
+            src="assets/img/logo_name.svg" />
+       <p class="font-body text-gray-800 text-75 italic mb-8">Empowering Businesses with Comprehensive Workforce
+              Solutions
+       </p>
+       <h1 class="font-display font-bold text-200 text-gray-900 mb-2">Signup</h1>
+       <p class="font-body text-100 text-gray-900 mb-12">Already a member? <a
+                 class="font-body text-blue-400 hover:underline"
+                 routerLink="/signin">Signin</a></p>
+       <form [formGroup]="form"
+             (ngSubmit)="submit()"
+             novalidate
+             class="mb-12">
+              <div class="flex items-start gap-2 mb-4">
+                     <div class="flex-1">
+                            <label class="font-body text-75 text-gray-800 mb-1"
+                                   for="fname">First name</label>
+                            <input id="fname"
+                                   type="text"
+                                   placeholder="John"
+                                   formControlName="fname"
+                                   class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 px-3 mb-1 hover:border-gray-600" />
+                            @if (form.get('fname')?.hasError('required') && form.get('fname')?.touched) {
+                            <p class="font-body text-75 text-red-400">First name is required</p>
+                            }
+                     </div>
+                     <div class="flex-1">
+                            <label class="font-body text-75 text-gray-800 mb-1"
+                                   for="lname">Last name</label>
+                            <input id="lname"
+                                   type="text"
+                                   placeholder="Doe"
+                                   formControlName="lname"
+                                   class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 px-3 mb-1 hover:border-gray-600" />
+                            @if (form.get('lname')?.hasError('required') && form.get('lname')?.touched) {
+                            <p class="font-body text-75 text-red-400">Last name is required</p>
+                            }
+                     </div>
+              </div>
+              <div class="mb-4">
+                     <label class="font-body text-75 text-gray-800 mb-1"
+                            for="phone_number">Phone number</label>
+                     <div class="relative">
+                            <p
+                               class="absolute left-3 top-2 pr-2 font-body text-gray-700 text-100 leading-[20px] border-r border-gray-500">
+                                   +91
+                            </p>
+                            <input id="phone_number"
+                                   type="number"
+                                   placeholder="xxxxxxxxxx"
+                                   formControlName="phone_number"
+                                   required
+                                   class="block w-full font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 pl-14 pr-3 hover:border-gray-600" />
+                     </div>
+                     @if (form.get('phone_number')?.hasError('required') && form.get('phone_number')?.touched) {
+                     <p class="font-body text-75 text-red-400">Phone number is required</p>
+                     }
+              </div>
+              @if (error) {
+              <p class="font-body text-75 text-red-400 mb-4">{{error}}</p>
+              }
+              <div class="flex justify-between mb-4">
+                     <button type="submit"
+                             *isLoading="isPending"
+                             slui-button
+                             [appearance]="'cta'">
+                            Create account
+                     </button>
+              </div>
+       </form>
+       <p class="font-body text-50 text-gray-900 mb-12">By creating account, I agree to <a
+                 class="font-body text-blue-400 hover:underline"
+                 routerLink="/tos">terms of use</a> and also I have read and
+              acknowledged the <a class="font-body text-blue-400 hover:underline"
+                 routerLink="/pp">privacy policy</a>.</p>
 </section>

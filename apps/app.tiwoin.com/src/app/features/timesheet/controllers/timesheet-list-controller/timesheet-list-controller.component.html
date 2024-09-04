@@ -20,18 +20,19 @@
      <div class="flex-1"
           *isSpinner="(isPending$ | async)"></div>
 
+     @if ((list$ | async)?.length && !(isPending$ | async)) {
      <!-- list -->
      <tiwoin-timesheet-list class="bg-white rounded-xl"
-                            *ngIf="(list$ | async)?.length && !(isPending$ | async)"
                             [list]="(list$ | async) || []"
                             [isPending]="isPending$ | async"
                             [error]="error$ | async"></tiwoin-timesheet-list>
+     } @else {
      <!-- empty state -->
-     <div *ngIf="!(list$ | async)?.length && !(isPending$ | async)"
-          class="mx-auto flex flex-col items-center justify-center p-10">
+     <div class="mx-auto flex flex-col items-center justify-center p-10">
           <img class="max-w-[200px] mb-12"
                src="/assets/icons/illustrations/empty.svg">
           <p class="font-body text-100 text-gray-800 mb-2">
                No work items found. Ask your manager to add new ones from the admin dashboard in Tiwoin app.</p>
      </div>
+     }
 </main>

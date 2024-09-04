@@ -10,20 +10,25 @@
           Documents
      </h1>
 </header>
-<tiwoin-upload-controller *ngIf="(uploadRequest$ | async)"></tiwoin-upload-controller>
+
+@if ((uploadRequest$ | async)) {
+<tiwoin-upload-controller></tiwoin-upload-controller>
+}
 
 <div class="flex-1"
      *isSpinner="(isDocumentListPending$ | async)"></div>
 
-<tiwoin-document-list *ngIf="!(uploadRequest$ | async) && (documentList$ | async)?.length && !(isDocumentListPending$ | async)"
-                      [list]="uploadedDocucments$ | async"
+@if (!(uploadRequest$ | async) && (documentList$ | async)?.length && !(isDocumentListPending$ | async)) {
+<tiwoin-document-list [list]="uploadedDocucments$ | async"
                       [requestList]="requestedDocuments$ | async"
                       (requestUpload)="requestUpload($event)"></tiwoin-document-list>
+}
 
-<div *ngIf="!(documentList$ | async)?.length && !(isDocumentListPending$ | async)"
-     class="mx-auto flex flex-col items-center justify-center p-10">
+@if (!(documentList$ | async)?.length && !(isDocumentListPending$ | async)) {
+<div class="mx-auto flex flex-col items-center justify-center p-10">
      <img class="max-w-[200px] mb-12"
           src="/assets/icons/illustrations/empty.svg">
      <p class="font-body text-100 text-gray-800 mb-2">
           No documents found. Ask your manager to request documents from the admin dashboard in Tiwoin app.</p>
 </div>
+}

@@ -21,8 +21,9 @@
                     *cdkDragPlaceholder></div>
           </div>
      </div>
-     <p class="font-body text-75 text-gray-700"
-        *ngIf="source.length">{{entry?.name}}</p>
+     @if (source.length) {
+     <p class="font-body text-75 text-gray-700">{{entry?.name}}</p>
+     }
      <div cdkDropList
           #doneList="cdkDropList"
           [cdkDropListData]="target"

@@ -1,14 +1,16 @@
 <div class="flex flex-col items-center gap-2">
     <div class="h-40 w-40 relative bg-gray-100 rounded-full p-1.5 border-2 border-gray-500"
          (click)="togglePhotoForm.emit()">
-        <img *ngIf="profile?.avatar?.url"
-             [src]="'https://tiwoin-user-uploads.s3.ap-south-1.amazonaws.com/' + profile?.avatar?.url"
+        @if (profile?.avatar?.url) {
+        <img [src]="'https://tiwoin-user-uploads.s3.ap-south-1.amazonaws.com/' + profile?.avatar?.url"
              alt=""
              srcset=""
              class="h-full w-auto rounded-full">
-        <slui-icon *ngIf="!profile?.avatar?.url"
-                   [iconName]="'user-circle'"
+        }
+        @if (!profile?.avatar?.url) {
+        <slui-icon [iconName]="'user-circle'"
                    class="h-full w-full rounded-full text-gray-800"></slui-icon>
+        }
         <slui-icon class="absolute bottom-2 right-4 h-6 w-6 text-gray-800 bg-gray-100"
                    [iconName]="'photo_camera'"></slui-icon>
     </div>
@@ -42,27 +44,33 @@
             (click)="toggleContactForm.emit(true)">Edit</button>
     <div class="flex flex-col">
         <p class="font-body text-gray-700 text-75">Address</p>
-        <div class="font-body font-bold text-100 text-gray-800"
-             *ngIf="!profile?.address">-</div>
-        <div class="font-body font-bold text-100 text-gray-800"
-             *ngIf="profile?.address">
+        @if (!profile?.address) {
+        <div class="font-body font-bold text-100 text-gray-800">-</div>
+        }
+        @if (profile?.address) {
+        <div class="font-body font-bold text-100 text-gray-800">
             <p>{{profile?.address?.line1}}</p>
             <p>{{profile?.address?.line2}}</p>
             <p>{{profile?.address?.city}} {{profile?.address?.postalCode}}</p>
             <p>{{profile?.address?.state}}, {{profile?.address?.country}}</p>
         </div>
+        }
     </div>
     <div class="flex flex-col">
         <p class="font-body text-gray-700 text-75">Additional phone number</p>
         <div class="font-body font-bold text-100 text-gray-800">
-            <p *ngIf="!profile?.phones?.length">-</p>
+            @if (!profile?.phones?.length) {
+            <p>-</p>
+            }
             <p *ngFor="let phoneObj of profile?.phones">{{phoneObj?.phone}}</p>
         </div>
     </div>
     <div class="flex flex-col">
         <p class="font-body text-gray-700 text-75">Email</p>
         <div class="font-body font-bold text-100 text-gray-800">
-            <p *ngIf="!profile?.emails?.length">-</p>
+            @if (!profile?.emails?.length) {
+            <p>-</p>
+            }
             <p *ngFor="let emailObj of profile?.emails">{{emailObj?.email}}</p>
         </div>
     </div>

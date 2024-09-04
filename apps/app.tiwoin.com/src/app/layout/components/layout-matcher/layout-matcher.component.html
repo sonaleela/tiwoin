@@ -1,12 +1,14 @@
-<tiwoin-layout-bottom-nav *ngIf="layout === layoutTypes.BOTTOMNAV">
-    <ng-container *ngTemplateOutlet="template"></ng-container>
-</tiwoin-layout-bottom-nav>
-<tiwoin-layout-sidenav *ngIf="layout === layoutTypes.SIDENAV">
-    <ng-container *ngTemplateOutlet="template"></ng-container>
-</tiwoin-layout-sidenav>
-<tiwoin-layout-empty *ngIf="layout === layoutTypes.EMPTY">
-    <ng-container *ngTemplateOutlet="template"></ng-container>
-</tiwoin-layout-empty>
+@switch (true) {
+@case (layout === layoutTypes.BOTTOMNAV) {
+<tiwoin-layout-bottom-nav><ng-container *ngTemplateOutlet="template"></ng-container></tiwoin-layout-bottom-nav>
+}
+@case (layout === layoutTypes.SIDENAV) {
+<tiwoin-layout-sidenav><ng-container *ngTemplateOutlet="template"></ng-container></tiwoin-layout-sidenav>
+}
+@case (layout === layoutTypes.EMPTY) {
+<tiwoin-layout-empty><ng-container *ngTemplateOutlet="template"></ng-container></tiwoin-layout-empty>
+}
+}
 
 <ng-template #template>
     <router-outlet></router-outlet>

@@ -3,111 +3,113 @@
       (ngSubmit)="submit()"
       novalidate>
 
-    <div class="flex flex-col gap-1 mb-4"
-         formArrayName="emails">
-        <label for="dob"
-               class="font-body text-75 text-gray-900">Emails</label>
-        <div class="flex flex-row gap-1 mb-1"
-             *ngFor="let control of emails.controls; let i = index">
-            <input placeholder="email"
-                   class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
-                   [formControlName]="i" />
-            <button type="button"
-                    slui-action-button
-                    (click)="addEmail()">
-                <slui-icon [iconName]="'tabler-icon-plus'"></slui-icon>
-            </button>
-            <button type="button"
-                    slui-action-button
-                    *ngIf="emails.length > 1"
-                    (click)="removeEmail(i)"
-                    class="text-red-500">
-                <slui-icon [iconName]="'tabler-icon-trash'"></slui-icon>
-            </button>
-        </div>
-    </div>
-    <div class="flex flex-col gap-1 mb-4"
-         formArrayName="phones">
-        <label for="dob"
-               class="font-body text-75 text-gray-900">Phones</label>
-        <div class="flex flex-row gap-1 mb-1"
-             *ngFor="let control of phones.controls; let i = index">
-            <input placeholder="phone"
-                   class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
-                   [formControlName]="i" />
-            <button type="button"
-                    slui-action-button
-                    (click)="addPhone()">
-                <slui-icon [iconName]="'tabler-icon-plus'"></slui-icon>
-            </button>
-            <button type="button"
-                    slui-action-button
-                    *ngIf="phones.length > 1"
-                    (click)="removePhone(i)"
-                    class="text-red-500">
-                <slui-icon [iconName]="'tabler-icon-trash'"></slui-icon>
-            </button>
-        </div>
-    </div>
-    <ng-container formGroupName="address">
-        <div class="flex flex-col gap-1 mb-4">
-            <label for="fname"
-                   class="font-body text-75 text-gray-900">Line one</label>
-            <input id="fname"
-                   class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
-                   placeholder="line1"
-                   formControlName="line1" />
-        </div>
-        <div class="flex flex-col gap-1 mb-4">
-            <label for="fname"
-                   class="font-body text-75 text-gray-900">Line two</label>
-            <input id="fname"
-                   class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
-                   placeholder="line2"
-                   formControlName="line2" />
-        </div>
-        <div class="flex flex-col gap-1 mb-4">
-            <label for="fname"
-                   class="font-body text-75 text-gray-900">City</label>
-            <input id="fname"
-                   class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
-                   placeholder="city"
-                   formControlName="city" />
-        </div>
-        <div class="flex flex-col gap-1 mb-4">
-            <label for="fname"
-                   class="font-body text-75 text-gray-900">State</label>
-            <input id="fname"
-                   class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
-                   placeholder="state"
-                   formControlName="state" />
-        </div>
-        <div class="flex flex-col gap-1 mb-4">
-            <label for="fname"
-                   class="font-body text-75 text-gray-900">Postal code</label>
-            <input id="fname"
-                   class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
-                   placeholder="postalCode"
-                   formControlName="postalCode" />
-        </div>
-        <div class="flex flex-col gap-1 mb-6">
-            <label for="fname"
-                   class="font-body text-75 text-gray-900">Country</label>
-            <input id="fname"
-                   class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
-                   placeholder="country"
-                   formControlName="country" />
-        </div>
-    </ng-container>
+       <div class="flex flex-col gap-1 mb-4"
+            formArrayName="emails">
+              <label for="dob"
+                     class="font-body text-75 text-gray-900">Emails</label>
+              <div class="flex flex-row gap-1 mb-1"
+                   *ngFor="let control of emails.controls; let i = index">
+                     <input placeholder="email"
+                            class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                            [formControlName]="i" />
+                     <button type="button"
+                             slui-action-button
+                             (click)="addEmail()">
+                            <slui-icon [iconName]="'tabler-icon-plus'"></slui-icon>
+                     </button>
+                     @if (emails.length > 1) {
+                     <button type="button"
+                             slui-action-button
+                             (click)="removeEmail(i)"
+                             class="text-red-500">
+                            <slui-icon [iconName]="'tabler-icon-trash'"></slui-icon>
+                     </button>
+                     }
+              </div>
+       </div>
+       <div class="flex flex-col gap-1 mb-4"
+            formArrayName="phones">
+              <label for="dob"
+                     class="font-body text-75 text-gray-900">Phones</label>
+              <div class="flex flex-row gap-1 mb-1"
+                   *ngFor="let control of phones.controls; let i = index">
+                     <input placeholder="phone"
+                            class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                            [formControlName]="i" />
+                     <button type="button"
+                             slui-action-button
+                             (click)="addPhone()">
+                            <slui-icon [iconName]="'tabler-icon-plus'"></slui-icon>
+                     </button>
+                     @if (phones.length > 1) {
+                     <button type="button"
+                             slui-action-button
+                             (click)="removePhone(i)"
+                             class="text-red-500">
+                            <slui-icon [iconName]="'tabler-icon-trash'"></slui-icon>
+                     </button>
+                     }
+              </div>
+       </div>
+       <ng-container formGroupName="address">
+              <div class="flex flex-col gap-1 mb-4">
+                     <label for="fname"
+                            class="font-body text-75 text-gray-900">Line one</label>
+                     <input id="fname"
+                            class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                            placeholder="line1"
+                            formControlName="line1" />
+              </div>
+              <div class="flex flex-col gap-1 mb-4">
+                     <label for="fname"
+                            class="font-body text-75 text-gray-900">Line two</label>
+                     <input id="fname"
+                            class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                            placeholder="line2"
+                            formControlName="line2" />
+              </div>
+              <div class="flex flex-col gap-1 mb-4">
+                     <label for="fname"
+                            class="font-body text-75 text-gray-900">City</label>
+                     <input id="fname"
+                            class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                            placeholder="city"
+                            formControlName="city" />
+              </div>
+              <div class="flex flex-col gap-1 mb-4">
+                     <label for="fname"
+                            class="font-body text-75 text-gray-900">State</label>
+                     <input id="fname"
+                            class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                            placeholder="state"
+                            formControlName="state" />
+              </div>
+              <div class="flex flex-col gap-1 mb-4">
+                     <label for="fname"
+                            class="font-body text-75 text-gray-900">Postal code</label>
+                     <input id="fname"
+                            class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                            placeholder="postalCode"
+                            formControlName="postalCode" />
+              </div>
+              <div class="flex flex-col gap-1 mb-6">
+                     <label for="fname"
+                            class="font-body text-75 text-gray-900">Country</label>
+                     <input id="fname"
+                            class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
+                            placeholder="country"
+                            formControlName="country" />
+              </div>
+       </ng-container>
 
-    <div class="flex items-center gap-2">
-        <button type="submit"
-                slui-button
-                *isLoading="isPending"
-                [appearance]="'cta'">Submit</button>
-        <button type="button"
-                slui-button
-                [appearance]="'primary'"
-                (click)="toggleForm.emit(false)">Cancel</button>
-    </div>
+       <div class="flex items-center gap-2">
+              <button type="submit"
+                      slui-button
+                      *isLoading="isPending"
+                      [appearance]="'cta'">Submit</button>
+              <button type="button"
+                      slui-button
+                      [appearance]="'primary'"
+                      (click)="toggleForm.emit(false)">Cancel</button>
+       </div>
 </form>

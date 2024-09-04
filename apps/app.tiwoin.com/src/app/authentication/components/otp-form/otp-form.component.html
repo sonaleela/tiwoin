@@ -24,11 +24,13 @@
                    required
                    autofocus
                    class="block font-body text-100 bg-gray-50 border border-solid border-gray-400 rounded h-9 px-3 mb-1 hover:border-gray-600" />
-            <p *ngIf="form.get('otp')?.hasError('required') && form.get('otp')?.touched"
-               class="font-body text-75 text-red-400">OTP is required</p>
+            @if (form.get('otp')?.hasError('required') && form.get('otp')?.touched) {
+            <p class="font-body text-75 text-red-400">OTP is required</p>
+            }
         </div>
-        <p *ngIf="error"
-           class="font-body text-75 text-red-400 mb-4">{{error}}</p>
+        @if (error) {
+        <p class="font-body text-75 text-red-400 mb-4">{{error}}</p>
+        }
         <div class="flex justify-between">
             <button type="submit"
                     *isLoading="isPending"
