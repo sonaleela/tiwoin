@@ -1,17 +1,11 @@
 {
-  "name": "tiwoin",
-  "version": "1.0.0",
-  "description": "tiwoin monorepo",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "Rajesh Kumar <rajesh@tiwoin.com>",
-  "license": "UNLICENSED",
-  "workspaces": [
-    "apps/app.tiwoin.com",
-    "apps/console.tiwoin.com",
-    "apps/api.tiwoin.com",
-    "packages/ui-package"
-  ]
+	"name": "tiwoin",
+	"version": "1.0.0",
+	"description": "tiwoin monorepo",
+	"main": "index.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "Rajesh Kumar <rajesh@tiwoin.com>",
+	"license": "UNLICENSED"
 }
