@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {
     signIn, signUp, SignUpInput, fetchAuthSession, getCurrentUser, AuthUser, fetchUserAttributes,
     signOut, confirmSignUp, confirmSignIn, SignInOutput
-} from '@aws-amplify/auth';
+} from 'aws-amplify/auth';
 import { ProfileModel, SignupPayloadModel } from '@models';
 import { from, Observable, of } from 'rxjs';
 import { exhaustMap, filter, map, tap } from 'rxjs/operators';
