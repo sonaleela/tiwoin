@@ -1,0 +1,26 @@
+services:
+      api:
+            container_name: tiwoin-api-dev
+            build:
+                  context: .
+                  dockerfile: Dockerfile
+            ports:
+                  - '3000:3000'
+            environment:
+                  - ENV NODE_ENV=local
+            volumes:
+                  - workspace-volume
+      app:
+            container_name: tiwoin-app-dev
+            build:
+                  context: .
+                  dockerfile: Dockerfile
+            ports:
+                  - '4200:4200'
+            volumes:
+                  - workspace-volume
+volumes:
+      workspace-volume:
+            external: true
+            source: .
+            target: /usr/src/app
