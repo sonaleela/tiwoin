@@ -5,7 +5,8 @@ import { SiteModel } from '@models';
     selector: 'tiwoin-site-list',
     templateUrl: `./site-list.component.html`,
     styles: [`:host { @apply block bg-gray-100 h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SiteListComponent {
     @Input() list: SiteModel[] | null = null;

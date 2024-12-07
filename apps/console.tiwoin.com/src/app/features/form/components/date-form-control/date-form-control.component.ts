@@ -8,6 +8,7 @@ import { FormFieldTypeEnum } from '@models';
     templateUrl: './date-form-control.component.html',
     styles: [`:host { @apply block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DateFormControlComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

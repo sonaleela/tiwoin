@@ -8,7 +8,8 @@ import { map } from 'rxjs/operators';
     selector: 'tiwoin-timesheet-list-controller',
     templateUrl: './timesheet-list-controller.component.html',
     styles: [`:host { @apply flex flex-col h-full bg-gray-100;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TimesheetListControllerComponent {
     private store: Store = inject(Store);

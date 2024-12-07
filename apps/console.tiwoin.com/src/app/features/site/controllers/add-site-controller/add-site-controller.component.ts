@@ -12,6 +12,7 @@ import { map } from 'rxjs/operators';
     templateUrl: './add-site-controller.component.html',
     styles: [`:host { @apply flex flex-col h-full;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddSiteControllerComponent {
     private store: Store = inject(Store);

@@ -8,6 +8,7 @@ import * as fromStore from '../../store';
     templateUrl: './add-work-item-controller.component.html',
     styles: [`:host { @apply flex flex-col h-full;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddWorkItemControllerComponent {
     private store: Store = inject(Store);

@@ -5,7 +5,8 @@ import { FormModal } from '@models';
     selector: 'tiwoin-form-view',
     templateUrl: './form-view.component.html',
     styles: `:host { @apply block p-6; }`,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormViewComponent {
     @Input() data: FormModal | null | undefined;

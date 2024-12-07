@@ -15,7 +15,6 @@ import { EmployeeModel } from '@models';
 
 @Component({
     selector: 'sonaleela-select-employee',
-    standalone: true,
     imports: [
         CommonModule,
         OverlayModule,
@@ -28,10 +27,10 @@ import { EmployeeModel } from '@models';
     styles: `:host {@apply block;}`,
     changeDetection: ChangeDetectionStrategy.OnPush,
     providers: [{
-        provide: NG_VALUE_ACCESSOR,
-        useExisting: forwardRef(() => SelectEmployeeComponent),
-        multi: true,
-    }]
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => SelectEmployeeComponent),
+            multi: true,
+        }]
 })
 export class SelectEmployeeComponent implements OnDestroy, ControlValueAccessor {
     private store: Store = inject(Store);

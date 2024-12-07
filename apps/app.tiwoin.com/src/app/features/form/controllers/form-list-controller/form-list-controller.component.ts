@@ -6,7 +6,8 @@ import { Store } from '@ngrx/store';
     selector: 'tiwoin-form-list-controller',
     templateUrl: './form-list-controller.component.html',
     styles: [`:host { @apply block h-full bg-gray-100 h-full overflow-y-auto;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormListControllerComponent {
     private store: Store = inject(Store);

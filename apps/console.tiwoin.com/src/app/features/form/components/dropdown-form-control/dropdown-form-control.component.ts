@@ -9,6 +9,7 @@ import { FormFieldTypeEnum } from '@models';
     templateUrl: './dropdown-form-control.component.html',
     styles: [`:host { @apply block; }`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DropdownFormControlComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

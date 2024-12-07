@@ -11,6 +11,7 @@ import * as fromStore from '../../store';
     templateUrl: './signin-controller.component.html',
     styles: [`:host {@apply h-full block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SigninControllerComponent {
     private store: Store = inject(Store);

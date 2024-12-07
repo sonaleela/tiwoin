@@ -5,10 +5,11 @@ import { LineCaptionComponent } from '../line-caption/line-caption.component';
 import { IconComponent } from '../../../icon';
 
 @Component({
-  selector: 'slui-list-item, [sluiListItem]',
-  templateUrl: './list-item.component.html',
-  styleUrls: ['./list-item.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'slui-list-item, [sluiListItem]',
+    templateUrl: './list-item.component.html',
+    styleUrls: ['./list-item.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ListItemComponent {
   @ContentChild(IconComponent) icon?: IconComponent;

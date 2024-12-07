@@ -4,7 +4,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
     selector: 'tiwoin-document-list',
     templateUrl: './document-list.component.html',
     styles: [`:host { @apply flex flex-col gap-4 min-h-full bg-gray-75 pt-5 px-6;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DocumentListComponent {
     @Input() list: any[] | null = [];

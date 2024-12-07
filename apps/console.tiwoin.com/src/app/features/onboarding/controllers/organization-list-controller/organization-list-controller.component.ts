@@ -9,7 +9,8 @@ import { map } from 'rxjs/operators';
     selector: 'sonaleela-organization-list-controller',
     templateUrl: './organization-list-controller.component.html',
     styles: [`:host { @apply block h-full bg-gray-75;} `],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class OrganizationListControllerComponent {
     private store: Store = inject(Store);

@@ -4,7 +4,8 @@ import { ChangeDetectionStrategy, Component, ElementRef, Input, OnInit } from '@
     selector: 'slui-loader',
     template: `<div class="loader"></div>`,
     styleUrls: ['./loader.component.scss'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LoaderComponent {
     private _width = 'auto';

@@ -8,7 +8,8 @@ import { timesheetTimeValidator } from '../../validator';
     selector: 'sonaleela-add-timesheet-data',
     templateUrl: './add-timesheet-data.component.html',
     styles: [`:host { @apply flex flex-col py-6 gap-6 h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddTimesheetDataComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

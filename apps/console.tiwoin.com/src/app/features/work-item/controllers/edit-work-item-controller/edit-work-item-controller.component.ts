@@ -8,7 +8,8 @@ import * as fromRootStore from "@store";
     selector: 'sonaleela-edit-work-item-controller',
     templateUrl: './edit-work-item-controller.component.html',
     styles: [':host { @apply flex flex-col h-full;}'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditWorkItemControllerComponent {
     private store: Store = inject(Store);

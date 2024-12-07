@@ -11,6 +11,7 @@ import * as fromStore from '../../store';
     selector: 'sonaleela-signup-controller',
     templateUrl: './signup-controller.component.html',
     styles: [`:host {@apply h-full block;}`],
+    standalone: false
 })
 export class SignupControllerComponent {
     private store: Store = inject(Store);

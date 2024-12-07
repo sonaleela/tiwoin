@@ -17,6 +17,7 @@ interface PayrollForm {
     templateUrl: './add-payroll-form.component.html',
     styles: [':host { @apply block; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddPayrollFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

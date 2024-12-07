@@ -2,7 +2,8 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 import { LoaderComponent } from './loader';
 
 @Directive({
-    selector: '[isSpinner]'
+    selector: '[isSpinner]',
+    standalone: false
 })
 export class IsLoadingDirective {
     @Input() set isSpinner(isLoading: boolean | null) {

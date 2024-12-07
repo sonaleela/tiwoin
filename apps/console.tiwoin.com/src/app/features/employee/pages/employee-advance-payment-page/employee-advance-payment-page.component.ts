@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     selector: 'sonaleela-employee-advance-payment-page',
     template: `<sonaleela-advance-payment-controller></sonaleela-advance-payment-controller>`,
     styles: `:host {@apply block h-full;}`,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EmployeeAdvancePaymentPageComponent { }

@@ -4,7 +4,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     selector: 'tiwoin-work-item-submission-list',
     templateUrl: './work-item-submission-list.component.html',
     styles: [`:host { @apply block pb-24 overflow-y-auto;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class WorkItemSubmissionListComponent {
     @Input() list: any[] | null = null;

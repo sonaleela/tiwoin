@@ -8,6 +8,7 @@ import * as fromStore from "@store";
     selector: 'tiwoin-root',
     templateUrl: './app.component.html',
     styles: [':host {@apply block h-full;}'],
+    standalone: false
 })
 export class AppComponent {
     private store: Store = inject(Store);

@@ -5,5 +5,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
     templateUrl: './mfa-card.component.html',
     styles: [`:host {@apply block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class MfaCardComponent { }

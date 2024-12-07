@@ -20,7 +20,10 @@ const SONALEELA_BUTTON_TYPE_MAP: { [key: string]: string } = {
     warningsilent: 'sonaleela-button-warning-silent',
 };
 
-@Directive({ selector: 'slui-icon' })
+@Directive({
+    selector: 'slui-icon',
+    standalone: false
+})
 export class SonaleelaButtonIcon {
     @HostBinding('class.sonaleela-button-icon') icon = true;
 }
@@ -30,6 +33,7 @@ export class SonaleelaButtonIcon {
     templateUrl: './sonaleela-button.html',
     styleUrls: ['./sonaleela-button.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SonaleelaButtonComponent implements AfterViewInit {
     @Input() libSonaleelaButton: string = '';

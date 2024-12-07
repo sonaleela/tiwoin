@@ -6,7 +6,8 @@ import { SiteModel } from '@models';
     selector: 'tiwoin-site-list',
     templateUrl: './site-selection-list.component.html',
     styles: [`:host { @apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SiteSelectionListComponent {
     @Input() list: SiteModel[] | null = null;

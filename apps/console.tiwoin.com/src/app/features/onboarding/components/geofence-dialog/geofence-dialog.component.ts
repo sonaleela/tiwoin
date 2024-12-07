@@ -2,10 +2,11 @@ import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sonaleela-geofence-dialog',
-  templateUrl: 'geofence-dialog.component.html',
-  styles: [`:host { @apply flex flex-col bg-white rounded-3xl w-[540px]; }`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-geofence-dialog',
+    templateUrl: 'geofence-dialog.component.html',
+    styles: [`:host { @apply flex flex-col bg-white rounded-3xl w-[540px]; }`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class GeofenceDialogComponent {
 

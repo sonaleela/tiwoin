@@ -5,7 +5,8 @@ import { FormBuilder, Validators } from '@angular/forms';
     selector: 'sonaleela-date-time-settings',
     templateUrl: './date-time-settings.component.html',
     styles: [`:host {@apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DateTimeSettingsComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

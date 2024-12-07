@@ -13,7 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
         (close)="clearData()"
         (approve)="approveWorkItem($event)"></sonaleela-view-work-item-data>`,
     styles: `:host {@apply block h-full;}`,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ViewWorkItemDataControllerComponent {
     private store: Store = inject(Store);

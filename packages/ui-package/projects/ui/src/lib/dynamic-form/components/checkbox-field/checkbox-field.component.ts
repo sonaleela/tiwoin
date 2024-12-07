@@ -7,7 +7,8 @@ import { DynamicField } from "../field";
     selector: 'slui-checkbox-field',
     templateUrl: './checkbox-field.component.html',
     styles: [`:host { @apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CheckboxFieldComponent implements DynamicField, OnDestroy {
     private _data: any;

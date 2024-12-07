@@ -5,10 +5,11 @@ import { Subject, Subscription } from 'rxjs';
 import { DynamicField } from '../field';
 
 @Component({
-  selector: 'sonaleela-file-field',
-  templateUrl: './file-field.component.html',
-  styles: [`:host {@apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-file-field',
+    templateUrl: './file-field.component.html',
+    styles: [`:host {@apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FileFieldComponent implements DynamicField {
   private formBuilder: FormBuilder = inject(FormBuilder);

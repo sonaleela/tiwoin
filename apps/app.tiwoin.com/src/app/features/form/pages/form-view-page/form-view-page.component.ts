@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     selector: 'tiwoin-form-view-page',
     template: '<tiwoin-form-view-controller></tiwoin-form-view-controller>',
     styles: `:host { @apply block h-full; }`,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormViewPageComponent { }

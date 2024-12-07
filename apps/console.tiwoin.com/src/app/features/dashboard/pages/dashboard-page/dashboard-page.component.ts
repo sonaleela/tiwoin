@@ -5,5 +5,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     template: `<sonaleela-dashboard-controller></sonaleela-dashboard-controller>`,
     styles: [`:host { @apply block h-full;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DashboardPageComponent { }

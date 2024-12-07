@@ -3,10 +3,11 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { Subject, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'slui-radio-field',
-  templateUrl: './radio-field.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'slui-radio-field',
+    templateUrl: './radio-field.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RadioFieldComponent {
   private _data: any;

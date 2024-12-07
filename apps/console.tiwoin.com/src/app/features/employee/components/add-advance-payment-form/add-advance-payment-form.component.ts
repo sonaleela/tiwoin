@@ -5,7 +5,8 @@ import { FormBuilder, Validators } from '@angular/forms';
     selector: 'sonaleela-add-advance-payment-form',
     templateUrl: `./add-advance-payment-form.component.html`,
     styles: [':host { @apply block; }'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddAdvancePaymentFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

@@ -15,6 +15,7 @@ import { SonaleelaFormFieldControl } from './sonaleela-form-field-control';
     host: {
         '[required]': 'required',
     },
+    standalone: false
 })
 export class SonaleelaInputField implements SonaleelaFormFieldControl<any>, DoCheck {
     @HostBinding('class.sonaleela-input') input = true;

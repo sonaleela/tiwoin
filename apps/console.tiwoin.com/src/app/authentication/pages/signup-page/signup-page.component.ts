@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
     selector: 'sonaleela-signup-page',
     template: `<sonaleela-signup-controller></sonaleela-signup-controller>`,
     styles: [`:host {@apply block h-full}`],
+    standalone: false
 })
 export class SignupPageComponent { }

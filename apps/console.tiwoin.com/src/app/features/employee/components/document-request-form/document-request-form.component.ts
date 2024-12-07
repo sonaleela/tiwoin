@@ -7,7 +7,8 @@ import { AcceptType } from '@models';
     selector: 'sonaleela-document-request-form',
     templateUrl: './document-request-form.component.html',
     styles: [`:host {display: block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DocumentRequestFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

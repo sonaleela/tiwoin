@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'sonaleela-geo-fence',
-  templateUrl: './geo-fence.component.html',
-  styles: [`:host { @apply block h-full w-full;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-geo-fence',
+    templateUrl: './geo-fence.component.html',
+    styles: [`:host { @apply block h-full w-full;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class GeoFenceComponent {
   @Input() geolocation: { lat: number | null, lng: number | null } | null = { lat: null, lng: null };

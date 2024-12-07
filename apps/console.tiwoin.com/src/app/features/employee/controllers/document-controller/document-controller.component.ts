@@ -9,6 +9,7 @@ import * as fromStore from "../../store";
     templateUrl: './document-controller.component.html',
     styles: [':host { @apply block; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DocumentControllerComponent extends FetchEmployee {
     override store: Store = inject(Store);

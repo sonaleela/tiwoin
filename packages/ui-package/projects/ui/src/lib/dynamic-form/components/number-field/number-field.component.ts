@@ -4,10 +4,11 @@ import { Subject, Subscription } from 'rxjs';
 import { DynamicField } from '../field';
 
 @Component({
-  selector: 'slui-number-field',
-  templateUrl: './number-field.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'slui-number-field',
+    templateUrl: './number-field.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class NumberFieldComponent implements DynamicField {
   private _data: any;

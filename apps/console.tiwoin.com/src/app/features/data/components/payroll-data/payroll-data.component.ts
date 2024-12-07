@@ -1,10 +1,11 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'sonaleela-payroll-data',
-  templateUrl: './payroll-data.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-payroll-data',
+    templateUrl: './payroll-data.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PayrollDataComponent {
   @Input() payrollList: any[] = [];

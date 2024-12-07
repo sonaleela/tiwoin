@@ -8,6 +8,7 @@ import * as fromStore from '../../store';
     templateUrl: './add-payroll-controller.component.html',
     styles: [`:host { @apply flex flex-col h-full;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddPayrollControllerComponent {
     private store: Store = inject(Store);

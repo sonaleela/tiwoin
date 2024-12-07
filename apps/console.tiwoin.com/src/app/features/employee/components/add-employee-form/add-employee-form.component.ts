@@ -7,6 +7,7 @@ import { EmployeeModel } from '@models';
     selector: 'sonaleela-add-employee-form',
     templateUrl: './add-employee-form.component.html',
     styles: [`:host { @apply block;}`],
+    standalone: false
 })
 export class AddEmployeeFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

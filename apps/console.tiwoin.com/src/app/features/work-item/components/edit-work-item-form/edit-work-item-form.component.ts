@@ -6,7 +6,8 @@ import { WorkItemModal } from '@models';
     selector: 'sonaleela-edit-work-item-form',
     templateUrl: './edit-work-item-form.component.html',
     styles: [`:host { @apply block h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditWorkItemFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

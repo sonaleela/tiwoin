@@ -6,6 +6,7 @@ import { FormModal } from '@models';
     templateUrl: './form-list-table.component.html',
     styles: [`:host { @apply block; }`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormListTableComponent {
     @Input() list: FormModal[] = [];

@@ -3,10 +3,11 @@ import { FormBuilder } from '@angular/forms';
 import { PayrollModel } from '@models';
 
 @Component({
-  selector: 'sonaleela-payroll-form',
-  templateUrl: './payroll-form.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-payroll-form',
+    templateUrl: './payroll-form.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PayrollFormComponent {
   private formBuilder: FormBuilder = inject(FormBuilder);

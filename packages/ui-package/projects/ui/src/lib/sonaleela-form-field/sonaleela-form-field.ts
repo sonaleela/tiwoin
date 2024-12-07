@@ -17,6 +17,7 @@ import { SonaleelaFormFieldControl } from './sonaleela-form-field-control';
     template: '<ng-content></ng-content>',
     styleUrls: ['./sonaleela-form-field-lable.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SonaleelaFormFieldLabel {
     @HostBinding('class.sonaleela-label') label = true;
@@ -27,6 +28,7 @@ export class SonaleelaFormFieldLabel {
     template: '<ng-content></ng-content>',
     styleUrls: ['./sonaleela-form-field-error.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SonaleelaFormFieldError {
     @HostBinding('class.sonaleela-error') label = true;
@@ -37,6 +39,7 @@ export class SonaleelaFormFieldError {
     template: '<ng-content></ng-content>',
     styleUrls: ['./sonaleela-form-field-hint.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SonaleelaFormFieldHint {
     @HostBinding('class.sonaleela-hint') label = true;
@@ -47,6 +50,7 @@ export class SonaleelaFormFieldHint {
     templateUrl: './sonaleela-form-field.html',
     styleUrls: ['./sonaleela-form-field.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SonaleelaFormFieldComponent implements AfterContentInit {
     @ContentChild(SonaleelaFormFieldControl) formControl: SonaleelaFormFieldControl<any> | undefined;

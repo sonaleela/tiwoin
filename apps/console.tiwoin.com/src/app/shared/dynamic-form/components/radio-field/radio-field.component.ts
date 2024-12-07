@@ -4,10 +4,11 @@ import { FormFieldTypeEnum } from '@models';
 import { Subject, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'sonaleela-radio-field',
-  templateUrl: './radio-field.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-radio-field',
+    templateUrl: './radio-field.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class RadioFieldComponent {
   private formBuilder: FormBuilder = inject(FormBuilder);

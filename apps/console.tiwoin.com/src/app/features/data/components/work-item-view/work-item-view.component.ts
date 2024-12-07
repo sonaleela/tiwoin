@@ -4,7 +4,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
     selector: 'sonaleela-work-item-view',
     templateUrl: './work-item-view.component.html',
     styles: [`:host { @apply flex flex-col py-6 gap-6 h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class WorkItemViewComponent {
     @Input() data: any;

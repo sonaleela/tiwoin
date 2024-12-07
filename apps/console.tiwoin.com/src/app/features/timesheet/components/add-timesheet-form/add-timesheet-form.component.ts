@@ -5,7 +5,8 @@ import { FormBuilder, Validators } from "@angular/forms";
     selector: 'sonaleela-add-timesheet-form',
     templateUrl: './add-timesheet-form.component.html',
     styles: [`:host { @apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddTimesheetFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

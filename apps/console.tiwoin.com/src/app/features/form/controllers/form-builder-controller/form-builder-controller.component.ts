@@ -8,7 +8,8 @@ import * as fromStore from "../../store";
     selector: 'sonaleela-form-builder-controller',
     templateUrl: './form-builder-controller.component.html',
     styles: [`:host { @apply flex flex-col h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormBuilderControllerComponent {
     private store: Store = inject(Store);

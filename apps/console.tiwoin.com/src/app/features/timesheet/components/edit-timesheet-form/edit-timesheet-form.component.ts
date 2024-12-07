@@ -5,7 +5,8 @@ import { FormBuilder } from '@angular/forms';
     selector: 'sonaleela-edit-timesheet-form',
     templateUrl: './edit-timesheet-form.component.html',
     styles: [':host { @apply block; }'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditTimesheetFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

@@ -4,6 +4,7 @@ type ButtonType = 'cta' | 'primary' | 'secondary' | 'negative';
 
 @Directive({
     selector: '[buttonIcon]',
+    standalone: false
 })
 export class ButtonIcon {
     @Input() set buttonIcon(element: HTMLSpanElement | null) {
@@ -33,7 +34,8 @@ export class ButtonIcon {
     host: {
         class: 'primary',
         '[class.disabled]': 'getHostElement().disabled'
-    }
+    },
+    standalone: false
 })
 export class ButtonComponent {
     private _appearance: ButtonType = 'primary';

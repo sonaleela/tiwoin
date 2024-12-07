@@ -9,6 +9,7 @@ import * as fromRootStore from "@store";
     templateUrl: './profile-controller.component.html',
     styles: [`:host {@apply block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ProfileControllerComponent {
     private store: Store = inject(Store);

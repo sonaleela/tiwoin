@@ -28,6 +28,7 @@ const initialPayrollComponentValue = {
     templateUrl: './payroll-component-form.component.html',
     styles: [':host { @apply block; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PayrollComponentFormComponent implements OnDestroy {
     private formBuilder: FormBuilder = inject(FormBuilder);

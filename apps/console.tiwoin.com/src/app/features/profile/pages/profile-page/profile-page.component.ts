@@ -5,5 +5,6 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
     template: `<sonaleela-profile-controller></sonaleela-profile-controller>`,
     styles: [`:host {@apply block;}`,],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ProfilePageComponent { }

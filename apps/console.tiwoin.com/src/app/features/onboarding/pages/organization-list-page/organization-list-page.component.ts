@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     selector: 'sonaleela-organization-list-page',
     template: `<sonaleela-organization-list-controller></sonaleela-organization-list-controller>`,
     styles: [`:host { @apply block h-full; }`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class OrganizationListPageComponent { }

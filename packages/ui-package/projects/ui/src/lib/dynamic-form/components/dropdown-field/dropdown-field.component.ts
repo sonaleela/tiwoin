@@ -7,7 +7,8 @@ import { DynamicField } from '../field';
     selector: 'slui-dropdown-field',
     templateUrl: './dropdown-field.component.html',
     styles: [`:host {display: block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DropdownFieldComponent implements DynamicField {
     private _data: any;

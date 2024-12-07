@@ -6,6 +6,7 @@ import { EmployeeModel } from '@models';
     templateUrl: './side-nav.component.html',
     styles: [':host { @apply bg-gray-75 block; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SideNavComponent {
     @Input() employee?: EmployeeModel | null;

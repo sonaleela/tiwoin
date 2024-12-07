@@ -20,8 +20,9 @@ import {
 import { DynamicField } from '../components/field';
 
 @Directive({
-  selector: '[sonaleelaDynamicFormControl]',
-  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DynamicFormControlDirective), multi: true, }]
+    selector: '[sonaleelaDynamicFormControl]',
+    providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DynamicFormControlDirective), multi: true, }],
+    standalone: false
 })
 export class DynamicFormControlDirective implements ControlValueAccessor, OnDestroy {
   changeFunction: Function = (): void => { };

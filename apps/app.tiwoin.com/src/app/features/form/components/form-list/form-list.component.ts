@@ -5,7 +5,8 @@ import { FormModal } from '@models';
     selector: 'tiwoin-form-list',
     templateUrl: './form-list.component.html',
     styles: [`:host { @apply block bg-gray-100 h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormListComponent {
     @Input() list: FormModal[] | null = null;

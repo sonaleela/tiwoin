@@ -13,7 +13,8 @@ import { ActivatedRoute, Router } from '@angular/router';
         (close)="clearData()"
         (approve)="approveForm($event)"></sonaleela-view-form-data>`,
     styles: `:host {@apply block h-full;}`,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ViewFormDataControllerComponent {
     private store: Store = inject(Store);

@@ -7,7 +7,8 @@ import * as fromStore from "../../store";
 @Component({
     selector: 'sonaleela-employee-list-controller',
     templateUrl: './employee-list-controller.component.html',
-    styles: [':host {@apply block;}']
+    styles: [':host {@apply block;}'],
+    standalone: false
 })
 export class EmployeeListControllerComponent {
     private store: Store = inject(Store);

@@ -32,6 +32,7 @@ import { Component, ComponentFactoryResolver, Directive, ElementRef, Input, Temp
             }
         `,
     ],
+    standalone: false
 })
 export class LoadingButton {
     private _width = 'auto';
@@ -47,7 +48,10 @@ export class LoadingButton {
     constructor(private elementRef: ElementRef) {}
 }
 
-@Directive({ selector: '[isButtonLoading]' })
+@Directive({
+    selector: '[isButtonLoading]',
+    standalone: false
+})
 export class LoadingButtonIndicator {
     buttonWidth: string = 'auto';
     private _isButtonLoading: boolean | null = false;

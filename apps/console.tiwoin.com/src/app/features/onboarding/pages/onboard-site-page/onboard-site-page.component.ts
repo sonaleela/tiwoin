@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
     selector: 'sonaleela-onboard-site-page',
     template: `<sonaleela-create-site-controller></sonaleela-create-site-controller>`,
     styles: [':host { @apply block h-full bg-gray-100;}'],
+    standalone: false
 })
 export class OnboardSitePageComponent { }

@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     selector: 'sonaleela-edit-timesheet-data-page',
     template: `<sonaleela-edit-timesheet-data-controller></sonaleela-edit-timesheet-data-controller>`,
     styles: `:host { @apply block;}`,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditTimesheetDataPageComponent { }

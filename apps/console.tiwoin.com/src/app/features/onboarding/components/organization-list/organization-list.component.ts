@@ -5,7 +5,8 @@ import { ProfileModel } from '@models';
     selector: 'sonaleela-organization-list',
     templateUrl: './organization-list.component.html',
     styles: [`:host { @apply block bg-gray-75 p-10 h-full container mx-auto; }`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class OrganizationListComponent {
     @Input() profile: Partial<ProfileModel> | null = null;

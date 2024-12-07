@@ -11,6 +11,7 @@ import { map } from 'rxjs/operators';
     selector: 'sonaleela-create-site-controller',
     templateUrl: './create-site-controller.component.html',
     styles: [':host { @apply flex flex-col h-full}'],
+    standalone: false
 })
 export class CreateSiteControllerComponent {
     private store: Store = inject(Store);

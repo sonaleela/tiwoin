@@ -7,6 +7,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
                  iconName="menu"></slui-icon>
     `,
     styles: [`:host {@apply flex flex-col items-center w-9 py-2 h-full bg-gray-75 border-r border-gray-300;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SideNavMiniComponent { }

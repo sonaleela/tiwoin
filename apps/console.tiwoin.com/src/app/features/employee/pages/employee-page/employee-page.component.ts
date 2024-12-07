@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     selector: 'sonaleela-employee-page',
     template: `<sonaleela-employee-controller></sonaleela-employee-controller>`,
     styles: `:host { @apply block h-full;}`,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EmployeePageComponent { }

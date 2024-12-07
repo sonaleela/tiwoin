@@ -5,7 +5,8 @@ import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
     selector: 'sonaleela-otp-form',
     templateUrl: './otp-form.component.html',
     styles: [`:host { @apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class OtpFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

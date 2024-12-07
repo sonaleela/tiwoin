@@ -5,7 +5,8 @@ import { WorkItemModal } from '@models';
     selector: 'tiwoin-work-item-list',
     templateUrl: './work-item-list.component.html',
     styles: [`:host { @apply block bg-gray-100 h-full pb-24 overflow-y-auto;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class WorkItemListComponent {
     @Input() list: WorkItemModal[] | null = null;

@@ -9,7 +9,8 @@ import * as fromStore from "../../store";
     selector: 'sonaleela-form-field-builder-controller',
     templateUrl: './form-field-builder-controller.component.html',
     styles: [`:host {@apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormFieldBuilderControllerComponent {
     private store: Store = inject(Store);

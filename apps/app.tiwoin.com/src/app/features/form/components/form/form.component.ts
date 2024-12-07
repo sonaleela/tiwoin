@@ -5,7 +5,8 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
     selector: 'tiwoin-form',
     templateUrl: './form.component.html',
     styles: [':host { @apply block;}'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormComponent {
     private _data: any = null;

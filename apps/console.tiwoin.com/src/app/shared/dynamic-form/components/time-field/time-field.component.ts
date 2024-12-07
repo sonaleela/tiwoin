@@ -5,10 +5,11 @@ import { Subject, Subscription } from 'rxjs';
 import { DynamicField } from '../field';
 
 @Component({
-  selector: 'sonaleela-time-field',
-  templateUrl: './time-field.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-time-field',
+    templateUrl: './time-field.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TimeFieldComponent implements DynamicField {
   private formBuilder: FormBuilder = inject(FormBuilder);

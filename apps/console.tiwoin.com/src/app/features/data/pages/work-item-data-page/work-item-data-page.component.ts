@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     selector: 'sonaleela-work-item-data-page',
     template: `<sonaleela-work-item-data-controller></sonaleela-work-item-data-controller>`,
     styles: [`:host { @apply block h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class WorkItemDataPageComponent { }

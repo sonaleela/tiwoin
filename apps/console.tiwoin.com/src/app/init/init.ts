@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, Provider } from '@angular/core';
+import { EnvironmentProviders, Provider, inject, provideAppInitializer } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import * as fromStore from '@store';
@@ -22,11 +22,9 @@ export let INIT: (store: Store) => () => Promise<void> = (store: Store) => {
     };
 };
 
-export const appInitializerProvider: Provider[] = [
-    {
-        provide: APP_INITIALIZER,
-        useFactory: INIT,
-        deps: [Store],
-        multi: true,
-    },
+export const appInitializerProvider: EnvironmentProviders[] = [
+    provideAppInitializer(() => {
+        const initializerFn = (INIT)(inject(Store));
+        return initializerFn();
+    }),
 ];

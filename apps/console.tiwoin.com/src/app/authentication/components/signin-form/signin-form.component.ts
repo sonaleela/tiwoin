@@ -6,6 +6,7 @@ import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
     templateUrl: './signin-form.component.html',
     styles: [`:host {@apply block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SigninFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

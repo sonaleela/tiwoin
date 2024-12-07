@@ -9,7 +9,8 @@ import { SiteModel } from '@models';
     selector: 'tiwoin-layout-sidenav',
     templateUrl: './layout-sidenav.component.html',
     styles: [':host { @apply flex flex-col h-full;}'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LayoutSidenavComponent {
     private store: Store = inject(Store);

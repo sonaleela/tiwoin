@@ -5,5 +5,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     templateUrl: './employee-list-header.component.html',
     styles: [':host {@apply flex items-center gap-3 py-4; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EmployeeListHeaderComponent { }

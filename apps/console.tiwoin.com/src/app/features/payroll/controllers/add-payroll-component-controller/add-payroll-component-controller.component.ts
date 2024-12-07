@@ -11,7 +11,8 @@ import * as fromStore from "../../store";
         (submitForm)="submitForm($event)"
         (close)="toggleForm()"></sonaleela-payroll-component-form>`,
     styles: [`:host { @apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddPayrollComponentControllerComponent {
     private store: Store = inject(Store);

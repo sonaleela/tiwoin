@@ -9,6 +9,7 @@ import * as fromStore from "../../store";
     templateUrl: './user-list-controller.component.html',
     styles: [`:host {  @apply flex flex-col h-full; }`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class UserListControllerComponent {
     private store: Store = inject(Store);

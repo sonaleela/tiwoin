@@ -9,6 +9,7 @@ import * as fromStore from "../../store";
     templateUrl: './list-site-controller.component.html',
     styles: [`:host { @apply flex flex-col h-full; }`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ListSiteControllerComponent {
     private store: Store = inject(Store);

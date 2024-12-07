@@ -19,6 +19,7 @@ import { startWith } from 'rxjs/operators';
 @Component({
     selector: '[selection-title]',
     template: '<ng-content></ng-content>',
+    standalone: false
 })
 export class SonaleelaSelectionCardTitleComponent {
     @HostBinding('class.selection-title') class = true;
@@ -26,6 +27,7 @@ export class SonaleelaSelectionCardTitleComponent {
 
 @Directive({
     selector: '[selection-icon]',
+    standalone: false
 })
 export class SonaleelaSelectionCardIconDirective {
     @HostBinding('class.selection-icon') class = true;
@@ -34,6 +36,7 @@ export class SonaleelaSelectionCardIconDirective {
 @Component({
     selector: '[selection-control]',
     template: '<ng-content></ng-content>',
+    standalone: false
 })
 export class SonaleelaSelectionCardControlComponent implements DoCheck {
     @HostBinding('class.selection-control') class = true;
@@ -57,6 +60,7 @@ export class SonaleelaSelectionCardControlComponent implements DoCheck {
     styleUrls: ['./sonaleela-selection-card.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
     encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class SonaleelaSelectionCardComponent {
     private _selected = false;

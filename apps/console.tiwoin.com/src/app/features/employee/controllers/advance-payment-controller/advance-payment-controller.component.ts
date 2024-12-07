@@ -11,7 +11,8 @@ import { emptyFilterObject } from "@shared";
     selector: 'sonaleela-advance-payment-controller',
     templateUrl: `./advance-payment-controller.component.html`,
     styles: [':host {@apply block; }'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AdvancePaymentControllerComponent extends FetchEmployee {
     override store: Store = inject(Store);

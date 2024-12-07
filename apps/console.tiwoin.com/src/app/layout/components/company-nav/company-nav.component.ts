@@ -5,5 +5,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     templateUrl: './company-nav.component.html',
     styles: [':host {@apply flex flex-col justify-between; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CompanyNavComponent { }

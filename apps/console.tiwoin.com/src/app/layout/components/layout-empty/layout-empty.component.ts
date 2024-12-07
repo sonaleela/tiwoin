@@ -5,5 +5,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     template: `<ng-content></ng-content>`,
     styles: [':host { @apply block h-full}'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LayoutEmptyComponent { }

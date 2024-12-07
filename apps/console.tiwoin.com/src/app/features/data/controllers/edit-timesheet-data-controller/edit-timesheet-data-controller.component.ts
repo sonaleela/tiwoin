@@ -14,7 +14,8 @@ import { ActivatedRoute, Router } from '@angular/router';
         (close)="close($event)"
         (addTimesheet)="editTimesheet($event)"></sonaleela-edit-timesheet-data>`,
     styles: `:host { @apply block;}`,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditTimesheetDataControllerComponent {
     private store: Store = inject(Store);

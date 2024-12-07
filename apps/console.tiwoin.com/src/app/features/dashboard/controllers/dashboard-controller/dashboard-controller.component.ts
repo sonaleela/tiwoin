@@ -5,5 +5,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     templateUrl: './dashboard-controller.component.html',
     styles: [`:host { @apply block h-full p-6; }`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DashboardControllerComponent { }

@@ -8,6 +8,7 @@ import { FormFieldTypeEnum } from '@models';
     templateUrl: './number-form-control.component.html',
     styles: [`:host { @apply block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class NumberFormControlComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

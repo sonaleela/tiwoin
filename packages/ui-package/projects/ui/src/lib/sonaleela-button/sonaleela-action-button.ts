@@ -22,6 +22,7 @@ const SONALEELA_BUTTON_ACTION_TYPE_MAP: { [key: string]: string } = {
     selector: 'slui-action-button, [sluiActionButton]',
     templateUrl: './sonaleela-action-button.html',
     styleUrls: ['./sonaleela-action-button.scss'],
+    standalone: false
 })
 export class SonaleelaActionButton implements AfterViewInit {
     @Input() libSonaleelaActionButton: string = '';

@@ -8,6 +8,7 @@ import * as fromRootStore from "@store";
     templateUrl: './side-nav.component.html',
     styles: [':host { @apply flex-none flex flex-col !w-side-nav h-full bg-gray-75 border-r border-gray-300; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SideNavComponent {
     private store: Store = inject(Store);

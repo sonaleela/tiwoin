@@ -10,6 +10,7 @@ import { SiteModel } from '@models';
     templateUrl: `./layout-bottom-nav.component.html`,
     styles: [':host { @apply flex flex-col h-full;}'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LayoutBottomNavComponent {
     private store: Store = inject(Store);

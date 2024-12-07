@@ -5,7 +5,8 @@ import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
     selector: 'sonaleela-edit-form',
     templateUrl: './edit-form.component.html',
     styles: [`:host { @apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

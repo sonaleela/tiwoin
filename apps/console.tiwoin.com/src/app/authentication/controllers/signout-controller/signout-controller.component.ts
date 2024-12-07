@@ -7,6 +7,7 @@ import * as fromStore from '../../store';
     selector: 'sonaleela-signout-controller',
     template: ``,
     styles: [`:host {@apply block}`],
+    standalone: false
 })
 export class SignoutControllerComponent {
     constructor(private store: Store) {

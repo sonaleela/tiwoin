@@ -5,11 +5,11 @@ import dayjs from "dayjs";
 
 @Component({
     selector: 'tiwoin-date-filter-bar',
-    standalone: true,
     imports: [CommonModule, SluiButtonModule, SluiIconModule],
     templateUrl: './date-filter-bar.component.html',
     styles: [`:host { @apply flex items-center justify-between w-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
 })
 export class DateFilterBarComponent {
     @Input() date: string | null = dayjs().format('YYYY-MM-DD');

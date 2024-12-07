@@ -9,7 +9,8 @@ import * as fromStore from "../../store";
     selector: 'sonaleela-edit-timesheet-controller',
     templateUrl: './edit-timesheet-controller.component.html',
     styles: [':host { @apply flex flex-col h-full; }'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditTimesheetControllerComponent {
     private store: Store = inject(Store);

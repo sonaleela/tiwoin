@@ -5,7 +5,8 @@ import dayjs from "dayjs";
     selector: 'sonaleela-timesheet-date-selector',
     templateUrl: `timesheet-date-selector.component.html`,
     styles: [`:host { @apply flex items-center justify-between w-full bg-gray-75 py-2 px-1 rounded;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TimesheetDateSelectorComponent {
     @Input() date: string | null = dayjs().format('YYYY-MM-DD');

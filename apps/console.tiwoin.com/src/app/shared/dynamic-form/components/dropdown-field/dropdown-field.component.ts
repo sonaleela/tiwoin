@@ -5,10 +5,11 @@ import { Subject, Subscription } from 'rxjs';
 import { DynamicField } from '../field';
 
 @Component({
-  selector: 'sonaleela-dropdown-field',
-  templateUrl: './dropdown-field.component.html',
-  styles: [`:host {display: block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-dropdown-field',
+    templateUrl: './dropdown-field.component.html',
+    styles: [`:host {display: block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DropdownFieldComponent implements DynamicField {
   private formBuilder: FormBuilder = inject(FormBuilder);

@@ -4,10 +4,11 @@ import { FormFieldTypeEnum } from '@models';
 import { Subject, Subscription } from 'rxjs';
 
 @Component({
-  selector: 'sonaleela-textarea-field',
-  templateUrl: './textarea-field.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-textarea-field',
+    templateUrl: './textarea-field.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TextareaFieldComponent {
   private formBuilder: FormBuilder = inject(FormBuilder);

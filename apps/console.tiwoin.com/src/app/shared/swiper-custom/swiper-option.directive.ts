@@ -2,7 +2,8 @@ import { Directive, ElementRef, Input } from '@angular/core';
 import { SwiperOptions } from 'swiper/types';
 
 @Directive({
-    selector: '[sonaleelaSwiperOption]'
+    selector: '[sonaleelaSwiperOption]',
+    standalone: false
 })
 export class SwiperOptionDirective {
     @Input() set sonaleelaSwiperOption(options: SwiperOptions) {

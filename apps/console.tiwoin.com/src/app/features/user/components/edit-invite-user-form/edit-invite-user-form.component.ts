@@ -5,7 +5,8 @@ import { FormBuilder, Validators } from '@angular/forms';
     selector: 'sonaleela-edit-invite-user-form',
     templateUrl: './edit-invite-user-form.component.html',
     styles: [`:host {@apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditInviteUserFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

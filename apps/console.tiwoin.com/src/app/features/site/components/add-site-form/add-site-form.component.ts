@@ -8,6 +8,7 @@ import { SiteModel } from '@models';
     templateUrl: './add-site-form.component.html',
     styles: [`:host { @apply block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddSiteFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

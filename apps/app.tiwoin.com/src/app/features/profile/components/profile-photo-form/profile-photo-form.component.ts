@@ -5,7 +5,8 @@ import { EmployeeModel } from '@models';
     selector: 'tiwoin-profile-photo-form',
     templateUrl: './profile-photo-form.component.html',
     styles: [`:host { @apply relative flex flex-col h-full bg-gray-100 pt-20 pb-12;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ProfilePhotoFormComponent {
     @Input() set profile(profile: EmployeeModel | null | any) {

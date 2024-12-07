@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
     selector: 'sonaleela-employee-list-page',
     template: `<sonaleela-employee-list-controller></sonaleela-employee-list-controller>`,
     styles: [':host { @apply block h-full; }'],
+    standalone: false
 })
 export class EmployeeListPageComponent { }

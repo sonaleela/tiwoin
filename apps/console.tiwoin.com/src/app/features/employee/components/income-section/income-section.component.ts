@@ -6,6 +6,7 @@ import { EmployeeModel } from '@models';
     templateUrl: './income-section.component.html',
     styles: [':host { @apply block; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class IncomeSectionComponent {
     @Input() employee?: EmployeeModel | null;

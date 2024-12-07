@@ -5,5 +5,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     template: `<sonaleela-form-list-controller></sonaleela-form-list-controller>`,
     styles: [`:host {@apply block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormListPageComponent { }

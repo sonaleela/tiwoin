@@ -16,6 +16,7 @@ interface OrganizationForm {
     selector: 'sonaleela-organization-form',
     templateUrl: './organization-form.component.html',
     styles: [':host { @apply block px-6;}'],
+    standalone: false
 })
 export class OrganizationFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

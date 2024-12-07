@@ -8,6 +8,7 @@ import * as fromStore from "../../store";
     selector: 'sonaleela-payroll-list-controller',
     templateUrl: './payroll-list-controller.component.html',
     styles: [':host {@apply block h-full;}'],
+    standalone: false
 })
 export class PayrollListControllerComponent {
     private store: Store = inject(Store);

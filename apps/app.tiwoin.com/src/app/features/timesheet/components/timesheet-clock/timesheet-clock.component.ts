@@ -4,7 +4,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
     selector: 'tiwoin-timesheet-clock',
     templateUrl: './timesheet-clock.component.html',
     styles: [`:host {@apply flex flex-col h-full bg-gray-75;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TimesheetClockComponent {
     @Input() entryTypes: { name: string, type: string }[] | null = [];

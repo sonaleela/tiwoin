@@ -5,10 +5,11 @@ import { Subject, Subscription } from 'rxjs';
 import { DynamicField } from '../field';
 
 @Component({
-  selector: 'sonaleela-number-field',
-  templateUrl: './number-field.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-number-field',
+    templateUrl: './number-field.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class NumberFieldComponent implements DynamicField {
   private formBuilder: FormBuilder = inject(FormBuilder);

@@ -7,7 +7,8 @@ import * as fromStore from "../../store";
     selector: 'sonaleela-add-timesheet-controller',
     templateUrl: './add-timesheet-controller.component.html',
     styles: [`:host { @apply block; }`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddTimesheetControllerComponent {
     private store: Store = inject(Store);

@@ -4,10 +4,11 @@ import { Subject, Subscription } from 'rxjs';
 import { DynamicField } from '../field';
 
 @Component({
-  selector: 'slui-toggle-field',
-  templateUrl: './toggle-field.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'slui-toggle-field',
+    templateUrl: './toggle-field.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ToggleFieldComponent implements DynamicField {
   private _data: any;

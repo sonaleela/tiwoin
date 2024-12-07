@@ -4,7 +4,8 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     selector: 'sonaleela-advance-payment-section',
     templateUrl: `./advance-payment-section.component.html`,
     styles: [':host {@apply block;}'],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AdvancePaymentSectionComponent {
     @Input() list: any[] = [];

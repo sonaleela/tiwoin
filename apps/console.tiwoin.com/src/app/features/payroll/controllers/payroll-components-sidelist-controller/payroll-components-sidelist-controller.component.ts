@@ -18,6 +18,7 @@ import * as fromStore from "../../store";
         (unSelectComponentId)="unSelectComponentId($event)"></sonaleela-payroll-component-sidelist>`,
     styles: [`:host { @apply block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PayrollComponentsSidelistControllerComponent {
     private store: Store = inject(Store);

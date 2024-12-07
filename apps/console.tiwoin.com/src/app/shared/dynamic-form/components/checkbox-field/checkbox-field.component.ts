@@ -5,10 +5,11 @@ import { Subject, Subscription } from 'rxjs';
 import { DynamicField } from "../field";
 
 @Component({
-  selector: 'sonaleela-checkbox-field',
-  templateUrl: './checkbox-field.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-checkbox-field',
+    templateUrl: './checkbox-field.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CheckboxFieldComponent implements DynamicField, OnDestroy {
   private formBuilder: FormBuilder = inject(FormBuilder);

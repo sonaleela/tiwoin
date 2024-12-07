@@ -8,6 +8,7 @@ import * as fromStore from '../../store';
     selector: 'sonaleela-add-employee-controller',
     templateUrl: './add-employee-controller.component.html',
     styles: [':host { @apply flex flex-col h-full; }'],
+    standalone: false
 })
 export class AddEmployeeControllerComponent {
     private store: Store = inject(Store);

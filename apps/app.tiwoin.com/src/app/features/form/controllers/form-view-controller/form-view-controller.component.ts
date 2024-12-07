@@ -7,7 +7,8 @@ import * as fromRootStore from "@store";
     selector: 'tiwoin-form-view-controller',
     templateUrl: './form-view-controller.component.html',
     styles: `:host { @apply flex flex-col bg-gray-100 h-full; }`,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormViewControllerComponent {
     private store: Store = inject(Store);

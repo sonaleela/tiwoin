@@ -9,7 +9,8 @@ import { StorageService, StorageServiceInterface } from '../../config';
     selector: 'slui-file-field',
     templateUrl: './file-field.component.html',
     styles: [`:host {@apply block;}`, `.bg-blue-400 {background-color: var(--slui-button-cta-color);}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FileFieldComponent implements DynamicField {
     private _data: any;

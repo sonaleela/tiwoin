@@ -5,5 +5,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     template: `<sonaleela-user-list-controller></sonaleela-user-list-controller>`,
     styles: [`:host { @apply block h-full;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ListUserPageComponent { }

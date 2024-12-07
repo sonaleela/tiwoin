@@ -9,6 +9,7 @@ import * as fromStore from "../../store";
     templateUrl: './work-item-list-controller.component.html',
     styles: [':host {@apply block;}'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class WorkItemListControllerComponent {
     private store: Store = inject(Store);

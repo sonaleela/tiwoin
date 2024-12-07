@@ -9,7 +9,8 @@ import * as fromStore from "../../store";
     selector: 'tiwoin-organization-list-controller',
     templateUrl: `./organization-list-controller.component.html`,
     styles: [`:host { @apply block h-full bg-gray-75 h-full overflow-y-auto p-6;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class OrganizationListControllerComponent {
     private store: Store = inject(Store);

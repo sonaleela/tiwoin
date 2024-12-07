@@ -4,5 +4,6 @@ import { Component } from '@angular/core';
     selector: 'sonaleela-onboard-organization-page',
     template: `<sonaleela-create-organization-controller></sonaleela-create-organization-controller>`,
     styles: [':host { @apply block h-full bg-gray-100;}'],
+    standalone: false
 })
 export class OnboardOrganizationPageComponent { }

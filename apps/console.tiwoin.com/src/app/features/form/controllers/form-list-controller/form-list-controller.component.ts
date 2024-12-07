@@ -9,6 +9,7 @@ import * as fromStore from "../../store";
     templateUrl: './form-list-controller.component.html',
     styles: [`:host { @apply block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormListControllerComponent {
     private store: Store = inject(Store);

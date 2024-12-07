@@ -7,6 +7,7 @@ import { SignupPayloadModel } from '@models';
     selector: 'sonaleela-signup-form',
     templateUrl: './signup-form.component.html',
     styles: [`:host {@apply block;}`],
+    standalone: false
 })
 export class SignupFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

@@ -6,6 +6,7 @@ import { DocumentModel, EmployeeModel } from '@models';
     templateUrl: './document-section.component.html',
     styles: [':host { @apply block; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DocumentSectionComponent {
     @Input() list: DocumentModel[] | null = null;

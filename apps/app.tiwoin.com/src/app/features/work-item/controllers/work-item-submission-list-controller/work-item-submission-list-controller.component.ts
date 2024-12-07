@@ -8,7 +8,8 @@ import { tap } from 'rxjs/operators';
     selector: 'tiwoin-work-item-submission-list-controller',
     templateUrl: './work-item-submission-list-controller.component.html',
     styles: [`:host { @apply flex flex-col bg-gray-100 h-full overflow-y-auto;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class WorkItemSubmissionListControllerComponent {
     private store: Store = inject(Store);

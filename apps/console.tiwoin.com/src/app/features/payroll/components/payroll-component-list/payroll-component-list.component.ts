@@ -5,6 +5,7 @@ import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from 
     templateUrl: './payroll-component-list.component.html',
     styles: [':host { @apply block; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PayrollComponentListComponent {
     @Input() isPending: boolean | null = false;

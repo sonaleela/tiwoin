@@ -8,6 +8,7 @@ import { FormFieldTypeEnum } from '@models';
     templateUrl: './email-form-control.component.html',
     styles: [`:host { @apply block; }`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EmailFormControlComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

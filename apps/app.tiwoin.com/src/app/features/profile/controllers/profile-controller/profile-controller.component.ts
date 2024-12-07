@@ -10,6 +10,7 @@ import { EmployeeModel } from '@models';
     templateUrl: './profile-controller.component.html',
     styles: [`:host { @apply block h-full overflow-auto;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ProfileControllerComponent {
     private store: Store = inject(Store);

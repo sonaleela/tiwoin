@@ -4,13 +4,14 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { ICON_PATH } from '../../config';
 
 @Component({
-  selector: 'slui-icon',
-  template: `
+    selector: 'slui-icon',
+    template: `
     <mat-icon style="height: unset; width: unset;"
           [svgIcon]="iconName"></mat-icon>
   `,
-  styles: [`:host {display: inline-flex;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    styles: [`:host {display: inline-flex;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class IconComponent {
   private _name = '';

@@ -5,7 +5,8 @@ import { FormBuilder } from '@angular/forms';
     selector: 'tiwoin-otp-form',
     templateUrl: './otp-form.component.html',
     styles: [`:host { @apply flex items-center justify-center w-full h-full bg-gray-75 px-6;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class OtpFormComponent {
     @Input() isPending: boolean | null = null;

@@ -8,7 +8,8 @@ import * as fromRootStore from "@store";
     selector: 'tiwoin-form-submission-list-controller',
     templateUrl: './form-submission-list-controller.component.html',
     styles: [`:host { @apply flex flex-col bg-gray-100 h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormSubmissionListControllerComponent {
     private store: Store = inject(Store);

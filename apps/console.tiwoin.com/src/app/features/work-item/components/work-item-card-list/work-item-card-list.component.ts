@@ -5,6 +5,7 @@ import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from 
     templateUrl: './work-item-card-list.component.html',
     styles: [`:host {@apply block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class WorkItemCardListComponent {
     @Input() workItems: any[] = [];

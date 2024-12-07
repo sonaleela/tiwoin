@@ -5,7 +5,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
     selector: 'tiwoin-slide-drop',
     templateUrl: './slide-drop.component.html',
     styles: [`:host { @apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SlideDropComponent {
     @Input() entry: { name: string, type: string } | null = null;

@@ -9,7 +9,8 @@ import { tap } from 'rxjs/operators';
     selector: 'sonaleela-work-item-data-controller',
     templateUrl: './work-item-data-controller.component.html',
     styles: [`:host { @apply grid grid-rows-[64px,1fr] overflow-hidden h-full transition-all;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class WorkItemDataControllerComponent {
     private store: Store = inject(Store);

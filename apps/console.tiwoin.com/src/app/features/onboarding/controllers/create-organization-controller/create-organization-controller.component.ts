@@ -9,6 +9,7 @@ import * as fromRootStore from "@store";
     selector: 'sonaleela-create-organization-controller',
     templateUrl: './create-organization-controller.component.html',
     styles: [':host { @apply flex flex-col h-full;}'],
+    standalone: false
 })
 export class CreateOrganizationControllerComponent {
     private store: Store = inject(Store);

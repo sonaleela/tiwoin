@@ -4,7 +4,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
     selector: 'sonaleela-form-data-view',
     templateUrl: './form-data-view.component.html',
     styles: [`:host { @apply flex flex-col py-6 gap-6 h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormDataViewComponent {
     @Input() data: any;

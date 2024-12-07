@@ -5,7 +5,8 @@ import { FormBuilder, Validators } from '@angular/forms';
     selector: 'sonaleela-edit-work-item-data',
     templateUrl: './edit-work-item-data.component.html',
     styles: [`:host { @apply flex flex-col py-6 gap-6 h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditWorkItemDataComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

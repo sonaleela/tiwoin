@@ -5,7 +5,8 @@ import { PayrollComponentModel } from '@models';
     selector: 'sonaleela-payroll-component-sidelist',
     templateUrl: './payroll-component-sidelist.component.html',
     styles: [`:host { @apply block; }`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PayrollComponentSidelistComponent {
     @Input() isPending: boolean | null = null;

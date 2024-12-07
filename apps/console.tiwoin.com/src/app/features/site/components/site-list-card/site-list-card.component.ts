@@ -6,6 +6,7 @@ import { SiteModel } from '@models';
     templateUrl: './site-list-card.component.html',
     styles: [':host {@apply block;}'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SiteListCardComponent {
     @Input() siteList: SiteModel[] = [];

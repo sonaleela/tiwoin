@@ -4,7 +4,8 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
     selector: 'tiwoin-form-submission-list',
     templateUrl: './form-submission-list.component.html',
     styles: [`:host { @apply block bg-gray-100 h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormSubmissionListComponent {
     @Input() list: any[] | null = null;

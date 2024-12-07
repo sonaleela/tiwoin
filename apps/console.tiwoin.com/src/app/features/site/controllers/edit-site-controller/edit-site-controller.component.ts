@@ -9,7 +9,8 @@ import * as fromRootStore from "@store";
     selector: 'sonaleela-edit-site-controller',
     templateUrl: './edit-site-controller.component.html',
     styles: [`:host { @apply flex flex-col h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditSiteControllerComponent {
     private store: Store = inject(Store);

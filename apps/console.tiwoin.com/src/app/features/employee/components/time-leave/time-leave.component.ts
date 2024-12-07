@@ -7,6 +7,7 @@ import { EmployeeModel } from '@models';
     templateUrl: './time-leave.component.html',
     styles: [':host {@apply block;}'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TimeLeaveComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

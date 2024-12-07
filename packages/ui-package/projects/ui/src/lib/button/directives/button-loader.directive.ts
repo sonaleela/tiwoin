@@ -3,7 +3,8 @@ import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 import { LoaderComponent } from "../components";
 
 @Directive({
-    selector: '[isLoading]'
+    selector: '[isLoading]',
+    standalone: false
 })
 export class ButtonLoaderDirective {
     width: number = 0;

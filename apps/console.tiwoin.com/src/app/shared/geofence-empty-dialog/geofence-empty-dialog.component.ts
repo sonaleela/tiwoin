@@ -3,7 +3,6 @@ import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { SluiButtonModule } from "@sonaleela/ui";
 
 @Component({
-    standalone: true,
     selector: 'sonaleela-geofence-empty-dialog',
     templateUrl: './geofence-empty-dialog.component.html',
     styles: [`:host { @apply flex flex-col bg-white rounded-3xl w-[540px]; }`],

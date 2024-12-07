@@ -4,6 +4,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angul
     selector: 'sonaleela-timesheet-data-header',
     templateUrl: './timesheet-data-header.component.html',
     styles: [`:host { @apply flex items-center gap-3 py-4; }`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TimesheetDataHeaderComponent {}

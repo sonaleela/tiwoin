@@ -6,6 +6,7 @@ import { LayoutType } from '@models';
     templateUrl: './layout-matcher.component.html',
     styles: [':host { @apply block h-full; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LayoutMatcherComponent {
     @Input() layout: LayoutType = LayoutType.EMPTY;

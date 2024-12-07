@@ -7,7 +7,8 @@ import dayjs from 'dayjs';
     selector: 'sonaleela-edit-timesheet-data',
     templateUrl: './edit-timesheet-data.component.html',
     styles: [`:host { @apply flex flex-col py-6 gap-6 h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditTimesheetDataComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

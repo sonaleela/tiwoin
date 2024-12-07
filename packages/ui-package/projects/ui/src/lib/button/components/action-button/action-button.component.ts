@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, Directive, ElementRef, Input, OnIni
 
 @Directive({
     selector: '[actionButtonIcon]',
+    standalone: false
 })
 export class ActionButtonIcon {
     @Input() set actionButtonIcon(element: HTMLSpanElement | null) {
@@ -34,7 +35,8 @@ export class ActionButtonIcon {
     changeDetection: ChangeDetectionStrategy.OnPush,
     host: {
         class: 'standard'
-    }
+    },
+    standalone: false
 })
 export class ActionButtonComponent {
     @Input() set emphasis(emphasis: any) {

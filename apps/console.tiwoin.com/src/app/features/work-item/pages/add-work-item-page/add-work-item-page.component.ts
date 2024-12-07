@@ -5,5 +5,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     template: `<sonaleela-add-work-item-controller></sonaleela-add-work-item-controller>`,
     styles: [`:host { @apply block; }`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddWorkItemPageComponent { }

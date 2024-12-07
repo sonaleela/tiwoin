@@ -6,6 +6,7 @@ import { EmployeeModel } from '@models';
     templateUrl: './employee-header.component.html',
     styles: [':host {@apply flex flex-row items-center gap-4;}'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EmployeeHeaderComponent {
     @Input() employee?: EmployeeModel | null;

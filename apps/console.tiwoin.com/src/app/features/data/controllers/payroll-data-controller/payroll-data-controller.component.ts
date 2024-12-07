@@ -8,7 +8,8 @@ import * as fromRootStore from "@store";
     selector: 'sonaleela-payroll-data-controller',
     templateUrl: './payroll-data-controller.component.html',
     styles: [`:host { @apply grid grid-rows-[64px,1fr] overflow-hidden h-full transition-all;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PayrollDataControllerComponent {
     private store: Store = inject(Store);

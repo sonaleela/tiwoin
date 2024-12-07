@@ -7,7 +7,8 @@ import * as fromRootStore from "@store";
     selector: 'sonaleela-form-preview-controller',
     template: '<sonaleela-dynamic-form [data]="data$ | async"></sonaleela-dynamic-form>',
     styles: [`:host { @apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormPreviewControllerComponent {
     private store: Store = inject(Store);

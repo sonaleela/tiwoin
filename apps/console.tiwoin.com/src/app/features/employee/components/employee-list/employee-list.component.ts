@@ -6,6 +6,7 @@ import { EmployeeModel } from '@models';
     templateUrl: './employee-list.component.html',
     styles: [':host {@apply block;}'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EmployeeListComponent {
     @Input() employeeList: EmployeeModel[] = [];

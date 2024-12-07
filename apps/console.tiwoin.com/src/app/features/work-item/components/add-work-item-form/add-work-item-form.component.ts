@@ -6,6 +6,7 @@ import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
     templateUrl: './add-work-item-form.component.html',
     styles: [':host { @apply block; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddWorkItemFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

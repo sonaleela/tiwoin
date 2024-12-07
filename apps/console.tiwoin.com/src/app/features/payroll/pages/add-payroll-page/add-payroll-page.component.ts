@@ -5,5 +5,6 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
     template: '<sonaleela-add-payroll-controller></sonaleela-add-payroll-controller>',
     styles: [`:host { @apply block h-full; }`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class AddPayrollPageComponent { }

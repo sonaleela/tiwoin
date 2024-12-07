@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
     selector: 'sonaleela-form-data-page',
     template: '<sonaleela-form-data-controller></sonaleela-form-data-controller>',
     styles: [`:host { @apply block h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormDataPageComponent { }

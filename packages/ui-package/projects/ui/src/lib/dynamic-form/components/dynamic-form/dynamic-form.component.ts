@@ -2,10 +2,11 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormBuilder, FormArray, FormGroup } from "@angular/forms";
 
 @Component({
-  selector: 'slui-dynamic-form',
-  templateUrl: './dynamic-form.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'slui-dynamic-form',
+    templateUrl: './dynamic-form.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DynamicFormComponent {
   private _data: any = null;

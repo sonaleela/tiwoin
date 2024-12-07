@@ -2,7 +2,8 @@
 import { Directive, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Directive({
-    selector: '[sonaleelaGeoFence]'
+    selector: '[sonaleelaGeoFence]',
+    standalone: false
 })
 export class GeoFenceDirective implements OnInit {
     @Input() set geolocation(location: { lat: number | null, lng: number | null } | null) {

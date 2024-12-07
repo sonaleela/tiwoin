@@ -3,10 +3,11 @@ import { getControlIconName } from '@shared';
 import { FormFieldTypeEnum } from '@models';
 
 @Component({
-  selector: 'sonaleela-form-control-preivew',
-  templateUrl: './form-control-preivew.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-form-control-preivew',
+    templateUrl: './form-control-preivew.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FormControlPreivewComponent {
   @Input() control: any;

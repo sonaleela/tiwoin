@@ -7,7 +7,8 @@ import * as fromRootStore from "@store";
     selector: 'tiwoin-site-list-controller',
     templateUrl: './site-list-controller.component.html',
     styles: [`:host { @apply block h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SiteListControllerComponent {
     private store: Store = inject(Store);

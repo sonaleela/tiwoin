@@ -9,6 +9,7 @@ import * as fromRootStore from "@store";
     templateUrl: './income-controller.component.html',
     styles: [':host { @apply block; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class IncomeControllerComponent extends FetchEmployee {
     public override store: Store = inject(Store);

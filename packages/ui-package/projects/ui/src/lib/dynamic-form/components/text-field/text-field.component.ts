@@ -4,10 +4,11 @@ import { Subject, Subscription } from 'rxjs';
 import { DynamicField } from '../field';
 
 @Component({
-  selector: 'slui-text-field',
-  templateUrl: './text-field.component.html',
-  styles: [`:host { @apply flex flex-col gap-1;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'slui-text-field',
+    templateUrl: './text-field.component.html',
+    styles: [`:host { @apply flex flex-col gap-1;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TextFieldComponent implements DynamicField {
   private _data: any;

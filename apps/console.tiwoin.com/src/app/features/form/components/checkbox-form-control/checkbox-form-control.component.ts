@@ -9,6 +9,7 @@ import { FormFieldTypeEnum } from '@models';
     templateUrl: './checkbox-form-control.component.html',
     styles: [`:host { @apply block; }`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CheckboxFormControlComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

@@ -19,6 +19,7 @@ interface SiteForm {
     selector: 'sonaleela-site-form',
     templateUrl: './site-form.component.html',
     styles: [':host { @apply block px-6;}'],
+    standalone: false
 })
 export class SiteFormComponent {
     private formBuilder: UntypedFormBuilder = inject(UntypedFormBuilder);

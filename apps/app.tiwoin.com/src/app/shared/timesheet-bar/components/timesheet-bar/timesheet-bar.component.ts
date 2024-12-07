@@ -5,7 +5,8 @@ import dayjs from "dayjs";
     selector: 'tiwoin-timesheet-bar',
     templateUrl: './timesheet-bar.component.html',
     styles: [`:host {display: block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TimesheetBarComponent {
     @Input() set entries(entries: { type: string, time: string }[]) {

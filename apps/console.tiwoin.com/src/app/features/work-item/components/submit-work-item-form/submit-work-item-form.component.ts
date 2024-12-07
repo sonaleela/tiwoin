@@ -5,7 +5,8 @@ import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
     selector: 'sonaleela-submit-work-item-form',
     templateUrl: './submit-work-item-form.component.html',
     styles: `:host { @apply block;}`,
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SubmitWorkItemFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

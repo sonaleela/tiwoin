@@ -8,7 +8,8 @@ dayjs.extend(isToday);
     selector: 'sonaleela-timesheet-timeline',
     templateUrl: './timesheet-timeline.component.html',
     styles: [`:host { @apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TimesheetTimelineComponent {
     private _entires: any[] = [];

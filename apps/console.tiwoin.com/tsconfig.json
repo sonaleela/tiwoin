@@ -45,6 +45,9 @@
             "@shared": [
                 "./src/app/shared"
             ],
+            "@sonaleela/ui": [
+                "../../packages/ui-package/dist/ui"
+            ]
         }
     },
     "angularCompilerOptions": {

@@ -5,6 +5,7 @@ import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from 
     templateUrl: './user-list-card.component.html',
     styles: [`:host { @apply block; }`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class UserListCardComponent {
     @Input() userList: any[] = [];

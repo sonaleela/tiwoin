@@ -4,10 +4,11 @@ import { Subject, Subscription } from 'rxjs';
 import { DynamicField } from '../field';
 
 @Component({
-  selector: 'slui-datetime-field',
-  templateUrl: './datetime-field.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'slui-datetime-field',
+    templateUrl: './datetime-field.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DatetimeFieldComponent implements DynamicField {
   private _data: any;

@@ -6,10 +6,11 @@ import * as fromRootStore from "@store";
 import { map, tap } from 'rxjs/operators';
 
 @Component({
-	selector: 'tiwoin-document-controller',
-	templateUrl: `./document-controller.component.html`,
-	styles: [`:host { @apply block h-full;}`],
-	changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'tiwoin-document-controller',
+    templateUrl: `./document-controller.component.html`,
+    styles: [`:host { @apply block h-full;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DocumentControllerComponent {
 	private store: Store = inject(Store);

@@ -11,7 +11,8 @@ import * as fromStore from "../../store";
         (close)="close($event)" 
         (upload)="upload($event)"></tiwoin-upload-file>`,
     styles: [`:host { @apply block h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class UploadControllerComponent {
     private store: Store = inject(Store);

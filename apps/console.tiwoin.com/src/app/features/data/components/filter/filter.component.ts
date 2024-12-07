@@ -9,7 +9,8 @@ dayjs.extend(utc)
     selector: 'sonaleela-filter',
     templateUrl: './filter.component.html',
     styles: [`:host {@apply flex flex-col gap-3;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class FilterComponent {
     @Input() filterObject: FilterList | null = null;

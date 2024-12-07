@@ -6,7 +6,8 @@ import { FormFieldTypeEnum } from '@models';
     selector: 'sonaleela-control-selection-section',
     templateUrl: './control-selection-section.component.html',
     styles: [`:host {@apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ControlSelectionSectionComponent {
     @Output() selectControl = new EventEmitter();

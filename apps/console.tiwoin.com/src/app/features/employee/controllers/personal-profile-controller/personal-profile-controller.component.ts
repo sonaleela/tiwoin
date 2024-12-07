@@ -8,6 +8,7 @@ import { FetchEmployee } from '../employee.class';
     templateUrl: 'personal-profile-controller.component.html',
     styles: [':host { @apply block; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class PersonalProfileControllerComponent extends FetchEmployee {
     constructor() {

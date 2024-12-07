@@ -10,6 +10,7 @@ import * as fromStore from '../../store';
     templateUrl: './edit-payroll-controller.component.html',
     styles: [`:host { @apply flex flex-col h-full;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditPayrollControllerComponent {
     private store: Store = inject(Store);

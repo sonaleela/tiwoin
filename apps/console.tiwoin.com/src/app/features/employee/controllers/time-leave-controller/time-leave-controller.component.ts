@@ -8,6 +8,7 @@ import { FetchEmployee } from '../employee.class';
     templateUrl: './time-leave-controller.component.html',
     styles: [':host { @apply block; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TimeLeaveControllerComponent extends FetchEmployee {
     constructor() {

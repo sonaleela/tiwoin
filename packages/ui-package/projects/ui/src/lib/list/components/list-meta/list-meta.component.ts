@@ -1,16 +1,17 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'slui-list-meta',
-  template: `<ng-content></ng-content>`,
-  styles: [
-    `
+    selector: 'slui-list-meta',
+    template: `<ng-content></ng-content>`,
+    styles: [
+        `
       :host {
         display: block;
       }
     `
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ListMetaComponent implements OnInit {
 

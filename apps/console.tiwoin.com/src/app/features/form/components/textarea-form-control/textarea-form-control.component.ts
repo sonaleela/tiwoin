@@ -6,7 +6,8 @@ import { FormFieldTypeEnum } from '@models';
     selector: 'sonaleela-textarea-form-control',
     templateUrl: './textarea-form-control.component.html',
     styles: [`:host { @apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class TextareaFormControlComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

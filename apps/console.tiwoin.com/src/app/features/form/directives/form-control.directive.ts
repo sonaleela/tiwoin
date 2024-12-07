@@ -16,7 +16,8 @@ import {
 } from "../components";
 
 @Directive({
-  selector: '[sonaleelaFormControl]'
+    selector: '[sonaleelaFormControl]',
+    standalone: false
 })
 export class FormControlDirective {
   @Input() set sonaleelaFormControl(field: any | null) {

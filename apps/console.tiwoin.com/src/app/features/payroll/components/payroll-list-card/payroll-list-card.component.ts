@@ -4,6 +4,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     selector: 'sonaleela-payroll-list-card',
     templateUrl: './payroll-list-card.component.html',
     styles: [':host { @apply block;}'],
+    standalone: false
 })
 export class PayrollListCardComponent {
     @Input() isPending: boolean | null = false;

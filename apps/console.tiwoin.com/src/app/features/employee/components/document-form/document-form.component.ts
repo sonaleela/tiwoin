@@ -10,7 +10,8 @@ interface DocumentForm {
     selector: 'sonaleela-document-form',
     templateUrl: './document-form.component.html',
     styles: [`:host { @apply block; }`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DocumentFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

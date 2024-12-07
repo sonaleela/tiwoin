@@ -7,7 +7,8 @@ import * as fromRootStore from "@store";
     selector: 'tiwoin-sidenav',
     templateUrl: './sidenav.component.html',
     styles: [`:host { @apply block bg-gray-100 h-full;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SidenavComponent {
     constructor(private store: Store) { }

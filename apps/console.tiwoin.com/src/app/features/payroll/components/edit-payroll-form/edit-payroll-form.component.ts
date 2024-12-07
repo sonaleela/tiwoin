@@ -16,7 +16,8 @@ interface PayrollForm {
     selector: 'sonaleela-edit-payroll-form',
     templateUrl: './edit-payroll-form.component.html',
     styles: [`:host { @apply block;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditPayrollFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

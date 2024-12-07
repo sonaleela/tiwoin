@@ -8,6 +8,7 @@ import * as fromRootStore from "@store";
     templateUrl: './layout-sidenav.component.html',
     styles: [':host { @apply flex flex-row h-full; }'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class LayoutSidenavComponent {
     private store: Store = inject(Store);

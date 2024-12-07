@@ -3,10 +3,11 @@ import { FormBuilder, FormArray } from "@angular/forms";
 import { FormFieldTypeEnum, FormModal } from '@models';
 
 @Component({
-  selector: 'sonaleela-dynamic-form',
-  templateUrl: './dynamic-form.component.html',
-  styles: [`:host { @apply block;}`],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'sonaleela-dynamic-form',
+    templateUrl: './dynamic-form.component.html',
+    styles: [`:host { @apply block;}`],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class DynamicFormComponent {
   private formBuilder: FormBuilder = inject(FormBuilder);

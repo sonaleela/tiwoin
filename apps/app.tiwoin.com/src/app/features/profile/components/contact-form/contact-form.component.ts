@@ -6,7 +6,8 @@ import { EmployeeModel } from '@models';
     selector: 'tiwoin-contact-form',
     templateUrl: './contact-form.component.html',
     styles: [`:host { @apply block p-6;}`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class ContactFormComponent {
     @Input() set profile(profile: EmployeeModel | null | any) {

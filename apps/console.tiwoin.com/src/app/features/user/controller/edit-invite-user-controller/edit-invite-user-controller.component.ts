@@ -10,6 +10,7 @@ import * as fromStore from "../../store";
     templateUrl: './edit-invite-user-controller.component.html',
     styles: [`:host { @apply flex flex-col h-full;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class EditInviteUserControllerComponent {
     private store: Store = inject(Store);

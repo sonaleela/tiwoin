@@ -7,6 +7,7 @@ import { EmployeeModel } from '@models';
     templateUrl: './company-profile.component.html',
     styles: [':host {@apply block;}'],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class CompanyProfileComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);

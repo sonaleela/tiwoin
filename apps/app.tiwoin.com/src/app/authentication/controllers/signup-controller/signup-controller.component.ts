@@ -10,7 +10,8 @@ import * as fromStore from '../../store';
     selector: 'tiwoin-signup-controller',
     templateUrl: './signup-controller.component.html',
     styles: [`:host { @apply block h-full; }`],
-    changeDetection: ChangeDetectionStrategy.OnPush
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class SignupControllerComponent {
     private store: Store = inject(Store);
