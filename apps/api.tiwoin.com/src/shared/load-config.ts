@@ -1,7 +1,6 @@
 import { SecretsManagerClient, GetSecretValueCommand } from "@aws-sdk/client-secrets-manager";
 
 export async function getConfig() {
-    console.log(process.env.NODE_ENV);
     // load env file config for local development
     if (process.env.NODE_ENV === 'local') return {};
 
