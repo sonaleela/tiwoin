@@ -7,7 +7,7 @@ import { CdkTableModule } from '@angular/cdk/table';
 
 import { SluiIconModule, SluiButtonModule } from '@sonaleela/ui';
 import { authenticationGuard } from '@core';
-import { LoadingModule, TimesheetBarModule, SlideDropModule, MonthFilterBarComponent } from "@shared";
+import { LoadingModule, MonthFilterBarComponent, TimesheetBarComponent, SlideDropComponent } from "@shared";
 import { reducer, timesheetFeatureKey, TimesheetEffects, RouterEffects } from "./store";
 import { LayoutType } from '@models';
 import { TimesheetListPageComponent, TimesheetClockPageComponent } from './pages';
@@ -18,8 +18,8 @@ import { TimesheetListComponent, TimesheetClockComponent, TimesheetListHeaderCom
     imports: [
         CommonModule,
         LoadingModule,
-        TimesheetBarModule,
-        SlideDropModule,
+        TimesheetBarComponent,
+        SlideDropComponent,
         SluiIconModule,
         SluiButtonModule,
         CdkTableModule,

@@ -1,3 +1,4 @@
+import { CommonModule } from '@angular/common';
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import dayjs from "dayjs";
 
@@ -6,7 +7,8 @@ import dayjs from "dayjs";
     templateUrl: './timesheet-bar.component.html',
     styles: [`:host {display: block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [CommonModule],
+    standalone: true,
 })
 export class TimesheetBarComponent {
     @Input() set entries(entries: { type: string, time: string }[]) {

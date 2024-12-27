@@ -1,5 +1,6 @@
-import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { ChangeDetectionStrategy, Component, OnInit, input, output } from '@angular/core';
+import { CdkDragDrop, DragDropModule, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 interface Entry {
     name: string,
@@ -11,7 +12,11 @@ interface Entry {
     templateUrl: './slide-drop.component.html',
     styles: [`:host { @apply block;}`],
     changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: false
+    imports: [
+        CommonModule,
+        DragDropModule,
+    ],
+    standalone: true,
 })
 export class SlideDropComponent {
     /**

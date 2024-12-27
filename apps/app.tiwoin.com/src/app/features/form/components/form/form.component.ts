@@ -25,9 +25,6 @@ export class FormComponent {
      */
     readonly submitForm = output<typeof this.form.value>();
 
-    /**
-     * Inject
-     */
     private formBuilder: FormBuilder = inject(FormBuilder);
     form = this.formBuilder.group({
         name: '',
