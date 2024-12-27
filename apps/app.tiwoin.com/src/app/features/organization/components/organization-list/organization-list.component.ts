@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from '@angular/core';
 import { ProfileModel } from '@models';
 
 @Component({
@@ -9,11 +9,11 @@ import { ProfileModel } from '@models';
     standalone: false
 })
 export class OrganizationListComponent {
-    @Input() profile: Partial<ProfileModel> | null = null;
-    @Input() ownerOrganizationList: any[] | null = [];
-    @Input() acceptedOrganizationList: any[] | null = [];
-    @Input() unacceptedOrganizationList: any[] | null = [];
-    @Input() error: string | null = null;
+    readonly profile = input<Partial<ProfileModel> | null>(null);
+    readonly ownerOrganizationList = input<any[] | null>([]);
+    readonly acceptedOrganizationList = input<any[] | null>([]);
+    readonly unacceptedOrganizationList = input<any[] | null>([]);
+    readonly error = input<string | null>(null);
 
     @Output() accept = new EventEmitter();
     @Output() reject = new EventEmitter();

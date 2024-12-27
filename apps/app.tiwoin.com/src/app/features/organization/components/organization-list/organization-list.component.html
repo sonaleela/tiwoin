@@ -1,7 +1,7 @@
-@if (unacceptedOrganizationList?.length) {
+@if (unacceptedOrganizationList()?.length) {
 <h2 class="font-body font-bold text-75 text-gray-800 mb-2">Pending invitations</h2>
 }
-<section *ngFor="let organization of unacceptedOrganizationList"
+<section *ngFor="let organization of unacceptedOrganizationList()"
          class="flex flex-col p-6 bg-white rounded-2xl border border-gray-300 mb-6">
      <h2 class="flex-1 font-body font-bold text-100 text-gray-800 mb-1">{{organization?.organization?.name}}</h2>
      <p class="flex-auto font-body text-100 text-gray-800 mb-4">{{organization?.role}}</p>
@@ -14,13 +14,13 @@
      </div>
 </section>
 
-@if (ownerOrganizationList?.length) {
+@if (ownerOrganizationList()?.length) {
 <h2 class="font-body font-bold text-75 text-gray-800 mb-2">Owned organizations</h2>
 }
-<section *ngFor="let organization of ownerOrganizationList"
+<section *ngFor="let organization of ownerOrganizationList()"
          class="relative flex flex-col p-6 bg-white rounded-2xl border border-gray-300 mb-6 cursor-pointer"
          (click)="setOrganization.emit(organization)">
-     @if (organization?.organization?.id === profile?.defaultOrganization) {
+     @if (organization?.organization?.id === profile()?.defaultOrganization) {
      <div
           class="flex items-center gap-4 px-5 py-1 absolute right-[-1px] top-3 border border-gray-300 rounded-l-md bg-gray-75">
           <slui-icon class="h-4 w-4 text-green-400"
@@ -38,13 +38,13 @@
      </p>
 </section>
 
-@if (acceptedOrganizationList?.length) {
+@if (acceptedOrganizationList()?.length) {
 <h2 class="font-body font-bold text-75 text-gray-800 mb-2">Members</h2>
 }
-<section *ngFor="let organization of acceptedOrganizationList"
+<section *ngFor="let organization of acceptedOrganizationList()"
          class="relative flex flex-col p-6 bg-white rounded-2xl border border-gray-300 mb-6 cursor-pointer"
          (click)="setOrganization.emit(organization)">
-     @if (organization?.organization?.id === profile?.defaultOrganization) {
+     @if (organization?.organization?.id === profile()?.defaultOrganization) {
      <div
           class="flex items-center gap-4 px-5 py-1 absolute right-[-1px] top-3 border border-gray-300 rounded-l-md bg-gray-75">
           <slui-icon class="h-4 w-4 text-green-400"

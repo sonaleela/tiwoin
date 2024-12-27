@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { LayoutType } from '@models';
 
 @Component({
@@ -9,6 +9,6 @@ import { LayoutType } from '@models';
     standalone: false
 })
 export class LayoutMatcherComponent {
-  @Input() layout: LayoutType = LayoutType.EMPTY;
+  readonly layout = input<LayoutType>(LayoutType.EMPTY);
   layoutTypes = LayoutType;
 }

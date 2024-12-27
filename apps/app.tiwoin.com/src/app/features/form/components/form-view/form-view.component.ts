@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { FormModal } from '@models';
 
 @Component({
@@ -9,5 +9,5 @@ import { FormModal } from '@models';
     standalone: false
 })
 export class FormViewComponent {
-    @Input() data: FormModal | null | undefined;
+    readonly data = input<FormModal | null>();
 }

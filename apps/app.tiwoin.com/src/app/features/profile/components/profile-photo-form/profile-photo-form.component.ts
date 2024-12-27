@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output, input } from '@angular/core';
 import { EmployeeModel } from '@models';
 
 @Component({
@@ -12,8 +12,8 @@ export class ProfilePhotoFormComponent {
     @Input() set profile(profile: EmployeeModel | null | any) {
         if (!profile) return;
     }
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
 
     @Output() toggleForm = new EventEmitter<boolean>();
     @Output() upload = new EventEmitter<File>();

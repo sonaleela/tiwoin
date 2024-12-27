@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from '@angular/core';
 
 @Component({
     selector: 'tiwoin-document-list',
@@ -8,8 +8,8 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
     standalone: false
 })
 export class DocumentListComponent {
-    @Input() list: any[] | null = [];
-    @Input() requestList: any[] | null = [];
+    readonly list = input<any[] | null>([]);
+    readonly requestList = input<any[] | null>([]);
 
     @Output() requestUpload = new EventEmitter();
 }

@@ -1,7 +1,7 @@
-@if (requestList?.length) {
+@if (requestList()?.length) {
 <h2 class="font-body font-bold text-75 text-gray-700 mt-4">Upload requests</h2>
 }
-<div *ngFor="let request of requestList"
+<div *ngFor="let request of requestList()"
      class="flex px-6 border border-dashed border-gray-500 rounded-2xl"
      (click)="requestUpload.emit(request)">
     <div class="flex-none self-center pr-6 py-5">
@@ -14,10 +14,10 @@
     </div>
 </div>
 
-@if (list?.length) {
+@if (list()?.length) {
 <h2 class="font-body font-bold text-75 text-gray-700 mt-4">Documents</h2>
 }
-<div *ngFor="let document of list"
+<div *ngFor="let document of list()"
      class="flex gap-4 px-6 py-5 bg-white rounded-2xl">
     <div class="flex-none self-center">
         <slui-icon class="h-6 w-6 text-primary-400"

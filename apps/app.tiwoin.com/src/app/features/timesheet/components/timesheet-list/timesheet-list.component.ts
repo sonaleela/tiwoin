@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, input } from '@angular/core';
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 
@@ -27,8 +27,8 @@ export class TimesheetListComponent {
     }
     get list(): any[] { return this._list; }
 
-    @Input() error: string | null = '';
-    @Input() isPending: boolean | null = null;
+    readonly error = input<string | null>('');
+    readonly isPending = input<boolean | null>(null);
 
     expandElement: any;
     displayedColumns = ['date', 'time', 'totalTime'];

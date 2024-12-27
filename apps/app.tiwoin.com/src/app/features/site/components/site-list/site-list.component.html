@@ -3,7 +3,7 @@
 </header>
 
 <section class="flex flex-col gap-4 px-6">
-    <a *ngFor="let site of list"
+    <a *ngFor="let site of list()"
        class="flex gap-4 px-6 py-5 bg-white rounded-2xl"
        [routerLink]="['/site', site?.id]">
         <div class="flex-none self-center">

@@ -6,23 +6,23 @@
           [cdkDropListData]="source"
           [cdkDropListConnectedTo]="[doneList]"
           (cdkDropListDropped)="drop($event)"
-          [cdkDropListDisabled]="isDisabled">
+          [cdkDropListDisabled]="isDisabled()">
           <div *ngFor="let item of source"
                cdkDrag
                cdkDragBoundary="#dragBoundary"
                cdkDragLockAxis="x"
                class="h-14 w-14 rounded-full [&.cdk-drag-animating]:transition-all [&.cdk-drag-animating]:duration-300"
                [ngClass]="{
-                    'bg-green-400': entry?.type === 'In',
-                    'bg-red-400': entry?.type === 'Out',
-                    'bg-orange-400': entry?.type === 'Break',
+                    'bg-green-400': entry()?.type === 'In',
+                    'bg-red-400': entry()?.type === 'Out',
+                    'bg-orange-400': entry()?.type === 'Break',
                }">
                <div class="h-14 w-14 rounded-full bg-gray-100"
                     *cdkDragPlaceholder></div>
           </div>
      </div>
      @if (source.length) {
-     <p class="font-body text-75 text-gray-700">{{entry?.name}}</p>
+     <p class="font-body text-75 text-gray-700">{{entry()?.name}}</p>
      }
      <div cdkDropList
           #doneList="cdkDropList"

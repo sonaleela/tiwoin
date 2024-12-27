@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output, input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmployeeModel } from '@models';
 
@@ -14,8 +14,8 @@ export class ProfileFormComponent {
         if (!profile) return;
         this.form.patchValue(profile);
     }
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
 
     @Output() submitForm = new EventEmitter<Partial<EmployeeModel> | any>();
     @Output() toggleForm = new EventEmitter<boolean>();

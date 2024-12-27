@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, input } from '@angular/core';
 
 @Component({
     selector: 'tiwoin-form-submission-list',
@@ -8,7 +8,7 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
     standalone: false
 })
 export class FormSubmissionListComponent {
-    @Input() list: any[] | null = null;
-    @Input() error: string | null = null;
-    @Input() isPending: boolean | null = null;
+    readonly list = input<any[] | null>(null);
+    readonly error = input<string | null>(null);
+    readonly isPending = input<boolean | null>(null);
 }

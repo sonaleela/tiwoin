@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from '@angular/core';
 import { EmployeeModel } from '@models';
 
 @Component({
@@ -9,9 +9,9 @@ import { EmployeeModel } from '@models';
     standalone: false
 })
 export class ProfileComponent {
-    @Input() profile: EmployeeModel | null = null;
-    @Input() isPending: boolean | null = null;
-    @Input() error: string | null = null;
+    readonly profile = input<EmployeeModel | null>(null);
+    readonly isPending = input<boolean | null>(null);
+    readonly error = input<string | null>(null);
 
     @Output() toggleForm = new EventEmitter<boolean>();
     @Output() togglePhotoForm = new EventEmitter();

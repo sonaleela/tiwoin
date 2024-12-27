@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SiteModel } from '@models';
 
@@ -10,14 +10,14 @@ import { SiteModel } from '@models';
     standalone: false
 })
 export class SiteSelectionListComponent {
-    @Input() list: SiteModel[] | null = null;
-    @Input() isPending: boolean | null = null;
-    @Input() error: string | null = null;
-    @Input() activeSite: SiteModel | null = null;
+    readonly list = input<SiteModel[] | null>(null);
+    readonly isPending = input<boolean | null>(null);
+    readonly error = input<string | null>(null);
+    readonly activeSite = input<SiteModel | null>(null);
 
     @Output() selectedSite = new EventEmitter<SiteModel>();
 
-    siteControl = new FormControl(this.activeSite);
+    siteControl = new FormControl(this.activeSite());
 
     constructor() {
         this.siteControl.valueChanges.subscribe((site: SiteModel | null) => {

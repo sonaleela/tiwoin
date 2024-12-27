@@ -1,10 +1,10 @@
 <div class="flex-1"
-     *isSpinner="isPending"></div>
+     *isSpinner="isPending()"></div>
 
 <section class="flex flex-col">
-    <label *ngFor="let site of list"
+    <label *ngFor="let site of list()"
            class="flex gap-4 px-6 py-5 rounded-2xl"
-           [ngClass]="{'bg-gray-200': site === activeSite}">
+           [ngClass]="{'bg-gray-200': site === activeSite()}">
         <input [formControl]="siteControl"
                type="radio"
                [value]="site"

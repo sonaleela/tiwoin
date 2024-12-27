@@ -43,13 +43,13 @@
 
 
 <footer class="mx-6 flex flex-col gap-2">
-    @if (error) {
-    <p class="font-body text-75 text-red-400 mb-4">{{error}}</p>
+    @if (error()) {
+    <p class="font-body text-75 text-red-400 mb-4">{{error()}}</p>
     }
     <button slui-button
             appearance="cta"
             [disabled]="!file"
-            *isLoading="isPending"
+            *isLoading="isPending()"
             (click)="uploadFile()">Upload</button>
 </footer>
 

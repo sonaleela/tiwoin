@@ -1,5 +1,5 @@
 <section class="flex flex-col gap-4 px-6">
-    <a *ngFor="let item of list"
+    <a *ngFor="let item of list()"
        class="flex gap-4 px-6 py-5 bg-white rounded-2xl"
        [routerLink]="['/form/view' , item?.id]">
         <div class="flex-none self-center">

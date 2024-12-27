@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Output, input } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { v4 as uuid } from "uuid";
 
@@ -12,8 +12,8 @@ import { SignupPayloadModel } from '@models';
     standalone: false
 })
 export class SignupFormComponent {
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
     @Output() submitForm = new EventEmitter<SignupPayloadModel>();
 
     private formBuilder: FormBuilder = inject(FormBuilder);

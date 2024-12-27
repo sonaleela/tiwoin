@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { WorkItemModal } from '@models';
 
 @Component({
@@ -9,7 +9,7 @@ import { WorkItemModal } from '@models';
     standalone: false
 })
 export class WorkItemListComponent {
-    @Input() list: WorkItemModal[] | null = null;
-    @Input() error: string | null = null;
-    @Input() isPending: boolean | null = null;
+    readonly list = input<WorkItemModal[] | null>(null);
+    readonly error = input<string | null>(null);
+    readonly isPending = input<boolean | null>(null);
 }

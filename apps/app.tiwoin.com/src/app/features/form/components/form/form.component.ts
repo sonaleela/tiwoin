@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output, input } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -15,7 +15,7 @@ export class FormComponent {
         this.patchForm(data);
     }
     get data() { return this._data; }
-    @Input() isPending: boolean | null = null;
+    readonly isPending = input<boolean | null>(null);
 
     @Output() submitForm = new EventEmitter();
 

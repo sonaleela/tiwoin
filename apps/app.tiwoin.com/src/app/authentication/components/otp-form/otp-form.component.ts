@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, inject, Output, input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -9,10 +9,10 @@ import { FormBuilder } from '@angular/forms';
     standalone: false
 })
 export class OtpFormComponent {
-    @Input() isPending: boolean | null = null;
-    @Input() phoneNumber: string | null = null;
-    @Input() error: string | null = null;
-    @Input() timer: number | null = null;
+    readonly isPending = input<boolean | null>(null);
+    readonly phoneNumber = input<string | null>(null);
+    readonly error = input<string | null>(null);
+    readonly timer = input<number | null>(null);
 
     @Output() submitForm = new EventEmitter();
     @Output() editPhoneNumber = new EventEmitter();
