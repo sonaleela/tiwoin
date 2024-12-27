@@ -12,9 +12,6 @@ export class ProfilePhotoFormComponent {
     /**
      * Input
      */
-    @Input() set profile(profile: EmployeeModel | null | any) {
-        if (!profile) return;
-    }
     readonly isPending = input<boolean | null>(false);
     readonly error = input<string | null>('');
 

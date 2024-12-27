@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, inject, Input, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, Input, input, output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { EmployeeModel } from '@models';
 
@@ -13,10 +13,7 @@ export class ProfileFormComponent {
     /**
      * Input
      */
-    @Input() set profile(profile: EmployeeModel | null | any) {
-        if (!profile) return;
-        this.form.patchValue(profile);
-    }
+    readonly profile = input<EmployeeModel | null>(null);
     readonly isPending = input<boolean | null>(false);
     readonly error = input<string | null>('');
 
@@ -31,22 +28,28 @@ export class ProfileFormComponent {
      */
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    form = this.formBuilder.group({
-        id: ['', Validators.required],
-        name: this.formBuilder.group({
-            first: this.formBuilder.control('', Validators.required),
-            middle: this.formBuilder.control(''),
-            last: this.formBuilder.control(''),
-        }),
-        phoneNumber: [''],
-        dateOfBirth: [null],
-        gender: ['Other'],
-    });
+    form = computed(() => {
+        const form = this.formBuilder.group({
+            id: ['', Validators.required],
+            name: this.formBuilder.group({
+                first: this.formBuilder.control('', Validators.required),
+                middle: this.formBuilder.control(''),
+                last: this.formBuilder.control(''),
+            }),
+            phoneNumber: [''],
+            dateOfBirth: [''],
+            gender: ['Other'],
+        });
+        const profile = this.profile();
+        console.log({ profile });
+        if (profile) form.patchValue(profile);
+        return form;
+    })
 
     submit() {
-        this.form.markAllAsTouched();
-        if (this.form.invalid) return;
+        this.form().markAllAsTouched();
+        if (this.form().invalid) return;
 
-        this.submitForm.emit(this.form.value);
+        this.submitForm.emit(this.form().value);
     }
 }

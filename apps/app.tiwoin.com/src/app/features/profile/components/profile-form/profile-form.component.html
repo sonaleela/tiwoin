@@ -1,5 +1,5 @@
 <h1 class="font-body font-bold text-200 text-gray-900 mb-6">Edit profile</h1>
-<form [formGroup]="form"
+<form [formGroup]="form()"
       (ngSubmit)="submit()"
       novalidate>
        <ng-container formGroupName="name">

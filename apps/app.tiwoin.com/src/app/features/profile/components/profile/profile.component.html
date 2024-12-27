@@ -1,6 +1,6 @@
 <div class="flex flex-col items-center gap-2">
     <div class="h-40 w-40 relative bg-gray-100 rounded-full p-1.5 border-2 border-gray-500"
-         (click)="togglePhotoForm.emit(false)">
+         (click)="togglePhotoForm.emit(true)">
         @if (profile()?.avatar?.url) {
         <img [src]="'https://tiwoin-user-uploads.s3.ap-south-1.amazonaws.com/' + profile()?.avatar?.url"
              alt=""

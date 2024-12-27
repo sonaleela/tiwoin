@@ -5,6 +5,20 @@ import duration from "dayjs/plugin/duration";
 
 dayjs.extend(duration)
 
+
+function normalizeData(list: any[] | { entries: any[], date: string, totalTime: any }[] | null | undefined): any[] {
+    if (!list) return [];
+    return list.map(timesheet => {
+        // Create duration to get hours and minutes, given time is in ms
+        const duration = dayjs.duration(timesheet?.totalTime);
+        const totalTime = `${duration.hours()}:${duration.minutes()}`;
+        return {
+            ...timesheet,
+            totalTime,
+        }
+    });
+}
+
 @Component({
     selector: 'tiwoin-timesheet-list',
     templateUrl: './timesheet-list.component.html',
@@ -23,28 +37,10 @@ export class TimesheetListComponent {
     /**
      * Input
      */
-    private _list: any[] = [];
-    @Input() set list(list: any[]) {
-        if (!list) return;
-        this._list = [...this.normalizeData(list)];
-    }
-    get list(): any[] { return this._list; }
-
+    readonly list = input([], { transform: normalizeData });
     readonly error = input<string | null>('');
     readonly isPending = input<boolean | null>(null);
 
     expandElement: any;
     displayedColumns = ['date', 'time', 'totalTime'];
-
-    normalizeData(list: { entries: any[], date: string, totalTime: any }[]) {
-        return list.map(timesheet => {
-            // Create duration to get hours and minutes, given time is in ms
-            const duration = dayjs.duration(timesheet?.totalTime);
-            const totalTime = `${duration.hours()}:${duration.minutes()}`;
-            return {
-                ...timesheet,
-                totalTime,
-            }
-        })
-    }
 }

@@ -1,5 +1,5 @@
 <section class="bg-gray-50 p-8 broder border-gray-300 rounded-3xl">
-    <form [formGroup]="form"
+    <form [formGroup]="form()"
           (ngSubmit)="submit()"
           novalidate>
         <div class="mb-5">
@@ -10,7 +10,7 @@
                    class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"
                    placeholder="Enter work-item quantity"
                    formControlName="quantity">
-            @if (form.get('quantity')?.hasError('required') && form.get('quantity')?.touched) {
+            @if (form().get('quantity')?.hasError('required') && form().get('quantity')?.touched) {
             <p class="font-body text-75 text-red-400">Quantity is required</p>
             }
         </div>
