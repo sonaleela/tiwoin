@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 @Component({
     selector: 'tiwoin-upload-file',
@@ -8,10 +8,18 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from 
     standalone: false
 })
 export class UploadFileComponent {
+    /**
+     * Input
+     */
     readonly error = input<string | null>(null);
     readonly isPending = input<boolean | null>(false);
-    @Output() close = new EventEmitter();
-    @Output() upload = new EventEmitter<File>();
+
+    /**
+     * Output
+     */
+    readonly close = output<boolean>();
+    readonly upload = output<File>();
+
     file: File | undefined;
 
     uploadFile() {

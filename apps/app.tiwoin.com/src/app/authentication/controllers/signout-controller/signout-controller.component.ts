@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 
 import * as fromStore from "../../store";
@@ -11,7 +11,12 @@ import * as fromStore from "../../store";
     standalone: false
 })
 export class SignoutControllerComponent {
-    constructor(private store: Store) {
+    /**
+     * Inject
+     */
+    private store: Store = Inject(Store);
+
+    constructor() {
         this.store.dispatch(fromStore.SignoutRequestBegin());
     }
 }

@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+
+interface Entry {
+    name: string,
+    type: string,
+    time?: string,
+}
 
 @Component({
     selector: 'tiwoin-timesheet-clock',
@@ -8,20 +14,17 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from 
     standalone: false
 })
 export class TimesheetClockComponent {
-    readonly entryTypes = input<{
-    name: string;
-    type: string;
-}[] | null>([]);
-    readonly clockEntry = input<{
-    entries: {
-        name: string;
-        type: string;
-        time: string;
-    }[];
-} | null>(null);
+    /**
+     * Input
+     */
+    readonly entryTypes = input<Entry[] | null>([]);
+    readonly clockEntry = input<{ entries: Entry[] } | null>(null);
     readonly isPending = input<boolean | null>(false);
     readonly error = input<string | null>(null);
     readonly isClockEntryPending = input<boolean | null>(false);
 
-    @Output() timeEntry = new EventEmitter<{ name: string, type: string }>();
+    /**
+     * Output
+     */
+    readonly timeEntry = output<Entry>();
 }

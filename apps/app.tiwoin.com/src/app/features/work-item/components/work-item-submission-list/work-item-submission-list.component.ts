@@ -8,6 +8,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     standalone: false
 })
 export class WorkItemSubmissionListComponent {
+    /**
+     * Input
+     */
     readonly list = input<any[] | null>(null);
     readonly error = input<string | null>(null);
     readonly isPending = input<boolean | null>(null);

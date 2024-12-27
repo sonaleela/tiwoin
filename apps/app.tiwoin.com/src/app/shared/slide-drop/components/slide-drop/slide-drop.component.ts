@@ -1,5 +1,10 @@
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
-import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, input, output } from '@angular/core';
+
+interface Entry {
+    name: string,
+    type: string,
+}
 
 @Component({
     selector: 'tiwoin-slide-drop',
@@ -9,13 +14,16 @@ import { ChangeDetectionStrategy, Component, EventEmitter, OnInit, Output, input
     standalone: false
 })
 export class SlideDropComponent {
-    readonly entry = input<{
-        name: string;
-        type: string;
-    } | null>(null);
+    /**
+     * Input
+     */
+    readonly entry = input<Entry | null>(null);
     readonly isDisabled = input<boolean>(false);
 
-    @Output() dropped = new EventEmitter<boolean>();
+    /**
+     * Output
+     */
+    readonly dropped = output<boolean>();
 
     source: string[] = ['event'];
     target: string[] = [];

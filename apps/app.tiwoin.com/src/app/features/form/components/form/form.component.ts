@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, input, output } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,9 @@ import { FormArray, FormBuilder, Validators } from '@angular/forms';
     standalone: false
 })
 export class FormComponent {
+    /**
+     * Input
+     */
     private _data: any = null;
     @Input() set data(data: any | null) {
         if (!data) return;
@@ -17,8 +20,14 @@ export class FormComponent {
     get data() { return this._data; }
     readonly isPending = input<boolean | null>(null);
 
-    @Output() submitForm = new EventEmitter();
+    /**
+     * Output
+     */
+    readonly submitForm = output<typeof this.form.value>();
 
+    /**
+     * Inject
+     */
     private formBuilder: FormBuilder = inject(FormBuilder);
     form = this.formBuilder.group({
         name: '',

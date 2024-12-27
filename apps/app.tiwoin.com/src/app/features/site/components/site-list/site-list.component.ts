@@ -9,6 +9,9 @@ import { SiteModel } from '@models';
     standalone: false
 })
 export class SiteListComponent {
+    /**
+     * Input
+     */
     readonly list = input<SiteModel[] | null>(null);
     readonly error = input<string | null>(null);
     readonly isPending = input<boolean | null>(null);

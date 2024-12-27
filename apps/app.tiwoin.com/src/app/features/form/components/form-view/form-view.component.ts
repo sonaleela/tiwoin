@@ -9,5 +9,8 @@ import { FormModal } from '@models';
     standalone: false
 })
 export class FormViewComponent {
+    /**
+     * Input
+     */
     readonly data = input<FormModal | null>();
 }

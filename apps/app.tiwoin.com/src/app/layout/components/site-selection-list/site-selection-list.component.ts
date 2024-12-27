@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { SiteModel } from '@models';
 
@@ -10,12 +10,18 @@ import { SiteModel } from '@models';
     standalone: false
 })
 export class SiteSelectionListComponent {
+    /**
+     * Input
+     */
     readonly list = input<SiteModel[] | null>(null);
     readonly isPending = input<boolean | null>(null);
     readonly error = input<string | null>(null);
     readonly activeSite = input<SiteModel | null>(null);
 
-    @Output() selectedSite = new EventEmitter<SiteModel>();
+    /**
+     * Output
+     */
+    readonly selectedSite = output<SiteModel>();
 
     siteControl = new FormControl(this.activeSite());
 

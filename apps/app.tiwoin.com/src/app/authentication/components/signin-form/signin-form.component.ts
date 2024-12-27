@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Output, input } from '@angular/core';
-import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
     selector: 'tiwoin-signin-form',
@@ -9,15 +9,25 @@ import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
     standalone: false
 })
 export class SigninFormComponent {
+    /**
+     * Input
+     */
     readonly isPending = input<boolean | null>(null);
     readonly error = input<string | null>(null);
-    @Output() submitForm = new EventEmitter<{ username: string; }>();
 
+    /**
+     * Output
+     */
+    readonly submitForm = output<{ username: string; }>();
+
+    /**
+     * Inject
+     */
     private formBuilder: FormBuilder = inject(FormBuilder);
+
     form = this.formBuilder.group({
         username: ['', Validators.required],
     });
-    constructor() { }
 
     submit() {
         this.form.markAllAsTouched();

@@ -8,6 +8,9 @@ import { ChangeDetectionStrategy, Component, OnInit, input } from '@angular/core
     standalone: false
 })
 export class FormSubmissionListComponent {
+    /**
+     * Input
+     */
     readonly list = input<any[] | null>(null);
     readonly error = input<string | null>(null);
     readonly isPending = input<boolean | null>(null);

@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Output, input } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
     selector: 'tiwoin-otp-form',
@@ -9,20 +9,28 @@ import { FormBuilder } from '@angular/forms';
     standalone: false
 })
 export class OtpFormComponent {
+    /**
+     * Input
+     */
     readonly isPending = input<boolean | null>(null);
     readonly phoneNumber = input<string | null>(null);
     readonly error = input<string | null>(null);
     readonly timer = input<number | null>(null);
 
-    @Output() submitForm = new EventEmitter();
-    @Output() editPhoneNumber = new EventEmitter();
+    /**
+     * Output
+     */
+    readonly submitForm = output<{ otp: string }>();
+    readonly editPhoneNumber = output<boolean>();
 
+    /**
+     * Inject
+     */
     private formBuilder: FormBuilder = inject(FormBuilder);
-    form = this.formBuilder.group({
-        otp: ''
-    });
 
-    constructor() { }
+    form = this.formBuilder.group({
+        otp: ['', Validators.required],
+    });
 
     submit() {
         if (this.form.invalid) return;

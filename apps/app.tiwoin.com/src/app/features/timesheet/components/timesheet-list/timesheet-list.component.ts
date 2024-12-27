@@ -20,6 +20,9 @@ dayjs.extend(duration)
     standalone: false
 })
 export class TimesheetListComponent {
+    /**
+     * Input
+     */
     private _list: any[] = [];
     @Input() set list(list: any[]) {
         if (!list) return;

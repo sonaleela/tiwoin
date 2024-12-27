@@ -11,6 +11,9 @@ import * as fromStore from "@store";
     standalone: false
 })
 export class AppComponent {
+    /**
+     * Inject
+     */
     private store: Store = inject(Store);
 
     layout$ = this.store.select(fromStore.selectRouteData).pipe(map((data) => data?.['layout']));

@@ -9,6 +9,9 @@ import { FormModal } from '@models';
     standalone: false
 })
 export class FormListComponent {
+    /**
+     * Input
+     */
     readonly list = input<FormModal[] | null>(null);
     readonly error = input<string | null>(null);
     readonly isPending = input<boolean | null>(null);

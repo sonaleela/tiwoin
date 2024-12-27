@@ -9,6 +9,9 @@ import { WorkItemModal } from '@models';
     standalone: false
 })
 export class WorkItemListComponent {
+    /**
+     * Input
+     */
     readonly list = input<WorkItemModal[] | null>(null);
     readonly error = input<string | null>(null);
     readonly isPending = input<boolean | null>(null);

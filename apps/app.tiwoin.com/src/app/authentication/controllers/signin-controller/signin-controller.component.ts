@@ -13,6 +13,9 @@ import * as fromStore from "../../store";
     standalone: false
 })
 export class SigninControllerComponent {
+    /**
+     * Inject
+     */
     private store: Store = inject(Store);
 
     isOTPForm$ = this.store.select(fromStore.selectIsOTPForm);
@@ -29,7 +32,6 @@ export class SigninControllerComponent {
             if (secondsElapsed === 0) this.store.dispatch(fromStore.OTPTimeout());
         })
     );
-    constructor() { }
 
     submit(payload: any) {
         this.store.dispatch(fromStore.SigninBegin({ username: payload?.username }));

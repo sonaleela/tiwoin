@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { SluiButtonModule, SluiIconModule } from '@sonaleela/ui';
 import dayjs from "dayjs";
@@ -12,9 +12,16 @@ import dayjs from "dayjs";
     standalone: true,
 })
 export class MonthFilterBarComponent {
+    /**
+     * Input
+     */
     readonly date = input<string | null>(dayjs().format('YYYY-MM-DD'));
 
-    @Output() dateSelect = new EventEmitter();
+    /**
+     * Output
+     */
+    readonly dateSelect = output<string>();
+
     today = new Date();
 
     next() {

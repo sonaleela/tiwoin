@@ -14,6 +14,9 @@ import * as fromStore from '../../store';
     standalone: false
 })
 export class SignupControllerComponent {
+    /**
+     * Inject
+     */
     private store: Store = inject(Store);
 
     isSignupPending$ = this.store.select(fromStore.selectIsSignupPending);
