@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, output } from '@angular/core';
 import { SluiButtonModule, SluiIconModule } from '@sonaleela/ui';
 import { CommonModule } from '@angular/common';
 import dayjs from "dayjs";
@@ -23,6 +23,7 @@ export class DateFilterBarComponent {
     readonly dateSelect = output<string>();
 
     today = dayjs().format('YYYY-MM-DD');
+    isCurrentDate = computed(() => !this.date() || dayjs(this.today).isSame(this.date()));
 
     next() {
         const date = this.date();

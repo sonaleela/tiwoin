@@ -1,6 +1,6 @@
 <button slui-action-button
         silent
-        [disabled]="!date()"
+        [disabled]="isCurrentDate()"
         (click)="next()">
     <slui-icon [iconName]="'tabler-icon-chevron-left'"></slui-icon>
 </button>
@@ -8,7 +8,7 @@
         slui-action-button
         silent
         (click)="dateInput.showPicker()">
-    {{date() || 'Today'}}
+    {{isCurrentDate() ? 'Today' : date()}}
     <input #dateInput
            class="w-0 h-0 overflow-hidden absolute bottom-0 left-[-100%]"
            type="date"

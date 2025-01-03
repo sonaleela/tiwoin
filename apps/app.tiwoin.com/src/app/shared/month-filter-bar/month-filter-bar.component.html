@@ -1,6 +1,6 @@
 <button slui-action-button
         silent
-        [disabled]="!date()"
+        [disabled]="isCurrentMonth()"
         (click)="next()">
     <slui-icon [iconName]="'tabler-icon-chevron-left'"></slui-icon>
 </button>
