@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, input, output } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { timesheetTimeValidator } from '../../validator';
 import dayjs from 'dayjs';
@@ -13,6 +13,8 @@ import dayjs from 'dayjs';
 export class EditTimesheetDataComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set data(data: any) {
         if (!data) return;
         const entries = data.entries.map((entry: any) => {
@@ -27,10 +29,10 @@ export class EditTimesheetDataComponent {
             entries,
         });
     }
-    @Input() error: string | null = null;
-    @Input() isPending: boolean | null = null;
-    @Output() close: EventEmitter<any> = new EventEmitter();
-    @Output() addTimesheet: EventEmitter<any> = new EventEmitter();
+    readonly error = input<string | null>(null);
+    readonly isPending = input<boolean | null>(null);
+    readonly close = output<boolean>();
+    readonly addTimesheet = output<typeof this.form.value & { entry: any }>();
 
     form = this.formBuilder.group({
         id: ['', Validators.required],

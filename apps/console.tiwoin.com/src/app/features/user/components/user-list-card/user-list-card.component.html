@@ -1,6 +1,6 @@
 <table class="w-full"
        cdk-table
-       [dataSource]="userList">
+       [dataSource]="userList()">
     <ng-container cdkColumnDef="name">
         <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
             cdk-header-cell
@@ -40,11 +40,11 @@
         <td class="font-body text-left text-100 text-gray-900 px-2 py-3"
             cdk-cell
             *cdkCellDef="let element">
-            <ng-container *ngIf="currentUser?.id === element?.userId">
+            <ng-container *ngIf="currentUser()?.id === element?.userId">
                 <!-- TOTO: add a button here or in organization list page to leave the organization -->
                 <p class="font-body text-gray-800 text-100">Self</p>
             </ng-container>
-            <ng-container *ngIf="currentUser?.id !== element?.userId">
+            <ng-container *ngIf="currentUser()?.id !== element?.userId">
                 <button type="button"
                         [routerLink]="['/user/invite', element?.id]"
                         slui-action-button

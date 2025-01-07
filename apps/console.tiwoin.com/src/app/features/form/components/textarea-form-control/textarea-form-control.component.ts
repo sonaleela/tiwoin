@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Output, EventEmitter, Input, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, inject, output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { FormFieldTypeEnum } from '@models';
 
@@ -12,12 +12,14 @@ import { FormFieldTypeEnum } from '@models';
 export class TextareaFormControlComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set data(data: any) {
         if (!data) return;
         this.form.patchValue(data);
     }
-    @Output() remove = new EventEmitter<boolean>();
-    @Output() save = new EventEmitter<any>();
+    readonly remove = output<boolean>();
+    readonly save = output<any>();
 
     form = this.formBuilder.group({
         id: [''],

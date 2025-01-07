@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, inject, Input, input, output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 
 import { SiteModel } from '@models';
@@ -24,23 +24,32 @@ interface SiteForm {
 export class SiteFormComponent {
     private formBuilder: UntypedFormBuilder = inject(UntypedFormBuilder);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set site(data: SiteModel | null) {
         if (!data) return;
         this.form.patchValue(data);
     }
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set state(data: string | null) {
         if (!data) return;
         this.form.get('address.state')?.setValue(data);
     }
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set country(data: string | null) {
         if (!data) return;
         this.form.get('address.country')?.setValue(data)
     }
-    @Input() cityList: string[] | null = [];
+    readonly cityList = input<string[] | null>([]);
 
-    @Output() submitForm = new EventEmitter<Partial<SiteModel>>();
-    @Output() pinChange = new EventEmitter<number>();
-    @Output() addresssChange = new EventEmitter<{ address: string, postalCode: string }>();
+    readonly submitForm = output<Partial<SiteModel>>();
+    readonly pinChange = output<number>();
+    readonly addresssChange = output<{
+    address: string;
+    postalCode: string;
+}>();
 
     form = this.formBuilder.nonNullable.group<SiteForm>({
         name: this.formBuilder.nonNullable.control('', Validators.required),

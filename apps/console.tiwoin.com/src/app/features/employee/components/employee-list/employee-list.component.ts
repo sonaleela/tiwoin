@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 import { EmployeeModel } from '@models';
 
 @Component({
@@ -9,10 +9,10 @@ import { EmployeeModel } from '@models';
     standalone: false
 })
 export class EmployeeListComponent {
-    @Input() employeeList: EmployeeModel[] = [];
+    readonly employeeList = input<EmployeeModel[]>([]);
     displayedColumns = ['avatar', 'name', 'phoneNumber', 'position', 'department', 'contact', 'status', 'actions'];
 
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = null;
-    @Output() delete = new EventEmitter<string>();
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>(null);
+    readonly delete = output<string>();
 }

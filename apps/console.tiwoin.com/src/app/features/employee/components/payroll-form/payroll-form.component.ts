@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit, input } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { PayrollModel } from '@models';
 
@@ -12,7 +12,7 @@ import { PayrollModel } from '@models';
 export class PayrollFormComponent {
   private formBuilder: FormBuilder = inject(FormBuilder);
 
-  @Input() payrollList: PayrollModel[] | null = [];
+  readonly payrollList = input<PayrollModel[] | null>([]);
 
   form = this.formBuilder.group({
     payrollId: '',
@@ -23,7 +23,7 @@ export class PayrollFormComponent {
 
   constructor() {
     this.form.get('payrollId')?.valueChanges.subscribe(id => {
-      this.selectedPayroll = this.payrollList?.find(payroll => `${payroll.id}` === `${id}`);
+      this.selectedPayroll = this.payrollList()?.find(payroll => `${payroll.id}` === `${id}`);
     })
   }
 

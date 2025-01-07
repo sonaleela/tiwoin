@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 @Component({
     selector: 'sonaleela-form-data',
@@ -8,15 +8,15 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
     standalone: false
 })
 export class FormDataComponent {
-    @Input() activeForm: any;
-    @Input() formList: any[] = [];
-    @Input() error: string | null = '';
-    @Input() isPending: boolean | null = false;
-    @Input() longDateFormat: string = '';
+    readonly activeForm = input<any>();
+    readonly formList = input<any[]>([]);
+    readonly error = input<string | null>('');
+    readonly isPending = input<boolean | null>(false);
+    readonly longDateFormat = input<string>('');
 
-    @Output() selectFormData: EventEmitter<any> = new EventEmitter();
-    @Output() selectGeoLocationData: EventEmitter<any> = new EventEmitter();
-    @Output() sortBy: EventEmitter<any> = new EventEmitter();
+    readonly selectFormData = output();
+    readonly selectGeoLocationData = output();
+    readonly sortBy = output<any>();
 
     displayedColumns: string[] = ['expand', 'submittedBy', 'name', 'site', 'approval', 'submittedAt', 'geoLocation', 'edit'];
 

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 
 @Component({
     selector: 'sonaleela-work-item-card-list',
@@ -8,11 +8,11 @@ import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from 
     standalone: false
 })
 export class WorkItemCardListComponent {
-    @Input() workItems: any[] = [];
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = null;
-    @Input() longDateFormat: string = '';
+    readonly workItems = input<any[]>([]);
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>(null);
+    readonly longDateFormat = input<string>('');
     
-    @Output() delete = new EventEmitter<string>();
+    readonly delete = output<string>();
     displayedColumns = ['name', 'description', 'unitCost', 'createdAt', 'actions'];
 }

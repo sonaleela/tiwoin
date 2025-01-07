@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 
 @Component({
     selector: 'sonaleela-payroll-list-card',
@@ -7,10 +7,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
     standalone: false
 })
 export class PayrollListCardComponent {
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
-    @Input() payrollList: any[] = [];
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
+    readonly payrollList = input<any[]>([]);
     displayedColumns = ['name', 'description', 'baseDayType', 'earnings', 'deductions', 'actions'];
 
-    @Output() delete = new EventEmitter<string>();
+    readonly delete = output<string>();
 }

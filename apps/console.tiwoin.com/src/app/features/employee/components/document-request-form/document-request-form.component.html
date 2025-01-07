@@ -33,12 +33,12 @@
                *ngIf="form.get('name')?.touched && form.get('allowedType')?.hasError('required')">Type is
                 required</p>
         </div>
-        <p *ngIf="error"
-           class="font-body text-75 text-red-400">{{error}}</p>
+        <p *ngIf="error()"
+           class="font-body text-75 text-red-400">{{error()}}</p>
         <div class="flex items-center gap-2">
             <button type="submit"
                     slui-button
-                    *isLoading="isPending"
+                    *isLoading="isPending()"
                     appearance="cta">Reqeust document</button>
             <button type="button"
                     (click)="cancel.emit(true)"

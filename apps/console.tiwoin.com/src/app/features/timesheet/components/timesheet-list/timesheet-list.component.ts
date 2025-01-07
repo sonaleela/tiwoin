@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 @Component({
     selector: 'sonaleela-timesheet-list',
@@ -8,11 +8,11 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
     standalone: false
 })
 export class TimesheetListComponent {
-    @Input() timesheetList: any[] = [];
+    readonly timesheetList = input<any[]>([]);
     displayedColumns = ['name', 'type', 'actions'];
 
-    @Input() error: string | null = '';
-    @Input() isPending: boolean | null = null;
+    readonly error = input<string | null>('');
+    readonly isPending = input<boolean | null>(null);
 
-    @Output() delete = new EventEmitter<string>();
+    readonly delete = output<string>();
 }

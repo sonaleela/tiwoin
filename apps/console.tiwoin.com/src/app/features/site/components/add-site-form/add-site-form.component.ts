@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, input, output } from '@angular/core';
 import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 
 import { SiteModel } from '@models';
@@ -13,24 +13,33 @@ import { SiteModel } from '@models';
 export class AddSiteFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set site(data: SiteModel | null) {
         if (!data) return;
         this.form.patchValue(data);
     }
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set state(data: string | null) {
         if (!data) return;
         this.form.get('address.state')?.setValue(data);
     }
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set country(data: string | null) {
         if (!data) return;
         this.form.get('address.country')?.setValue(data)
     }
-    @Input() cityList: string[] | null = [];
-    @Input() organizationId: string | null = '';
+    readonly cityList = input<string[] | null>([]);
+    readonly organizationId = input<string | null>('');
 
-    @Output() submitForm = new EventEmitter<any>();
-    @Output() pinChange = new EventEmitter<string>();
-    @Output() addresssChange = new EventEmitter<{ address: string, postalCode: string }>();
+    readonly submitForm = output<any>();
+    readonly pinChange = output<string>();
+    readonly addresssChange = output<{
+    address: string;
+    postalCode: string;
+}>();
 
     form = this.formBuilder.group({
         name: ['', Validators.required],

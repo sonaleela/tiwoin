@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 import { SiteModel } from '@models';
 
 @Component({
@@ -9,10 +9,10 @@ import { SiteModel } from '@models';
     standalone: false
 })
 export class SiteListCardComponent {
-    @Input() siteList: SiteModel[] = [];
-    @Input() isPending: boolean | null = null;
-    @Input() error: string | null = null;
+    readonly siteList = input<SiteModel[]>([]);
+    readonly isPending = input<boolean | null>(null);
+    readonly error = input<string | null>(null);
     displayedColumns = ['name', 'actions'];
 
-    @Output() delete = new EventEmitter<string>();
+    readonly delete = output<string>();
 }

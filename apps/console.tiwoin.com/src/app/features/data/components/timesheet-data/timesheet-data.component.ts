@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, input, output } from '@angular/core';
 import dayjs from "dayjs";
 import duration from "dayjs/plugin/duration";
 
@@ -21,6 +21,8 @@ dayjs.extend(duration)
 })
 export class TimesheetDataComponent {
     private _attendanceData: any[] = [];
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set attendanceData(attendanceData: any[]) {
         if (!attendanceData) return;
         this._attendanceData = attendanceData.map(attendance => {
@@ -31,12 +33,12 @@ export class TimesheetDataComponent {
     }
     get attendanceData() { return this._attendanceData; }
 
-    @Input() error: string | null = '';
-    @Input() isPending: boolean | null = false;
-    @Input() timeFormat: string = '';
+    readonly error = input<string | null>('');
+    readonly isPending = input<boolean | null>(false);
+    readonly timeFormat = input<string>('');
 
-    @Output() selectGeoLocationData: EventEmitter<any> = new EventEmitter();
-    @Output() sortBy: EventEmitter<any> = new EventEmitter();
+    readonly selectGeoLocationData = output();
+    readonly sortBy = output<any>();
 
     displayedColumns: string[] = ['expand', 'employee', 'timeline', 'totalTime', 'edit'];
     expandElement: any;

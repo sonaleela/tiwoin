@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 
 @Component({
     selector: 'sonaleela-user-list-card',
@@ -8,9 +8,9 @@ import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from 
     standalone: false
 })
 export class UserListCardComponent {
-    @Input() userList: any[] = [];
-    @Input() currentUser: any;
+    readonly userList = input<any[]>([]);
+    readonly currentUser = input<any>();
     displayedColumns = ['role', 'phoneNumber', 'status', 'actions'];
 
-    @Output() delete = new EventEmitter<string>();
+    readonly delete = output<string>();
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { EmployeeModel } from '@models';
 
@@ -12,11 +12,11 @@ import { EmployeeModel } from '@models';
 export class CompanyProfileComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() employee?: EmployeeModel | null;
-    @Input() isPending: boolean | null = null;
-    @Input() error: string | null = null;
+    readonly employee = input<EmployeeModel | null>();
+    readonly isPending = input<boolean | null>(null);
+    readonly error = input<string | null>(null);
 
-    @Output() editEmployee = new EventEmitter();
+    readonly editEmployee = output<any>();
 
     isPositionForm = false;
     positionForm = this.formBuilder.group({
@@ -40,7 +40,7 @@ export class CompanyProfileComponent {
 
     editPositionInfo() {
         this.isPositionForm = true;
-        this.positionForm.patchValue(this.employee || {});
+        this.positionForm.patchValue(this.employee() || {});
     }
     submitPosition() {
         if (this.positionForm.invalid) return;
@@ -50,7 +50,7 @@ export class CompanyProfileComponent {
 
     editPFInfo() {
         this.isPFForm = true;
-        this.PFForm.patchValue(this.employee || {});
+        this.PFForm.patchValue(this.employee() || {});
     }
     submitPF() {
         if (this.PFForm.invalid) return;
@@ -60,7 +60,7 @@ export class CompanyProfileComponent {
 
     editNoticeInfo() {
         this.isNoticeForm = true;
-        this.noticeForm.patchValue(this.employee || {});
+        this.noticeForm.patchValue(this.employee() || {});
     }
     submitNotice() {
         if (this.noticeForm.invalid) return;

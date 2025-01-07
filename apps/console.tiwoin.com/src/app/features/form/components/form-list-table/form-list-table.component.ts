@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 import { FormModal } from '@models';
 
 @Component({
@@ -9,11 +9,11 @@ import { FormModal } from '@models';
     standalone: false
 })
 export class FormListTableComponent {
-    @Input() list: FormModal[] = [];
+    readonly list = input<FormModal[]>([]);
     displayedColumns = ['name', 'fields', 'options'];
 
-    @Input() error: string | null = null;
-    @Input() isPending: boolean | null = null;
+    readonly error = input<string | null>(null);
+    readonly isPending = input<boolean | null>(null);
 
-    @Output() delete = new EventEmitter<string>();
+    readonly delete = output<string>();
 }

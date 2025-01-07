@@ -93,10 +93,10 @@
     </div>
 
     <p class="font-body text-75 text-red-400 mb-3"
-       *ngIf="error">{{error}}</p>
+       *ngIf="error()">{{error()}}</p>
     <div class="flex items-center gap-2">
         <button type="button"
-                *isLoading="isPending"
+                *isLoading="isPending()"
                 slui-button
                 type="submit"
                 appearance="cta">Add timesheet</button>

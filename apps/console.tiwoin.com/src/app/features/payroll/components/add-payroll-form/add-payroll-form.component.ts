@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, inject, output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { PayrollComponentModel } from '@models';
 
@@ -22,6 +22,8 @@ interface PayrollForm {
 export class AddPayrollFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set selectedComponent(components: PayrollComponentModel[] | null) {
         if (!components) return;
         this.earnings = [];
@@ -37,8 +39,8 @@ export class AddPayrollFormComponent {
         });
     }
 
-    @Output() unSelectComponentId = new EventEmitter<any>();
-    @Output() submitForm = new EventEmitter<any>();
+    readonly unSelectComponentId = output<any>();
+    readonly submitForm = output<any>();
 
     earnings: PayrollComponentModel[] = [];
     deductions: PayrollComponentModel[] = [];

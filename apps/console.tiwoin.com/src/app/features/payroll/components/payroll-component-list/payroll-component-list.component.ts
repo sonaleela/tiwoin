@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input, output } from '@angular/core';
 
 @Component({
     selector: 'sonaleela-payroll-component-list',
@@ -8,10 +8,10 @@ import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from 
     standalone: false
 })
 export class PayrollComponentListComponent {
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
-    @Input() payrollList: any[] = [];
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
+    readonly payrollList = input<any[]>([]);
     displayedColumns = ['name', 'actions'];
 
-    @Output() delete = new EventEmitter<string>();
+    readonly delete = output<string>();
 }

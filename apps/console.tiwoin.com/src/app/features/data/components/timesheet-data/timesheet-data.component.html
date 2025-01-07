@@ -88,7 +88,7 @@
                     <tr *ngFor="let entry of element?.entries">
                         <td class="font-body text-left text-75 text-gray-900 p-2">{{entry?.name}}</td>
                         <td class="font-body text-left text-75 text-gray-900 p-2">{{entry?.type}}</td>
-                        <td class="font-body text-left text-75 text-gray-900 p-2">{{entry?.time | date:timeFormat}}</td>
+                        <td class="font-body text-left text-75 text-gray-900 p-2">{{entry?.time | date:timeFormat()}}</td>
                         <td class="font-body text-left text-75 text-gray-900 p-2">{{entry?.site || '-'}}</td>
                         <td class="font-body text-center text-75 text-gray-900 p-2"
                             (click)="selectGeoLocationData.emit(entry.geoLocation)">

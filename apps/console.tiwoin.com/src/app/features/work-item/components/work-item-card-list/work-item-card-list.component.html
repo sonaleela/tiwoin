@@ -1,6 +1,6 @@
 <table class="w-full"
        cdk-table
-       [dataSource]="workItems">
+       [dataSource]="workItems()">
     <ng-container cdkColumnDef="name">
         <th class="font-body font-bold text-left text-75 text-gray-800 px-2 py-3"
             cdk-header-cell
@@ -45,7 +45,7 @@
         <td class="font-body text-left text-100 text-gray-900 px-2 py-3  whitespace-nowrap w-0"
             cdk-cell
             *cdkCellDef="let element">
-            {{element?.createdAt | date:longDateFormat}}
+            {{element?.createdAt | date:longDateFormat()}}
         </td>
     </ng-container>
 

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { EmployeeModel } from '@models';
 
@@ -12,11 +12,11 @@ import { EmployeeModel } from '@models';
 export class TimeLeaveComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() employee?: EmployeeModel | null;
-    @Input() isPending: boolean | null = null;
-    @Input() error: string | null = null;
+    readonly employee = input<EmployeeModel | null>();
+    readonly isPending = input<boolean | null>(null);
+    readonly error = input<string | null>(null);
 
-    @Output() editEmployee = new EventEmitter();
+    readonly editEmployee = output<any>();
 
     isTimesheetForm = false;
     timesheetForm = this.formBuilder.group({
@@ -42,7 +42,7 @@ export class TimeLeaveComponent {
 
     editTimesheetInfo() {
         this.isTimesheetForm = true;
-        this.timesheetForm.patchValue(this.employee || {});
+        this.timesheetForm.patchValue(this.employee() || {});
     }
     submitTimesheet() {
         if (this.timesheetForm.invalid) return;
@@ -52,7 +52,7 @@ export class TimeLeaveComponent {
 
     editLeaveInfo() {
         this.isLeaveForm = true;
-        this.leaveForm.patchValue(this.employee || {});
+        this.leaveForm.patchValue(this.employee() || {});
     }
     submitLeave() {
         if (this.leaveForm.invalid) return;

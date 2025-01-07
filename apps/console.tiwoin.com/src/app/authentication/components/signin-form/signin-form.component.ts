@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, ChangeDetectionStrategy, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,9 +11,11 @@ import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 export class SigninFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
-    @Output() submitForm = new EventEmitter<{ username: string; }>();
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
+    readonly submitForm = output<{
+    username: string;
+}>();
 
     form = this.formBuilder.group({
         countryCode: ['+91', Validators.required],

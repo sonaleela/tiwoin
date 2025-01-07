@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, OnInit, input, output } from '@angular/core';
 import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 import { WorkItemModal } from '@models';
 
@@ -12,14 +12,16 @@ import { WorkItemModal } from '@models';
 export class EditWorkItemFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set workItem(value: any) {
         if (!value) return;
 
         this.form.patchValue(value);
     }
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
-    @Output() submitForm = new EventEmitter<any>();
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
+    readonly submitForm = output<any>();
 
     form = this.formBuilder.group({
         name: ['', Validators.required],

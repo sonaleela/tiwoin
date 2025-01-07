@@ -6,6 +6,8 @@ import { LoaderComponent } from './loader';
     standalone: false
 })
 export class IsLoadingDirective {
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set isSpinner(isLoading: boolean | null) {
         this.vcr.clear();
         if (isLoading) {

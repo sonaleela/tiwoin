@@ -21,37 +21,37 @@
     <div class="flex flex-row flex-wrap items-center justify-start gap-2 mb-4">
         <button type="button"
                 class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-gray-800 hover:bg-gray-100"
-                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue?.['type'] === 'EARNING'}"
+                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue()?.['type'] === 'EARNING'}"
                 (click)="filterComponent({type: 'EARNING'})">
             Earnings
         </button>
         <button type="button"
                 class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-gray-800 hover:bg-gray-100"
-                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue?.['type'] === 'DEDUCTION'}"
+                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue()?.['type'] === 'DEDUCTION'}"
                 (click)="filterComponent({type: 'DEDUCTION'})">
             Deduction
         </button>
         <button type="button"
                 class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-gray-800 hover:bg-gray-100"
-                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue?.['calculationtype'] === 'FIXED'}"
+                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue()?.['calculationtype'] === 'FIXED'}"
                 (click)="filterComponent({calculationtype: 'FIXED'})">
             Fixed
         </button>
         <button type="button"
                 class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-gray-800 hover:bg-gray-100"
-                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue?.['calculationtype'] === 'PERCENTAGE'}"
+                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue()?.['calculationtype'] === 'PERCENTAGE'}"
                 (click)="filterComponent({calculationtype: 'PERCENTAGE'})">
             Percentage
         </button>
         <button type="button"
                 class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-gray-800 hover:bg-gray-100"
-                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue?.['calculationtype'] === 'VARIABLE'}"
+                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue()?.['calculationtype'] === 'VARIABLE'}"
                 (click)="filterComponent({calculationtype: 'VARIABLE'})">
             Variable
         </button>
         <button type="button"
                 class="h-8 px-5 bg-gray-75 rounded-full font-body text-75 text-gray-800 hover:bg-gray-100"
-                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue?.['isTaxable']}"
+                [ngClass]="{'!bg-gray-400 !text-gray-900': filterValue()?.['isTaxable']}"
                 (click)="filterComponent({isTaxable: true})">
             Taxable
         </button>
@@ -65,7 +65,7 @@
         payroll processing.</p>
 
     <div class="flex flex-col gap-4">
-        <div *ngFor="let payrollComponent of payrollComponentList"
+        <div *ngFor="let payrollComponent of payrollComponentList()"
              (click)="selectComponent(payrollComponent?.id)"
              class="flex flex-row gap-6 items-center rounded-2xl px-6 py-3 cursor-pointer bg-gray-75 hover:bg-gray-100"
              [ngClass]="{'!bg-gray-100': isComponentSelected(payrollComponent?.id)}">

@@ -1,7 +1,7 @@
-<sonaleela-layout-sidenav *ngIf="layout === layoutTypes.SIDENAV">
+<sonaleela-layout-sidenav *ngIf="layout() === layoutTypes.SIDENAV">
     <ng-container *ngTemplateOutlet="template"></ng-container>
 </sonaleela-layout-sidenav>
-<sonaleela-layout-empty *ngIf="layout === layoutTypes.EMPTY">
+<sonaleela-layout-empty *ngIf="layout() === layoutTypes.EMPTY">
     <ng-container *ngTemplateOutlet="template"></ng-container>
 </sonaleela-layout-empty>
 

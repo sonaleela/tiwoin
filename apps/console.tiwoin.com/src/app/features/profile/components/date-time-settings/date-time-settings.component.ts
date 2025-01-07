@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, input, output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,15 +11,17 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class DateTimeSettingsComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set profile(profile: any) {
         if (!profile) return;
 
         this.form.patchValue(profile);
     }
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = null;
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>(null);
 
-    @Output() updateProfile = new EventEmitter();
+    readonly updateProfile = output<typeof this.form.value>();
 
     today = new Date();
     form = this.formBuilder.group({

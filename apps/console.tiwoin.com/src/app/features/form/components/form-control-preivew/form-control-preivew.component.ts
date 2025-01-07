@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, HostBinding, HostListener, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, HostBinding, HostListener, OnInit, input, output } from '@angular/core';
 import { getControlIconName } from '@shared';
 import { FormFieldTypeEnum } from '@models';
 
@@ -10,13 +10,13 @@ import { FormFieldTypeEnum } from '@models';
     standalone: false
 })
 export class FormControlPreivewComponent {
-  @Input() control: any;
+    readonly control = input<any>();
 
-  @Output() edit = new EventEmitter();
-  @Output() copy = new EventEmitter();
-  @Output() delete = new EventEmitter();
+    readonly edit = output<boolean>();
+    readonly copy = output<boolean>();
+    readonly delete = output<boolean>();
 
-  get iconName() {
-    return getControlIconName(this.control?.type);
-  }
+    get iconName() {
+        return getControlIconName(this.control()?.type);
+    }
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import dayjs from 'dayjs';
 
@@ -14,10 +14,11 @@ import { timesheetTimeValidator } from '../../validator';
 export class AddTimesheetDataComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() error: string | null = null;
-    @Input() isPending: boolean | null = null;
-    @Output() close: EventEmitter<any> = new EventEmitter();
-    @Output() addTimesheet: EventEmitter<any> = new EventEmitter();
+    readonly error = input<string | null>(null);
+    readonly isPending = input<boolean | null>(null);
+
+    readonly close = output<boolean>();
+    readonly addTimesheet = output<{ date: string, employeeId: string, entries: any[], entry: any }>();
 
     form = this.formBuilder.group({
         employee: ['', Validators.required],

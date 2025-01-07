@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { PayrollComponentModel } from '@models';
 
 @Component({
@@ -9,29 +9,29 @@ import { PayrollComponentModel } from '@models';
     standalone: false
 })
 export class PayrollComponentSidelistComponent {
-    @Input() isPending: boolean | null = null;
-    @Input() error: string | null = null;
-    @Input() payrollComponentList: PayrollComponentModel[] | null = null;
-    @Input() selectedIds: any[] | null = [];
-    @Input() filterValue: { [key: string]: any } | null = {};
+    readonly isPending = input<boolean | null>(null);
+    readonly error = input<string | null>(null);
+    readonly payrollComponentList = input<PayrollComponentModel[] | null>(null);
+    readonly selectedIds = input<any[] | null>([]);
+    readonly filterValue = input<{ [key: string]: any; } | null>({});
 
-    @Output() filterBy = new EventEmitter<{ [key: string]: any }>();
-    @Output() selectComponentId = new EventEmitter<any[]>();
-    @Output() unSelectComponentId = new EventEmitter<any[]>();
-    @Output() toggleForm = new EventEmitter<boolean>();
+    readonly filterBy = output<{ [key: string]: any; }>();
+    readonly selectComponentId = output<any[]>();
+    readonly unSelectComponentId = output<any[]>();
+    readonly toggleForm = output<boolean>();
 
-    isComponentSelected = (id: any) => this.selectedIds?.includes(id);
+    isComponentSelected = (id: any) => this.selectedIds()?.includes(id);
 
     filterComponent(filterValue: { [key: string]: any }) {
         if (!filterValue || JSON.stringify(filterValue) === '{}') this.filterValue = {};
-        this.filterValue = { ...this.filterValue, ...filterValue };
+        this.filterValue = { ...this.filterValue(), ...filterValue };
 
-        this.filterBy.emit(this.filterValue);
+        this.filterBy.emit(this.filterValue());
     }
 
     selectComponent(id: any) {
         if (!id) return;
-        if (!this.selectedIds) this.selectedIds = [];
+        if (!this.selectedIds()) this.selectedIds = [];
 
         if (this.isComponentSelected(id)) {
             this.unSelectComponentId.emit(id);

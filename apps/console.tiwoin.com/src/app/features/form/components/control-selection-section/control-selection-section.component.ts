@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, output } from '@angular/core';
 import { getControlIconName } from '@shared';
 import { FormFieldTypeEnum } from '@models';
 
@@ -10,7 +10,7 @@ import { FormFieldTypeEnum } from '@models';
     standalone: false
 })
 export class ControlSelectionSectionComponent {
-    @Output() selectControl = new EventEmitter();
+    readonly selectControl = output<any>();
 
     fieldTypes = FormFieldTypeEnum;
     getControlIconName = getControlIconName;

@@ -6,6 +6,8 @@ import { SwiperOptions } from 'swiper/types';
     standalone: false
 })
 export class SwiperOptionDirective {
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set sonaleelaSwiperOption(options: SwiperOptions) {
         if (!options) return;
 

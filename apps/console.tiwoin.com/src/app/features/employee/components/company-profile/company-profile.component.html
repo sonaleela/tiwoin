@@ -5,15 +5,15 @@
             (click)="editPositionInfo()">Edit</button>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Position</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.position || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.position || '-'}}</p>
     </div>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Department</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.department || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.department || '-'}}</p>
     </div>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Date of joining</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.joiningDate || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.joiningDate || '-'}}</p>
     </div>
 </section>
 <form *ngIf="isPositionForm"
@@ -50,7 +50,7 @@
     <div class="flex flex-row gap-2">
         <button type="submit"
                 slui-button
-                *isLoading="isPending"
+                *isLoading="isPending()"
                 appearance="cta">Save changes</button>
         <button type="button"
                 slui-button
@@ -68,11 +68,11 @@
             (click)="editPFInfo()">Edit</button>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">PF number</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.PFNumber || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.PFNumber || '-'}}</p>
     </div>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">ESI number</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.ESINumber || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.ESINumber || '-'}}</p>
     </div>
 </section>
 <form *ngIf="isPFForm"
@@ -101,7 +101,7 @@
     <div class="flex flex-row gap-2">
         <button type="submit"
                 slui-button
-                *isLoading="isPending"
+                *isLoading="isPending()"
                 appearance="cta">Save changes</button>
         <button type="button"
                 slui-button
@@ -118,7 +118,7 @@
             (click)="editNoticeInfo()">Edit</button>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Notice period</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.noticePeriod || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.noticePeriod || '-'}}</p>
     </div>
 </section>
 <form *ngIf="isNoticeForm"
@@ -138,7 +138,7 @@
     <div class="flex flex-row gap-2">
         <button type="submit"
                 slui-button
-                *isLoading="isPending"
+                *isLoading="isPending()"
                 appearance="cta">Save changes</button>
         <button type="button"
                 slui-button

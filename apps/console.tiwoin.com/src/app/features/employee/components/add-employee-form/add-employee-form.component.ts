@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { FormBuilder, UntypedFormArray, UntypedFormBuilder, Validators } from '@angular/forms';
 
 import { EmployeeModel } from '@models';
@@ -12,10 +12,10 @@ import { EmployeeModel } from '@models';
 export class AddEmployeeFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
 
-    @Output() submitForm = new EventEmitter<any>();
+    readonly submitForm = output<any>();
 
     form = this.formBuilder.group({
         name: this.formBuilder.group({

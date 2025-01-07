@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,11 +11,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class AddAdvancePaymentFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() isPending: boolean | null = null;
-    @Input() error: string | null = null;
+    readonly isPending = input<boolean | null>(null);
+    readonly error = input<string | null>(null);
 
-    @Output() submitForm = new EventEmitter();
-    @Output() cancel = new EventEmitter();
+    readonly submitForm = output<typeof this.form.value>();
+    readonly cancel = output<boolean>();
 
     form = this.formBuilder.group({
         amount: [0, Validators.required],

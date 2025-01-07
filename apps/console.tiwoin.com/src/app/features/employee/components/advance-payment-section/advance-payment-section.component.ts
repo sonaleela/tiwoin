@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 
 @Component({
     selector: 'sonaleela-advance-payment-section',
@@ -8,9 +8,9 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
     standalone: false
 })
 export class AdvancePaymentSectionComponent {
-    @Input() list: any[] = [];
-    @Input() error: string | null = '';
-    @Input() longDateFormat: string = '';
+    readonly list = input<any[]>([]);
+    readonly error = input<string | null>('');
+    readonly longDateFormat = input<string>('');
 
     displayedColumns: string[] = ['date', 'amount', 'note'];
 }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, OnInit, input, output } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 @Component({
@@ -11,15 +11,17 @@ import { FormBuilder } from '@angular/forms';
 export class EditTimesheetFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set timesheet(value: any) {
         if (!value) return;
 
         this.form.patchValue(value);
     }
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
 
-    @Output() submitForm = new EventEmitter();
+    readonly submitForm = output<typeof this.form.value>();
 
     form = this.formBuilder.group({
         id: '',

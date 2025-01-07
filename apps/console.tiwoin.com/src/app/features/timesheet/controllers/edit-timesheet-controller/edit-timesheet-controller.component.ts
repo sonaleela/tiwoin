@@ -19,7 +19,7 @@ export class EditTimesheetControllerComponent {
     editError$ = this.store.select(fromStore.selectEditTimesheetError);
     timesheet$ = this.store.select(fromRootStore.selectActiveTimesheet);
 
-    submitForm(timesheet: TimesheetModel) {
+    submitForm(timesheet: any) {
         this.store.dispatch(fromStore.UpdateTimesheetBegin({ timesheet }));
     }
 }

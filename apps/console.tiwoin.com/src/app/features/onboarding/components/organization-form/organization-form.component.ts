@@ -1,4 +1,4 @@
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, inject, input, output } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, UntypedFormArray, UntypedFormBuilder, ValidatorFn, Validators } from '@angular/forms';
 import { IndustryList, EmployeeRangeList, OrganizationModel } from '@models';
 
@@ -21,10 +21,10 @@ interface OrganizationForm {
 export class OrganizationFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
 
-    @Output() submitForm = new EventEmitter<OrganizationModel>();
+    readonly submitForm = output<OrganizationModel>();
 
     industryList = [...IndustryList];
     employeeRangeList = [...EmployeeRangeList];

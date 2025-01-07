@@ -59,13 +59,13 @@
                             <div class="mb-3 flex-1">
                                    <label for="city"
                                           class="block font-body text-75 text-gray-800 mb-1">City</label>
-                                   <select *ngIf="cityList?.length"
+                                   <select *ngIf="cityList()?.length"
                                            formControlName="city"
                                            class="w-full bg-gray-50 border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8">
-                                          <option *ngFor="let city of cityList"
+                                          <option *ngFor="let city of cityList()"
                                                   [value]="city">{{city}}</option>
                                    </select>
-                                   <input *ngIf="!cityList?.length"
+                                   <input *ngIf="!cityList()?.length"
                                           id="city"
                                           type="text"
                                           class="w-full border border-gray-500 rounded font-body text-100 text-gray-800 px-3 h-8"

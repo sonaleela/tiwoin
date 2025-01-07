@@ -5,23 +5,23 @@
             (click)="editTimesheetInfo()">Edit</button>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">In time</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.clockTime?.inTime || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.clockTime?.inTime || '-'}}</p>
     </div>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Out time</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.clockTime?.outTime || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.clockTime?.outTime || '-'}}</p>
     </div>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Break time</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.clockTime?.breakTime || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.clockTime?.breakTime || '-'}}</p>
     </div>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Work hours - Full day</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.minimumWorkHours?.fullDay || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.minimumWorkHours?.fullDay || '-'}}</p>
     </div>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Minimum work hours - Full day</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.minimumWorkHours?.halfDay || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.minimumWorkHours?.halfDay || '-'}}</p>
     </div>
 </section>
 <form *ngIf="isTimesheetForm"
@@ -91,7 +91,7 @@
     <div class="flex flex-row gap-2">
         <button type="submit"
                 slui-button
-                *isLoading="isPending"
+                *isLoading="isPending()"
                 appearance="cta">Save changes</button>
         <button type="button"
                 slui-button
@@ -108,15 +108,15 @@
             (click)="editLeaveInfo()">Edit</button>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Paid leaves</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.leaves?.paidLeaves || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.leaves?.paidLeaves || '-'}}</p>
     </div>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Earned leave</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.leaves?.earnedPaidLeaves || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.leaves?.earnedPaidLeaves || '-'}}</p>
     </div>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Consumed leave</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.leaves?.consumedLeaves || '-'}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.leaves?.consumedLeaves || '-'}}</p>
     </div>
 </section>
 <form *ngIf="isLeaveForm"
@@ -155,7 +155,7 @@
     <div class="flex flex-row gap-2">
         <button type="submit"
                 slui-button
-                *isLoading="isPending"
+                *isLoading="isPending()"
                 appearance="cta">Save changes</button>
         <button type="button"
                 slui-button

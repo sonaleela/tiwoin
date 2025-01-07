@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,9 +11,9 @@ import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 export class AddWorkItemFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
-    @Output() submitForm = new EventEmitter();
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
+    readonly submitForm = output<typeof this.form.value>();
 
     form = this.formBuilder.group({
         name: ['', Validators.required],

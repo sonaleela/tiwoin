@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, input, output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,10 +11,10 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class InviteUserFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
 
-    @Output() submitForm = new EventEmitter();
+    readonly submitForm = output<typeof this.form.value>();
 
     form = this.formBuilder.group({
         countryCode: ['+91', Validators.required],

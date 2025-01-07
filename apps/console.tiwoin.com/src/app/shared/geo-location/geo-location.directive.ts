@@ -6,6 +6,8 @@ import { Directive, ElementRef, Input } from '@angular/core';
     standalone: true
 })
 export class GeoLocationDirective {
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set geolocation(location: object) {
         if (!location) return;
         if (!this.map) this.initMap();

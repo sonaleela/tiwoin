@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { FormBuilder, UntypedFormArray, Validators } from '@angular/forms';
 
 import { AcceptType } from '@models';
@@ -13,11 +13,11 @@ import { AcceptType } from '@models';
 export class DocumentRequestFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
 
-    @Output() submitForm = new EventEmitter<(typeof this.form.value)>();
-    @Output() cancel = new EventEmitter<boolean>();
+    readonly submitForm = output<(typeof this.form.value)>();
+    readonly cancel = output<boolean>();
 
     acceptType = [...AcceptType]
     form = this.formBuilder.nonNullable.group({

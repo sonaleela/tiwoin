@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, input, output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 
 interface DocumentForm {
@@ -16,11 +16,11 @@ interface DocumentForm {
 export class DocumentFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() isPending = false;
-    @Input() error = '';
+    readonly isPending = input(false);
+    readonly error = input('');
 
-    @Output() submitForm = new EventEmitter<(typeof this.form.value)>();
-    @Output() cancel = new EventEmitter<boolean>();
+    readonly submitForm = output<(typeof this.form.value)>();
+    readonly cancel = output<boolean>();
 
     form = this.formBuilder.nonNullable.group<DocumentForm>({
         name: this.formBuilder.nonNullable.control('', Validators.required),

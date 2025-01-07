@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, output } from '@angular/core';
 import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,15 +11,17 @@ import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 export class EditFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set data(data: any | null) {
         if (!data) return;
         this.form.patchValue(data);
     }
 
-    @Output() edit = new EventEmitter();
-    @Output() copy = new EventEmitter();
-    @Output() delete = new EventEmitter();
-    @Output() saveForm = new EventEmitter();
+    readonly edit = output();
+    readonly copy = output();
+    readonly delete = output();
+    readonly saveForm = output<typeof this.form.value>();
 
     form = this.formBuilder.group({
         id: '',

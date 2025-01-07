@@ -20,7 +20,7 @@
                     class="h-9 px-3 font-body text-100 text-gray-900 border border-gray-500 rounded"
                     placeholder="Select payroll"
                     formControlName="payrollId">
-                <option *ngFor="let payroll of payrollList"
+                <option *ngFor="let payroll of payrollList()"
                         [value]="payroll?.id">{{payroll?.name}}</option>
             </select>
         </div>

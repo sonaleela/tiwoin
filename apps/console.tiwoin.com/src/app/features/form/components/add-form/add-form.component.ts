@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Output, EventEmitter, Input, ChangeDetectorRef, inject, } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, ChangeDetectorRef, inject, output } from '@angular/core';
 import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,15 +11,17 @@ import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 export class AddFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set fields(fields: any | null) {
         if (!fields) return;
         this.form.get('fields')?.setValue(fields);
     }
 
-    @Output() edit = new EventEmitter();
-    @Output() copy = new EventEmitter();
-    @Output() delete = new EventEmitter();
-    @Output() saveForm = new EventEmitter();
+    readonly edit = output();
+    readonly copy = output();
+    readonly delete = output();
+    readonly saveForm = output<typeof this.form.value>();
 
     form = this.formBuilder.group({
         name: ['', Validators.required],

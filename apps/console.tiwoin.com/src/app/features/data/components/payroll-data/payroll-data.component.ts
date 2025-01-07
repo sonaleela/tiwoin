@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnInit, input } from '@angular/core';
 
 @Component({
     selector: 'sonaleela-payroll-data',
@@ -8,8 +8,8 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
     standalone: false
 })
 export class PayrollDataComponent {
-  @Input() payrollList: any[] = [];
-  @Input() error: string | null = '';
-  @Input() isPending: boolean | null = false;
+  readonly payrollList = input<any[]>([]);
+  readonly error = input<string | null>('');
+  readonly isPending = input<boolean | null>(false);
   displayedColumns: string[] = ['name'];
 }

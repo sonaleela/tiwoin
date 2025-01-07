@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, input, output } from '@angular/core';
 import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,6 +11,8 @@ import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 export class SubmitWorkItemFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set workItem(workItem: any) {
         if (!workItem) return;
 
@@ -19,9 +21,9 @@ export class SubmitWorkItemFormComponent {
             workItem: workItem,
         });
     }
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
-    @Output() submitForm = new EventEmitter();
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
+    readonly submitForm = output<typeof this.form.value>();
 
     form = this.formBuilder.group({
         createdBy: ['', Validators.required],

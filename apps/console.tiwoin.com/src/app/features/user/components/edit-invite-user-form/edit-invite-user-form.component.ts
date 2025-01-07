@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, OnInit, input, output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,13 +11,15 @@ import { FormBuilder, Validators } from '@angular/forms';
 export class EditInviteUserFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() isPending: null | boolean = false;
-    @Input() error: null | string = '';
+    readonly isPending = input<null | boolean>(false);
+    readonly error = input<null | string>('');
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set user(user: any) {
         if (!user) return;
         this.form.patchValue({ ...user });
     }
-    @Output() submitForm = new EventEmitter();
+    readonly submitForm = output<typeof this.form.value>();
 
     form = this.formBuilder.group({
         phoneNumber: [{ value: '', disabled: true }, Validators.required],

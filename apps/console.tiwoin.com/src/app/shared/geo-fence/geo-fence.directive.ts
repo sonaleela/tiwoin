@@ -1,22 +1,28 @@
 /// <reference types="@types/google.maps" />
-import { Directive, ElementRef, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, output } from '@angular/core';
 
 @Directive({
     selector: '[sonaleelaGeoFence]',
     standalone: false
 })
 export class GeoFenceDirective implements OnInit {
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set geolocation(location: { lat: number | null, lng: number | null } | null) {
         if (location && location?.lat && location?.lng) {
             this.map?.setCenter({ lat: location?.lat, lng: location?.lng });
         }
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set zoomLevel(zoom: number) {
         if (!zoom) return;
         this.animateMapZoomTo(this.map, zoom);
     }
 
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set drawingObject(drawing: any) {
         if (!drawing) return;
         // this.map?.data.addListener('setgeometry', (event: any) => {
@@ -37,7 +43,7 @@ export class GeoFenceDirective implements OnInit {
         this.zoomToFirDataLayer(this.map);
     }
 
-    @Output() drawing = new EventEmitter();
+    readonly drawing = output();
 
     map?: google.maps.Map;
     drawingManager: google.maps.drawing.DrawingManager | undefined;

@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Output, EventEmitter, OnDestroy, Input, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnDestroy, inject, input, output } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
@@ -33,11 +33,11 @@ const initialPayrollComponentValue = {
 export class PayrollComponentFormComponent implements OnDestroy {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
 
-    @Output() submitForm = new EventEmitter();
-    @Output() close = new EventEmitter();
+    readonly submitForm = output();
+    readonly close = output();
 
     form = this.formBuilder.group<PayrollComponentForm>({
         name: this.formBuilder.nonNullable.control('', Validators.required),

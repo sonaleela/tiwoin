@@ -1,6 +1,6 @@
 <table class="w-full"
        cdk-table
-       [dataSource]="workItemList"
+       [dataSource]="workItemList()"
        matSort
        (matSortChange)="sortDataBy($event)">
     <ng-container cdkColumnDef="expand">
@@ -13,10 +13,10 @@
             queryParamsHandling="preserve"
             [routerLink]="['.', {outlets: {aside: ['view', element.id]}}]">
             <div class="flex items-center justify-center pr-6">
-                <slui-icon *ngIf="element !== activeWorkItem"
+                <slui-icon *ngIf="element !== activeWorkItem()"
                            class="h-4 w-4"
                            [iconName]="'tabler-icon-chevron-right'"></slui-icon>
-                <slui-icon *ngIf="element === activeWorkItem"
+                <slui-icon *ngIf="element === activeWorkItem()"
                            class="h-4 w-4"
                            [iconName]="'tabler-icon-chevron-left'"></slui-icon>
             </div>
@@ -104,7 +104,7 @@
             queryParamsHandling="preserve"
             queryParamsHandling="preserve"
             [routerLink]="['.', {outlets: {aside: ['view', element.id]}}]">
-            {{element?.createdAt | date:longDateFormat}}</td>
+            {{element?.createdAt | date:longDateFormat()}}</td>
     </ng-container>
     <ng-container cdkColumnDef="geoLocation">
         <th class="font-body font-bold text-center text-75 text-gray-800 px-2 py-3 whitespace-nowrap w-0"
@@ -142,7 +142,7 @@
         cdk-header-row
         *cdkHeaderRowDef="displayedColumns"></tr>
     <tr class="hover:bg-gray-75 border-b last:border-0 border-gray-300 cursor-pointer"
-        [ngClass]="{'bg-gray-75': activeWorkItem === row}"
+        [ngClass]="{'bg-gray-75': activeWorkItem() === row}"
         cdk-row
         *cdkRowDef="let row; columns: displayedColumns;"></tr>
 </table>

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, Input, input, output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -12,6 +12,8 @@ export class EditWorkItemDataComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
     private _data: any;
+    // TODO: Skipped for migration because:
+    //  Accessor inputs cannot be migrated as they are too complex.
     @Input() set data(data: any) {
         if (!data) return;
         this._data = data;
@@ -21,10 +23,10 @@ export class EditWorkItemDataComponent {
     }
     get data() { return this._data; }
 
-    @Input() error: string | null = null;
-    @Input() isPending: boolean | null = null;
-    @Output() close: EventEmitter<any> = new EventEmitter();
-    @Output() editWorkItem: EventEmitter<any> = new EventEmitter();
+    readonly error = input<string | null>(null);
+    readonly isPending = input<boolean | null>(null);
+    readonly close = output<boolean>();
+    readonly editWorkItem = output<typeof this.form.value>();
 
     form = this.formBuilder.group({
         id: ['', Validators.required],

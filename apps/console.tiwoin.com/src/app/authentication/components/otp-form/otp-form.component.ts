@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 
 @Component({
@@ -11,13 +11,15 @@ import { FormBuilder, UntypedFormBuilder, Validators } from '@angular/forms';
 export class OtpFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() phoneNumber: string | null = null;
-    @Input() isPending: boolean | null = false;
-    @Input() error: string | null = '';
-    @Input() timer: number | null = null;
+    readonly phoneNumber = input<string | null>(null);
+    readonly isPending = input<boolean | null>(false);
+    readonly error = input<string | null>('');
+    readonly timer = input<number | null>(null);
 
-    @Output() submitForm = new EventEmitter<{ otp: string; }>();
-    @Output() editPhoneNumber = new EventEmitter<boolean>();
+    readonly submitForm = output<{
+    otp: string;
+}>();
+    readonly editPhoneNumber = output<boolean>();
 
     form = this.formBuilder.group({
         otp: ['', Validators.required],

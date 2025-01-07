@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, Input, Output, ViewContainerRef } from '@angular/core';
+import { Directive, Input, ViewContainerRef, output } from '@angular/core';
 import { FormFieldTypeEnum } from '@models';
 import {
   CheckboxFormControlComponent,
@@ -20,6 +20,8 @@ import {
     standalone: false
 })
 export class FormControlDirective {
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input() set sonaleelaFormControl(field: any | null) {
     this.vcr.clear();
     if (!field?.type) return;
@@ -32,8 +34,8 @@ export class FormControlDirective {
     (<any>controlComponentRef.instance).remove.subscribe((val: any) => this.remove.emit(val));
   }
 
-  @Output() remove: EventEmitter<any> = new EventEmitter<any>();
-  @Output() save: EventEmitter<boolean> = new EventEmitter<boolean>();
+  readonly remove = output<any>();
+  readonly save = output<boolean>();
 
   constructor(private vcr: ViewContainerRef) { }
 

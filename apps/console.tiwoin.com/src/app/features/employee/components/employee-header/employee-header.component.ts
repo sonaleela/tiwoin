@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Component, ChangeDetectionStrategy, input } from '@angular/core';
 import { EmployeeModel } from '@models';
 
 @Component({
@@ -9,5 +9,5 @@ import { EmployeeModel } from '@models';
     standalone: false
 })
 export class EmployeeHeaderComponent {
-    @Input() employee?: EmployeeModel | null;
+    readonly employee = input<EmployeeModel | null>();
 }

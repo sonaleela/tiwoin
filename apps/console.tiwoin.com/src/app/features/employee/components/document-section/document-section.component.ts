@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, input, output } from '@angular/core';
 import { DocumentModel, EmployeeModel } from '@models';
 
 @Component({
@@ -9,10 +9,10 @@ import { DocumentModel, EmployeeModel } from '@models';
     standalone: false
 })
 export class DocumentSectionComponent {
-    @Input() list: DocumentModel[] | null = null;
-    @Input() isPending: boolean | null = null;
-    @Input() error: string | null = null;
+    readonly list = input<DocumentModel[] | null>(null);
+    readonly isPending = input<boolean | null>(null);
+    readonly error = input<string | null>(null);
     
-    @Output() add = new EventEmitter<boolean>();
-    @Output() request = new EventEmitter<boolean>();
+    readonly add = output<boolean>();
+    readonly request = output<boolean>();
 }

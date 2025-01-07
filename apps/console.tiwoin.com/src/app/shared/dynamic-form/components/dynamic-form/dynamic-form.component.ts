@@ -13,6 +13,8 @@ export class DynamicFormComponent {
   private formBuilder: FormBuilder = inject(FormBuilder);
 
   private _data: any = null;
+  // TODO: Skipped for migration because:
+  //  Accessor inputs cannot be migrated as they are too complex.
   @Input() set data(data: any | null) {
     if (!data) return;
     this._data = data;

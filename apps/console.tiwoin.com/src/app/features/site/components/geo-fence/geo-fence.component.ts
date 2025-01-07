@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 
 @Component({
     selector: 'sonaleela-geo-fence',
@@ -8,10 +8,13 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from 
     standalone: false
 })
 export class GeoFenceComponent {
-  @Input() geolocation: { lat: number | null, lng: number | null } | null = { lat: null, lng: null };
-  @Input() drawingObject: any = null;
-  @Input() zoomLevel: number = 0;
-  @Output() drawing = new EventEmitter();
+  readonly geolocation = input<{
+    lat: number | null;
+    lng: number | null;
+} | null>({ lat: null, lng: null });
+  readonly drawingObject = input<any>(null);
+  readonly zoomLevel = input<number>(0);
+  readonly drawing = output();
 
   drawingEvent(event: any) {
     this.drawing.emit(event);

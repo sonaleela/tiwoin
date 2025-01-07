@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input, output } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 
 @Component({
@@ -11,9 +11,9 @@ import { FormBuilder, Validators } from "@angular/forms";
 export class AddTimesheetFormComponent {
     private formBuilder: FormBuilder = inject(FormBuilder);
 
-    @Input() isPending: boolean | null = null;
-    @Input() error: string | null = null;
-    @Output() submitForm = new EventEmitter<any>();
+    readonly isPending = input<boolean | null>(null);
+    readonly error = input<string | null>(null);
+    readonly submitForm = output<any>();
 
     form = this.formBuilder.group({
         name: ['', Validators.required],

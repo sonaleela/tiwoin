@@ -5,17 +5,17 @@
             (click)="editGeneralInfo()">Edit</button>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Name</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.name?.first}} {{employee?.name?.middle}}
-            {{employee?.name?.last}}
+        <p class="font-body text-100 text-gray-900">{{employee()?.name?.first}} {{employee()?.name?.middle}}
+            {{employee()?.name?.last}}
         </p>
     </div>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Date of birth</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.dateOfBirth}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.dateOfBirth}}</p>
     </div>
     <div class="mb-4">
         <p class="font-body text-75 text-gray-800">Gender</p>
-        <p class="font-body text-100 text-gray-900">{{employee?.gender}}</p>
+        <p class="font-body text-100 text-gray-900">{{employee()?.gender}}</p>
     </div>
 </section>
 <form *ngIf="isGeneralForm"
@@ -92,7 +92,7 @@
     <div class="flex flex-row gap-2">
         <button type="submit"
                 slui-button
-                *isLoading="isPending"
+                *isLoading="isPending()"
                 appearance="cta">Save changes</button>
         <button type="button"
                 slui-button
@@ -115,10 +115,10 @@
                 <h4 class="font-body font-bold text-75 text-gray-800">Address</h4>
             </div>
             <div class="font-body text-100 text-gray-900">
-                <p>{{employee?.address?.line1}}</p>
-                <p>{{employee?.address?.line2}}</p>
-                <p>{{employee?.address?.city}} {{employee?.address?.postalCode}}</p>
-                <p>{{employee?.address?.state}}, {{employee?.address?.country}}</p>
+                <p>{{employee()?.address?.line1}}</p>
+                <p>{{employee()?.address?.line2}}</p>
+                <p>{{employee()?.address?.city}} {{employee()?.address?.postalCode}}</p>
+                <p>{{employee()?.address?.state}}, {{employee()?.address?.country}}</p>
             </div>
         </div>
         <div class="flex-none border-l border-gray-300"></div>
@@ -129,7 +129,7 @@
                 <h4 class="font-body font-bold text-75 text-gray-800">Email address</h4>
             </div>
             <div class="font-body text-100 text-gray-900 mb-5">
-                <p *ngFor="let email of employee?.emails">{{email.email}}
+                <p *ngFor="let email of employee()?.emails">{{email.email}}
                     <span class="italic text-75 text-gray-800">{{email.isPrimary ? 'primary' : ''}}</span>
                 </p>
             </div>
@@ -139,7 +139,7 @@
                 <h4 class="font-body font-bold text-75 text-gray-800">Phone number</h4>
             </div>
             <div class="font-body text-100 text-gray-900">
-                <p *ngFor="let phone of employee?.phones">{{phone.phone}}
+                <p *ngFor="let phone of employee()?.phones">{{phone.phone}}
                     <span class="italic text-75 text-gray-800">{{phone.isPrimary ? 'primary' : ''}}</span>
                 </p>
             </div>
@@ -254,7 +254,7 @@
     <div class="flex flex-row gap-2">
         <button type="submit"
                 slui-button
-                *isLoading="isPending"
+                *isLoading="isPending()"
                 appearance="cta">Save changes</button>
         <button type="button"
                 slui-button

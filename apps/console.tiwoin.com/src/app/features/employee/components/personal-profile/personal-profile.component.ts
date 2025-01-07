@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject, input, output } from '@angular/core';
 import { FormArray, FormBuilder, UntypedFormArray, UntypedFormBuilder, Validators } from '@angular/forms';
 import { EmployeeModel } from '@models';
 
@@ -12,11 +12,11 @@ import { EmployeeModel } from '@models';
 export class PersonalProfileComponent {
     private formBuilder: UntypedFormBuilder = inject(UntypedFormBuilder);
 
-    @Input() employee?: EmployeeModel | null;
-    @Input() error: string | null = null;
-    @Input() isPending: boolean | null = null;
+    readonly employee = input<EmployeeModel | null>();
+    readonly error = input<string | null>(null);
+    readonly isPending = input<boolean | null>(null);
 
-    @Output() editEmployee = new EventEmitter();
+    readonly editEmployee = output<any>();
 
     isGeneralForm: boolean | null = false;
     generalForm = this.formBuilder.group({
@@ -66,13 +66,14 @@ export class PersonalProfileComponent {
 
     editGeneralInfo() {
         this.isGeneralForm = true;
-        this.generalForm.patchValue(this.employee || {});
+        this.generalForm.patchValue(this.employee() || {});
     }
 
     editContactInfo() {
         this.isContactForm = true;
-        let patchValue: any = { ...JSON.parse(JSON.stringify(this.employee)) };
-        if (this.employee?.emails?.length) {
+        let patchValue: any = { ...JSON.parse(JSON.stringify(this.employee())) };
+        const employee = this.employee();
+        if (employee?.emails?.length) {
             (<FormArray>this.contactFrom.get('emails')).clear();
             patchValue = {
                 ...patchValue,
@@ -82,16 +83,16 @@ export class PersonalProfileComponent {
                 })
             };
         }
-        if (this.employee?.phones?.length) {
+        if (employee?.phones?.length) {
             (<FormArray>this.contactFrom.get('phones')).clear();
             patchValue = {
                 ...patchValue,
-                phones: this.employee.phones.map(item => {
+                phones: employee.phones.map(item => {
                     this.addPhone();
                     return item.phone;
                 })
             };
-            this.removePhone(this.employee?.phones?.length)
+            this.removePhone(employee?.phones?.length)
         }
         this.contactFrom.patchValue(patchValue);
     }

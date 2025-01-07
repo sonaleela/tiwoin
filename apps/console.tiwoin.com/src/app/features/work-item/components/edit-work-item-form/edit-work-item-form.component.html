@@ -56,9 +56,9 @@
                             formControlName="isApprovalRequired">
               </div>
               <p class="font-body text-75 text-red-400 mb-4"
-                 *ngIf="error">{{error}}</p>
+                 *ngIf="error()">{{error()}}</p>
               <button type="submit"
-                      *isLoading="isPending"
+                      *isLoading="isPending()"
                       slui-button
                       appearance="cta">Save work-item</button>
        </form>
