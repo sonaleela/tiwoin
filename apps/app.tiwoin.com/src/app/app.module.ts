@@ -3,8 +3,8 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { SluiButtonModule, SluiIconModule } from '@sonaleela/ui';
 import { DialogModule } from '@angular/cdk/dialog';
-import { httpInterceptorProvider } from '@core';
-import { provideHttpClient } from '@angular/common/http';
+import { authenticationInterceptor } from '@core';
+import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -58,8 +58,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     ],
     providers: [
         appInitializerProvider,
-        httpInterceptorProvider,
-        provideHttpClient(),
+        provideHttpClient(withInterceptors([authenticationInterceptor])),
         provideExperimentalZonelessChangeDetection(),
     ],
     bootstrap: [AppComponent]

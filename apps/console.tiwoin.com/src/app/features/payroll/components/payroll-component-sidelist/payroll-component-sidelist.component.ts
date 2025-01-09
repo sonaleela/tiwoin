@@ -20,18 +20,21 @@ export class PayrollComponentSidelistComponent {
     readonly unSelectComponentId = output<any[]>();
     readonly toggleForm = output<boolean>();
 
+    currentAppliedFilter: { [key: string]: any; } = {};
+    currentSelectedIds: any[] = [];
+
     isComponentSelected = (id: any) => this.selectedIds()?.includes(id);
 
     filterComponent(filterValue: { [key: string]: any }) {
-        if (!filterValue || JSON.stringify(filterValue) === '{}') this.filterValue = {};
-        this.filterValue = { ...this.filterValue(), ...filterValue };
+        if (!filterValue || JSON.stringify(filterValue) === '{}') this.currentAppliedFilter = {};
+        this.currentAppliedFilter = { ...this.filterValue(), ...filterValue };
 
-        this.filterBy.emit(this.filterValue());
+        this.filterBy.emit(this.currentAppliedFilter);
     }
 
     selectComponent(id: any) {
         if (!id) return;
-        if (!this.selectedIds()) this.selectedIds = [];
+        if (!this.selectedIds()) this.currentSelectedIds = [];
 
         if (this.isComponentSelected(id)) {
             this.unSelectComponentId.emit(id);

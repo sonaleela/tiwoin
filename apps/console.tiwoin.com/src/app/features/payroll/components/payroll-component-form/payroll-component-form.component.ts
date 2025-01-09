@@ -36,7 +36,7 @@ export class PayrollComponentFormComponent implements OnDestroy {
     readonly isPending = input<boolean | null>(false);
     readonly error = input<string | null>('');
 
-    readonly submitForm = output();
+    readonly submitForm = output<typeof this.form.value>();
     readonly close = output();
 
     form = this.formBuilder.group<PayrollComponentForm>({
